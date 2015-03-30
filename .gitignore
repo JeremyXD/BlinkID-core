@@ -1,32 +1,78 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# xcode noise
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+DerivedData
 
-# Precompiled Headers
-*.gch
-*.pch
+# old skool
+.svn
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# osx noise
+.DS_Store
+profile
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# vim noise
+*~
+*.swp
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# AppCode noise
+.idea/
 
-# Debug files
-*.dSYM/
+# Visual studio noise
+*.suo
+*.sdf
+Thumbs.db
+
+# Release steps
+Release TODO.md
+
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+obj/
+
+# Mac specific files
+.DS_Store
+
+*.pydevproject
+.metadata
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+
+# CVS that was left behind
+CVS
+.cvsignore
