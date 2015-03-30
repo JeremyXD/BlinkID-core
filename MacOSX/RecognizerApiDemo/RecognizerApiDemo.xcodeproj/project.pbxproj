@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C90A6EEC18ABC46A004717EF /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* demo.c */; };
+		C90A6EEE18ABC478004717EF /* barcode-image.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EED18ABC46F004717EF /* barcode-image.png */; };
+		C90A6EF618ABD31C004717EF /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
+		C90A6EF818ABD39E004717EF /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
+		C999F7EB1A68060800C717C6 /* usdl-image.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = C999F7EA1A6805DF00C717C6 /* usdl-image.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C90A6ED118ABC070004717EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				C999F7EB1A68060800C717C6 /* usdl-image.jpg in CopyFiles */,
+				C90A6EEE18ABC478004717EF /* barcode-image.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C90A6EF718ABD37D004717EF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C90A6EF818ABD39E004717EF /* RecognizerApi.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C90A6ED318ABC070004717EF /* RecognizerApiDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RecognizerApiDemo; sourceTree = BUILT_PRODUCTS_DIR; };
+		C90A6EEB18ABC46A004717EF /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
+		C90A6EED18ABC46F004717EF /* barcode-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barcode-image.png"; path = "RecognizerApiDemo/barcode-image.png"; sourceTree = "<group>"; };
+		C90A6EF518ABD31C004717EF /* RecognizerApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RecognizerApi.framework; path = ../RecognizerApi.framework; sourceTree = "<group>"; };
+		C999F7EA1A6805DF00C717C6 /* usdl-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "usdl-image.jpg"; path = "RecognizerApiDemo/usdl-image.jpg"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C90A6ED018ABC070004717EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90A6EF618ABD31C004717EF /* RecognizerApi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C90A6ECA18ABC070004717EF = {
+			isa = PBXGroup;
+			children = (
+				C90A6ED518ABC070004717EF /* RecognizerApiDemo */,
+				C90A6EF418ABD2ED004717EF /* Frameworks */,
+				C90A6EF318ABD2DE004717EF /* Resources */,
+				C90A6ED418ABC070004717EF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C90A6ED418ABC070004717EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C90A6ED318ABC070004717EF /* RecognizerApiDemo */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C90A6ED518ABC070004717EF /* RecognizerApiDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C90A6EEB18ABC46A004717EF /* demo.c */,
+			);
+			path = RecognizerApiDemo;
+			sourceTree = "<group>";
+		};
+		C90A6EF318ABD2DE004717EF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C999F7EA1A6805DF00C717C6 /* usdl-image.jpg */,
+				C90A6EED18ABC46F004717EF /* barcode-image.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C90A6EF418ABD2ED004717EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C90A6EF518ABD31C004717EF /* RecognizerApi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C90A6ED218ABC070004717EF /* RecognizerApiDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C90A6EDC18ABC070004717EF /* Build configuration list for PBXNativeTarget "RecognizerApiDemo" */;
+			buildPhases = (
+				C90A6ECF18ABC070004717EF /* Sources */,
+				C90A6ED018ABC070004717EF /* Frameworks */,
+				C90A6ED118ABC070004717EF /* CopyFiles */,
+				C90A6EF718ABD37D004717EF /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecognizerApiDemo;
+			productName = RecognizerApiDemo;
+			productReference = C90A6ED318ABC070004717EF /* RecognizerApiDemo */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C90A6ECB18ABC070004717EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = DoDo;
+			};
+			buildConfigurationList = C90A6ECE18ABC070004717EF /* Build configuration list for PBXProject "RecognizerApiDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C90A6ECA18ABC070004717EF;
+			productRefGroup = C90A6ED418ABC070004717EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C90A6ED218ABC070004717EF /* RecognizerApiDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C90A6ECF18ABC070004717EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C90A6EEC18ABC46A004717EF /* demo.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C90A6EDA18ABC070004717EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = ../;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../RecognizerApi.framework/Headers,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.8;
+			};
+			name = Debug;
+		};
+		C90A6EDB18ABC070004717EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libstdc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = ../;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../RecognizerApi.framework/Headers,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx10.8;
+			};
+			name = Release;
+		};
+		C90A6EDD18ABC070004717EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = ../;
+				GCC_C_LANGUAGE_STANDARD = ansi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		C90A6EDE18ABC070004717EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
+				FRAMEWORK_SEARCH_PATHS = ../;
+				GCC_C_LANGUAGE_STANDARD = ansi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C90A6ECE18ABC070004717EF /* Build configuration list for PBXProject "RecognizerApiDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90A6EDA18ABC070004717EF /* Debug */,
+				C90A6EDB18ABC070004717EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C90A6EDC18ABC070004717EF /* Build configuration list for PBXNativeTarget "RecognizerApiDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C90A6EDD18ABC070004717EF /* Debug */,
+				C90A6EDE18ABC070004717EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C90A6ECB18ABC070004717EF /* Project object */;
+}
