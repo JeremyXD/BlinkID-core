@@ -114,8 +114,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy barcode-image.png $(OutputPath)
-copy usdl-image.jpg $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,8 +158,7 @@ copy usdl-image.jpg $(OutputPath)</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy barcode-image.png $(OutputPath)
-copy usdl-image.jpg $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

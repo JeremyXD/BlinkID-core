@@ -3,7 +3,7 @@
 
 #include "RecognizerApi.h"
 
-/* specifier for correct prinf of size_t on 32-bit and 64-bit architectures */
+/* specifier for correct printf of size_t on 32-bit and 64-bit architectures */
 #if defined(_MSC_VER)
   #define JL_SIZE_T_SPECIFIER    "%Iu"
   #define JL_SSIZE_T_SPECIFIER   "%Id"
@@ -87,6 +87,10 @@ RecognizerCallback buildRecognizerCallback() {
 int main(int argc, char* argv[]) {
     /* path will contain path to image being recognized */
     const char* path = argv[1];
+	/* this buffer will contain OCR model */
+	char* ocrModel;
+	/* this variable will contain OCR model buffer length in bytes */
+	size_t ocrModelLength;
     /* this variable will contain all recognition settings (which recognizers are enabled, etc.) */
     RecognizerSettings* settings;
     /* this variable will contain device information. On Mac/PC this is not usually necessary, but
@@ -105,15 +109,16 @@ int main(int argc, char* argv[]) {
     /* this variable will contain list of scan results obtained from image scanning process. */
     RecognizerResultList* resultList;
     /* this variable will contain number of scan results obtained from image scanning process. */
-    size_t numResults;
-    /* this is a for loop counter for iteration over result list */
-    size_t i;
+    size_t numResults;    
     
     if (argc < 2) {
         printf("usage %s <img_path>\n", argv[0]);
         return -1;
     }
     
+	/* load OCR model from file */
+	status = recognizerLoadFileToBuffer("ocr_model.zzip", &ocrModel, &ocrModelLength);
+
     /* create recognizer settings object. Do not forget to delete it after usage. */
     recognizerSettingsCreate(&settings);
     
@@ -124,37 +129,13 @@ int main(int argc, char* argv[]) {
     recognizerDeviceInfoSetNumberOfProcessors(deviceInfo, 4);
     /* add device info object to recognizer settings object */
     recognizerSettingsSetDeviceInfo(settings, deviceInfo);
+	/* set OCR model to recognizer settings object */
+	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
 
-    {
-        /* create settings for PDF417 barcode recognizer */
-        Pdf417Settings pdf417Sett;
-        /* enable the usage of autoscale to automatically determine best parameters for high resolution images */
-        pdf417Sett.useAutoScale = 1;
-        /* allow scanning of damaged and incomplete PDF417 barcodes */
-        pdf417Sett.shouldScanUncertain = 1;
-        /* add PDF417 barcode recognizer settings to global recognizer settings object */
-        recognizerSettingsSetPdf417Settings(settings, &pdf417Sett);
-    }
-    
-    {
-        /* create settings for ZXing barcode recognizer */
-        ZXingSettings zxingSett;
-        /* activate scanning of QR codes */
-        zxingSett.scanQRCode = 1;
-        /* add ZXing barcode recognizer settings to global recognizer settings object */
-        recognizerSettingsSetZXingSettings(settings, &zxingSett);
-    }
-    
-    {
-        /* create settings for US Driver's License barcode recognizer */
-        UsdlSettings usdlSett;
-        /* enable the usage of autoscale to automatically determine best parameters for high resolution images */
-        usdlSett.useAutoScale = 1;
-        /* add US Driver's License barcode recognizer settings to global recognizer settings object */
-        recognizerSettingsSetUsdlSettings(settings, &usdlSett);
-    }
-    
-    /* insert license key and licensee */
+	/* enable Machine Readable Travel Document recognizer and add it to global recognizer settings object */		
+	recognizerSettingsEnableMRTD(settings);
+	    
+    /* insert license key and licensee */	
     recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
     
     /* create global recognizer with settings */
@@ -169,65 +150,75 @@ int main(int argc, char* argv[]) {
     recognizerCallback = buildRecognizerCallback();
     /* if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
        insert non-NULL function pointers only to those events you are interested in */
-    status = recognizerRecognizeFromFile(recognizer, &resultList, path, &recognizerCallback);
-
+    status = recognizerRecognizeFromFile(recognizer, &resultList, path, NULL);
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Error recognizing file %s: %s\n", path, recognizerErrorToString(status));
         return -1;
     }
     
     recognizerResultListGetNumOfResults(resultList, &numResults);
-    
-    for(i = 0; i< numResults; ++i) {
-        RecognizerResult* result;
-        int isUsdl = 0;
-        
-        /* obtain i-th result from list */
-        recognizerResultListGetResultAtIndex(resultList, i, &result);
-        
-        /* check if result is obtained from US Driver's License recognizer */
-        status = recognizerResultIsUSDLResult(result, &isUsdl);
-        if(status == RECOGNIZER_ERROR_STATUS_SUCCESS && isUsdl) {
-            int valid = 0;
-            
-            /* first determine if USDL result is valid */
-            recognizerResultIsResultValid(result, &valid);
-            if(valid) {
-                const char* firstName;
-                const char* lastName;
-                /* obtain first and last name of the driver */
-                recognizerResultGetUSDLField(result, &firstName, USDLFieldKeys.kCustomerFirstName);
-                recognizerResultGetUSDLField(result, &lastName, USDLFieldKeys.kCustomerFamilyName);
-                
-                printf("Driver's license belongs to %s %s\n", firstName, lastName);
-            } else {
-                printf("Invalid driver license result!\n");
-            }
-            
-        } else {
-            const char* str;
-            BarcodeType barcodeType;
-            
-            /* obtain the type of the barcode */
-            status = recognizerResultGetBarcodeType(result, &barcodeType);
-            
-            if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-                printf("Error obtaining barcode type: %s\n", recognizerErrorToString(status));
-                return -1;
-            }
-            
-            /* obtain string version of data in barcode */
-            status = recognizerResultGetBarcodeStringData(result, &str);
-            
-            if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-                printf("Error obtaining barcode string data: %s\n", recognizerErrorToString(status));
-                return -1;
-            }
-            
-            printf("%s Result: %s\n", barcodeTypeToString(barcodeType), str);
-        }
-    }
 
+	if (numResults != 1u) {
+		/* number of results should be 1 as there is only one recognizer configured */
+		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", numResults);
+		return -1;
+	}
+
+	RecognizerResult* result;
+	/* obtain the first (and only) result from list */
+	recognizerResultListGetResultAtIndex(resultList, 0u, &result);
+
+	
+	int isMrtd = 0;
+	/* check if it is a MRTD result */
+	status = recognizerResultIsMRTDResult(result, &isMrtd);
+	if (status == RECOGNIZER_ERROR_STATUS_SUCCESS && isMrtd) {
+		int valid = 0;
+		/* check if MRTD result is valid */
+		status = recognizerResultIsResultValid(result, &valid);
+		if (status == RECOGNIZER_ERROR_STATUS_SUCCESS && valid) {			
+			const char* doe;
+			const char* issuer;
+			const char* docNum;
+			const char* docCode;
+			const char* dob;
+			const char* primID;
+			const char* secID;
+			const char* sex;
+			const char* nat;
+			const char* opt1;
+			const char* opt2;
+			/* obtain all fields from result */			
+			recognizerResultGetMRTDDateOfExpiry(result, &doe);
+			recognizerResultGetMRTDIssuer(result, &issuer);
+			recognizerResultGetMRTDDocumentNumber(result, &docNum);
+			recognizerResultGetMRTDDocumentCode(result, &docCode);
+			recognizerResultGetMRTDDateOfBirth(result, &dob);
+			recognizerResultGetMRTDPrimaryID(result, &primID);
+			recognizerResultGetMRTDSecondaryID(result, &secID);
+			recognizerResultGetMRTDSex(result, &sex);
+			recognizerResultGetMRTDNationality(result, &nat);
+			recognizerResultGetMRTDOpt1(result, &opt1);
+			recognizerResultGetMRTDOpt2(result, &opt2);
+			/* display obtained fields */
+			printf("ID is of type %s issued by %s.\nExpiration date is %s.\n", docCode, issuer, doe);
+			printf("ID number is %s.\n", docNum);
+			printf("ID holder is %s %s.\nDate of birth is %s.\nSex is %s.\n", primID, secID, dob, sex);
+			printf("Nationality is %s.\n", nat);
+			printf("Optional fields are:\nOPT1: %s\nOPT2: %s\n", opt1, opt2);
+
+			const char* raw;
+			/* obtain raw lines from result */
+			recognizerResultGetMRTDRawStringData(result, &raw);
+			printf("Raw result lines:\n%s\n", raw);
+		} else {
+			printf("Invalid result!\n");
+		}
+	} else {
+		/* this should never happen as there is only MRTD recognizer configured */
+		printf("Invalid result type!\n");
+	}
+	
     /* cleanup memory */
     recognizerResultListDelete(&resultList);
     recognizerDeviceInfoDelete(&deviceInfo);

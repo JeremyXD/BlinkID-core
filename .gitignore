@@ -25,6 +25,11 @@ profile
 *.suo
 *.sdf
 Thumbs.db
+*.opensdf
+
+# Visual studio Release & Debug
+Debug/
+Release/
 
 # Release steps
 Release TODO.md
