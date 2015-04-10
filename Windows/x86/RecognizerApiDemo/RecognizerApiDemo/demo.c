@@ -118,6 +118,10 @@ int main(int argc, char* argv[]) {
 
 	/* load OCR model from file */
 	status = recognizerLoadFileToBuffer("ocr_model.zzip", &ocrModel, &ocrModelLength);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		printf("Could not load file ocr_model.zzip\n");
+		return -1;
+	}
 
 	/* create recognizer settings object. Do not forget to delete it after usage. */
 	recognizerSettingsCreate(&settings);
@@ -226,6 +230,7 @@ int main(int argc, char* argv[]) {
 	recognizerDeviceInfoDelete(&deviceInfo);
 	recognizerSettingsDelete(&settings);
 	recognizerDelete(&recognizer);
+	recognizerFreeFileBuffer(&ocrModel);
 
 	return 0;
 }
