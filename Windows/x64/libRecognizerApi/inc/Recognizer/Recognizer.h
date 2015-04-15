@@ -111,6 +111,23 @@ typedef PP_EXPORTED_TYPE enum PPDetectionStatus {
 } PPDetectionStatus;
 
 /**
+* @enum ShowImageType
+* @brief Enumeration of types of images returned via onShowImage callback function
+*/
+typedef PP_EXPORTED_TYPE enum ShowImageType {
+	/** original image passed to recognizer */
+	SHOW_IMAGE_TYPE_ORIGINAL,
+	/** image with position and orientation adjusted and cropped for further processing */
+	SHOW_IMAGE_TYPE_DEWARPED,
+	/** grayscale image */
+	SHOW_IMAGE_TYPE_GRAYSCALE,
+	/** image with all color information droped */
+	SHOW_IMAGE_TYPE_COLOR_DROP,
+	/** final image resulting from a successful scan */
+	SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN,
+} ShowImageType;
+
+/**
  * @struct RecognizerCallback
  * @brief The RecognizerCallback struct
  *
@@ -158,6 +175,17 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
     /** Called inside recognition process and reports the current recognition progress. This method will not
      *  called from all recognizers. */
     void (*onProgress)(int progress);
+	/** Called when recognition process produces an image in various stages of recognition. showType parameter
+	 *	can be used to differentiate between image types so only images that are needed are handled.
+	 *	@param	data pointer to raw image data
+	 *	@param	width image width in pixels
+	 *	@param	height image height in pixels
+	 *	@param	bytesPerRow number of bytes per row of image pixels
+	 *	@param	rawType image type. @see RawImageType
+	 *	@param	showType type of showed image. @see ShowImageType for more information of what kinds of images are available
+	 *	@param	name image name. Can be NULL.
+	 */
+	void(*onShowImage)(const void* data, int width, int height, size_t bytesPerRow, RawImageType rawType, const ShowImageType showType, const char* name);
 } RecognizerCallback;
 
 /**

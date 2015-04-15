@@ -141,6 +141,8 @@ int main(int argc, char** argv)
 	int ocrModelLength;
 	/* this variable will contain all recognition settings (which recognizers are enabled, etc.) */
 	RecognizerSettings* settings;
+	/* this variable will contain MRTD recognition specific settings */
+	MRTDSettings mrtdSettings;
 	/* this variable will contain device information. On Mac/PC this is not usually necessary, but
 	can information about available processor cores. If more than 1 processor is available, recognizers
 	will try to use parallel algorithms as much as possible. */
@@ -179,11 +181,13 @@ int main(int argc, char** argv)
 	/* set OCR model to recognizer settings object */
 	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
 
-	/* enable Machine Readable Travel Document recognizer and add it to global recognizer settings object */
-	recognizerSettingsEnableMRTD(settings);
+	/* enable ID card position detection. Note that card position detection will not work with passport recognition. */
+	mrtdSettings.detectCardPosition = 1;
+	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
+	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */
-	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");	
+	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
 
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
@@ -308,7 +312,7 @@ int main(int argc, char** argv)
 		cv::imshow("Text window", console);
 
 		/* read user key presses and delay for 10ms */
-		keystroke = (char) cv::waitKey(10); // Wait for a keystroke in the window
+		keystroke = (char)cv::waitKey(10); // Wait for a keystroke in the window
 
 		/* reset recognizer if user presses SPACE */
 		if (keystroke == KEY_SPACE) {

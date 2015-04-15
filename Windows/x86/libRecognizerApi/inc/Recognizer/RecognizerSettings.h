@@ -136,12 +136,34 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetZicerModel(RecognizerS
 
 
 /**
+* @struct MRTDSettings
+* @brief Settings for configuring Machine Readable Travel Document recognizer.
+*/
+struct MRTDSettings {
+	/**
+	* Enables ID card position and orientation detection. Should be disabled for passport MRZ recognition.
+	*/
+	int detectCardPosition;
+
+#ifdef __cplusplus
+	/**
+	* Default constructor for c++.
+	*/
+	MRTDSettings() :
+		detectCardPosition(0) {}
+#endif
+};
+
+PP_EXPORTED_TYPE typedef struct MRTDSettings MRTDSettings;
+
+/**
 * @memberof RecognizerSettings
-* @brief Enable Machine Readable Travel Document recognizer.
+* @brief Set settings for Machine Readable Travel Document recognizer.
 * @param settings pointer to RecognizerSettings object that holds all settings information
+* @param mrtdSettings pointer to MRTD recognizer settings object that contains information how MRTD recognizer should behave or NULL to disable MRTD recognizer
 * @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
 */
-PP_API RecognizerErrorStatus PP_CALL recognizerSettingsEnableMRTD(RecognizerSettings* settings);
+PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetMRTDSettings(RecognizerSettings* settings, const MRTDSettings* mrtdSettings);
 
 
 
