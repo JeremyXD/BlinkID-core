@@ -135,6 +135,9 @@ typedef PP_EXPORTED_TYPE struct <a class="el" href="struct_p_p_rectangle.html">P
 <tr class="memitem:a64a75ff19afdfebfa963128a54cdeda5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a64a75ff19afdfebfa963128a54cdeda5"></a>
 typedef PP_EXPORTED_TYPE enum <a class="el" href="_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722b">PPDetectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PPDetectionStatus</b></td></tr>
 <tr class="separator:a64a75ff19afdfebfa963128a54cdeda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a631f5e34845096aabb367c10bd03c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9a631f5e34845096aabb367c10bd03c"></a>
+typedef PP_EXPORTED_TYPE enum <a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10">ShowImageType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ShowImageType</b></td></tr>
+<tr class="separator:af9a631f5e34845096aabb367c10bd03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b7499c366fa58890c024568c4f8064e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b7499c366fa58890c024568c4f8064e"></a>
 typedef PP_EXPORTED_TYPE struct <a class="el" href="struct_recognizer_callback.html">RecognizerCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RecognizerCallback</b></td></tr>
 <tr class="separator:a0b7499c366fa58890c024568c4f8064e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,6 +164,17 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ac28a3fc05326bad60f60b6ce5f6d722b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a status of the object detection process.  <a href="_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722b">More...</a><br /></td></tr>
 <tr class="separator:ac28a3fc05326bad60f60b6ce5f6d722b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f0a43297bf173d507c11c6d8df8a10"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10">ShowImageType</a> { <br />
+&#160;&#160;<a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10a9b43c16ea11e1595a98b808781eb4bca">SHOW_IMAGE_TYPE_ORIGINAL</a>, 
+<a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10a94800126c9d7cdfc166747d75ead8a7e">SHOW_IMAGE_TYPE_DEWARPED</a>, 
+<a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10a548dc26a5cfa3a650618be8dce4cd5da">SHOW_IMAGE_TYPE_GRAYSCALE</a>, 
+<a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10a616926100f0bbe098418a69732a5e805">SHOW_IMAGE_TYPE_COLOR_DROP</a>, 
+<br />
+&#160;&#160;<a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10acaca276639928e84c801ff1b42d835a6">SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a26f0a43297bf173d507c11c6d8df8a10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of types of images returned via onShowImage callback function.  <a href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10">More...</a><br /></td></tr>
+<tr class="separator:a26f0a43297bf173d507c11c6d8df8a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Created on: Oct 9, 2013 Authors: mkorpar, dodo </p>
@@ -225,6 +239,37 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="a993c533680723b17ad917d9002a5fb5ba3dccf22459eef9401d2bde4fa0882d23"></a>RAW_IMAGE_TYPE_NV21&#160;</td><td class="fielddoc">
 <p>Raw YUV 4:2:0 image with a plane of 8 bit Y samples followed by an interleaved V/U plane containing 8 bit 2x2 subsampled chroma samples. Typically, frames from Android video capture are obtained in this format. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a class="anchor" id="a26f0a43297bf173d507c11c6d8df8a10"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10">ShowImageType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Enumeration of types of images returned via onShowImage callback function. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a26f0a43297bf173d507c11c6d8df8a10a9b43c16ea11e1595a98b808781eb4bca"></a>SHOW_IMAGE_TYPE_ORIGINAL&#160;</td><td class="fielddoc">
+<p>original image passed to recognizer </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a26f0a43297bf173d507c11c6d8df8a10a94800126c9d7cdfc166747d75ead8a7e"></a>SHOW_IMAGE_TYPE_DEWARPED&#160;</td><td class="fielddoc">
+<p>image with position and orientation adjusted and cropped for further processing </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a26f0a43297bf173d507c11c6d8df8a10a548dc26a5cfa3a650618be8dce4cd5da"></a>SHOW_IMAGE_TYPE_GRAYSCALE&#160;</td><td class="fielddoc">
+<p>grayscale image </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a26f0a43297bf173d507c11c6d8df8a10a616926100f0bbe098418a69732a5e805"></a>SHOW_IMAGE_TYPE_COLOR_DROP&#160;</td><td class="fielddoc">
+<p>image with all color information droped </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="a26f0a43297bf173d507c11c6d8df8a10acaca276639928e84c801ff1b42d835a6"></a>SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN&#160;</td><td class="fielddoc">
+<p>final image resulting from a successful scan </p>
 </td></tr>
 </table>
 

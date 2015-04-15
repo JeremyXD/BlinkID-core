@@ -47,9 +47,9 @@ var searchData=
   ['recognizersetroi',['recognizerSetROI',['../struct_recognizer.html#af1ce9dbcb7c98b0a75487935cebb2f6a',1,'Recognizer']]],
   ['recognizersettingscreate',['recognizerSettingsCreate',['../struct_recognizer_settings.html#a15b444a331c1d4ff947d8de9cca7cdaf',1,'RecognizerSettings']]],
   ['recognizersettingsdelete',['recognizerSettingsDelete',['../struct_recognizer_settings.html#a193d33cbb7473e32ed4465a2dc3fe4e5',1,'RecognizerSettings']]],
-  ['recognizersettingsenablemrtd',['recognizerSettingsEnableMRTD',['../struct_recognizer_settings.html#aed077b603306f8da8064f8cc7e838f24',1,'RecognizerSettings']]],
   ['recognizersettingssetdeviceinfo',['recognizerSettingsSetDeviceInfo',['../struct_recognizer_settings.html#a4a070e2a5f03662ae134e104b9f3461a',1,'RecognizerSettings']]],
   ['recognizersettingssetlicensekey',['recognizerSettingsSetLicenseKey',['../struct_recognizer_settings.html#acbf629b0cfb7b85da51bfa948a3618f7',1,'RecognizerSettings']]],
+  ['recognizersettingssetmrtdsettings',['recognizerSettingsSetMRTDSettings',['../struct_recognizer_settings.html#a48a8530e6cff5993fcda2a136c35eb61',1,'RecognizerSettings']]],
   ['recognizersettingssetoutputmultipleresults',['recognizerSettingsSetOutputMultipleResults',['../struct_recognizer_settings.html#acd7741a34095999c031f0612ad067145',1,'RecognizerSettings']]],
   ['recognizersettingssetzicermodel',['recognizerSettingsSetZicerModel',['../struct_recognizer_settings.html#a6191c219227fa117cec9ee9fa823602b',1,'RecognizerSettings']]]
 ];

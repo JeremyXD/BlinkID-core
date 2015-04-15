@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['height',['height',['../struct_p_p_size.html#af956448dfd48108cd4d7d0b83f63cc4a',1,'PPSize::height()'],['../struct_p_p_rectangle.html#a0b0d934c5c4127396f014daee9ab6ac8',1,'PPRectangle::height()']]]
+  ['detectcardposition',['detectCardPosition',['../struct_m_r_t_d_settings.html#acc23703f2914c4584d12346830d10010',1,'MRTDSettings']]]
 ];

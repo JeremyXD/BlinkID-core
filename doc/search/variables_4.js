@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['x',['x',['../struct_p_p_point.html#a5ddd7695423332e34cd8df99a8a73ae1',1,'PPPoint::x()'],['../struct_p_p_rectangle.html#ab4caea0b7d088ad7d3c8250804194c6a',1,'PPRectangle::x()']]]
+  ['width',['width',['../struct_p_p_size.html#aa8da6ace93e8c052492896c65e261768',1,'PPSize::width()'],['../struct_p_p_rectangle.html#a47da547c93cbb5cf3b65973be4b84451',1,'PPRectangle::width()']]]
 ];

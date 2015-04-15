@@ -113,9 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6191c219227fa117cec9ee9fa823602b"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a6191c219227fa117cec9ee9fa823602b">recognizerSettingsSetZicerModel</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const void *data, size_t size)</td></tr>
 <tr class="memdesc:a6191c219227fa117cec9ee9fa823602b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the byte array for ocr model used in character recognition. Example:  <a href="#a6191c219227fa117cec9ee9fa823602b">More...</a><br /></td></tr>
 <tr class="separator:a6191c219227fa117cec9ee9fa823602b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed077b603306f8da8064f8cc7e838f24"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#aed077b603306f8da8064f8cc7e838f24">recognizerSettingsEnableMRTD</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings)</td></tr>
-<tr class="memdesc:aed077b603306f8da8064f8cc7e838f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable Machine Readable Travel Document recognizer.  <a href="#aed077b603306f8da8064f8cc7e838f24">More...</a><br /></td></tr>
-<tr class="separator:aed077b603306f8da8064f8cc7e838f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48a8530e6cff5993fcda2a136c35eb61"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a48a8530e6cff5993fcda2a136c35eb61">recognizerSettingsSetMRTDSettings</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const <a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *mrtdSettings)</td></tr>
+<tr class="memdesc:a48a8530e6cff5993fcda2a136c35eb61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set settings for Machine Readable Travel Document recognizer.  <a href="#a48a8530e6cff5993fcda2a136c35eb61">More...</a><br /></td></tr>
+<tr class="separator:a48a8530e6cff5993fcda2a136c35eb61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> settings data structure. </p>
@@ -173,31 +173,6 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>errorStatus status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aed077b603306f8da8064f8cc7e838f24"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerSettingsEnableMRTD </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
-          <td class="paramname"><em>settings</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enable Machine Readable Travel Document recognizer. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
 
 </div>
 </div>
@@ -283,6 +258,42 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. License check will be perfomed while creating recognizer object with recognizerCreate method, not here. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a48a8530e6cff5993fcda2a136c35eb61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerSettingsSetMRTDSettings </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
+          <td class="paramname"><em>settings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *&#160;</td>
+          <td class="paramname"><em>mrtdSettings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set settings for Machine Readable Travel Document recognizer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">mrtdSettings</td><td>pointer to MRTD recognizer settings object that contains information how MRTD recognizer should behave or NULL to disable MRTD recognizer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
 
 </div>
 </div>
