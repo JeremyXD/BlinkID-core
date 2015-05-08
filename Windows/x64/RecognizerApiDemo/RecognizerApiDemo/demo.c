@@ -81,6 +81,8 @@ RecognizerCallback buildRecognizerCallback() {
     cb.onProgress = NULL;
     /* onShouldStopRecognition is called multiple times from some recognizers to check if recognition should be canceled. */
     cb.onShouldStopRecognition = NULL;
+	/* onShowImage is called during recognition process and allows for additional image processing */
+	cb.onShowImage = NULL;
     return cb;
 }
 

@@ -64,7 +64,7 @@
       <Command>copy ..\..\opencv\bin\opencv_core2411d.dll $(OutputPath)
 copy ..\..\opencv\bin\opencv_highgui2411d.dll $(OutputPath)
 copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,7 +90,7 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
       <Command>copy ..\..\opencv\bin\opencv_core2411.dll $(OutputPath)
 copy ..\..\opencv\bin\opencv_highgui2411.dll $(OutputPath)
 copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

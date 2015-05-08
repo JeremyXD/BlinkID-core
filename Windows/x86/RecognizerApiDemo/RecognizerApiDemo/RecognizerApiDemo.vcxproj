@@ -98,7 +98,7 @@
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,8 +117,8 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
       <AdditionalDependencies>..\..\libRecognizerApi\lib\Debug\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\..\libRecognizerApi\lib\Debug\RecognizerApi.dll $(OutputPath)
-copy barcode-image.png $(OutputPath)</Command>
+      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +142,7 @@ copy barcode-image.png $(OutputPath)</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -166,7 +166,7 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
     </Link>
     <PostBuildEvent>
       <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy barcode-image.png $(OutputPath)</Command>
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
