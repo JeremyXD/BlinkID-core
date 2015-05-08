@@ -87,6 +87,8 @@ RecognizerCallback buildRecognizerCallback() {
 	cb.onProgress = NULL;
 	/* onShouldStopRecognition is called multiple times from some recognizers to check if recognition should be canceled. */
 	cb.onShouldStopRecognition = NULL;
+	/* onShowImage is called during recognition process and allows for additional image processing */
+	cb.onShowImage = NULL;
 	return cb;
 }
 
@@ -187,7 +189,7 @@ int main(int argc, char** argv)
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */
-	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
+	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");	
 
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
