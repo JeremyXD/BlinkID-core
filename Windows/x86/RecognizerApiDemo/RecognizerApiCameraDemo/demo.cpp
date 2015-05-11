@@ -189,7 +189,7 @@ int main(int argc, char** argv)
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */
-	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");	
+	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
 
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
