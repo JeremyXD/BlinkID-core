@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['raw_5fimage_5ftype_5fbgr',['RAW_IMAGE_TYPE_BGR',['../_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba1b5cb43195e567b45f877bf4509650b7',1,'Recognizer.h']]],
-  ['raw_5fimage_5ftype_5fbgra',['RAW_IMAGE_TYPE_BGRA',['../_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba854618050994ab857bd880699c5e846f',1,'Recognizer.h']]],
-  ['raw_5fimage_5ftype_5fgray',['RAW_IMAGE_TYPE_GRAY',['../_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba1e01e275de5fac41328020458130eb5b',1,'Recognizer.h']]],
-  ['raw_5fimage_5ftype_5fnv21',['RAW_IMAGE_TYPE_NV21',['../_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba3dccf22459eef9401d2bde4fa0882d23',1,'Recognizer.h']]],
+  ['raw_5fimage_5ftype_5fbgr',['RAW_IMAGE_TYPE_BGR',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba1b5cb43195e567b45f877bf4509650b7',1,'RecognizerImage.h']]],
+  ['raw_5fimage_5ftype_5fbgra',['RAW_IMAGE_TYPE_BGRA',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba854618050994ab857bd880699c5e846f',1,'RecognizerImage.h']]],
+  ['raw_5fimage_5ftype_5fgray',['RAW_IMAGE_TYPE_GRAY',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba1e01e275de5fac41328020458130eb5b',1,'RecognizerImage.h']]],
+  ['raw_5fimage_5ftype_5fnv21',['RAW_IMAGE_TYPE_NV21',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba3dccf22459eef9401d2bde4fa0882d23',1,'RecognizerImage.h']]],
   ['recognizer_5ferror_5fstatus_5ffail',['RECOGNIZER_ERROR_STATUS_FAIL',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65aee40cf8707d29e1c3df5044c71b5452f',1,'RecognizerError.h']]],
   ['recognizer_5ferror_5fstatus_5findex_5fout_5fof_5frange',['RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a3eb6e4f0cbd18b5ae271583259d9c9c8',1,'RecognizerError.h']]],
   ['recognizer_5ferror_5fstatus_5finvalid_5flicense_5fkey',['RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a65274aad6041285d6fe5bc0aeed1f8ca',1,'RecognizerError.h']]],

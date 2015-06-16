@@ -101,9 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a193d33cbb7473e32ed4465a2dc3fe4e5"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a193d33cbb7473e32ed4465a2dc3fe4e5">recognizerSettingsDelete</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> **settings)</td></tr>
 <tr class="memdesc:a193d33cbb7473e32ed4465a2dc3fe4e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object and sets the settings pointer to NULL. Example:  <a href="#a193d33cbb7473e32ed4465a2dc3fe4e5">More...</a><br /></td></tr>
 <tr class="separator:a193d33cbb7473e32ed4465a2dc3fe4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbf629b0cfb7b85da51bfa948a3618f7"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#acbf629b0cfb7b85da51bfa948a3618f7">recognizerSettingsSetLicenseKey</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *licensee, const char *licenseKey)</td></tr>
-<tr class="memdesc:acbf629b0cfb7b85da51bfa948a3618f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the license key required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object.  <a href="#acbf629b0cfb7b85da51bfa948a3618f7">More...</a><br /></td></tr>
-<tr class="separator:acbf629b0cfb7b85da51bfa948a3618f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a76a07f749af49d8afd32d31c70577a"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a5a76a07f749af49d8afd32d31c70577a">recognizerSettingsSetLicenseKey</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *licenseOwner, const char *licenseKey)</td></tr>
+<tr class="memdesc:a5a76a07f749af49d8afd32d31c70577a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the license key required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object.  <a href="#a5a76a07f749af49d8afd32d31c70577a">More...</a><br /></td></tr>
+<tr class="separator:a5a76a07f749af49d8afd32d31c70577a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd7741a34095999c031f0612ad067145"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#acd7741a34095999c031f0612ad067145">recognizerSettingsSetOutputMultipleResults</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, int outputMulti)</td></tr>
 <tr class="memdesc:acd7741a34095999c031f0612ad067145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether or not outputting of multiple scan results from same image is allowed.  <a href="#acd7741a34095999c031f0612ad067145">More...</a><br /></td></tr>
 <tr class="separator:acd7741a34095999c031f0612ad067145"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,7 +218,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acbf629b0cfb7b85da51bfa948a3618f7"></a>
+<a class="anchor" id="a5a76a07f749af49d8afd32d31c70577a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -232,7 +232,7 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>licensee</em>, </td>
+          <td class="paramname"><em>licenseOwner</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -252,7 +252,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information. </td></tr>
-    <tr><td class="paramname">licensee</td><td>You should enter here the licensee name to which license key is bound. </td></tr>
+    <tr><td class="paramname">licenseOwner</td><td>You should enter here the licensee name to which license key is bound. </td></tr>
     <tr><td class="paramname">licenseKey</td><td>License key used for unlocking the library. </td></tr>
   </table>
   </dd>

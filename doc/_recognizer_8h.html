@@ -96,6 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="_recognizer_error_8h_source.html">RecognizerError.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_recognizer_result_list_8h_source.html">RecognizerResultList.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_recognizer_settings_8h_source.html">RecognizerSettings.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_recognizer_image_8h_source.html">RecognizerImage.h</a>&quot;</code><br />
 <code>#include &quot;Export.h&quot;</code><br />
 </div>
 <p><a href="_recognizer_8h_source.html">Go to the source code of this file.</a></p>
@@ -117,9 +118,6 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aee8e03893a667ae9bc5a53ef33a15a46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee8e03893a667ae9bc5a53ef33a15a46"></a>
-typedef PP_EXPORTED_TYPE enum <a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>RawImageType</b></td></tr>
-<tr class="separator:aee8e03893a667ae9bc5a53ef33a15a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9c8a3601a0c267b75796ba502a442fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9c8a3601a0c267b75796ba502a442fe"></a>
 typedef PP_EXPORTED_TYPE struct <a class="el" href="struct_recognizer.html">Recognizer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Recognizer</b></td></tr>
 <tr class="separator:ad9c8a3601a0c267b75796ba502a442fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,13 +142,6 @@ typedef PP_EXPORTED_TYPE struct <a class="el" href="struct_recognizer_callback.h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a993c533680723b17ad917d9002a5fb5b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a> { <a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba854618050994ab857bd880699c5e846f">RAW_IMAGE_TYPE_BGRA</a>, 
-<a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba1b5cb43195e567b45f877bf4509650b7">RAW_IMAGE_TYPE_BGR</a>, 
-<a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba1e01e275de5fac41328020458130eb5b">RAW_IMAGE_TYPE_GRAY</a>, 
-<a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5ba3dccf22459eef9401d2bde4fa0882d23">RAW_IMAGE_TYPE_NV21</a>
- }</td></tr>
-<tr class="memdesc:a993c533680723b17ad917d9002a5fb5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of all possible raw image types.  <a href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5b">More...</a><br /></td></tr>
-<tr class="separator:a993c533680723b17ad917d9002a5fb5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac28a3fc05326bad60f60b6ce5f6d722b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722b">PPDetectionStatus</a> { <br />
 &#160;&#160;<a class="el" href="_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722babb7530ff67c1e739f2f9229f6905d06e">DETECTION_STATUS_SUCCESS</a> = 1 &lt;&lt; 0, 
 <a class="el" href="_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722baa7ef2532d4f8778af1bf4580350327aa">DETECTION_STATUS_FAIL</a> = 1 &lt;&lt; 1, 
@@ -211,34 +202,6 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a class="anchor" id="ac28a3fc05326bad60f60b6ce5f6d722ba3a222a57cc14f56ddaec3d09103fc099"></a>DETECTION_STATUS_CAMERA_TOO_NEAR&#160;</td><td class="fielddoc">
 <p>Object detected, but the camera is too close to the object </p>
-</td></tr>
-</table>
-
-</div>
-</div>
-<a class="anchor" id="a993c533680723b17ad917d9002a5fb5b"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="_recognizer_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Enumeration of all possible raw image types. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="a993c533680723b17ad917d9002a5fb5ba854618050994ab857bd880699c5e846f"></a>RAW_IMAGE_TYPE_BGRA&#160;</td><td class="fielddoc">
-<p>4 channel raw image with 32 bit per pixel, 8 bit per channel, channel order is BGRA </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a993c533680723b17ad917d9002a5fb5ba1b5cb43195e567b45f877bf4509650b7"></a>RAW_IMAGE_TYPE_BGR&#160;</td><td class="fielddoc">
-<p>2 channel raw image with 24 bit per pixel, 8 bit per channel, channel order is BGR </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a993c533680723b17ad917d9002a5fb5ba1e01e275de5fac41328020458130eb5b"></a>RAW_IMAGE_TYPE_GRAY&#160;</td><td class="fielddoc">
-<p>1 channel grayscale raw image with 8 bit per pixel </p>
-</td></tr>
-<tr><td class="fieldname"><a class="anchor" id="a993c533680723b17ad917d9002a5fb5ba3dccf22459eef9401d2bde4fa0882d23"></a>RAW_IMAGE_TYPE_NV21&#160;</td><td class="fielddoc">
-<p>Raw YUV 4:2:0 image with a plane of 8 bit Y samples followed by an interleaved V/U plane containing 8 bit 2x2 subsampled chroma samples. Typically, frames from Android video capture are obtained in this format. </p>
 </td></tr>
 </table>
 
