@@ -12,6 +12,8 @@
 	<dict>
 		<key>43F1CF154D5C9A09924D93E31CAFE803EB42B50D</key>
 		<string>github.com:PhotoPay/PhotoPay.git</string>
+		<key>6369108B04FC6808609396AC9FCF502ED3E8C317</key>
+		<string>github.com:BlinkID/blinkid-core.git</string>
 		<key>83439DF8D5E7D86101A1B3E1534E2CF8B56FD92C</key>
 		<string>github.com:PhotoPay/pdf417-core.git</string>
 	</dict>
@@ -21,15 +23,17 @@
 	<dict>
 		<key>43F1CF154D5C9A09924D93E31CAFE803EB42B50D</key>
 		<string>../../../../..</string>
-		<key>83439DF8D5E7D86101A1B3E1534E2CF8B56FD92C</key>
+		<key>6369108B04FC6808609396AC9FCF502ED3E8C317</key>
 		<string>../../../..</string>
+		<key>83439DF8D5E7D86101A1B3E1534E2CF8B56FD92C</key>
+		<string>../../../../../pdf417-core</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:PhotoPay/pdf417-core.git</string>
+	<string>github.com:BlinkID/blinkid-core.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>83439DF8D5E7D86101A1B3E1534E2CF8B56FD92C</string>
+	<string>6369108B04FC6808609396AC9FCF502ED3E8C317</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -39,6 +43,14 @@
 			<string>43F1CF154D5C9A09924D93E31CAFE803EB42B50D</string>
 			<key>IDESourceControlWCCName</key>
 			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6369108B04FC6808609396AC9FCF502ED3E8C317</string>
+			<key>IDESourceControlWCCName</key>
+			<string>blinkid-core</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

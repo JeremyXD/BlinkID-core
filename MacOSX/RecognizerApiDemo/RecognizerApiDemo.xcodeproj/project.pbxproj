@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E636D21B2F304F00869C0F /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C90A6EEC18ABC46A004717EF /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* demo.c */; };
-		C90A6EEE18ABC478004717EF /* barcode-image.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EED18ABC46F004717EF /* barcode-image.png */; };
 		C90A6EF618ABD31C004717EF /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
-		C90A6EF818ABD39E004717EF /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
-		C999F7EB1A68060800C717C6 /* usdl-image.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = C999F7EA1A6805DF00C717C6 /* usdl-image.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -21,8 +19,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				C999F7EB1A68060800C717C6 /* usdl-image.jpg in CopyFiles */,
-				C90A6EEE18ABC478004717EF /* barcode-image.png in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C90A6EF818ABD39E004717EF /* RecognizerApi.framework in CopyFiles */,
+				18E636D21B2F304F00869C0F /* RecognizerApi.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,9 +37,7 @@
 /* Begin PBXFileReference section */
 		C90A6ED318ABC070004717EF /* RecognizerApiDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RecognizerApiDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90A6EEB18ABC46A004717EF /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
-		C90A6EED18ABC46F004717EF /* barcode-image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "barcode-image.png"; path = "RecognizerApiDemo/barcode-image.png"; sourceTree = "<group>"; };
 		C90A6EF518ABD31C004717EF /* RecognizerApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RecognizerApi.framework; path = ../RecognizerApi.framework; sourceTree = "<group>"; };
-		C999F7EA1A6805DF00C717C6 /* usdl-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "usdl-image.jpg"; path = "RecognizerApiDemo/usdl-image.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +81,6 @@
 		C90A6EF318ABD2DE004717EF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C999F7EA1A6805DF00C717C6 /* usdl-image.jpg */,
-				C90A6EED18ABC46F004717EF /* barcode-image.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -128,7 +120,7 @@
 		C90A6ECB18ABC070004717EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = DoDo;
 			};
 			buildConfigurationList = C90A6ECE18ABC070004717EF /* Build configuration list for PBXProject "RecognizerApiDemo" */;
@@ -199,7 +191,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -236,7 +228,7 @@
 					../RecognizerApi.framework/Headers,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx10.8;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -244,7 +236,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = ../;
+				FRAMEWORK_SEARCH_PATHS = (
+					../,
+					"/Users/cerovec/MicroBlink/Workspace/BlinkID/blinkid-core/MacOSX",
+				);
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -256,7 +251,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = ../;
+				FRAMEWORK_SEARCH_PATHS = (
+					../,
+					"/Users/cerovec/MicroBlink/Workspace/BlinkID/blinkid-core/MacOSX",
+				);
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
