@@ -28,6 +28,12 @@ Thumbs.db
 *.opensdf
 
 # Visual studio Release & Debug
+Release
+Debug
+
+# include library files
+!libRecognizerApi/lib/Release
+!libRecognizerApi/lib/Debug
 
 # Release steps
 Release TODO.md
@@ -47,6 +53,9 @@ bin/
 gen/
 
 obj/
+
+# include opencv files
+!opencv/bin
 
 # Mac specific files
 .DS_Store
