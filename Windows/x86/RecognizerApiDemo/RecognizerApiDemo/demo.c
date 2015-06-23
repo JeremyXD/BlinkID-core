@@ -114,6 +114,8 @@ int main(int argc, char* argv[]) {
 	RecognizerResultList* resultList;
 	/* this variable will contain number of scan results obtained from image scanning process. */
 	size_t numResults;
+	/* this variable holds the image sent for image scanning process*/
+	RecognizerImage* image;
 
 	if (argc < 2) {
 		printf("usage %s <img_path>\n", argv[0]);
@@ -141,11 +143,11 @@ int main(int argc, char* argv[]) {
 	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
 
 	/* enable ID card position detection. Note that card position detection will not work with passport recognition. */
-	mrtdSettings.detectCardPosition = 1;
+	mrtdSettings.detectMachineReadableZonePosition = 1;
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
-	/* insert license key and licensee */
+	/* insert license key and licensee */	
 	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
 
 	/* create global recognizer with settings */
@@ -158,9 +160,17 @@ int main(int argc, char* argv[]) {
 
 	/* build recognizer callback structure */
 	recognizerCallback = buildRecognizerCallback();
+
+	/* create the recognizer image object from video capture frame so we can send it to recognizer */
+	status = recognizerImageCreateFromFile(&image, path);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		printf("Error creating image from frame: %s\n", recognizerErrorToString(status));
+		return -1;
+	}
+
 	/* if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
 	insert non-NULL function pointers only to those events you are interested in */
-	status = recognizerRecognizeFromFile(recognizer, &resultList, path, NULL);
+	status = recognizerRecognizeFromImage(recognizer, &resultList, image, 0, NULL);
 	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
 		printf("Error recognizing file %s: %s\n", path, recognizerErrorToString(status));
 		return -1;
@@ -231,11 +241,13 @@ int main(int argc, char* argv[]) {
 		printf("Invalid result type!\n");
 	}
 
-	/* cleanup memory */
+	/* cleanup memory */	
+	recognizerImageDelete(&image);
 	recognizerResultListDelete(&resultList);
 	recognizerDeviceInfoDelete(&deviceInfo);
 	recognizerSettingsDelete(&settings);
 	recognizerDelete(&recognizer);
+	recognizerFreeFileBuffer(&ocrModel);
 
 	return 0;
 }

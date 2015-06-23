@@ -94,10 +94,10 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\libRecognizerApi\lib\Release\RecognizerApi.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\libRecognizerApi\lib\Debug\RecognizerApi.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+      <Command>copy ..\..\libRecognizerApi\lib\Debug\RecognizerApi.dll $(OutputPath)
 copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

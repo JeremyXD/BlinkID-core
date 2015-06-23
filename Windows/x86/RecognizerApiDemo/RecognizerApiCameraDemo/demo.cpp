@@ -133,6 +133,59 @@ const char* dateString(const char* mrzdate, int future = 0)
 	return stringBuff;
 }
 
+/* function that converts RecognizerImage to cv::Mat */
+cv::Mat createImageFromRecognizerImage(RecognizerImage* ri) {
+	int width;
+	int height;
+	int bpr;
+	void *data;
+	RawImageType rawType;
+	RecognizerErrorStatus status;
+
+	status = recognizerImageGetBytesPerRow(ri, &bpr);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetWidth(ri, &width);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetHeight(ri, &height);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetRawBytes(ri, &data);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetRawImageType(ri, &rawType);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+
+	switch (rawType) {
+	case RAW_IMAGE_TYPE_BGRA:
+		return cv::Mat(height, width, CV_8UC4, (void*)data, bpr);
+		break;
+	case RAW_IMAGE_TYPE_BGR:
+		return cv::Mat(height, width, CV_8UC3, (void*)data, bpr);
+		break;
+	case RAW_IMAGE_TYPE_GRAY:
+		return cv::Mat(height, width, CV_8UC1, (void*)data, bpr);
+		break;
+	case RAW_IMAGE_TYPE_NV21:
+		return cv::Mat(height + height / 2, width, CV_8UC1, (void*)data, bpr);	
+		break;
+	default:
+		return cv::Mat();
+	}
+}
+
 int main(int argc, char** argv)
 {
 	/* path will contain path to image being recognized */
@@ -162,8 +215,14 @@ int main(int argc, char** argv)
 	RecognizerResultList* resultList;
 	/* this variable will contain number of scan results obtained from image scanning process. */
 	size_t numResults;
+	/* this variable holds barreled image sent that will be debarreled */
+	RecognizerImage* image;
+	/* barrelDewarper object used to debarrel images */
+	RecognizerBarrelDewarper *barrelDewarper;
+	/* this variable holds debarreled image that will be sent to scanning process */
+	RecognizerImage* debarreledImage = NULL;
 
-	/* load OCR model from file */
+	/* load OCR model from file */	
 	status = recognizerLoadFileToBuffer("ocr_model.zzip", &ocrModel, &ocrModelLength);
 	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
 		std::cout << "Could not load file ocr_model.zzip" << std::endl;
@@ -184,12 +243,17 @@ int main(int argc, char** argv)
 	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
 
 	/* enable ID card position detection. Note that card position detection will not work with passport recognition. */
-	mrtdSettings.detectCardPosition = 1;
+	mrtdSettings.detectMachineReadableZonePosition = 1;
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
-	/* insert license key and licensee */
+	/* insert license key and licensee */	
 	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
+
+	/* Create BarrelDewarper object used to debarrel images. 
+		Parameters k1, k2, p1, p2, k3, scale must be set
+		corresponding to camera geometry and resolution. */
+	recognizerBarrelDewarperCreate(&barrelDewarper, -3.6e-7f, -7.0e-14f, 0.0f, 0.0f, 0.f, 0.9f);
 
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
@@ -204,13 +268,18 @@ int main(int argc, char** argv)
 
 	/* open video capture stream from system default camera using OpenCV */
 	cv::VideoCapture camera(0);
-	if (!camera.isOpened()) {
+	if (!camera.isOpened()) {			
 		std::cout << "Could not open camera video stream" << std::endl;
 		return -1;
 	}
+	/* set camera resolution to 1279X723. This should be set to native camera resolution */
+	cv::Size resolution(1279, 723);
+	camera.set(CV_CAP_PROP_FRAME_WIDTH, resolution.width);
+	camera.set(CV_CAP_PROP_FRAME_HEIGHT, resolution.height);	
 
 	/* open camera display window and console window for displaying text using OpenCV */
-	cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); // Create a window for display.
+	cv::namedWindow("Display window", cv::WINDOW_AUTOSIZE); // Create a window for display of barreled frames.
+	cv::namedWindow("Display debarreled window", cv::WINDOW_AUTOSIZE); // Create a window for display of debarreled frames.
 	cv::namedWindow("Text window", cv::WINDOW_AUTOSIZE); // Create a window for results.	
 
 	/* variable for storing user key presses */
@@ -224,12 +293,22 @@ int main(int argc, char** argv)
 		cv::Mat frame;
 
 		/* obtain current frame from camera */
-		camera >> frame;
+		camera >> frame;			
 
-		/* Perform MRTD recognition on a current video frame. Remember to set imageIsVideoFrame to true.
+		/* create the recognizer image object from video capture frame so we can debarrel it*/
+		status = recognizerImageCreateFromRawImage(&image, frame.data, frame.cols, frame.rows, frame.step, frame.channels() == 3 ? RAW_IMAGE_TYPE_BGR : RAW_IMAGE_TYPE_BGRA);
+		if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+			std::cout << "Error creating image from frame: " << recognizerErrorToString(status) << std::endl;
+			return -1;
+		}
+
+		/* barrel dewarp the image */
+		status = recognizerBarrelDewarperDewarp(barrelDewarper, image, &debarreledImage);
+
+		/* Perform MRTD recognition on a recognizer image(video frame). Remember to set imageIsVideoFrame to true.
 		if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
 		insert non-NULL function pointers only to those events you are interested in */
-		recognizerRecognizeFromRawImage(recognizer, &resultList, frame.data, frame.cols, frame.rows, frame.step, frame.channels() == 3 ? RAW_IMAGE_TYPE_BGR : RAW_IMAGE_TYPE_BGRA, 1, &recognizerCallback);
+		recognizerRecognizeFromImage(recognizer, &resultList, debarreledImage, 1, &recognizerCallback);		
 
 		recognizerResultListGetNumOfResults(resultList, &numResults);
 
@@ -309,8 +388,15 @@ int main(int argc, char** argv)
 			cv::putText(console, "Press ESCAPE to exit demo", cv::Point(200, 250), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(250, 250, 250), 1, CV_AA, false);
 		}
 
-		/* show camera frame and console image in respective windows */
+		/* must delete recognizer image*/
+		recognizerImageDelete(&image);
+		/* free result list */
+		recognizerResultListDelete(&resultList);
+
+		cv::Mat debarreledFrame = createImageFromRecognizerImage(debarreledImage);
+		/* show camera frame and console image in respective windows */		
 		cv::imshow("Display window", frame);
+		cv::imshow("Display debarreled window", debarreledFrame);
 		cv::imshow("Text window", console);
 
 		/* read user key presses and delay for 10ms */
@@ -322,12 +408,16 @@ int main(int argc, char** argv)
 		}
 	} while (keystroke != KEY_ESCAPE); // exit loop if user presses ESCAPE
 
-	/* cleanup memory */
-	recognizerResultListDelete(&resultList);
+	/* cleanup memory */	
 	recognizerDeviceInfoDelete(&deviceInfo);
 	recognizerSettingsDelete(&settings);
-	recognizerDelete(&recognizer);
-	recognizerFreeFileBuffer(&ocrModel);
+	recognizerDelete(&recognizer);		
+	recognizerFreeFileBuffer(&ocrModel);	
+	recognizerImageDelete(&debarreledImage);
+	recognizerBarrelDewarperDelete(&barrelDewarper);
+
+	/* release camera */
+	camera.release();
 
 	return 0;
 }
