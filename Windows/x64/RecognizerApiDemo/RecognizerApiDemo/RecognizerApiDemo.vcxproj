@@ -113,9 +113,13 @@
       <AdditionalDependencies>..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy ..\..\libRecognizerApi\lib\Debug\RecognizerApi.dll $(OutputPath)
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -157,9 +161,13 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
       <AdditionalDependencies>..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(OutputPath)</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

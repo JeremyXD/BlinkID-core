@@ -109,6 +109,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac52bea82bf82aaf80e81fdf25f308b27"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer.html#ac52bea82bf82aaf80e81fdf25f308b27">recognizerReset</a> (const <a class="el" href="struct_recognizer.html">Recognizer</a> *recognizer)</td></tr>
 <tr class="memdesc:ac52bea82bf82aaf80e81fdf25f308b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the recognizer to default state.  <a href="#ac52bea82bf82aaf80e81fdf25f308b27">More...</a><br /></td></tr>
 <tr class="separator:ac52bea82bf82aaf80e81fdf25f308b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e7a62b971827ed9ef0b70a7d0315cf"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer.html#a00e7a62b971827ed9ef0b70a7d0315cf">recognizerLoadFileToBuffer</a> (const char *filename, char **buffer, int *bufferSize)</td></tr>
+<tr class="memdesc:a00e7a62b971827ed9ef0b70a7d0315cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function for loading files to memory buffers. Loaded buffers MUST be freed after use.  <a href="#a00e7a62b971827ed9ef0b70a7d0315cf">More...</a><br /></td></tr>
+<tr class="separator:a00e7a62b971827ed9ef0b70a7d0315cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bff4c13db08ac1963a9326c47361353"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer.html#a0bff4c13db08ac1963a9326c47361353">recognizerFreeFileBuffer</a> (char **buffer)</td></tr>
+<tr class="memdesc:a0bff4c13db08ac1963a9326c47361353"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility function for freeing previously loaded buffers (.  <a href="#a0bff4c13db08ac1963a9326c47361353">More...</a><br /></td></tr>
+<tr class="separator:a0bff4c13db08ac1963a9326c47361353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> data structure. </p>
@@ -190,6 +196,76 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>errorStatus status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS. If NULL pointer was given, status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0bff4c13db08ac1963a9326c47361353"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerFreeFileBuffer </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Utility function for freeing previously loaded buffers (. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_recognizer.html#a00e7a62b971827ed9ef0b70a7d0315cf" title="Utility function for loading files to memory buffers. Loaded buffers MUST be freed after use...">recognizerLoadFileToBuffer</a>) from memory. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>Byte buffer which was alocated with recognizerImageLoadFileToBuffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a00e7a62b971827ed9ef0b70a7d0315cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerLoadFileToBuffer </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>bufferSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Utility function for loading files to memory buffers. Loaded buffers MUST be freed after use. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_recognizer.html#a0bff4c13db08ac1963a9326c47361353" title="Utility function for freeing previously loaded buffers (. ">recognizerFreeFileBuffer</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Null terminated string, name of file to be loaded. </td></tr>
+    <tr><td class="paramname">buffer</td><td>Byte buffer in which to store the file contents. On error, buffer is set to NULL. </td></tr>
+    <tr><td class="paramname">bufferSize</td><td>Variable that will be set to buffer size in bytes. On error, bufferSize is set to -1. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before using returned buffer. </dd></dl>
 
 </div>
 </div>

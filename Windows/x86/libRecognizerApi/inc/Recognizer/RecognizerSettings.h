@@ -141,16 +141,32 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetZicerModel(RecognizerS
 */
 struct MRTDSettings {
 	/**
-	* Enables ID card position and orientation detection. Should be disabled for passport MRZ recognition.
+	* Enables detection of Machine Readable Zone position
 	*/
     int detectMachineReadableZonePosition;
+
+	/**
+	* Turns on calling the showImage callback with image of dewarped MRZ.
+	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
+	* want to turn this feature on!
+	* You can use this and showFullDocument simultaneously.
+	*/
+	int showMachineReadableZone;
+
+	/**
+	* Turns on calling the showImage callback with image of dewarped document.
+	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
+	* want to turn this feature on!
+	* You can use this and showMachineReadableZone simultaneously.
+	*/
+	int showFullDocument;
 
 #ifdef __cplusplus
 	/**
 	* Default constructor for c++.
 	*/
 	MRTDSettings() :
-        detectMachineReadableZonePosition(0) {}
+        detectMachineReadableZonePosition(0), showMachineReadableZone(0), showFullDocument(0) {}
 #endif
 };
 

@@ -49,7 +49,8 @@ typedef PP_EXPORTED_TYPE struct RecognizerResultList RecognizerResultList;
 
   @param     resultList     Result list that will be queried for number of elements.
   @param     numElements    [out] destination where result will be stored
-  @return    errorStatus    status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if any of inputs is NULL.
+  @return    errorStatus    status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
+                             Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if any of inputs is NULL.
 */
 PP_API RecognizerErrorStatus PP_CALL recognizerResultListGetNumOfResults(const RecognizerResultList* resultList, size_t* numElements);
 

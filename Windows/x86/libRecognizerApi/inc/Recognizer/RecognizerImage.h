@@ -177,7 +177,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageDelete(RecognizerImage** ima
   @return   errorStatus Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS.
                             If NULL pointer was given, status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageGetRawBytes(RecognizerImage* image, void** data);
+PP_API RecognizerErrorStatus PP_CALL recognizerImageGetRawBytes(const RecognizerImage* image, void** data);
 
 /**
   @memberof RecognizerImage
@@ -188,7 +188,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageGetRawBytes(RecognizerImage*
   @return   errorStatus Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS.
                             If NULL pointer was given, status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageGetWidth(RecognizerImage* image, int* width);
+PP_API RecognizerErrorStatus PP_CALL recognizerImageGetWidth(const RecognizerImage* image, int* width);
 
 /**
   @memberof RecognizerImage
@@ -199,7 +199,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageGetWidth(RecognizerImage* im
   @return   errorStatus Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS.
                             If NULL pointer was given, status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageGetHeight(RecognizerImage* image, int* height);
+PP_API RecognizerErrorStatus PP_CALL recognizerImageGetHeight(const RecognizerImage* image, int* height);
 
 /**
   @memberof RecognizerImage
@@ -210,7 +210,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageGetHeight(RecognizerImage* i
   @return   errorStatus Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS.
                             If NULL pointer was given, status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageGetBytesPerRow(RecognizerImage* image, int* bytesPerRow);
+PP_API RecognizerErrorStatus PP_CALL recognizerImageGetBytesPerRow(const RecognizerImage* image, int* bytesPerRow);
 
 /**
   @memberof RecognizerImage
@@ -221,7 +221,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageGetBytesPerRow(RecognizerIma
   @return   errorStatus Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS.
                             If NULL pointer was given, status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageGetRawImageType(RecognizerImage* image, RawImageType* rawImageType);
+PP_API RecognizerErrorStatus PP_CALL recognizerImageGetRawImageType(const RecognizerImage* image, RawImageType* rawImageType);
 
 #ifdef __cplusplus
 }

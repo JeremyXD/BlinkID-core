@@ -20,6 +20,60 @@
 #define KEY_SPACE	32
 #define KEY_ESCAPE	27
 
+/* function that converts RecognizerImage to cv::Mat */
+cv::Mat createImageFromRecognizerImage(const RecognizerImage* ri) {
+	int width;
+	int height;
+	int bpr;
+	void *data;
+	RawImageType rawType;
+	RecognizerErrorStatus status;
+
+	status = recognizerImageGetBytesPerRow(ri, &bpr);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetWidth(ri, &width);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetHeight(ri, &height);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetRawBytes(ri, &data);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+	status = recognizerImageGetRawImageType(ri, &rawType);
+	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
+		return cv::Mat();
+	}
+
+	switch (rawType) {
+	case RAW_IMAGE_TYPE_BGRA:
+		return cv::Mat(height, width, CV_8UC4, (void*)data, bpr);
+		break;
+	case RAW_IMAGE_TYPE_BGR:
+		return cv::Mat(height, width, CV_8UC3, (void*)data, bpr);
+		break;
+	case RAW_IMAGE_TYPE_GRAY:
+		return cv::Mat(height, width, CV_8UC1, (void*)data, bpr);
+		break;
+	case RAW_IMAGE_TYPE_NV21:
+		return cv::Mat(height + height / 2, width, CV_8UC1, (void*)data, bpr);
+		break;
+	default:
+		return cv::Mat();
+	}
+}
+
+
 void onDetectionStarted() {
 	printf("Detection has started!\n");
 }
@@ -71,6 +125,19 @@ void onRecognitionFinished() {
 	printf("Object recognition has finished\n");
 }
 
+cv::Mat dewarpedFrame;
+int hasDewarped = 0;
+
+/* callback function used to retrieve dewarped images from recognition process */
+void onShowImage(const RecognizerImage* image, const ShowImageType showType, const char* name) {	
+	/* If we got dewarped image clone it and store it for later use. 
+	Image MUST be cloned because it gets deleted after this callback returns */
+	if (showType == ShowImageType::SHOW_IMAGE_TYPE_DEWARPED) {
+		dewarpedFrame = createImageFromRecognizerImage(image).clone();
+		hasDewarped = 1;
+	}
+}
+
 RecognizerCallback buildRecognizerCallback() {
 	RecognizerCallback cb;
 	/* onDetectedObject is called when recognizer detects an object in image */
@@ -88,7 +155,7 @@ RecognizerCallback buildRecognizerCallback() {
 	/* onShouldStopRecognition is called multiple times from some recognizers to check if recognition should be canceled. */
 	cb.onShouldStopRecognition = NULL;
 	/* onShowImage is called during recognition process and allows for additional image processing */
-	cb.onShowImage = NULL;
+	cb.onShowImage = onShowImage;
 	return cb;
 }
 
@@ -133,59 +200,6 @@ const char* dateString(const char* mrzdate, int future = 0)
 	return stringBuff;
 }
 
-/* function that converts RecognizerImage to cv::Mat */
-cv::Mat createImageFromRecognizerImage(RecognizerImage* ri) {
-	int width;
-	int height;
-	int bpr;
-	void *data;
-	RawImageType rawType;
-	RecognizerErrorStatus status;
-
-	status = recognizerImageGetBytesPerRow(ri, &bpr);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetWidth(ri, &width);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetHeight(ri, &height);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetRawBytes(ri, &data);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetRawImageType(ri, &rawType);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-
-	switch (rawType) {
-	case RAW_IMAGE_TYPE_BGRA:
-		return cv::Mat(height, width, CV_8UC4, (void*)data, bpr);
-		break;
-	case RAW_IMAGE_TYPE_BGR:
-		return cv::Mat(height, width, CV_8UC3, (void*)data, bpr);
-		break;
-	case RAW_IMAGE_TYPE_GRAY:
-		return cv::Mat(height, width, CV_8UC1, (void*)data, bpr);
-		break;
-	case RAW_IMAGE_TYPE_NV21:
-		return cv::Mat(height + height / 2, width, CV_8UC1, (void*)data, bpr);	
-		break;
-	default:
-		return cv::Mat();
-	}
-}
-
 int main(int argc, char** argv)
 {
 	/* path will contain path to image being recognized */
@@ -197,7 +211,7 @@ int main(int argc, char** argv)
 	/* this variable will contain all recognition settings (which recognizers are enabled, etc.) */
 	RecognizerSettings* settings;
 	/* this variable will contain MRTD recognition specific settings */
-	MRTDSettings mrtdSettings;
+	MRTDSettings mrtdSettings;	
 	/* this variable will contain device information. On Mac/PC this is not usually necessary, but
 	can information about available processor cores. If more than 1 processor is available, recognizers
 	will try to use parallel algorithms as much as possible. */
@@ -242,8 +256,12 @@ int main(int argc, char** argv)
 	/* set OCR model to recognizer settings object */
 	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
 
-	/* enable ID card position detection. Note that card position detection will not work with passport recognition. */
+	/* enable machine readable zone position detection. */
 	mrtdSettings.detectMachineReadableZonePosition = 1;
+	/* Enable providing the image of full document. Option detectMachineReadableZonePosition must be on in order for this to work! */
+	mrtdSettings.showFullDocument = 1; // enabled
+	/* Enable providing the image of machine readable zone. Option detectMachineReadableZonePosition must be on in order for this to work! */
+	mrtdSettings.showMachineReadableZone = 0; // disabled
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
@@ -252,7 +270,10 @@ int main(int argc, char** argv)
 
 	/* Create BarrelDewarper object used to debarrel images. 
 		Parameters k1, k2, p1, p2, k3, scale must be set
-		corresponding to camera geometry and resolution. */
+		corresponding to camera geometry and resolution.
+		
+		recognizerBarrelDewarperCreate((&barrelDewarper, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f)
+		should be used for cameras with no barrel distortion!*/
 	recognizerBarrelDewarperCreate(&barrelDewarper, -3.6e-7f, -7.0e-14f, 0.0f, 0.0f, 0.f, 0.9f);
 
 	/* create global recognizer with settings */
@@ -393,11 +414,17 @@ int main(int argc, char** argv)
 		/* free result list */
 		recognizerResultListDelete(&resultList);
 
+		/* convert RecognizerImage to cv::Mat so we can display it */
 		cv::Mat debarreledFrame = createImageFromRecognizerImage(debarreledImage);
 		/* show camera frame and console image in respective windows */		
 		cv::imshow("Display window", frame);
-		cv::imshow("Display debarreled window", debarreledFrame);
 		cv::imshow("Text window", console);
+		/* if we have dewarped image show it, if not show debarreled image instead */
+		if (foundResult && hasDewarped) {
+			cv::imshow("Display debarreled window", dewarpedFrame);
+		} else {
+			cv::imshow("Display debarreled window", debarreledFrame);
+		}		
 
 		/* read user key presses and delay for 10ms */
 		keystroke = (char)cv::waitKey(10); // Wait for a keystroke in the window
@@ -405,6 +432,7 @@ int main(int argc, char** argv)
 		/* reset recognizer if user presses SPACE */
 		if (keystroke == KEY_SPACE) {
 			recognizerReset(recognizer);
+			hasDewarped = 0;
 		}
 	} while (keystroke != KEY_ESCAPE); // exit loop if user presses ESCAPE
 

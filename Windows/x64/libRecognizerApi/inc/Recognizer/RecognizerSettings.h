@@ -59,12 +59,12 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsDelete(RecognizerSettings
   @brief Sets the license key required for initialization of Recognizer object.
 
   @param     settings      Pointer to the RecognizerSettings object that holds all settings information.
-  @param     licensee      You should enter here the licensee name to which license key is bound.
+  @param     licenseOwner  You should enter here the licensee name to which license key is bound.
   @param     licenseKey    License key used for unlocking the library.
   @return    errorStatus   Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
-                           License check will be perfomed while creating recognizer object with recognizerCreate method, not here.
+                            License check will be perfomed while creating recognizer object with recognizerCreate method, not here.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetLicenseKey(RecognizerSettings* settings, const char* licensee, const char* licenseKey);
+PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetLicenseKey(RecognizerSettings* settings, const char* licenseOwner, const char* licenseKey);
 
 /**
   * @memberof RecognizerSettings
@@ -141,16 +141,32 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetZicerModel(RecognizerS
 */
 struct MRTDSettings {
 	/**
-	* Enables ID card position and orientation detection. Should be disabled for passport MRZ recognition.
+	* Enables detection of Machine Readable Zone position
 	*/
-	int detectCardPosition;
+    int detectMachineReadableZonePosition;
+
+	/**
+	* Turns on calling the showImage callback with image of dewarped MRZ.
+	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
+	* want to turn this feature on!
+	* You can use this and showFullDocument simultaneously.
+	*/
+	int showMachineReadableZone;
+
+	/**
+	* Turns on calling the showImage callback with image of dewarped document.
+	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
+	* want to turn this feature on!
+	* You can use this and showMachineReadableZone simultaneously.
+	*/
+	int showFullDocument;
 
 #ifdef __cplusplus
 	/**
 	* Default constructor for c++.
 	*/
 	MRTDSettings() :
-		detectCardPosition(0) {}
+        detectMachineReadableZonePosition(0), showMachineReadableZone(0), showFullDocument(0) {}
 #endif
 };
 
@@ -164,6 +180,9 @@ PP_EXPORTED_TYPE typedef struct MRTDSettings MRTDSettings;
 * @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
 */
 PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetMRTDSettings(RecognizerSettings* settings, const MRTDSettings* mrtdSettings);
+
+
+
 
 
 

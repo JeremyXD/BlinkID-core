@@ -13,35 +13,12 @@
 #include "RecognizerError.h"
 #include "RecognizerResultList.h"
 #include "RecognizerSettings.h"
+#include "RecognizerImage.h"
 #include "Export.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
-/**
- * @enum RawImageType
- * @brief Enumeration of all possible raw image types
- */
-typedef PP_EXPORTED_TYPE enum RawImageType {
-    
-    /** 4 channel raw image with 32 bit per pixel, 8 bit per channel, channel order is BGRA */
-    RAW_IMAGE_TYPE_BGRA,
-    
-    /** 2 channel raw image with 24 bit per pixel, 8 bit per channel, channel order is BGR */
-    RAW_IMAGE_TYPE_BGR,
-    
-    /** 1 channel grayscale raw image with 8 bit per pixel */
-    RAW_IMAGE_TYPE_GRAY,
-    
-    /**
-     Raw YUV 4:2:0 image with a plane of 8 bit Y samples followed by an interleaved
-     V/U plane containing 8 bit 2x2 subsampled chroma samples. Typically, frames from Android
-     video capture are obtained in this format.
-     */
-    RAW_IMAGE_TYPE_NV21,
-
-} RawImageType;
 
 /**
  * @struct Recognizer
@@ -115,16 +92,16 @@ typedef PP_EXPORTED_TYPE enum PPDetectionStatus {
 * @brief Enumeration of types of images returned via onShowImage callback function
 */
 typedef PP_EXPORTED_TYPE enum ShowImageType {
-	/** original image passed to recognizer */
-	SHOW_IMAGE_TYPE_ORIGINAL,
-	/** image with position and orientation adjusted and cropped for further processing */
-	SHOW_IMAGE_TYPE_DEWARPED,
-	/** grayscale image */
-	SHOW_IMAGE_TYPE_GRAYSCALE,
-	/** image with all color information droped */
-	SHOW_IMAGE_TYPE_COLOR_DROP,
-	/** final image resulting from a successful scan */
-	SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN,
+    /** original image passed to recognizer */
+    SHOW_IMAGE_TYPE_ORIGINAL,
+    /** image with position and orientation adjusted and cropped for further processing */
+    SHOW_IMAGE_TYPE_DEWARPED,
+    /** grayscale image */
+    SHOW_IMAGE_TYPE_GRAYSCALE,
+    /** image with all color information droped */
+    SHOW_IMAGE_TYPE_COLOR_DROP,
+    /** final image resulting from a successful scan */
+    SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN,
 } ShowImageType;
 
 /**
@@ -175,18 +152,30 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
     /** Called inside recognition process and reports the current recognition progress. This method will not
      *  called from all recognizers. */
     void (*onProgress)(int progress);
-	/** Called when recognition process produces an image in various stages of recognition. showType parameter
-	 *	can be used to differentiate between image types so only images that are needed are handled.
-	 *	@param	data pointer to raw image data
-	 *	@param	width image width in pixels
-	 *	@param	height image height in pixels
-	 *	@param	bytesPerRow number of bytes per row of image pixels
-	 *	@param	rawType image type. @see RawImageType
-	 *	@param	showType type of showed image. @see ShowImageType for more information of what kinds of images are available
-	 *	@param	name image name. Can be NULL.
-	 */
-	void(*onShowImage)(const void* data, int width, int height, size_t bytesPerRow, RawImageType rawType, const ShowImageType showType, const char* name);
+    /** Called when recognition process produces an image in various stages of recognition. showType parameter
+     *  can be used to differentiate between image types so only images that are needed are handled.
+     *	@param	image	returned image
+     *  @param  showType type of showed image. @see ShowImageType for more information of what kinds of images are available
+     *  @param  name image name. Can be NULL.
+     */
+    //void(*onShowImage)(const void* data, int width, int height, size_t bytesPerRow, RawImageType rawType, const ShowImageType showType, const char* name);
+	void(*onShowImage)(const RecognizerImage* image, const ShowImageType showType, const char* name);
+
+#ifdef __cplusplus
+    /**
+     * Default constructor for c++.
+     */
+    RecognizerCallback() :
+        onDetectionStarted(NULL),
+        onDetectedObject(NULL),
+        onDetectionFailed(NULL),
+        onRecognitionStarted(NULL),
+        onRecognitionFinished(NULL),
+        onProgress(NULL),
+        onShowImage(NULL) {}
+#endif
 } RecognizerCallback;
+
 
 /**
  @memberof Recognizer
@@ -212,18 +201,18 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
         // handle error
     }
  @endcode
- 
+
  @param     recognizer    Pointer to pointer referencing the created recognizer object
  @param     settings      Required for initializing the recognizer
  @return    errorStatus   status of the operation. The operation might fail, so please
                             check the returned status for possible errors
  */
 PP_API RecognizerErrorStatus PP_CALL recognizerCreate(Recognizer** recognizer, const RecognizerSettings* settings);
-   
+
 /**
  @memberof Recognizer
  @brief Deletes the recognizer object and sets a pointer to it to NULL.
- 
+
  @param     recognizer  Double Pointer to the recognizer object which is to be deleted
  @return    errorStatus status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS. If NULL pointer was given,
                         status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
@@ -245,23 +234,18 @@ PP_API RecognizerErrorStatus PP_CALL recognizerDelete(Recognizer** recognizer);
   */
 PP_API RecognizerErrorStatus PP_CALL recognizerSetROI(Recognizer* recognizer, const PPRectangle* roi);
 
-    
+
 /**
  @memberof Recognizer
  @brief Performs recognition process on a raw image.
  Example:
  @code
-    RawImageType imageType = RAW_IMAGE_TYPE_GRAY;
-    void *imageBytes = getImageBytes(image);
-
     RecognizerResultList *resultList;
-    RecognizerErrorStatus status = recognizerRecognizeFromRawImage(recognizer, &resultList, imageBytes,
-                                                            image.width, image.height, image.bytesPerRow,
-                                                            imageType, 0, NULL);
+    RecognizerErrorStatus status = recognizerRecognizeFromRawImage(recognizer, &resultList, image, 0, NULL);
 
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         const char* statusString = recognizerErrorToString(status);
-        NSLog(@"Recognize method returned status: %s\n", statusString);
+        printf("Recognize method returned status: %s\n", statusString);
 
         // handle error
     } else {
@@ -270,21 +254,15 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSetROI(Recognizer* recognizer, co
 
     recognizerResultListDelete(&resultList);
  @endcode
- 
- Raw image type is the type without any encoding. List of supported raw image types is given in enum RawImageType.
- @see RawImageType
- 
+
  @param     recognizer          object which performs recognition. Only elements set in the initialization
                                 method of recognizer object will be recognized on the image
  @param     resultList          RecognizerResultList object in which the results of the recognition will be stored. This object
                                 is allocated and initialized inside this method. On error, resultList is set to NULL.
                                 @see RecognizerResultList for description how to obtain results from list and
                                 @see RecognizerResult for description how to obtain results from RecognizerResult object.
- @param     input               Pointer to a buffer with raw image pixels
- @param     width               Width of the image, in pixels
- @param     height              Height of the image, in pixels
- @param     bytesPerRow         Number of bytes contained in every row of the image
- @param     rawType             Type of the image. @see RawImageType
+ @param     image               RecognitionImage object which holds image on which recognition will be performed.
+                                @see RecognizerImage to see details on supported image formats.
  @param     imageIsVideoFrame   If non-zero is given, image is treated as video frame. When treating image as video frame,
                                 multiple consecutive frame may be combined to yield better recognition result. Note that if
                                 consecutive calls to this method with this parameter set as non-zero expect the consecutive
@@ -301,10 +279,9 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSetROI(Recognizer* recognizer, co
  @return    errorStatus         status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
                                 obtaining result values
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromRawImage(const Recognizer* recognizer, RecognizerResultList** resultList,
-                                                      const void* input, int width, int height, size_t bytesPerRow,
-                                                      RawImageType rawType, int imageIsVideoFrame, const RecognizerCallback* callback);
-    
+PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromImage(const Recognizer* recognizer, RecognizerResultList** resultList,
+        const RecognizerImage* image, int imageIsVideoFrame, const RecognizerCallback* callback);
+
 /**
  * @memberof Recognizer
  * @brief Resets the recognizer to default state.
@@ -320,120 +297,24 @@ PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromRawImage(const Recog
  * @return status of the operation.
  */
 PP_API RecognizerErrorStatus PP_CALL recognizerReset(const Recognizer* recognizer);
-    
-/**
- @memberof Recognizer
- @brief Performs recognition process on an encoded image.
- Image is loaded into memory and in the one of the following encodings:
-    - Windows bitmaps - *.bmp, *.dib
-    - JPEG files - *.jpeg, *.jpg, *.jpe
-    - JPEG 2000 files - *.jp2
-    - Portable Network Graphics - *.png
-    - TIFF files - *.tiff, *.tif
-
- Example:
- @code
-    void *image;
-    size_t size;
-    getImage(&imageBytes, &size);
-
-    RecognizerResultList *resultList;
-    RecognizerErrorStatus status = recognizerRecognizeFromEncodedImage(recognizer, &resultList, image, size, NULL);
-
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        const char* statusString = recognizerErrorToString(status);
-        NSLog(@"Recognize method returned status: %s\n", statusString);
-        // handle error
-    } else {
-        // obtain results from RecognizerResultList object
-    }
-
-    recognizerResultListDelete(&resultList);
- @endcode
- 
- @param     recognizer      object which performs recognition. Only elements set in the initialization
-                            method of recognizer object will be recognized on the image
- @param     resultList      RecognizerResultList object in which the results of the recognition will be stored. This object
-                            is allocated and initialized inside this method. On error, resultList is set to NULL.
-                            @see RecognizerResultList for description how to obtain results from list and
-                            @see RecognizerResult for description how to obtain results from RecognizerResult object.
- @param     input           Pointer to a buffer where the image is loaded
- @param     size            Size of the image buffer, in bytes
- @param     callback        Pointer to structure that contains pointer to callback functions. If given NULL,
-                            no callback will be called. If given non-NULL, only non-NULL function pointers will be called.
-                            @see RecognizerCallback
- @return    errorStatus     status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
-                            obtaining result values
- */
-PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromEncodedImage(const Recognizer* recognizer, RecognizerResultList** resultList,
-                                                                         const void* input, size_t size, const RecognizerCallback* callback);
-    
-/**
- @memberof Recognizer
- @brief Performs recognition process on an image specified by a filename.
- Example:
- @code
-    const char *file = "Image.png";
-
-    RecognizerResultList *resultList;
-    RecognizerErrorStatus status = recognizerRecognizeFromFile(recognizer, &resultList, file, NULL);
-
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        const char* statusString = recognizerErrorToString(status);
-        NSLog(@"Recognize method returned status: %s\n", statusString);
-
-        // handle error
-    } else {
-        // obtain results from RecognizerResultList object
-    }
-
-    recognizerResultListDelete(&result);
- @endcode
- 
- Image must be encoded in one of the following encodings:
-    - Windows bitmaps - *.bmp, *.dib
-    - JPEG files - *.jpeg, *.jpg, *.jpe
-    - JPEG 2000 files - *.jp2
-    - Portable Network Graphics - *.png
-    - TIFF files - *.tiff, *.tif
- 
- @param     recognizer  object which performs recognition. Only elements set in the initialization
-                        method of recognizer object will be recognized on the image
- @param     resultList  RecognizerResultList object in which the results of the recognition will be stored. This object
-                        is allocated and initialized inside this method. On error, resultList is set to NULL.
-                        @see RecognizerResultList for description how to obtain results from list and
-                        @see RecognizerResult for description how to obtain results from RecognizerResult object.
- @param     filename    Null terminated string, name of file to be loaded.
- @param     callback    Pointer to structure that contains pointer to callback functions. If given NULL,
-                        no callback will be called. If given non-NULL, only non-NULL function pointers will be called.
-                        @see RecognizerCallback
- @return    errorStatus status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
-                        obtaining result values
- */
-PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromFile(const Recognizer* recognizer, RecognizerResultList** resultList,
-                                                  const char* filename, const RecognizerCallback* callback);
 
 /**
- @memberof Recognizer
- @brief Utility function for loading files to memory buffers. 
- Loaded buffers MUST be freed after use. @see recognizerFreeFileBuffer
- @param		filename    Null terminated string, name of file to be loaded.
- @param		buffer		Byte buffer in which to store the file contents. On error, buffer is set to NULL.
- @param		bufferSize	variable that will be set to buffer size in bytes. On error, bufferSize is set to -1.
- @return	errorStatus status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
-                        using returned buffer 
+@memberof Recognizer
+@brief Utility function for loading files to memory buffers.
+Loaded buffers MUST be freed after use. @see recognizerFreeFileBuffer
+@param     filename        Null terminated string, name of file to be loaded.
+@param     buffer          Byte buffer in which to store the file contents. On error, buffer is set to NULL.
+@param     bufferSize      Variable that will be set to buffer size in bytes. On error, bufferSize is set to -1.
+@return    errorStatus     Status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
+using returned buffer.
 */
 PP_API RecognizerErrorStatus PP_CALL recognizerLoadFileToBuffer(const char* filename, char** buffer, int* bufferSize);
 
 /**
 @memberof Recognizer
-@brief Utility function for freeing previously loaded buffers(@see recognizerLoadFileToBuffer) from memory.
-All loaded buffers MUST be freed after use.
-@param		filename    Null terminated string, name of file to be loaded.
-@param		buffer		Byte buffer in which to store the file contents. On error, buffer is set to NULL.
-@param		bufferSize	variable that will be set to buffer size in bytes. On error, bufferSize is set to -1.
-@return	errorStatus status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
-using returned buffer
+@brief Utility function for freeing previously loaded buffers (@see recognizerLoadFileToBuffer) from memory.
+@param      buffer          Byte buffer which was alocated with recognizerImageLoadFileToBuffer.
+@return     errorStatus     Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS
 */
 PP_API RecognizerErrorStatus PP_CALL recognizerFreeFileBuffer(char** buffer);
 

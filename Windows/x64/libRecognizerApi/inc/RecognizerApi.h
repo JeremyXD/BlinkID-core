@@ -157,8 +157,11 @@
 #define RECOGNIZERAPI_H_
 
 #include "Recognizer/Recognizer.h"
+#include "Recognizer/RecognizerImage.h"
 #include "Recognizer/RecognizerResult.h"
 #include "Recognizer/RecognizerSettings.h"
 #include "Recognizer/RecognizerError.h"
+#include "Recognizer/RecognizerImageProcessor.h"
+#include "Recognizer/RecognizerBarrelDewarper.h"
 
 #endif /* RECOGNIZERAPI_H_ */
