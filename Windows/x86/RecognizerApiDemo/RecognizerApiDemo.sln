@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecognizerApiDemo", "Recogn
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecognizerApiCameraDemo", "RecognizerApiCameraDemo\RecognizerApiCameraDemo.vcxproj", "{86DBF84A-DDE9-44FA-A868-F6A2E80127CA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecognizerApiTest", "RecognizerApiTest\RecognizerApiTest.vcxproj", "{CC47AC7C-9BD9-4699-8F7F-CC3D2C0BFDA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{86DBF84A-DDE9-44FA-A868-F6A2E80127CA}.Debug|Win32.Build.0 = Debug|Win32
 		{86DBF84A-DDE9-44FA-A868-F6A2E80127CA}.Release|Win32.ActiveCfg = Release|Win32
 		{86DBF84A-DDE9-44FA-A868-F6A2E80127CA}.Release|Win32.Build.0 = Release|Win32
+		{CC47AC7C-9BD9-4699-8F7F-CC3D2C0BFDA1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CC47AC7C-9BD9-4699-8F7F-CC3D2C0BFDA1}.Debug|Win32.Build.0 = Debug|Win32
+		{CC47AC7C-9BD9-4699-8F7F-CC3D2C0BFDA1}.Release|Win32.ActiveCfg = Release|Win32
+		{CC47AC7C-9BD9-4699-8F7F-CC3D2C0BFDA1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
