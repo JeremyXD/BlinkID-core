@@ -18,7 +18,7 @@ void globalStatsSave(GlobalStats* stats, const std::string filename)  {
 
     fprintf(f, "Total scans: %d\n", stats->numScans);
     fprintf(f, "Total successful scans: %d\n", stats->numValidScans);
-    fprintf(f, "Total processing duration: %.5lf\n", stats->sumDurations);
+    fprintf(f, "Total processing duration: %.5lf milliseconds\n", stats->sumDurations);
     fprintf(f, "Average processing duration per image: %.5lf\n", stats->sumDurations / stats->numScans);
     
     fclose(f);

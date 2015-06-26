@@ -14,6 +14,8 @@
 #include "GlobalStats.h"
 #include "LocalStats.h"
 
+#include <sys/time.h>
+
 LocalStats localStats;
 GlobalStats globalStats;
 
@@ -42,6 +44,13 @@ void processFolder(const RecognizerWrapper* wrapper, std::string folderName) {
             filename = folderName + "/" + filename;
             if (stat(filename.c_str(), &fstat) < 0) continue;
 
+            struct timeval end;
+            struct timeval start;
+
+            gettimeofday(&start, NULL);
+
+            double startTime = (double)start.tv_sec + ((double)start.tv_usec / 1000000.0);
+
             if (!S_ISDIR(fstat.st_mode)) {
                 localStats.filename = filename;
 
@@ -50,6 +59,10 @@ void processFolder(const RecognizerWrapper* wrapper, std::string folderName) {
                 if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
                     printf("Error processing image at path %s: %s\n\n", filename.c_str(), recognizerErrorToString(status));
                 } else {
+                    gettimeofday(&end, NULL);
+                    double endTime = (double)end.tv_sec + ((double)end.tv_usec / 1000000.0);
+                    duration = (endTime - startTime) * 1000;
+
                     localStats.duration = duration;
                     globalStats.sumDurations += duration;
 

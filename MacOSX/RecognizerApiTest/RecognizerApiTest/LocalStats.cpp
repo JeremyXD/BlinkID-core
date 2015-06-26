@@ -96,7 +96,7 @@ void localStatsSave(LocalStats* stats, const std::string filename) {
     }
 
     fprintf(f, "Image filename: %s\n", stats->filename.c_str());
-    fprintf(f, "Processing duration: %.5lf\n", stats->duration);
+    fprintf(f, "Processing duration: %.5lf milliseconds\n", stats->duration);
     fprintf(f, "Data is valid: %s\n\n", stats->valid ? "YES" : "NO");
 
     if (stats->primaryId.length() > 0) {
