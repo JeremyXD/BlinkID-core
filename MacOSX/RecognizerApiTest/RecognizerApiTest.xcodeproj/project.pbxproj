@@ -1,0 +1,344 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1858DA1C1B3AF2CD00C5B317 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA1B1B3AF2CD00C5B317 /* main.cpp */; };
+		1858DA241B3AF33F00C5B317 /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1858DA231B3AF33F00C5B317 /* RecognizerApi.framework */; };
+		1858DA281B3D4CA500C5B317 /* RecognizerApi.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 1858DA231B3AF33F00C5B317 /* RecognizerApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		1858DA2D1B3D533D00C5B317 /* RecognizerCallback.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA291B3D533D00C5B317 /* RecognizerCallback.c */; };
+		1858DA2E1B3D533D00C5B317 /* RecognizerWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA2B1B3D533D00C5B317 /* RecognizerWrapper.c */; };
+		1858DA3A1B3D593600C5B317 /* ocr_model.zzip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858DA381B3D58E700C5B317 /* ocr_model.zzip */; };
+		1858DA3F1B3D681E00C5B317 /* deID.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858DA3D1B3D681500C5B317 /* deID.jpg */; };
+		1858DA401B3D681E00C5B317 /* id1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858DA3E1B3D681500C5B317 /* id1.jpg */; };
+		1858DA431B3D6E6B00C5B317 /* deID2.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858DA421B3D6E4700C5B317 /* deID2.jpg */; };
+		1858DA461B3D6FAF00C5B317 /* GlobalStats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA441B3D6FAF00C5B317 /* GlobalStats.cpp */; };
+		1858DA491B3D6FFB00C5B317 /* LocalStats.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA471B3D6FFB00C5B317 /* LocalStats.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1858DA161B3AF2CD00C5B317 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				1858DA281B3D4CA500C5B317 /* RecognizerApi.framework in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1858DA391B3D593100C5B317 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				1858DA431B3D6E6B00C5B317 /* deID2.jpg in CopyFiles */,
+				1858DA3F1B3D681E00C5B317 /* deID.jpg in CopyFiles */,
+				1858DA401B3D681E00C5B317 /* id1.jpg in CopyFiles */,
+				1858DA3A1B3D593600C5B317 /* ocr_model.zzip in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1858DA181B3AF2CD00C5B317 /* RecognizerApiTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RecognizerApiTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1858DA1B1B3AF2CD00C5B317 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1858DA231B3AF33F00C5B317 /* RecognizerApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RecognizerApi.framework; path = ../RecognizerApi.framework; sourceTree = "<group>"; };
+		1858DA291B3D533D00C5B317 /* RecognizerCallback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RecognizerCallback.c; path = ../../RecognizerApiDemo/RecognizerApiDemo/RecognizerCallback.c; sourceTree = "<group>"; };
+		1858DA2A1B3D533D00C5B317 /* RecognizerCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecognizerCallback.h; path = ../../RecognizerApiDemo/RecognizerApiDemo/RecognizerCallback.h; sourceTree = "<group>"; };
+		1858DA2B1B3D533D00C5B317 /* RecognizerWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = RecognizerWrapper.c; path = ../../RecognizerApiDemo/RecognizerApiDemo/RecognizerWrapper.c; sourceTree = "<group>"; };
+		1858DA2C1B3D533D00C5B317 /* RecognizerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecognizerWrapper.h; path = ../../RecognizerApiDemo/RecognizerApiDemo/RecognizerWrapper.h; sourceTree = "<group>"; };
+		1858DA381B3D58E700C5B317 /* ocr_model.zzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = ocr_model.zzip; sourceTree = "<group>"; };
+		1858DA3D1B3D681500C5B317 /* deID.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deID.jpg; sourceTree = "<group>"; };
+		1858DA3E1B3D681500C5B317 /* id1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = id1.jpg; sourceTree = "<group>"; };
+		1858DA421B3D6E4700C5B317 /* deID2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = deID2.jpg; sourceTree = "<group>"; };
+		1858DA441B3D6FAF00C5B317 /* GlobalStats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalStats.cpp; sourceTree = "<group>"; };
+		1858DA451B3D6FAF00C5B317 /* GlobalStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStats.h; sourceTree = "<group>"; };
+		1858DA471B3D6FFB00C5B317 /* LocalStats.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalStats.cpp; sourceTree = "<group>"; };
+		1858DA481B3D6FFB00C5B317 /* LocalStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalStats.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1858DA151B3AF2CD00C5B317 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1858DA241B3AF33F00C5B317 /* RecognizerApi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1858DA0F1B3AF2CD00C5B317 = {
+			isa = PBXGroup;
+			children = (
+				1858DA1A1B3AF2CD00C5B317 /* RecognizerApiTest */,
+				1858DA3C1B3D681500C5B317 /* Images */,
+				1858DA221B3AF32E00C5B317 /* Frameworks */,
+				1858DA191B3AF2CD00C5B317 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1858DA191B3AF2CD00C5B317 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA181B3AF2CD00C5B317 /* RecognizerApiTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1858DA1A1B3AF2CD00C5B317 /* RecognizerApiTest */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA1B1B3AF2CD00C5B317 /* main.cpp */,
+				1858DA291B3D533D00C5B317 /* RecognizerCallback.c */,
+				1858DA2A1B3D533D00C5B317 /* RecognizerCallback.h */,
+				1858DA2B1B3D533D00C5B317 /* RecognizerWrapper.c */,
+				1858DA2C1B3D533D00C5B317 /* RecognizerWrapper.h */,
+				1858DA441B3D6FAF00C5B317 /* GlobalStats.cpp */,
+				1858DA451B3D6FAF00C5B317 /* GlobalStats.h */,
+				1858DA471B3D6FFB00C5B317 /* LocalStats.cpp */,
+				1858DA481B3D6FFB00C5B317 /* LocalStats.h */,
+			);
+			path = RecognizerApiTest;
+			sourceTree = "<group>";
+		};
+		1858DA221B3AF32E00C5B317 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA371B3D58E700C5B317 /* Resources */,
+				1858DA231B3AF33F00C5B317 /* RecognizerApi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1858DA371B3D58E700C5B317 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA381B3D58E700C5B317 /* ocr_model.zzip */,
+			);
+			name = Resources;
+			path = ../RecognizerApi.framework/Versions/A/Resources;
+			sourceTree = "<group>";
+		};
+		1858DA3C1B3D681500C5B317 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA411B3D6E4700C5B317 /* AA */,
+				1858DA3D1B3D681500C5B317 /* deID.jpg */,
+				1858DA3E1B3D681500C5B317 /* id1.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		1858DA411B3D6E4700C5B317 /* AA */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA421B3D6E4700C5B317 /* deID2.jpg */,
+			);
+			path = AA;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1858DA171B3AF2CD00C5B317 /* RecognizerApiTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1858DA1F1B3AF2CD00C5B317 /* Build configuration list for PBXNativeTarget "RecognizerApiTest" */;
+			buildPhases = (
+				1858DA141B3AF2CD00C5B317 /* Sources */,
+				1858DA151B3AF2CD00C5B317 /* Frameworks */,
+				1858DA161B3AF2CD00C5B317 /* Copy Files */,
+				1858DA391B3D593100C5B317 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecognizerApiTest;
+			productName = RecognizerApiTest;
+			productReference = 1858DA181B3AF2CD00C5B317 /* RecognizerApiTest */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1858DA101B3AF2CD00C5B317 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = MicroBlink;
+				TargetAttributes = {
+					1858DA171B3AF2CD00C5B317 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
+			};
+			buildConfigurationList = 1858DA131B3AF2CD00C5B317 /* Build configuration list for PBXProject "RecognizerApiTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1858DA0F1B3AF2CD00C5B317;
+			productRefGroup = 1858DA191B3AF2CD00C5B317 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1858DA171B3AF2CD00C5B317 /* RecognizerApiTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1858DA141B3AF2CD00C5B317 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1858DA2D1B3D533D00C5B317 /* RecognizerCallback.c in Sources */,
+				1858DA1C1B3AF2CD00C5B317 /* main.cpp in Sources */,
+				1858DA461B3D6FAF00C5B317 /* GlobalStats.cpp in Sources */,
+				1858DA2E1B3D533D00C5B317 /* RecognizerWrapper.c in Sources */,
+				1858DA491B3D6FFB00C5B317 /* LocalStats.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1858DA1D1B3AF2CD00C5B317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = ../;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1858DA1E1B3AF2CD00C5B317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = ../;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1858DA201B3AF2CD00C5B317 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../RecognizerApi.framework/Headers,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1858DA211B3AF2CD00C5B317 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					../RecognizerApi.framework/Headers,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1858DA131B3AF2CD00C5B317 /* Build configuration list for PBXProject "RecognizerApiTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1858DA1D1B3AF2CD00C5B317 /* Debug */,
+				1858DA1E1B3AF2CD00C5B317 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1858DA1F1B3AF2CD00C5B317 /* Build configuration list for PBXNativeTarget "RecognizerApiTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1858DA201B3AF2CD00C5B317 /* Debug */,
+				1858DA211B3AF2CD00C5B317 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1858DA101B3AF2CD00C5B317 /* Project object */;
+}
