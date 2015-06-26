@@ -154,15 +154,12 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
     void (*onProgress)(int progress);
     /** Called when recognition process produces an image in various stages of recognition. showType parameter
      *  can be used to differentiate between image types so only images that are needed are handled.
-     *  @param  data pointer to raw image data
-     *  @param  width image width in pixels
-     *  @param  height image height in pixels
-     *  @param  bytesPerRow number of bytes per row of image pixels
-     *  @param  rawType image type. @see RawImageType
+     *	@param	image	returned image
      *  @param  showType type of showed image. @see ShowImageType for more information of what kinds of images are available
      *  @param  name image name. Can be NULL.
      */
-    void(*onShowImage)(const void* data, int width, int height, size_t bytesPerRow, RawImageType rawType, const ShowImageType showType, const char* name);
+    //void(*onShowImage)(const void* data, int width, int height, size_t bytesPerRow, RawImageType rawType, const ShowImageType showType, const char* name);
+	void(*onShowImage)(const RecognizerImage* image, const ShowImageType showType, const char* name);
 
 #ifdef __cplusplus
     /**
@@ -300,6 +297,26 @@ PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromImage(const Recogniz
  * @return status of the operation.
  */
 PP_API RecognizerErrorStatus PP_CALL recognizerReset(const Recognizer* recognizer);
+
+/**
+@memberof Recognizer
+@brief Utility function for loading files to memory buffers.
+Loaded buffers MUST be freed after use. @see recognizerFreeFileBuffer
+@param     filename        Null terminated string, name of file to be loaded.
+@param     buffer          Byte buffer in which to store the file contents. On error, buffer is set to NULL.
+@param     bufferSize      Variable that will be set to buffer size in bytes. On error, bufferSize is set to -1.
+@return    errorStatus     Status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
+using returned buffer.
+*/
+PP_API RecognizerErrorStatus PP_CALL recognizerLoadFileToBuffer(const char* filename, char** buffer, int* bufferSize);
+
+/**
+@memberof Recognizer
+@brief Utility function for freeing previously loaded buffers (@see recognizerLoadFileToBuffer) from memory.
+@param      buffer          Byte buffer which was alocated with recognizerImageLoadFileToBuffer.
+@return     errorStatus     Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS
+*/
+PP_API RecognizerErrorStatus PP_CALL recognizerFreeFileBuffer(char** buffer);
 
 #ifdef __cplusplus
 }

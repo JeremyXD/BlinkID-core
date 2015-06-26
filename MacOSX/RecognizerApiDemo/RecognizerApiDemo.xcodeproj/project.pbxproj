@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1858DA061B3ACF2200C5B317 /* RecognizerCallback.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */; };
+		1858DA271B3D3D7600C5B317 /* RecognizerWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA251B3D3D7500C5B317 /* RecognizerWrapper.c */; };
+		1858DA361B3D586A00C5B317 /* ocr_model.zzip in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1858DA331B3D584700C5B317 /* ocr_model.zzip */; };
 		18E636D21B2F304F00869C0F /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C90A6EEC18ABC46A004717EF /* demo.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* demo.c */; };
+		C90A6EEC18ABC46A004717EF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* main.c */; };
 		C90A6EF618ABD31C004717EF /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C90A6ED118ABC070004717EF /* CopyFiles */ = {
+		1858DA351B3D586200C5B317 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 7;
 			files = (
+				1858DA361B3D586A00C5B317 /* ocr_model.zzip in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -35,8 +39,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1858DA041B3ACF0E00C5B317 /* RecognizerCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecognizerCallback.h; sourceTree = "<group>"; };
+		1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RecognizerCallback.c; sourceTree = "<group>"; };
+		1858DA251B3D3D7500C5B317 /* RecognizerWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RecognizerWrapper.c; sourceTree = "<group>"; };
+		1858DA261B3D3D7500C5B317 /* RecognizerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognizerWrapper.h; sourceTree = "<group>"; };
+		1858DA331B3D584700C5B317 /* ocr_model.zzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = ocr_model.zzip; sourceTree = "<group>"; };
 		C90A6ED318ABC070004717EF /* RecognizerApiDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RecognizerApiDemo; sourceTree = BUILT_PRODUCTS_DIR; };
-		C90A6EEB18ABC46A004717EF /* demo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = demo.c; sourceTree = "<group>"; };
+		C90A6EEB18ABC46A004717EF /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		C90A6EF518ABD31C004717EF /* RecognizerApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RecognizerApi.framework; path = ../RecognizerApi.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,12 +61,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1858DA321B3D584700C5B317 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1858DA331B3D584700C5B317 /* ocr_model.zzip */,
+			);
+			name = Resources;
+			path = ../RecognizerApi.framework/Versions/A/Resources;
+			sourceTree = "<group>";
+		};
 		C90A6ECA18ABC070004717EF = {
 			isa = PBXGroup;
 			children = (
 				C90A6ED518ABC070004717EF /* RecognizerApiDemo */,
 				C90A6EF418ABD2ED004717EF /* Frameworks */,
-				C90A6EF318ABD2DE004717EF /* Resources */,
 				C90A6ED418ABC070004717EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,21 +90,19 @@
 		C90A6ED518ABC070004717EF /* RecognizerApiDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C90A6EEB18ABC46A004717EF /* demo.c */,
+				C90A6EEB18ABC46A004717EF /* main.c */,
+				1858DA041B3ACF0E00C5B317 /* RecognizerCallback.h */,
+				1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */,
+				1858DA251B3D3D7500C5B317 /* RecognizerWrapper.c */,
+				1858DA261B3D3D7500C5B317 /* RecognizerWrapper.h */,
 			);
 			path = RecognizerApiDemo;
-			sourceTree = "<group>";
-		};
-		C90A6EF318ABD2DE004717EF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		C90A6EF418ABD2ED004717EF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1858DA321B3D584700C5B317 /* Resources */,
 				C90A6EF518ABD31C004717EF /* RecognizerApi.framework */,
 			);
 			name = Frameworks;
@@ -102,8 +117,8 @@
 			buildPhases = (
 				C90A6ECF18ABC070004717EF /* Sources */,
 				C90A6ED018ABC070004717EF /* Frameworks */,
-				C90A6ED118ABC070004717EF /* CopyFiles */,
 				C90A6EF718ABD37D004717EF /* CopyFiles */,
+				1858DA351B3D586200C5B317 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -145,7 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C90A6EEC18ABC46A004717EF /* demo.c in Sources */,
+				1858DA061B3ACF2200C5B317 /* RecognizerCallback.c in Sources */,
+				C90A6EEC18ABC46A004717EF /* main.c in Sources */,
+				1858DA271B3D3D7600C5B317 /* RecognizerWrapper.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,10 +253,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = (
-					../,
-					"/Users/cerovec/MicroBlink/Workspace/BlinkID/blinkid-core/MacOSX",
-				);
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -251,10 +264,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				FRAMEWORK_SEARCH_PATHS = (
-					../,
-					"/Users/cerovec/MicroBlink/Workspace/BlinkID/blinkid-core/MacOSX",
-				);
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
