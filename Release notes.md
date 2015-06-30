@@ -1,5 +1,11 @@
 # Release notes
 
+## 1.1.1
+
+- ShowFullDocument now returns 250 ppi color images (onShowImage)
+- improved parsing of certain documents
+- fixed some problems with "0" and "O" confusion
+
 ## 1.1.0
 
 - MRZ position detection and BarrelDewarper implemented
