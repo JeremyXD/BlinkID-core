@@ -143,7 +143,7 @@ struct MRTDSettings {
 	/**
 	* Enables detection of Machine Readable Zone position
 	*/
-    int detectMachineReadableZonePosition;
+	int detectMachineReadableZonePosition;
 
 	/**
 	* Turns on calling the showImage callback with image of dewarped MRZ.
