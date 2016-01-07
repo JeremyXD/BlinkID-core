@@ -49,13 +49,8 @@ Release TODO.md
 *.class
 
 # generated files
-bin/
 gen/
-
 obj/
-
-# include opencv files
-!opencv/bin
 
 # Mac specific files
 .DS_Store
