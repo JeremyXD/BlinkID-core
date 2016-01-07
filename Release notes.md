@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.1.2
+
+- fixed missing opencv dll files on Windows
+
 ## 1.1.1
 
 - ShowFullDocument now returns 250 ppi color images (onShowImage)
