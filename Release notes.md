@@ -1,5 +1,10 @@
 # Release notes
 
+## 1.2.0
+
+- major library upgrade for Windows
+- fixed license key library versioning on Windows
+
 ## 1.1.2
 
 - fixed missing opencv dll files on Windows
