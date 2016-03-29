@@ -36,15 +36,15 @@ int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imag
 	case DETECTION_STATUS_CAMERA_TOO_HIGH:
 		detStatusDesc = "camera is too high";
 		break;
+    case DETECTION_STATUS_CAMERA_TOO_NEAR:
+        detStatusDesc = "camera is too near";
+        break;
 	case DETECTION_STATUS_FAIL:
 		detStatusDesc = "detection has failed";
 		break;
 	case DETECTION_STATUS_PARTIAL_OBJECT:
 		detStatusDesc = "some parts of object are not visible";
-		break;
-	case DETECTION_STATUS_QR_SUCCESS:
-		detStatusDesc = "QR code has been successfuly detected";
-		break;
+		break;	
 	case DETECTION_STATUS_SUCCESS:
 		detStatusDesc = "detection has succeeded";
 		break;
@@ -141,14 +141,12 @@ int main(int argc, char* argv[]) {
 	recognizerSettingsSetDeviceInfo(settings, deviceInfo);
 	/* set OCR model to recognizer settings object */
 	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
-
-	/* enable ID card position detection. Note that card position detection will not work with passport recognition. */
-	mrtdSettings.detectMachineReadableZonePosition = 1;
+	
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
+	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");    
 
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);

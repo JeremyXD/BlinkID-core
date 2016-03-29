@@ -60,7 +60,7 @@ RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const ch
 
     /* insert license key and licensee */
     /* this specific key is valid until 2015-07-15 */
-    status = recognizerSettingsSetLicenseKey(wrapper->settings, "Add licensee here", "Add license key here");
+    status = recognizerSettingsSetLicenseKeyForLicensee(wrapper->settings, "Add licensee here", "Add license key here");    
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Cannot set license key: %s\n", recognizerErrorToString(status));
         return status;

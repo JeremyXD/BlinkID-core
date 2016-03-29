@@ -42,21 +42,18 @@ int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imag
         case DETECTION_STATUS_CAMERA_TOO_HIGH:
             detStatusDesc = "camera is too high";
             break;
+        case DETECTION_STATUS_CAMERA_TOO_NEAR:
+            detStatusDesc = "camera is too near";
+            break;
         case DETECTION_STATUS_FAIL:
             detStatusDesc = "detection has failed";
             break;
         case DETECTION_STATUS_PARTIAL_OBJECT:
             detStatusDesc = "some parts of object are not visible";
-            break;
-        case DETECTION_STATUS_QR_SUCCESS:
-            detStatusDesc = "QR code has been successfuly detected";
-            break;
+            break;        
         case DETECTION_STATUS_SUCCESS:
             detStatusDesc = "detection has succeeded";
-            break;
-        case DETECTION_STATUS_CAMERA_TOO_NEAR:
-            detStatusDesc = "camera is too near";
-            break;
+            break;        
     }
 
     printf("Detection status: %s\n", detStatusDesc);

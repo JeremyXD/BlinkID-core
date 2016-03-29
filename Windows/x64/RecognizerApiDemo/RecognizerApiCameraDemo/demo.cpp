@@ -96,15 +96,15 @@ int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imag
 	case DETECTION_STATUS_CAMERA_TOO_HIGH:
 		detStatusDesc = "camera is too high";
 		break;
+    case DETECTION_STATUS_CAMERA_TOO_NEAR:
+        detStatusDesc = "camera is too near";
+        break;
 	case DETECTION_STATUS_FAIL:
 		detStatusDesc = "detection has failed";
 		break;
 	case DETECTION_STATUS_PARTIAL_OBJECT:
 		detStatusDesc = "some parts of object are not visible";
-		break;
-	case DETECTION_STATUS_QR_SUCCESS:
-		detStatusDesc = "QR code has been successfuly detected";
-		break;
+		break;	
 	case DETECTION_STATUS_SUCCESS:
 		detStatusDesc = "detection has succeeded";
 		break;
@@ -255,9 +255,7 @@ int main(int argc, char** argv)
 	recognizerSettingsSetDeviceInfo(settings, deviceInfo);
 	/* set OCR model to recognizer settings object */
 	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
-
-	/* enable machine readable zone position detection. */
-	mrtdSettings.detectMachineReadableZonePosition = 1;
+	
 	/* Enable providing the image of full document. Option detectMachineReadableZonePosition must be on in order for this to work! */
 	mrtdSettings.showFullDocument = 1; // enabled
 	/* Enable providing the image of machine readable zone. Option detectMachineReadableZonePosition must be on in order for this to work! */
@@ -266,7 +264,7 @@ int main(int argc, char** argv)
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKey(settings, "Add licensee here", "Add license key here");
+	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");    
 
 	/* Create BarrelDewarper object used to debarrel images. 
 		Parameters k1, k2, p1, p2, k3, scale must be set
