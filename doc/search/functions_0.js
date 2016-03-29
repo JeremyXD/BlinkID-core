@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['recognizerbarreldewarpercreate',['recognizerBarrelDewarperCreate',['../_recognizer_barrel_dewarper_8h.html#aabf7cfe8df1772e45effadb7021ba0c1',1,'RecognizerBarrelDewarper.h']]],
+  ['recognizerbarreldewarpercreate',['recognizerBarrelDewarperCreate',['../struct_recognizer_barrel_dewarper.html#aabf7cfe8df1772e45effadb7021ba0c1',1,'RecognizerBarrelDewarper']]],
   ['recognizerbarreldewarperdelete',['recognizerBarrelDewarperDelete',['../struct_recognizer_barrel_dewarper.html#ad14fb018b3d6eec5be08ea4573d7f0f1',1,'RecognizerBarrelDewarper']]],
   ['recognizerbarreldewarperdewarp',['recognizerBarrelDewarperDewarp',['../struct_recognizer_barrel_dewarper.html#a01b852e200e9d91bcca787d980a85884',1,'RecognizerBarrelDewarper']]],
   ['recognizercreate',['recognizerCreate',['../struct_recognizer.html#afbdf8be43f71f1aae0946f51dbaa7624',1,'Recognizer']]],
@@ -24,6 +24,7 @@ var searchData=
   ['recognizerdeviceinfosetoperatingsystem',['recognizerDeviceInfoSetOperatingSystem',['../struct_recognizer_device_info.html#ab6567fcea479322c75bb4661c8437893',1,'RecognizerDeviceInfo']]],
   ['recognizerdeviceinfosetoperatingsystemversion',['recognizerDeviceInfoSetOperatingSystemVersion',['../struct_recognizer_device_info.html#a18700be9bbbcf3629387dda2c1ab0ccc',1,'RecognizerDeviceInfo']]],
   ['recognizerfreefilebuffer',['recognizerFreeFileBuffer',['../struct_recognizer.html#a0bff4c13db08ac1963a9326c47361353',1,'Recognizer']]],
+  ['recognizergetversionstring',['recognizerGetVersionString',['../_recognizer_8h.html#a4eca543c9f8ae0de22a30148d6058959',1,'Recognizer.h']]],
   ['recognizerimagecreatefromencodedimage',['recognizerImageCreateFromEncodedImage',['../struct_recognizer_image.html#a3574e888daece61be57b05b583951426',1,'RecognizerImage']]],
   ['recognizerimagecreatefromfile',['recognizerImageCreateFromFile',['../struct_recognizer_image.html#ab3b0dbb04c7eee8eb2f5c037a33eba42',1,'RecognizerImage']]],
   ['recognizerimagecreatefromrawimage',['recognizerImageCreateFromRawImage',['../struct_recognizer_image.html#aeb6eb03f4ff042249ac6c4b1dc7736db',1,'RecognizerImage']]],
@@ -60,8 +61,10 @@ var searchData=
   ['recognizersettingscreate',['recognizerSettingsCreate',['../struct_recognizer_settings.html#a15b444a331c1d4ff947d8de9cca7cdaf',1,'RecognizerSettings']]],
   ['recognizersettingsdelete',['recognizerSettingsDelete',['../struct_recognizer_settings.html#a193d33cbb7473e32ed4465a2dc3fe4e5',1,'RecognizerSettings']]],
   ['recognizersettingssetdeviceinfo',['recognizerSettingsSetDeviceInfo',['../struct_recognizer_settings.html#a4a070e2a5f03662ae134e104b9f3461a',1,'RecognizerSettings']]],
-  ['recognizersettingssetlicensekey',['recognizerSettingsSetLicenseKey',['../struct_recognizer_settings.html#a5a76a07f749af49d8afd32d31c70577a',1,'RecognizerSettings']]],
+  ['recognizersettingssetlicensekey',['recognizerSettingsSetLicenseKey',['../struct_recognizer_settings.html#a26bd404b267cb0a63d20efa5aa8d4e62',1,'RecognizerSettings']]],
+  ['recognizersettingssetlicensekeyforlicensee',['recognizerSettingsSetLicenseKeyForLicensee',['../struct_recognizer_settings.html#a50a2b50c5e919a6c0a39e10539f563ee',1,'RecognizerSettings']]],
   ['recognizersettingssetmrtdsettings',['recognizerSettingsSetMRTDSettings',['../struct_recognizer_settings.html#a48a8530e6cff5993fcda2a136c35eb61',1,'RecognizerSettings']]],
   ['recognizersettingssetoutputmultipleresults',['recognizerSettingsSetOutputMultipleResults',['../struct_recognizer_settings.html#acd7741a34095999c031f0612ad067145',1,'RecognizerSettings']]],
-  ['recognizersettingssetzicermodel',['recognizerSettingsSetZicerModel',['../struct_recognizer_settings.html#a6191c219227fa117cec9ee9fa823602b',1,'RecognizerSettings']]]
+  ['recognizersettingssetzicermodel',['recognizerSettingsSetZicerModel',['../struct_recognizer_settings.html#a6191c219227fa117cec9ee9fa823602b',1,'RecognizerSettings']]],
+  ['recognizerupdatesettings',['recognizerUpdateSettings',['../struct_recognizer.html#a19b3da604c56bebff3774a5f0152ce09',1,'Recognizer']]]
 ];
