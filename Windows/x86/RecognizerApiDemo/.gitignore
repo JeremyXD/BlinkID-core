@@ -1,2 +1,6 @@
 # generated files
 bin/
+
+# test files
+*.jpg.txt
+report.txt
