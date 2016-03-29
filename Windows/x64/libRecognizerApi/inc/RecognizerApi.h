@@ -1,9 +1,6 @@
 /**
  * @file RecognizerApi.h
  *
- *  Created on: Oct 9, 2013
- *      Authors: mkorpar, dodo
- *
  * @mainpage %Recognizer API documentation
  *
  * @section Introduction
@@ -24,7 +21,7 @@
  *    @code
  *      RecognizerSettings* settings;
  *      recognizerSettingsCreate(&settings);
- *      recognizerSettingsSetLicenseKey(settings, "add licensee here", "add license key here");
+ *      recognizerSettingsSetLicenseKeyForLicensee(settings, "add licensee here", "add license key here");
  *    @endcode
  *    Please note that license key evaluation is done when creating the Recognizer, not when inserting it into RecognizerSettings object.
  * -# Define settings for each recognizer you want to use and add those settings to RecognizerSettings object. To see all possible recognizer
@@ -69,14 +66,21 @@
  *      }
  *    @endcode
  *    Creation of Recognizer might fail. For that reason you should check the status of ::recognizerCreate method.
- * -# Perform the scan on the image. Image can be scanned from file or from memory. Recognition from file is performed with ::recognizerRecognizeFromFile
- *    and recognition from memory is performed with methods ::recognizerRecognizeFromEncodedImage or ::recognizerRecognizeFromRawImage.
+ * -# Perform the scan on the image. Image first needs to be created from file or from memory. To create image from file,
+ *    use ::recognizerImageCreateFromFile. To create image from memory use either ::recognizerImageCreateFromRawImage or ::recognizerImageCreateFromEncodedImage.
+ *    @code
+ *      RecognizerImage* img;
+ *      RecognizerErrorStatus status = recognizerImageCreateFromFile(&img, "barcode.jpg");
+ *      if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
+ *          printf("Failed to load file. Reason: %s", recognizerErrorToString(status));
+ *      }
+ *    @endcode
+ * -# Once you have created an image, you can perform recognition using method ::recognizerRecognizeFromImage.
  *    @code
  *      RecognizerResultList* resultList;
- *      RecognizerErrorStatus status = recognizerRecognizeFromFile(recognizer, &resultList, "barcode.jpg", NULL);
+ *      RecognizerErrorStatus status = recognizerRecognizeFromImage(recognizer, &resultList, img, 0, NULL);
  *
  *      if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
- *          char err[1000];
  *          printf("Recognizer error %s", recognizerErrorToString(status));
  *      }
  *    @endcode
@@ -139,6 +143,7 @@
  *    @endcode
  * -# Finally, when done, clean the memory. Each structure has method for releasing it.
  *    @code
+ *      recognizerImageDelete(&img);
  *      recognizerResultListDelete(&resultList);
  *      recognizerSettingsDelete(&settings);
  *      recognizerDelete(&recognizer);
@@ -150,7 +155,9 @@
  *
  * @section info Additional info
  *
- * For any inquiries, additional information or instructions please contact us at <a href="mailto:support@microblink.com">support\@microblink.com</a>.
+ * For any inquiries, additional information or instructions please contact us at <a href="http://help.microblink.com">help.microblink.com</a>.
+ * When contacting, please state which product and which platform you are using so we can help you more quickly. Also, please state that you are using
+ * core components RecognizerAPI and state the version you are using. You can obtain the library version with function ::recognizerGetVersionString.
  */
 
 #ifndef RECOGNIZERAPI_H_
@@ -164,4 +171,4 @@
 #include "Recognizer/RecognizerImageProcessor.h"
 #include "Recognizer/RecognizerBarrelDewarper.h"
 
-#endif /* RECOGNIZERAPI_H_ */
+#endif

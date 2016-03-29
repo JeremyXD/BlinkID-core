@@ -1,8 +1,14 @@
 /**
  * @file RecognizerSettings.h
  *
- *  Created on: Oct 9, 2013
- *      Authors: mkorpar, dodo
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
+ *
+ * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
+ * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
+ * WITH OR WITHOUT MODIFICATION, WITH THE PURPOSE OF ACQUIRING
+ * UNLAWFUL MATERIAL OR ANY OTHER BENEFIT IS PROHIBITED!
+ * THIS PROGRAM IS PROTECTED BY COPYRIGHT LAWS AND YOU MAY NOT
+ * REVERSE ENGINEER, DECOMPILE, OR DISASSEMBLE IT.
  */
 
 #ifndef RECOGNIZERSETTINGS_H_
@@ -11,6 +17,7 @@
 #include "RecognizerError.h"
 #include "RecognizerDeviceInfo.h"
 #include "Export.h"
+#include "Recognizer.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,15 +63,26 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsDelete(RecognizerSettings
 
 /**
   @memberof RecognizerSettings
-  @brief Sets the license key required for initialization of Recognizer object.
+  @brief Sets the license key and licensee required for initialization of Recognizer object.
 
   @param     settings      Pointer to the RecognizerSettings object that holds all settings information.
-  @param     licenseOwner  You should enter here the licensee name to which license key is bound.
+  @param     licensee      You should enter here the licensee name to which license key is bound.
   @param     licenseKey    License key used for unlocking the library.
   @return    errorStatus   Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
                             License check will be perfomed while creating recognizer object with recognizerCreate method, not here.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetLicenseKey(RecognizerSettings* settings, const char* licenseOwner, const char* licenseKey);
+PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetLicenseKeyForLicensee(RecognizerSettings* settings, const char* licensee, const char* licenseKey);
+
+/**
+  @memberof RecognizerSettings
+  @brief Sets the license key required for initialization of Recognizer object.
+
+  @param     settings      Pointer to the RecognizerSettings object that holds all settings information.
+  @param     licenseKey    License key used for unlocking the library.
+  @return    errorStatus   Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
+                            License check will be perfomed while creating recognizer object with recognizerCreate method, not here.
+  */
+PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetLicenseKey(RecognizerSettings* settings, const char* licenseKey);
 
 /**
   * @memberof RecognizerSettings
@@ -141,11 +159,6 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetZicerModel(RecognizerS
 */
 struct MRTDSettings {
 	/**
-	* Enables detection of Machine Readable Zone position
-	*/
-	int detectMachineReadableZonePosition;
-
-	/**
 	* Turns on calling the showImage callback with image of dewarped MRZ.
 	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
 	* want to turn this feature on!
@@ -166,7 +179,7 @@ struct MRTDSettings {
 	* Default constructor for c++.
 	*/
 	MRTDSettings() :
-        detectMachineReadableZonePosition(0), showMachineReadableZone(0), showFullDocument(0) {}
+        showMachineReadableZone(0), showFullDocument(0) {}
 #endif
 };
 

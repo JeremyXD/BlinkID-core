@@ -1,8 +1,14 @@
 /**
  * @file Recognizer.h
  *
- *  Created on: Oct 9, 2013
- *      Authors: mkorpar, dodo
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
+ *
+ * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
+ * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
+ * WITH OR WITHOUT MODIFICATION, WITH THE PURPOSE OF ACQUIRING
+ * UNLAWFUL MATERIAL OR ANY OTHER BENEFIT IS PROHIBITED!
+ * THIS PROGRAM IS PROTECTED BY COPYRIGHT LAWS AND YOU MAY NOT
+ * REVERSE ENGINEER, DECOMPILE, OR DISASSEMBLE IT.
  */
 
 #ifndef RECOGNIZER_H_
@@ -77,8 +83,6 @@ typedef PP_EXPORTED_TYPE enum PPDetectionStatus {
     DETECTION_STATUS_FAIL = 1 << 1,
     /** Object detected, but the camera is too far above it */
     DETECTION_STATUS_CAMERA_TOO_HIGH = 1 << 2,
-    /** QR code detected */
-    DETECTION_STATUS_QR_SUCCESS = 1 << 3,
     /** Object has been detected, but some parts of it are not in image */
     DETECTION_STATUS_PARTIAL_OBJECT = 1 << 6,
     /** Object has been detected, but camera is at too big angle */
@@ -96,10 +100,6 @@ typedef PP_EXPORTED_TYPE enum ShowImageType {
     SHOW_IMAGE_TYPE_ORIGINAL,
     /** image with position and orientation adjusted and cropped for further processing */
     SHOW_IMAGE_TYPE_DEWARPED,
-    /** grayscale image */
-    SHOW_IMAGE_TYPE_GRAYSCALE,
-    /** image with all color information droped */
-    SHOW_IMAGE_TYPE_COLOR_DROP,
     /** final image resulting from a successful scan */
     SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN,
 } ShowImageType;
@@ -154,11 +154,12 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
     void (*onProgress)(int progress);
     /** Called when recognition process produces an image in various stages of recognition. showType parameter
      *  can be used to differentiate between image types so only images that are needed are handled.
-     *	@param	image	returned image
-     *  @param  showType type of showed image. @see ShowImageType for more information of what kinds of images are available
-     *  @param  name image name. Can be NULL.
+     *	@param	image       returned image
+     *  @param  showType    type of shown image.
+     *  @param  name        image name. Can be NULL.
+     *
+     *  @see ShowImageType for more information of what kinds of images are available
      */
-    //void(*onShowImage)(const void* data, int width, int height, size_t bytesPerRow, RawImageType rawType, const ShowImageType showType, const char* name);
 	void(*onShowImage)(const RecognizerImage* image, const ShowImageType showType, const char* name);
 
 #ifdef __cplusplus
@@ -176,6 +177,11 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
 #endif
 } RecognizerCallback;
 
+
+/**
+ * @brief Returns the library version string.
+ */
+PP_API const char* PP_CALL recognizerGetVersionString();
 
 /**
  @memberof Recognizer
@@ -208,6 +214,18 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
                             check the returned status for possible errors
  */
 PP_API RecognizerErrorStatus PP_CALL recognizerCreate(Recognizer** recognizer, const RecognizerSettings* settings);
+
+/**
+  @memberof Recognizer
+  @brief Updates recognizer object's settings.
+  You can use this method to change what recognizers are active. You cannot use this method to change options
+  like device info, OCR model etc.
+
+  @param    recognizer  recognizer object that will be updated with new settings
+  @param    settings    settings that will be applied
+  @return   errorStatus status of the operation. The operation might fail, so please check returned status for possible errors.
+  */
+PP_API RecognizerErrorStatus PP_CALL recognizerUpdateSettings(Recognizer* recognizer, const RecognizerSettings* settings);
 
 /**
  @memberof Recognizer
@@ -259,25 +277,28 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSetROI(Recognizer* recognizer, co
                                 method of recognizer object will be recognized on the image
  @param     resultList          RecognizerResultList object in which the results of the recognition will be stored. This object
                                 is allocated and initialized inside this method. On error, resultList is set to NULL.
-                                @see RecognizerResultList for description how to obtain results from list and
-                                @see RecognizerResult for description how to obtain results from RecognizerResult object.
- @param     image               RecognitionImage object which holds image on which recognition will be performed.
-                                @see RecognizerImage to see details on supported image formats.
+                                See RecognizerResultList for description how to obtain results from list and
+                                See RecognizerResult for description how to obtain results from RecognizerResult object.
+ @param     image               RecognizerImage object which holds image on which recognition will be performed.
+                                See RecognizerImage to see details on supported image formats.
  @param     imageIsVideoFrame   If non-zero is given, image is treated as video frame. When treating image as video frame,
                                 multiple consecutive frame may be combined to yield better recognition result. Note that if
                                 consecutive calls to this method with this parameter set as non-zero expect the consecutive
                                 frames obtained from camera - all these frames should contain the same object that needs to be
                                 recognised. If one of this frames contain different object, total recognition result may be
-                                corrupted. To reset recognizer to initial setting, call recognizerReset (@see recognizerReset).
+                                corrupted. To reset recognizer to initial setting, call ::recognizerReset.
                                 Also note that returned recognizer result may be NULL or not valid for frames for which library
                                 concludes are too poor to be processed. If you want to force library to process every frame, set
                                 this parameter to zero. In that case time redundancy information from consecutive frames will not
                                 be used for recognition improvement.
  @param     callback            Pointer to structure that contains pointer to callback functions. If given NULL,
                                 no callback will be called. If given non-NULL, only non-NULL function pointers will be called.
-                                @see RecognizerCallback
  @return    errorStatus         status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
                                 obtaining result values
+ @see RecognizerCallback for details about what callbacks can be installed
+ @see RecognizerResult for description how to obtain results from RecognizerResult object
+ @see RecognizerResultList for description how to obtain results from list
+ @see RecognizerImage to see details on supported image formats.
  */
 PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromImage(const Recognizer* recognizer, RecognizerResultList** resultList,
         const RecognizerImage* image, int imageIsVideoFrame, const RecognizerCallback* callback);

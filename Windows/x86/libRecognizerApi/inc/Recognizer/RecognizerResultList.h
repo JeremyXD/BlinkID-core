@@ -1,9 +1,7 @@
 /**
  *  @file RecognizerResultList.h
- *  Created on: 23/05/2014
- *      Author: dodo
  *
- * Copyright (c)2014 Racuni.hr d.o.o. All rights reserved.
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
  *
  * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
  * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
@@ -28,7 +26,8 @@ extern "C" {
 
 /**
  * @struct RecognizerResultList
- * RecognizerResultList data structure. Holds all results of the recognition.
+ * @brief RecognizerResultList data structure. Holds all results of the recognition.
+ *
  * Some images may contain more than one recognizable objects, e.g. two types of barcodes.
  * To obtain specific RecognizerResult, use the function recognizerResultListGetResultAtIndex(int).
  * To get the number of results in the list, use function recognizerResultListGetNumOfResults().
