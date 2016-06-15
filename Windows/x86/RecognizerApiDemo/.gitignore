@@ -8,3 +8,4 @@ Debug
 # test files
 *.jpg.txt
 report.txt
+ocr_model.zzip
