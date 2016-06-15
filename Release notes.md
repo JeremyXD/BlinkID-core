@@ -1,5 +1,10 @@
 # Release notes
 
+## 1.3.0
+
+- MRTD recognizer improvements
+- Fixed bug which caused document number to have zeros and Os misrecognized, even if OCR was 100% correct in MRTD recognizer
+
 ## 1.2.0
 
 - major library upgrade for Windows
