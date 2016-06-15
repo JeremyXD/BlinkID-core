@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['recognizer_5fos_5fandroid',['RECOGNIZER_OS_ANDROID',['../_recognizer_device_info_8h.html#a343c4a18fbe7ef645ac867657eadeb4b',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fios',['RECOGNIZER_OS_IOS',['../_recognizer_device_info_8h.html#ab072ba2bb2de6dd3eb333b1fdaa22ff9',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5flinux',['RECOGNIZER_OS_LINUX',['../_recognizer_device_info_8h.html#a7619b464a4fc281c2bdaeba9f0955b80',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fmacosx',['RECOGNIZER_OS_MACOSX',['../_recognizer_device_info_8h.html#a10a367615be05eaa0c35c02b8705c037',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fwindows',['RECOGNIZER_OS_WINDOWS',['../_recognizer_device_info_8h.html#a355fcd78b65baa17bb38c40ac9924354',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fwindows_5fphone',['RECOGNIZER_OS_WINDOWS_PHONE',['../_recognizer_device_info_8h.html#a7ad07f11eeb772d89df3e3a0e150844c',1,'RecognizerDeviceInfo.h']]]
+  ['preseta4landscape',['presetA4Landscape',['../struct_document_scanning_options.html#ad9480b0782072ab90df5de23b9682245',1,'DocumentScanningOptions']]],
+  ['preseta4portrait',['presetA4Portrait',['../struct_document_scanning_options.html#a6f6c70e97a2ad3afe9605aa5ca5e7402',1,'DocumentScanningOptions']]],
+  ['presetblinkid',['presetBlinkID',['../struct_document_scanning_options.html#ab03c661caff4d1743a41b401b306e8a0',1,'DocumentScanningOptions']]],
+  ['presetcheque',['presetCheque',['../struct_document_scanning_options.html#a2d1addc57631e0bb48f87ebbecfe8ffd',1,'DocumentScanningOptions']]],
+  ['presetid1card',['presetID1Card',['../struct_document_scanning_options.html#a772860a700eead44537c99f2c37d2dbc',1,'DocumentScanningOptions']]]
 ];

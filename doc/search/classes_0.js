@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mrtdsettings',['MRTDSettings',['../struct_m_r_t_d_settings.html',1,'']]]
+  ['documentscanningoptions',['DocumentScanningOptions',['../struct_document_scanning_options.html',1,'']]]
 ];
