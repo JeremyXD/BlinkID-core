@@ -1,6 +1,10 @@
 # generated files
 bin/
 
+# Visual studio Release & Debug
+Release
+Debug
+
 # test files
 *.jpg.txt
 report.txt

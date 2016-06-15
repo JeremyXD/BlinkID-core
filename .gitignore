@@ -28,8 +28,8 @@ Thumbs.db
 *.opensdf
 
 # Visual studio Release & Debug
-Release
-Debug
+#Release
+#Debug
 
 # include library files
 !libRecognizerApi/lib/Release

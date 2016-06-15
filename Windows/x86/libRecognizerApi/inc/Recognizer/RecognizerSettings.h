@@ -33,6 +33,50 @@ extern "C" {
 typedef PP_EXPORTED_TYPE struct RecognizerSettings RecognizerSettings;
 
 /**
+* @struct DocumentScanningOptions
+* @brief Options for document scanning
+*/
+typedef PP_EXPORTED_TYPE struct DocumentScanningOptions {
+	/** 
+	 * Use the ID1 card preset in document scanning
+	 */
+	int presetID1Card;
+	
+	/**
+	 * Use the Cheque preset in document scanning
+	 */
+	int presetCheque;
+	
+	/**
+	 * Use the A4 portrait preset in document scanning
+	 */
+	int presetA4Portrait;
+	
+	/**
+	 * Use the A4 landscape preset in document scanning
+	 */
+	int presetA4Landscape;
+	
+	/**
+	 * Use the BlinkID preset in document scanning
+	 */
+	int presetBlinkID;
+
+#ifdef __cplusplus
+	/**
+	 * Default constructor for c++.
+	 */
+	DocumentScanningOptions() :
+		presetID1Card(0),
+		presetCheque(0),
+		presetA4Portrait(0),
+		presetA4Landscape(0),
+		presetBlinkID(0) { }
+#endif
+
+} DocumentScanningOptions;
+
+/**
  @memberof RecognizerSettings
  @brief Allocates and initializes the RecognizerSettings object.
  Example:
