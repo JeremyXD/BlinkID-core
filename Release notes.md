@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.4.0
+- added support for scanning US Driver's Licenses, PDF417 barcodes, QR codes and Code39 and Code128 1D barcodes
+- added build for Linux
+
 ## 1.3.0
 
 - MRTD recognizer improvements
