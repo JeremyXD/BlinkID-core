@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	/* load OCR model from file */
-	status = recognizerLoadFileToBuffer("ocr_model.zzip", &ocrModel, &ocrModelLength);
+	status = recognizerLoadFileToBuffer("../libRecognizerApi/res/ocr_model.zzip", &ocrModel, &ocrModelLength);
 	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
 		printf("Could not load file ocr_model.zzip\n");
 		return -1;
@@ -146,7 +146,9 @@ int main(int argc, char* argv[]) {
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");  
+	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");
+	/* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
+	recognizerSettingsSetLicenseKey(settings, "Add license key here"); 
         
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
