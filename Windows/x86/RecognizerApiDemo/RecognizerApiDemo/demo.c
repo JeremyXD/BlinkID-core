@@ -146,7 +146,9 @@ int main(int argc, char* argv[]) {
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");    
+	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");
+	/* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
+	recognizerSettingsSetLicenseKey(settings, "Add license key here");
 
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
