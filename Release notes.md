@@ -3,7 +3,7 @@
 ## 1.4.0
 - added support for scanning US Driver's Licenses, PDF417 barcodes, QR codes, Code39 and Code128 1D barcodes and Malaysian MyKad documents
 - added support for scanning Green Cards' Machine Readable Zone
-- added build for Linux
+- added build for Linux and Mac OS X
 
 ## 1.3.0
 
