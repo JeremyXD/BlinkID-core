@@ -59,10 +59,10 @@ RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const ch
     }
 
     /* insert license key and licensee */
-    /* this specific key is valid until 2015-07-15 */
-    status = recognizerSettingsSetLicenseKey(wrapper->settings,
-                                             "MicroBlink",
-                                             "E4CKM73N-MIAARXO6-T3EIOCPN-2M2A7OZ3-7UVWJQEZ-WAEN3XU6-ZGPMTHWJ-T3EVYEML");
+    status = recognizerSettingsSetLicenseKeyForLicensee(wrapper->settings, "add licensee here", "add license key here");
+    /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
+    status = recognizerSettingsSetLicenseKey(wrapper->settings, "add license key here");
+    
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Cannot set license key: %s\n", recognizerErrorToString(status));
         return status;

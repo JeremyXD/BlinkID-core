@@ -1,9 +1,7 @@
 /**
  *  @file RecognizerDeviceInfo.h
- *  Created on: 26/05/2014
- *      Author: dodo
  *
- * Copyright (c)2014 Racuni.hr d.o.o. All rights reserved.
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
  *
  * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
  * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
@@ -26,7 +24,9 @@ extern "C" {
 
 /**
   * @struct RecognizerDeviceInfo
-  * Holds the information about current device. This can help recognizer library to better choose recognition parameters, i.e. if library
+  * @brief Holds the information about current device.
+  *
+  * RecognizerDeviceInfo structure holds the information about current device. This can help recognizer library to better choose recognition parameters, i.e. if library
   * recognizes specific device, it can adjust its recognition parameters specifically for that device. If device is not recognized, default parameters will be used.
   */
 typedef PP_EXPORTED_TYPE struct RecognizerDeviceInfo RecognizerDeviceInfo;

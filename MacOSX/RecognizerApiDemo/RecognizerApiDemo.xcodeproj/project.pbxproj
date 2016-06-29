@@ -13,6 +13,8 @@
 		18E636D21B2F304F00869C0F /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C90A6EEC18ABC46A004717EF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* main.c */; };
 		C90A6EF618ABD31C004717EF /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
+		C979616A1D23E9A000DA9D7E /* deID.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = C97961671D23E8A400DA9D7E /* deID.jpg */; };
+		C979616B1D23E9A000DA9D7E /* id1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = C97961681D23E8A400DA9D7E /* id1.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +38,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C97961691D23E99300DA9D7E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				C979616A1D23E9A000DA9D7E /* deID.jpg in CopyFiles */,
+				C979616B1D23E9A000DA9D7E /* id1.jpg in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +60,8 @@
 		C90A6ED318ABC070004717EF /* RecognizerApiDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RecognizerApiDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90A6EEB18ABC46A004717EF /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		C90A6EF518ABD31C004717EF /* RecognizerApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RecognizerApi.framework; path = ../RecognizerApi.framework; sourceTree = "<group>"; };
+		C97961671D23E8A400DA9D7E /* deID.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = deID.jpg; path = RecognizerApiDemo/deID.jpg; sourceTree = SOURCE_ROOT; };
+		C97961681D23E8A400DA9D7E /* id1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = id1.jpg; path = RecognizerApiDemo/id1.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +79,8 @@
 		1858DA321B3D584700C5B317 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C97961671D23E8A400DA9D7E /* deID.jpg */,
+				C97961681D23E8A400DA9D7E /* id1.jpg */,
 				1858DA331B3D584700C5B317 /* ocr_model.zzip */,
 			);
 			name = Resources;
@@ -119,6 +136,7 @@
 				C90A6ED018ABC070004717EF /* Frameworks */,
 				C90A6EF718ABD37D004717EF /* CopyFiles */,
 				1858DA351B3D586200C5B317 /* CopyFiles */,
+				C97961691D23E99300DA9D7E /* CopyFiles */,
 			);
 			buildRules = (
 			);

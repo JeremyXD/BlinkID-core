@@ -1,8 +1,14 @@
 /**
  * @file RecognizerBarrelDewarper.h
  *
- *  Created on: Jun 6, 2015
- *      Author: boris
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
+ *
+ * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
+ * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
+ * WITH OR WITHOUT MODIFICATION, WITH THE PURPOSE OF ACQUIRING
+ * UNLAWFUL MATERIAL OR ANY OTHER BENEFIT IS PROHIBITED!
+ * THIS PROGRAM IS PROTECTED BY COPYRIGHT LAWS AND YOU MAY NOT
+ * REVERSE ENGINEER, DECOMPILE, OR DISASSEMBLE IT.
  */
 
 #ifndef RECOGNIZERBARRELDEWARPER_HPP
@@ -19,12 +25,14 @@ extern "C" {
 /**
   @struct RecognizerBarrelDewarper
   @brief RecognizerBarrelDewarper data structure.
+
+  RecognizerBarrelDewarper is an object that can be initialized with barrel undistortion parameters and then used later for quickly undistort images.
   */
 typedef PP_EXPORTED_TYPE struct RecognizerBarrelDewarper RecognizerBarrelDewarper;
 
 /**
-  @mamberof RecognizerBarrelDewarper
-  @brief Alocates and creates RecognizerBarrelDewarper with given parameters.
+  @memberof RecognizerBarrelDewarper
+  @brief Allocates and creates RecognizerBarrelDewarper with given parameters.
 
   Distortion parameters are split into two categories:
     - k1, k2, k3    Radial distorion parameters which are used for correcting barrel distortion.
@@ -64,12 +72,12 @@ PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperDelete(RecognizerBa
 
   @param    dewarper        Object which performs transformation of input image.
   @param    input           RecognitionImage object which holds image on which transformation will be performed.
-                            @see RecognizerImage to see details on supported image formats.
-  @param    output          Pointer to pointer referencing the crated transformed image obtained by applaying parameters given when creating RecognizerBarrelDewarper object.
-                            If value of given pointer is NULL new RecognizerImage structure is created, othervise given structure is reused. In case of allocation RecognizerImageDelete
-                            must be called if structure is not going to be used any more. If error occured it will be set to NULL;
+  @param    output          Pointer to pointer referencing the created transformed image obtained by applying parameters given when creating RecognizerBarrelDewarper object.
+                            If value of given pointer is NULL new RecognizerImage structure is created, othervise given structure is reused. In case of allocation ::recognizerImageDelete
+                            must be called if structure is not going to be used any more. If error occured it will be set to NULL.
   @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
                              Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @see RecognizerImage to see details on supported image formats.
   */
 PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperDewarp(RecognizerBarrelDewarper* dewarper, const RecognizerImage* input, RecognizerImage** output);
 
@@ -77,4 +85,4 @@ PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperDewarp(RecognizerBa
 }
 #endif
 
-#endif // RECOGNIZERBARRELDEWARPER_HPP
+#endif

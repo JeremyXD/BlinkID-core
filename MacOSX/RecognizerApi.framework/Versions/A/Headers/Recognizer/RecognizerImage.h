@@ -1,8 +1,14 @@
 /**
  * @file RecognizerImage.h
  *
- *  Created on: Jun 6, 2015
- *      Author: boris
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
+ *
+ * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
+ * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
+ * WITH OR WITHOUT MODIFICATION, WITH THE PURPOSE OF ACQUIRING
+ * UNLAWFUL MATERIAL OR ANY OTHER BENEFIT IS PROHIBITED!
+ * THIS PROGRAM IS PROTECTED BY COPYRIGHT LAWS AND YOU MAY NOT
+ * REVERSE ENGINEER, DECOMPILE, OR DISASSEMBLE IT.
  */
 
 #ifndef RECOGNIZERIMAGE_HPP
@@ -10,6 +16,7 @@
 
 #include "RecognizerError.h"
 #include "Export.h"
+#include <stddef.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -90,7 +97,6 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageCreateFromRawImage(Recognize
   Image is loaded into memory and in the one of the following encodings:
     - Windows bitmaps - *.bmp, *.dib
     - JPEG files - *.jpeg, *.jpg, *.jpe
-    - JPEG 2000 files - *.jp2
     - Portable Network Graphics - *.png
     - TIFF files - *.tiff, *.tif
 
@@ -128,7 +134,6 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageCreateFromEncodedImage(Recog
  Image must be encoded in one of the following encodings:
     - Windows bitmaps - *.bmp, *.dib
     - JPEG files - *.jpeg, *.jpg, *.jpe
-    - JPEG 2000 files - *.jp2
     - Portable Network Graphics - *.png
     - TIFF files - *.tiff, *.tif
 
@@ -227,4 +232,4 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageGetRawImageType(const Recogn
 }
 #endif
 
-#endif // RECOGNIZERIMAGE_HPP
+#endif
