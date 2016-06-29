@@ -444,17 +444,13 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetZXingSettings(Recogniz
 */
 struct MRTDSettings {
 	/**
-	* Turns on calling the showImage callback with image of dewarped MRZ.
-	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
-	* want to turn this feature on!
+	* Turns on calling the showImage callback with image of dewarped MRZ.	
 	* You can use this and showFullDocument simultaneously.
 	*/
 	int showMachineReadableZone;
 
 	/**
-	* Turns on calling the showImage callback with image of dewarped document.
-	* IMPORTANT detectMachineReadableZonePosition MUST be enabled if you
-	* want to turn this feature on!
+	* Turns on calling the showImage callback with image of dewarped document.	
 	* You can use this and showMachineReadableZone simultaneously.
 	*/
 	int showFullDocument;
@@ -481,6 +477,41 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetMRTDSettings(Recognize
 
 
 
+
+
+
+
+
+/**
+* @struct OcrQualitySettings
+* @brief Settings for configuring OcrQuality recognizer.
+*/
+struct MyKadSettings {
+
+    /**
+    * Turns on calling the showImage callback with image of dewarped document.
+    */
+    int showFullDocument;
+
+#ifdef __cplusplus
+    /**
+    * Default constructor for c++.
+    */
+    MyKadSettings() : showFullDocument(0) { }
+
+#endif
+};
+
+PP_EXPORTED_TYPE typedef struct MyKadSettings MyKadSettings;
+
+/**
+* @memberof RecognizerSettings
+* @brief Set settings for Malaysian ID card recognizer.
+* @param settings pointer to RecognizerSettings object that holds all settings information
+* @param mykadSettings pointer to MyKad recognizer settings object that contains information how MyKad recognizer should behave or NULL to disable MyKad recognizer
+* @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
+*/
+PP_API RecognizerErrorStatus PP_CALL recognizerSettingsSetMyKadSettings(RecognizerSettings* settings, const MyKadSettings* mykadSettings);
 
 
 
