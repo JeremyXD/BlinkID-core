@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['pppoint',['PPPoint',['../struct_p_p_point.html',1,'']]],
-  ['pprectangle',['PPRectangle',['../struct_p_p_rectangle.html',1,'']]],
-  ['ppsize',['PPSize',['../struct_p_p_size.html',1,'']]]
+  ['mrtdsettings',['MRTDSettings',['../struct_m_r_t_d_settings.html',1,'']]],
+  ['mykadsettings',['MyKadSettings',['../struct_my_kad_settings.html',1,'']]]
 ];

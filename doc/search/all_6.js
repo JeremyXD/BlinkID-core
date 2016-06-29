@@ -1,9 +1,4 @@
 var searchData=
 [
-  ['show_5fimage_5ftype_5fdewarped',['SHOW_IMAGE_TYPE_DEWARPED',['../_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10a94800126c9d7cdfc166747d75ead8a7e',1,'Recognizer.h']]],
-  ['show_5fimage_5ftype_5foriginal',['SHOW_IMAGE_TYPE_ORIGINAL',['../_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10a9b43c16ea11e1595a98b808781eb4bca',1,'Recognizer.h']]],
-  ['show_5fimage_5ftype_5fsuccessful_5fscan',['SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN',['../_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10acaca276639928e84c801ff1b42d835a6',1,'Recognizer.h']]],
-  ['showfulldocument',['showFullDocument',['../struct_m_r_t_d_settings.html#a000b337adbf532284e773405d396b645',1,'MRTDSettings']]],
-  ['showimagetype',['ShowImageType',['../_recognizer_8h.html#a26f0a43297bf173d507c11c6d8df8a10',1,'Recognizer.h']]],
-  ['showmachinereadablezone',['showMachineReadableZone',['../struct_m_r_t_d_settings.html#a39a1c3edf60d7629751f03824ed3c014',1,'MRTDSettings']]]
+  ['nullquietzoneallowed',['nullQuietZoneAllowed',['../struct_pdf417_settings.html#a0ac9002a2d66b2fc6641d26decb490b1',1,'Pdf417Settings::nullQuietZoneAllowed()'],['../struct_usdl_settings.html#a2cf28a879136ee33d8f0e7a4638c3401',1,'UsdlSettings::nullQuietZoneAllowed()']]]
 ];

@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['recognizer_5fos_5fandroid',['RECOGNIZER_OS_ANDROID',['../_recognizer_device_info_8h.html#a343c4a18fbe7ef645ac867657eadeb4b',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fios',['RECOGNIZER_OS_IOS',['../_recognizer_device_info_8h.html#ab072ba2bb2de6dd3eb333b1fdaa22ff9',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5flinux',['RECOGNIZER_OS_LINUX',['../_recognizer_device_info_8h.html#a7619b464a4fc281c2bdaeba9f0955b80',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fmacosx',['RECOGNIZER_OS_MACOSX',['../_recognizer_device_info_8h.html#a10a367615be05eaa0c35c02b8705c037',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fwindows',['RECOGNIZER_OS_WINDOWS',['../_recognizer_device_info_8h.html#a355fcd78b65baa17bb38c40ac9924354',1,'RecognizerDeviceInfo.h']]],
-  ['recognizer_5fos_5fwindows_5fphone',['RECOGNIZER_OS_WINDOWS_PHONE',['../_recognizer_device_info_8h.html#a7ad07f11eeb772d89df3e3a0e150844c',1,'RecognizerDeviceInfo.h']]]
+  ['ondetectedobject',['onDetectedObject',['../struct_recognizer_callback.html#a437e21c7b06294e5edab552ed5699f3d',1,'RecognizerCallback']]],
+  ['ondetectionfailed',['onDetectionFailed',['../struct_recognizer_callback.html#adf941d8713483925f4cd7ae221a67fe4',1,'RecognizerCallback']]],
+  ['ondetectionstarted',['onDetectionStarted',['../struct_recognizer_callback.html#aeb8ed90597e291f723b6875aa87890e3',1,'RecognizerCallback']]],
+  ['onprogress',['onProgress',['../struct_recognizer_callback.html#af9a783c16f0d4266091d87fe4ffbafe0',1,'RecognizerCallback']]],
+  ['onrecognitionfinished',['onRecognitionFinished',['../struct_recognizer_callback.html#ad967799b8d761303960c12995994cb0f',1,'RecognizerCallback']]],
+  ['onrecognitionstarted',['onRecognitionStarted',['../struct_recognizer_callback.html#a04e215fb8552c3008a74d1587306fdc4',1,'RecognizerCallback']]],
+  ['onshouldstoprecognition',['onShouldStopRecognition',['../struct_recognizer_callback.html#ac30465919fb9766f7e0e53e2af99fa10',1,'RecognizerCallback']]],
+  ['onshowimage',['onShowImage',['../struct_recognizer_callback.html#ab15d7f67fb95b8ef26c4d3c6b1eae18a',1,'RecognizerCallback']]]
 ];

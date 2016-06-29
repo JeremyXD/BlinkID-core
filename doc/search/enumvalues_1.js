@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['raw_5fimage_5ftype_5fbgr',['RAW_IMAGE_TYPE_BGR',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba1b5cb43195e567b45f877bf4509650b7',1,'RecognizerImage.h']]],
-  ['raw_5fimage_5ftype_5fbgra',['RAW_IMAGE_TYPE_BGRA',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba854618050994ab857bd880699c5e846f',1,'RecognizerImage.h']]],
-  ['raw_5fimage_5ftype_5fgray',['RAW_IMAGE_TYPE_GRAY',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba1e01e275de5fac41328020458130eb5b',1,'RecognizerImage.h']]],
-  ['raw_5fimage_5ftype_5fnv21',['RAW_IMAGE_TYPE_NV21',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5ba3dccf22459eef9401d2bde4fa0882d23',1,'RecognizerImage.h']]],
-  ['recognizer_5ferror_5fstatus_5ffail',['RECOGNIZER_ERROR_STATUS_FAIL',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65aee40cf8707d29e1c3df5044c71b5452f',1,'RecognizerError.h']]],
-  ['recognizer_5ferror_5fstatus_5findex_5fout_5fof_5frange',['RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a3eb6e4f0cbd18b5ae271583259d9c9c8',1,'RecognizerError.h']]],
-  ['recognizer_5ferror_5fstatus_5finvalid_5flicense_5fkey',['RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a65274aad6041285d6fe5bc0aeed1f8ca',1,'RecognizerError.h']]],
-  ['recognizer_5ferror_5fstatus_5finvalid_5ftype',['RECOGNIZER_ERROR_STATUS_INVALID_TYPE',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a6fc775925fe0d66ab0ceb1ba60bf0bb7',1,'RecognizerError.h']]],
-  ['recognizer_5ferror_5fstatus_5fpointer_5fis_5fnull',['RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a51ea27807349a4ee3242690dd663bf50',1,'RecognizerError.h']]],
-  ['recognizer_5ferror_5fstatus_5fsuccess',['RECOGNIZER_ERROR_STATUS_SUCCESS',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef',1,'RecognizerError.h']]],
-  ['recognizer_5ferror_5fstatus_5funknown_5fkey',['RECOGNIZER_ERROR_STATUS_UNKNOWN_KEY',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a155e9140b7930bd9b06a1df1beb5bc40',1,'RecognizerError.h']]]
+  ['detection_5fstatus_5fcamera_5fat_5fangle',['DETECTION_STATUS_CAMERA_AT_ANGLE',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722ba30680ae8dbea07a8e25c5e169eb7b3be',1,'Recognizer.h']]],
+  ['detection_5fstatus_5fcamera_5ftoo_5fhigh',['DETECTION_STATUS_CAMERA_TOO_HIGH',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722ba7326d4fd6599036c94ecbb3636ddec13',1,'Recognizer.h']]],
+  ['detection_5fstatus_5fcamera_5ftoo_5fnear',['DETECTION_STATUS_CAMERA_TOO_NEAR',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722ba3a222a57cc14f56ddaec3d09103fc099',1,'Recognizer.h']]],
+  ['detection_5fstatus_5ffail',['DETECTION_STATUS_FAIL',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722baa7ef2532d4f8778af1bf4580350327aa',1,'Recognizer.h']]],
+  ['detection_5fstatus_5fpartial_5fobject',['DETECTION_STATUS_PARTIAL_OBJECT',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722ba086b5f46e06ebe16ad3c94679a8babd1',1,'Recognizer.h']]],
+  ['detection_5fstatus_5fsuccess',['DETECTION_STATUS_SUCCESS',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722babb7530ff67c1e739f2f9229f6905d06e',1,'Recognizer.h']]]
 ];

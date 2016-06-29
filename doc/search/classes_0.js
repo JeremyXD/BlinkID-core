@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['documentscanningoptions',['DocumentScanningOptions',['../struct_document_scanning_options.html',1,'']]]
+  ['bardecodersettings',['BarDecoderSettings',['../struct_bar_decoder_settings.html',1,'']]]
 ];

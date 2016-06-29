@@ -137,14 +137,354 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d15729a3ffffbe5ef324d11f44c7d88"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a0d15729a3ffffbe5ef324d11f44c7d88">recognizerResultGetMRTDSecondaryID</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **secondaryID)</td></tr>
 <tr class="memdesc:a0d15729a3ffffbe5ef324d11f44c7d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the secondary ID string from MRTD result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#a0d15729a3ffffbe5ef324d11f44c7d88">More...</a><br /></td></tr>
 <tr class="separator:a0d15729a3ffffbe5ef324d11f44c7d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a011ad38228f934611a8d68f9cd30273c"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a011ad38228f934611a8d68f9cd30273c">recognizerResultGetMRTDAlienNumber</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **alienNumber)</td></tr>
+<tr class="memdesc:a011ad38228f934611a8d68f9cd30273c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the alien number from Machine Readable Zone of Green Cards. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#a011ad38228f934611a8d68f9cd30273c">More...</a><br /></td></tr>
+<tr class="separator:a011ad38228f934611a8d68f9cd30273c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec938c2bda946a44ade85d2171929019"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#aec938c2bda946a44ade85d2171929019">recognizerResultGetMRTDApplicationReceiptNumber</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **applicationReceiptNumber)</td></tr>
+<tr class="memdesc:aec938c2bda946a44ade85d2171929019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the application receipt number from Machine Readable Zone of Green Cards. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#aec938c2bda946a44ade85d2171929019">More...</a><br /></td></tr>
+<tr class="separator:aec938c2bda946a44ade85d2171929019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade180f6c65be81d6aa7016c00f724339"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#ade180f6c65be81d6aa7016c00f724339">recognizerResultGetMRTDImmigrantCaseNumber</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **immigrantCaseNumber)</td></tr>
+<tr class="memdesc:ade180f6c65be81d6aa7016c00f724339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the immigrant case number from Machine Readable Zone of Green Cards. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#ade180f6c65be81d6aa7016c00f724339">More...</a><br /></td></tr>
+<tr class="separator:ade180f6c65be81d6aa7016c00f724339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38b262ffdbba965afa34236d4daac974"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a38b262ffdbba965afa34236d4daac974">recognizerResultGetMRTDDocumentType</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, MRTDDocumentType *mrtdType)</td></tr>
+<tr class="memdesc:a38b262ffdbba965afa34236d4daac974"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of Machine Readable Document that was scanned.  <a href="#a38b262ffdbba965afa34236d4daac974">More...</a><br /></td></tr>
+<tr class="separator:a38b262ffdbba965afa34236d4daac974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5195fb60206e54d6ad7204c048e5aec1"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a5195fb60206e54d6ad7204c048e5aec1">recognizerResultGetMRTDRawStringData</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **dst)</td></tr>
 <tr class="memdesc:a5195fb60206e54d6ad7204c048e5aec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the raw string representation of data from Machine Readable Travel Document. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example:  <a href="#a5195fb60206e54d6ad7204c048e5aec1">More...</a><br /></td></tr>
 <tr class="separator:a5195fb60206e54d6ad7204c048e5aec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9d9f3e0c0a5aafa1d82ae0082ada006"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#ac9d9f3e0c0a5aafa1d82ae0082ada006">recognizerResultIsPdf417Result</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, int *isPdf417)</td></tr>
+<tr class="memdesc:ac9d9f3e0c0a5aafa1d82ae0082ada006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns non-zero value if given result is generated by PDF417 recognizer.  <a href="#ac9d9f3e0c0a5aafa1d82ae0082ada006">More...</a><br /></td></tr>
+<tr class="separator:ac9d9f3e0c0a5aafa1d82ae0082ada006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef9263efa94e39e4ffcf689616dc3db7"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#aef9263efa94e39e4ffcf689616dc3db7">recognizerResultIsBardecoderResult</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, int *isBardecoder)</td></tr>
+<tr class="memdesc:aef9263efa94e39e4ffcf689616dc3db7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns non-zero value if given result is generated by 1D barcode recognizer (Microblink's implementation).  <a href="#aef9263efa94e39e4ffcf689616dc3db7">More...</a><br /></td></tr>
+<tr class="separator:aef9263efa94e39e4ffcf689616dc3db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9214ab6e491bd61df6c067bf3efa8c90"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a9214ab6e491bd61df6c067bf3efa8c90">recognizerResultIsZXingResult</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, int *isZXing)</td></tr>
+<tr class="memdesc:a9214ab6e491bd61df6c067bf3efa8c90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns non-zero value if given result is generated by ZXing recognizer.  <a href="#a9214ab6e491bd61df6c067bf3efa8c90">More...</a><br /></td></tr>
+<tr class="separator:a9214ab6e491bd61df6c067bf3efa8c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcc53561f572bd72f28d10e1f868d505"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#adcc53561f572bd72f28d10e1f868d505">recognizerResultGetBarcodeType</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, BarcodeType *barcodeType)</td></tr>
+<tr class="memdesc:adcc53561f572bd72f28d10e1f868d505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of barcode that was scanned.  <a href="#adcc53561f572bd72f28d10e1f868d505">More...</a><br /></td></tr>
+<tr class="separator:adcc53561f572bd72f28d10e1f868d505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d586d5fedcda45bff072bacd7d4e582"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a3d586d5fedcda45bff072bacd7d4e582">recognizerResultGetBarcodeStringData</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **dst)</td></tr>
+<tr class="memdesc:a3d586d5fedcda45bff072bacd7d4e582"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the string representation of data inside barcode result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. NOTE: Method does not work with results generated by US Driver's License recognizer (RECOGNIZER_ERROR_STATUS_INVALID_TYPE is returned). To obtain raw USDL string data, use <a class="el" href="struct_recognizer_result.html#a82b5d067fd795308027007f4bb6eee09" title="Obtains the raw string representation of data inside US Driver&#39;s license barcode. You can use the obt...">recognizerResultGetUSDLRawStringData</a> Example:  <a href="#a3d586d5fedcda45bff072bacd7d4e582">More...</a><br /></td></tr>
+<tr class="separator:a3d586d5fedcda45bff072bacd7d4e582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a799b3a6a986e05bde497995504879672"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a799b3a6a986e05bde497995504879672">recognizerResultGetBarcodeRawData</a> (<a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const void **dst, size_t *size)</td></tr>
+<tr class="memdesc:a799b3a6a986e05bde497995504879672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the raw binary barcode data.  <a href="#a799b3a6a986e05bde497995504879672">More...</a><br /></td></tr>
+<tr class="separator:a799b3a6a986e05bde497995504879672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87508941f822fa42e181ce8cc8c1bdf7"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a87508941f822fa42e181ce8cc8c1bdf7">recognizerResultIsResultUncertain</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, int *uncertain)</td></tr>
+<tr class="memdesc:a87508941f822fa42e181ce8cc8c1bdf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains whether given recognizer result is uncertain. Example:  <a href="#a87508941f822fa42e181ce8cc8c1bdf7">More...</a><br /></td></tr>
+<tr class="separator:a87508941f822fa42e181ce8cc8c1bdf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeabfef47048e99a5061f8a33eda0b93d"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#aeabfef47048e99a5061f8a33eda0b93d">recognizerResultGetBarcodeExtendedStringData</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **dst)</td></tr>
+<tr class="memdesc:aeabfef47048e99a5061f8a33eda0b93d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the string representation of extended data inside barcode result. Extended data is supported only in some barcode types (e.g. Code39). You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example:  <a href="#aeabfef47048e99a5061f8a33eda0b93d">More...</a><br /></td></tr>
+<tr class="separator:aeabfef47048e99a5061f8a33eda0b93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7671bc3e176b39642406ff0692174f09"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a7671bc3e176b39642406ff0692174f09">recognizerResultGetBarcodeExtendedRawData</a> (<a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const void **dst, size_t *size)</td></tr>
+<tr class="memdesc:a7671bc3e176b39642406ff0692174f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the raw binary extended barcode data. Extended data is supported only in some barcode types (e.g. Code39).  <a href="#a7671bc3e176b39642406ff0692174f09">More...</a><br /></td></tr>
+<tr class="separator:a7671bc3e176b39642406ff0692174f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25d290aef51dc89ec658e6cbbe2125f"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#aa25d290aef51dc89ec658e6cbbe2125f">recognizerResultIsMyKadResult</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, int *isMyKad)</td></tr>
+<tr class="memdesc:aa25d290aef51dc89ec658e6cbbe2125f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns non-zero value if given result is generated by Malaysian ID card recognizer.  <a href="#aa25d290aef51dc89ec658e6cbbe2125f">More...</a><br /></td></tr>
+<tr class="separator:aa25d290aef51dc89ec658e6cbbe2125f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8edaf9f86a3701c963376d94faf37d23"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a8edaf9f86a3701c963376d94faf37d23">recognizerResultGetMyKadFullName</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **fullName)</td></tr>
+<tr class="memdesc:a8edaf9f86a3701c963376d94faf37d23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owner full name string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#a8edaf9f86a3701c963376d94faf37d23">More...</a><br /></td></tr>
+<tr class="separator:a8edaf9f86a3701c963376d94faf37d23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a64d1a4b83e8d0669786d04ac97950"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#ae7a64d1a4b83e8d0669786d04ac97950">recognizerResultGetMyKadAddress</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **address)</td></tr>
+<tr class="memdesc:ae7a64d1a4b83e8d0669786d04ac97950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owner address string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#ae7a64d1a4b83e8d0669786d04ac97950">More...</a><br /></td></tr>
+<tr class="separator:ae7a64d1a4b83e8d0669786d04ac97950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c379b8b293d782b45c5ed6fc745b7d1"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a2c379b8b293d782b45c5ed6fc745b7d1">recognizerResultGetMyKadReligion</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **religion)</td></tr>
+<tr class="memdesc:a2c379b8b293d782b45c5ed6fc745b7d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owner religion string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#a2c379b8b293d782b45c5ed6fc745b7d1">More...</a><br /></td></tr>
+<tr class="separator:a2c379b8b293d782b45c5ed6fc745b7d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa97b635e91877bf17cb040e08fc1650e"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#aa97b635e91877bf17cb040e08fc1650e">recognizerResultGetMyKadSex</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **sex)</td></tr>
+<tr class="memdesc:aa97b635e91877bf17cb040e08fc1650e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owner sex string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#aa97b635e91877bf17cb040e08fc1650e">More...</a><br /></td></tr>
+<tr class="separator:aa97b635e91877bf17cb040e08fc1650e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaf2648d2ba51fccaa8c857add0e6c66"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#afaf2648d2ba51fccaa8c857add0e6c66">recognizerResultGetMyKadBirthDate</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **birthDate)</td></tr>
+<tr class="memdesc:afaf2648d2ba51fccaa8c857add0e6c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the owner birth date string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#afaf2648d2ba51fccaa8c857add0e6c66">More...</a><br /></td></tr>
+<tr class="separator:afaf2648d2ba51fccaa8c857add0e6c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3774f7fd612d255567e1766e23b79cc"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#ad3774f7fd612d255567e1766e23b79cc">recognizerResultGetMyKadNricNumber</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **nricNumber)</td></tr>
+<tr class="memdesc:ad3774f7fd612d255567e1766e23b79cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the NRIC number from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated.  <a href="#ad3774f7fd612d255567e1766e23b79cc">More...</a><br /></td></tr>
+<tr class="separator:ad3774f7fd612d255567e1766e23b79cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae89c7a0e570a410ac0f177f4c9a6150"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#aae89c7a0e570a410ac0f177f4c9a6150">recognizerResultIsUSDLResult</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, int *isUsdl)</td></tr>
+<tr class="memdesc:aae89c7a0e570a410ac0f177f4c9a6150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns non-zero value if given result is generated by US Driver's License recognizer.  <a href="#aae89c7a0e570a410ac0f177f4c9a6150">More...</a><br /></td></tr>
+<tr class="separator:aae89c7a0e570a410ac0f177f4c9a6150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82b5d067fd795308027007f4bb6eee09"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a82b5d067fd795308027007f4bb6eee09">recognizerResultGetUSDLRawStringData</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **dst)</td></tr>
+<tr class="memdesc:a82b5d067fd795308027007f4bb6eee09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the raw string representation of data inside US Driver's license barcode. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example:  <a href="#a82b5d067fd795308027007f4bb6eee09">More...</a><br /></td></tr>
+<tr class="separator:a82b5d067fd795308027007f4bb6eee09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a2397ba943a23d6fd59076f5b24e5c"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#a15a2397ba943a23d6fd59076f5b24e5c">recognizerResultGetUSDLRawBinaryData</a> (<a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const void **dst, size_t *size)</td></tr>
+<tr class="memdesc:a15a2397ba943a23d6fd59076f5b24e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the raw binary data inside US Driver's license barcode.  <a href="#a15a2397ba943a23d6fd59076f5b24e5c">More...</a><br /></td></tr>
+<tr class="separator:a15a2397ba943a23d6fd59076f5b24e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae175022a1f3eccbef339a08a4f515b58"><td class="memItemLeft" align="right" valign="top">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_result.html#ae175022a1f3eccbef339a08a4f515b58">recognizerResultGetUSDLField</a> (const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *result, const char **dst, const char *fieldKey)</td></tr>
+<tr class="memdesc:ae175022a1f3eccbef339a08a4f515b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the field inside US Driver's Licence. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example:  <a href="#ae175022a1f3eccbef339a08a4f515b58">More...</a><br /></td></tr>
+<tr class="separator:ae175022a1f3eccbef339a08a4f515b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> data structure. Holds the results of the recognition. </p>
 <p>You can use various getter methods to obtain results of the recognition or to inspect the type of recognizer result. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7671bc3e176b39642406ff0692174f09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetBarcodeExtendedRawData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the raw binary extended barcode data. Extended data is supported only in some barcode types (e.g. Code39). </p>
+<p>You can use the obtained byte array until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the byte array later, you must copy it. Example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">void</span>* barcodeBytes;</div><div class="line"><span class="keywordtype">size_t</span> barcodeBytesSize;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#a7671bc3e176b39642406ff0692174f09">recognizerResultGetBarcodeExtendedRawData</a>(result, &amp;barcodeBytes, &amp;barcodeBytesSize);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the barcodeBytes</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to pointer that will be set to point to internal array holding the barcode data. </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the binary data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a barcode result or barcode does not support extended data mode. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aeabfef47048e99a5061f8a33eda0b93d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetBarcodeExtendedStringData </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the string representation of extended data inside barcode result. Extended data is supported only in some barcode types (e.g. Code39). You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span>* res;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#aeabfef47048e99a5061f8a33eda0b93d">recognizerResultGetBarcodeExtendedStringData</a>(result, &amp;res);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the value res</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to char pointer that will be set to internal array holding the string data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a barcode result or barcode does not support extended data mode. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a799b3a6a986e05bde497995504879672"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetBarcodeRawData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the raw binary barcode data. </p>
+<p>You can use the obtained byte array until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the byte array later, you must copy it.</p>
+<p>NOTE: Method does not work with results generated by US Driver's License recognizer (RECOGNIZER_ERROR_STATUS_INVALID_TYPE is returned). To obtain raw USDL string data, use <a class="el" href="struct_recognizer_result.html#a15a2397ba943a23d6fd59076f5b24e5c" title="Obtains the raw binary data inside US Driver&#39;s license barcode. ">recognizerResultGetUSDLRawBinaryData</a></p>
+<p>Example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">void</span>* barcodeBytes;</div><div class="line"><span class="keywordtype">size_t</span> barcodeBytesSize;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#a799b3a6a986e05bde497995504879672">recognizerResultGetBarcodeRawData</a>(result, &amp;barcodeBytes, &amp;barcodeBytesSize);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the barcodeBytes</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to pointer that will be set to point to internal array holding the barcode data. </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the binary data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a barcode result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3d586d5fedcda45bff072bacd7d4e582"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetBarcodeStringData </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the string representation of data inside barcode result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. NOTE: Method does not work with results generated by US Driver's License recognizer (RECOGNIZER_ERROR_STATUS_INVALID_TYPE is returned). To obtain raw USDL string data, use <a class="el" href="struct_recognizer_result.html#a82b5d067fd795308027007f4bb6eee09" title="Obtains the raw string representation of data inside US Driver&#39;s license barcode. You can use the obt...">recognizerResultGetUSDLRawStringData</a> Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span>* res;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#a3d586d5fedcda45bff072bacd7d4e582">recognizerResultGetBarcodeStringData</a>(result, &amp;res);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the value res</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to char pointer that will be set to internal array holding the string data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a barcode result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adcc53561f572bd72f28d10e1f868d505"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetBarcodeType </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">BarcodeType *&#160;</td>
+          <td class="paramname"><em>barcodeType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the type of barcode that was scanned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. </td></tr>
+    <tr><td class="paramname">barcodeType</td><td>pointer to BarcodeType enum that will be set to type of barcode scanned. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not generated by barcode scanning, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a011ad38228f934611a8d68f9cd30273c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMRTDAlienNumber </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>alienNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the alien number from Machine Readable Zone of Green Cards. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">alienNumber</td><td>Pointer to char pointer that will be set to alien number string or NULL if alien number does not exist (i.e. Green Card was not scanned). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MRTD result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aec938c2bda946a44ade85d2171929019"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMRTDApplicationReceiptNumber </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>applicationReceiptNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the application receipt number from Machine Readable Zone of Green Cards. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">applicationReceiptNumber</td><td>Pointer to char pointer that will be set to application receipt number string or NULL if application receipt number does not exist (i.e. Green Card was not scanned). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MRTD result. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a1b5e68cdeadbd3b2220b2622b6598fd3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -282,6 +622,78 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
     <tr><td class="paramname">documentNumber</td><td>Pointer to char pointer that will be set to document number string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MRTD result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a38b262ffdbba965afa34236d4daac974"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMRTDDocumentType </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MRTDDocumentType *&#160;</td>
+          <td class="paramname"><em>mrtdType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the type of Machine Readable Document that was scanned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. </td></tr>
+    <tr><td class="paramname">mrtdType</td><td>pointer to MRTDDocumentType enum that will be set to type of Machine Readable Document scanned. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not generated by MRTD scanning, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ade180f6c65be81d6aa7016c00f724339"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMRTDImmigrantCaseNumber </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>immigrantCaseNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the immigrant case number from Machine Readable Zone of Green Cards. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">immigrantCaseNumber</td><td>Pointer to char pointer that will be set to immigrant case number string or NULL if immigrant case number does not exist (i.e. Green Card was not scanned). </td></tr>
   </table>
   </dd>
 </dl>
@@ -577,6 +989,380 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae7a64d1a4b83e8d0669786d04ac97950"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMyKadAddress </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>address</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the owner address string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">address</td><td>Pointer to char pointer that will be set to owner address string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MyKad result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="afaf2648d2ba51fccaa8c857add0e6c66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMyKadBirthDate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>birthDate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the owner birth date string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">birthDate</td><td>Pointer to char pointer that will be set to owner birth date string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MyKad result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8edaf9f86a3701c963376d94faf37d23"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMyKadFullName </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>fullName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the owner full name string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">fullName</td><td>Pointer to char pointer that will be set to owner full name string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MyKad result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad3774f7fd612d255567e1766e23b79cc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMyKadNricNumber </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>nricNumber</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the NRIC number from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">nricNumber</td><td>Pointer to char pointer that will be set to NRIC number. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MyKad result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a2c379b8b293d782b45c5ed6fc745b7d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMyKadReligion </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>religion</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the owner religion string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">religion</td><td>Pointer to char pointer that will be set to owner religion string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MyKad result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa97b635e91877bf17cb040e08fc1650e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetMyKadSex </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>sex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the owner sex string from MyKad result. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">sex</td><td>Pointer to char pointer that will be set to owner sex string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not a MyKad result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae175022a1f3eccbef339a08a4f515b58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetUSDLField </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fieldKey</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the field inside US Driver's Licence. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span>* res;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#ae175022a1f3eccbef339a08a4f515b58">recognizerResultGetUSDLField</a>(result, &amp;res, <a class="code" href="_recognizer_result_8h.html#a484d241b6789d08b999983bbc9aa500c">USDLFieldKeys</a>.<a class="code" href="struct_u_s_d_l_field_keys_type.html#a2a9d4c8854e596a5d11c3802dd9d36c4">kCustomerFirstName</a>);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the value res</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to char pointer that will be set to internal array holding the string data. </td></tr>
+    <tr><td class="paramname">fieldKey</td><td>ID of the field to be obtained. Available keys are found in USDLFieldKeys structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if field with given fieldId does not exist. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a15a2397ba943a23d6fd59076f5b24e5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetUSDLRawBinaryData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the raw binary data inside US Driver's license barcode. </p>
+<p>You can use the obtained byte array until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the byte array later, you must copy it. Example: </p><div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">void</span>* barcodeBytes;</div><div class="line"><span class="keywordtype">size_t</span> barcodeBytesSize;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#a15a2397ba943a23d6fd59076f5b24e5c">recognizerResultGetUSDLRawBinaryData</a>(result, &amp;barcodeBytes, &amp;barcodeBytesSize);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the barcodeBytes</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to pointer that will be set to point to internal array holding the barcode data. </td></tr>
+    <tr><td class="paramname">size</td><td>Size of the binary data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not generated by US Driver's license recognizer. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a82b5d067fd795308027007f4bb6eee09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultGetUSDLRawStringData </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains the raw string representation of data inside US Driver's license barcode. You can use the obtained string until recognizerResultDelete is called on the <a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object. If you want to use the string later, you must copy it. String is guaranteed to be zero-terminated. Example: </p>
+<div class="fragment"><div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span>* res;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#a82b5d067fd795308027007f4bb6eee09">recognizerResultGetUSDLRawStringData</a>(result, &amp;res);</div><div class="line"></div><div class="line"><span class="keywordflow">if</span> (status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a>) {</div><div class="line">    <span class="comment">// use the value res</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span>* statusString = recognizerErrorToString(status);</div><div class="line">    printf(<span class="stringliteral">&quot;Error status: %s\n&quot;</span>, statusString);</div><div class="line"></div><div class="line">    <span class="comment">// handle error</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">dst</td><td>Pointer to char pointer that will be set to internal array holding the string data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result is not generated by US Driver's license recognizer. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aef9263efa94e39e4ffcf689616dc3db7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultIsBardecoderResult </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>isBardecoder</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns non-zero value if given result is generated by 1D barcode recognizer (Microblink's implementation). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object </td></tr>
+    <tr><td class="paramname">isBardecoder</td><td>pointer to store result of the operation: non-zero if given object is generated by 1D barcode recognizer (Microblink's implementation), zero otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aeede1c473f0c59b2ea7cc7edc8d582d1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -606,6 +1392,78 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object </td></tr>
     <tr><td class="paramname">isMrtd</td><td>pointer to store result of the operation: non-zero if given object is generated by MRTD recognizer, zero otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa25d290aef51dc89ec658e6cbbe2125f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultIsMyKadResult </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>isMyKad</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns non-zero value if given result is generated by Malaysian ID card recognizer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object </td></tr>
+    <tr><td class="paramname">isMyKad</td><td>pointer to store result of the operation: non-zero if given object is generated by MyKad recognizer, zero otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac9d9f3e0c0a5aafa1d82ae0082ada006"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultIsPdf417Result </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>isPdf417</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns non-zero value if given result is generated by PDF417 recognizer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object </td></tr>
+    <tr><td class="paramname">isPdf417</td><td>pointer to store result of the operation: non-zero if given object is generated by PDF417 recognizer, zero otherwise. </td></tr>
   </table>
   </dd>
 </dl>
@@ -649,6 +1507,42 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a87508941f822fa42e181ce8cc8c1bdf7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultIsResultUncertain </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>uncertain</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtains whether given recognizer result is uncertain. Example: </p>
+<div class="fragment"><div class="line"><a class="code" href="struct_recognizer_result.html">RecognizerResult</a> *result;</div><div class="line"><span class="keywordtype">int</span> uncertain;</div><div class="line"><a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> status = <a class="code" href="struct_recognizer_result.html#a87508941f822fa42e181ce8cc8c1bdf7">recognizerResultIsResultUncertain</a>(recognizer, &amp;uncertain);</div><div class="line"><span class="keywordflow">if</span>(status == <a class="code" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a> &amp;&amp; uncertain) {</div><div class="line">    <span class="comment">// handle uncertain data</span></div><div class="line">} <span class="keywordflow">else</span> {</div><div class="line">    <span class="comment">// handle certain data</span></div><div class="line">}</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object which stores the values of the results </td></tr>
+    <tr><td class="paramname">uncertain</td><td>Pointer to an integer where result of operation will be stored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if result does not contain that information </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="adfdf1faed2072378a1aca91aa810df5b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -682,6 +1576,78 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_SUCCESS if everything is OK, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aae89c7a0e570a410ac0f177f4c9a6150"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultIsUSDLResult </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>isUsdl</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns non-zero value if given result is generated by US Driver's License recognizer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object </td></tr>
+    <tr><td class="paramname">isUsdl</td><td>pointer to store result of the operation: non-zero if given object is generated by US Driver's license recognizer, zero otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9214ab6e491bd61df6c067bf3efa8c90"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PP_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> PP_CALL recognizerResultIsZXingResult </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_result.html">RecognizerResult</a> *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>isZXing</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns non-zero value if given result is generated by ZXing recognizer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">result</td><td><a class="el" href="struct_recognizer_result.html" title="RecognizerResult data structure. Holds the results of the recognition. ">RecognizerResult</a> object </td></tr>
+    <tr><td class="paramname">isZXing</td><td>pointer to store result of the operation: non-zero if given object is generated by ZXing recognizer, zero otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation: RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter, RECOGNIZER_ERROR_STATUS_SUCCESS otherwise </dd></dl>
 
 </div>
 </div>
