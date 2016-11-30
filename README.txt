@@ -1,1 +1,1 @@
-Doxygen generated documentation is available in doc/index.html.
+Doxygen generated documentation is available in docs/index.html.
