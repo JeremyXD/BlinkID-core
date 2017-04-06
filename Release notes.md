@@ -11,6 +11,10 @@
 	- we decided to remove that support due to security reasons - since we are focusing on improving recognition quality, we do not keep up with latest security patches from libtiff, libjpeg and libpng. This made our library vulnerable. For that matter we decided not to support those formats internally at all.
 - added utility function `recognizerImageSetNewRawBuffer` which is more efficient than calling `recognizerImageDelete` and `recognizerImageCreateFromRawImage` respectively
 	- this reduces memory reallocation overhead when recognizing bunch of video frames with single `Recognizer`
+- `PPPoint` renamed to `MBPoint`
+- `PPSize` renamed to `MBSize`
+- `PPRectangle` renamed to `MBRectangle`
+- `PPDetectionStatus` renamed to `MBDetectionStatus`
 
 ## 1.4.0
 - added support for scanning US Driver's Licenses, PDF417 barcodes, QR codes, Code39 and Code128 1D barcodes and Malaysian MyKad documents
