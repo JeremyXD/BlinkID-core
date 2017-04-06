@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['documentscanningoptions',['DocumentScanningOptions',['../struct_document_scanning_options.html',1,'']]]
+  ['ikadresult',['IKadResult',['../struct_i_kad_result.html',1,'']]],
+  ['ikadsettings',['IKadSettings',['../struct_i_kad_settings.html',1,'']]]
 ];

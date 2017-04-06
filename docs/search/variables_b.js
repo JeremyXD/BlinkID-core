@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['y',['y',['../struct_p_p_point.html#ae0148e33a7eaad4f24d6b664339dea0b',1,'PPPoint::y()'],['../struct_p_p_rectangle.html#a4b865b03d397d27bf94f8c63a9afb257',1,'PPRectangle::y()']]]
+  ['passportnumber',['passportNumber',['../struct_i_kad_result.html#a153617bbe54be731926acd5c22110421',1,'IKadResult']]],
+  ['primaryid',['primaryID',['../struct_m_r_t_d_result.html#a991d7f935cbf2a0a6128618f7bbd32d4',1,'MRTDResult']]]
 ];

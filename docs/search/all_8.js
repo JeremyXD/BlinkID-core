@@ -1,13 +1,23 @@
 var searchData=
 [
-  ['pdf417settings',['Pdf417Settings',['../struct_pdf417_settings.html',1,'']]],
-  ['ppdetectionstatus',['PPDetectionStatus',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722b',1,'Recognizer.h']]],
-  ['pppoint',['PPPoint',['../struct_p_p_point.html',1,'']]],
-  ['pprectangle',['PPRectangle',['../struct_p_p_rectangle.html',1,'']]],
-  ['ppsize',['PPSize',['../struct_p_p_size.html',1,'']]],
-  ['preseta4landscape',['presetA4Landscape',['../struct_document_scanning_options.html#ad9480b0782072ab90df5de23b9682245',1,'DocumentScanningOptions']]],
-  ['preseta4portrait',['presetA4Portrait',['../struct_document_scanning_options.html#a6f6c70e97a2ad3afe9605aa5ca5e7402',1,'DocumentScanningOptions']]],
-  ['presetblinkid',['presetBlinkID',['../struct_document_scanning_options.html#ab03c661caff4d1743a41b401b306e8a0',1,'DocumentScanningOptions']]],
-  ['presetcheque',['presetCheque',['../struct_document_scanning_options.html#a2d1addc57631e0bb48f87ebbecfe8ffd',1,'DocumentScanningOptions']]],
-  ['presetid1card',['presetID1Card',['../struct_document_scanning_options.html#a772860a700eead44537c99f2c37d2dbc',1,'DocumentScanningOptions']]]
+  ['mbdetectionstatus',['MBDetectionStatus',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505',1,'MBDetectionStatus():&#160;Recognizer.h'],['../_recognizer_8h.html#a6bfbba48b5af844460d35ccad4383762',1,'MBDetectionStatus():&#160;Recognizer.h']]],
+  ['mbpoint',['MBPoint',['../struct_m_b_point.html',1,'MBPoint'],['../_recognizer_8h.html#ac95fea7d036933f1a0d9d955900ee29b',1,'MBPoint():&#160;Recognizer.h']]],
+  ['mbrectangle',['MBRectangle',['../struct_m_b_rectangle.html',1,'MBRectangle'],['../_recognizer_8h.html#a3b8aa8e150c93944361e29837c0b7037',1,'MBRectangle():&#160;Recognizer.h']]],
+  ['mbsize',['MBSize',['../struct_m_b_size.html',1,'MBSize'],['../_recognizer_8h.html#a40f8803e4142ccbd483f77397fed7166',1,'MBSize():&#160;Recognizer.h']]],
+  ['mrtd_5ftype_5fgreen_5fcard',['MRTD_TYPE_GREEN_CARD',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0a18790ef8283315f4b62d5315e89d6db5',1,'MRTDResult.h']]],
+  ['mrtd_5ftype_5fidenity_5fcard',['MRTD_TYPE_IDENITY_CARD',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0ae8ae0be770ad5c9b0b26bc0317e0e4b2',1,'MRTDResult.h']]],
+  ['mrtd_5ftype_5fpassport',['MRTD_TYPE_PASSPORT',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0a14cf4ddeae3e688a2a11c68babd79189',1,'MRTDResult.h']]],
+  ['mrtd_5ftype_5funknown',['MRTD_TYPE_UNKNOWN',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0ad6d700c554d0ba5c04315d679a0c1fb4',1,'MRTDResult.h']]],
+  ['mrtd_5ftype_5fvisa',['MRTD_TYPE_VISA',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0a0542e3f29ee1d5a28acacc8f31cce8ff',1,'MRTDResult.h']]],
+  ['mrtddocumenttype',['MRTDDocumentType',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0',1,'MRTDDocumentType():&#160;MRTDResult.h'],['../_m_r_t_d_result_8h.html#a9552463c2152e4b226ed294069303a2d',1,'MRTDDocumentType():&#160;MRTDResult.h']]],
+  ['mrtddocumenttypetostring',['mrtdDocumentTypeToString',['../_m_r_t_d_result_8h.html#a224c7ead4ffb4da728c2458d60e9fa88',1,'MRTDResult.h']]],
+  ['mrtdresult',['MRTDResult',['../struct_m_r_t_d_result.html',1,'MRTDResult'],['../_m_r_t_d_result_8h.html#a57fa1ce50a7ee127e7637c251fcfb8d2',1,'MRTDResult():&#160;MRTDResult.h']]],
+  ['mrtdresult_2eh',['MRTDResult.h',['../_m_r_t_d_result_8h.html',1,'']]],
+  ['mrtdsettings',['MRTDSettings',['../struct_m_r_t_d_settings.html',1,'MRTDSettings'],['../_m_r_t_d_settings_8h.html#a0cd56ef4203dc0b565af8576884ae91d',1,'MRTDSettings():&#160;MRTDSettings.h']]],
+  ['mrtdsettings_2eh',['MRTDSettings.h',['../_m_r_t_d_settings_8h.html',1,'']]],
+  ['mrtdverified',['mrtdVerified',['../struct_m_r_t_d_result.html#a71fa68778d487700e6f4aa753988fdf5',1,'MRTDResult']]],
+  ['mykadresult',['MyKadResult',['../struct_my_kad_result.html',1,'MyKadResult'],['../_my_kad_result_8h.html#a253ee6748b307799ded62fa458aeb3eb',1,'MyKadResult():&#160;MyKadResult.h']]],
+  ['mykadresult_2eh',['MyKadResult.h',['../_my_kad_result_8h.html',1,'']]],
+  ['mykadsettings',['MyKadSettings',['../struct_my_kad_settings.html',1,'MyKadSettings'],['../_my_kad_settings_8h.html#a42602d3a9aa19991dbcc6992baf8dbae',1,'MyKadSettings():&#160;MyKadSettings.h']]],
+  ['mykadsettings_2eh',['MyKadSettings.h',['../_my_kad_settings_8h.html',1,'']]]
 ];
