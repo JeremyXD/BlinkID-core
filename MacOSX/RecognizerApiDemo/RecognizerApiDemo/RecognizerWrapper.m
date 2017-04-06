@@ -10,7 +10,10 @@
 
 #include "RecognizerCallback.h"
 
-RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const char* ocrModelPath) {
+#import <CoreGraphics/CoreGraphics.h>
+#import <Foundation/Foundation.h>
+
+RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const char* resourcesPath) {
 
     /* all API functions return RecognizerErrorStatus indicating the success or failure of operations */
     RecognizerErrorStatus status;
@@ -21,40 +24,11 @@ RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const ch
         printf("Cannot create recognizer settings: %s\n", recognizerErrorToString(status));
         return status;
     }
-
-    /* create device info object. Do not forget to delete it after usage. */
-    status = recognizerDeviceInfoCreate(&wrapper->deviceInfo);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot create recognizer device info: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-
-    /* define that device has 4 processors (you can use any number here - this is used to define number
-     of threads library will use for its parallel operations */
-    status = recognizerDeviceInfoSetNumberOfProcessors(wrapper->deviceInfo, 4);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot set number of processors: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-
-    /* add device info object to recognizer settings object */
-    status = recognizerSettingsSetDeviceInfo(wrapper->settings, wrapper->deviceInfo);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot set device info: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-
-    /* Load OCR engine model */
-    status = recognizerLoadFileToBuffer(ocrModelPath, &wrapper->ocrModel, &wrapper->ocrModelSize);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot load ocr model file at location %s: %s\n", ocrModelPath, recognizerErrorToString(status));
-        return status;
-    }
-
-    /** Set the OCR engine model. Without OCR model, text cannot be processed */
-    status = recognizerSettingsSetZicerModel(wrapper->settings, wrapper->ocrModel, wrapper->ocrModelSize);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot set ocr model: %s\n", recognizerErrorToString(status));
+    
+    /* define location where resources will be loaded from */
+    status = recognizerSettingsSetResourcesLocation(wrapper->settings, resourcesPath);
+    if( status != RECOGNIZER_ERROR_STATUS_SUCCESS ) {
+        printf( "Failed to set resources location\n" );
         return status;
     }
 
@@ -101,21 +75,6 @@ RecognizerErrorStatus recognizerWrapperTerm(RecognizerWrapper* wrapper) {
 
     /* all API functions return RecognizerErrorStatus indicating the success or failure of operations */
     RecognizerErrorStatus status;
-
-    status = recognizerFreeFileBuffer(&wrapper->ocrModel);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot delete ocr model: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-    wrapper->ocrModel = NULL;
-
-    /* cleanup device info */
-    recognizerDeviceInfoDelete(&wrapper->deviceInfo);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot delete device info: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-    wrapper->deviceInfo = NULL;
 
     /* Cleanup recognizer settings */
     recognizerSettingsDelete(&wrapper->settings);
@@ -195,6 +154,53 @@ RecognizerErrorStatus recognizerWrapperProcessImage(const RecognizerWrapper* wra
     return RECOGNIZER_ERROR_STATUS_SUCCESS;
 }
 
+// taken from https://developer.apple.com/library/content/documentation/GraphicsImaging/Conceptual/ImageIOGuide/imageio_source/ikpg_source.html
+static CGImageRef MyCreateCGImageFromFile (NSString* path)
+{
+    // Get the URL for the pathname passed to the function.
+    NSURL *url = [NSURL fileURLWithPath:path];
+    CGImageRef        myImage = NULL;
+    CGImageSourceRef  myImageSource;
+    CFDictionaryRef   myOptions = NULL;
+    CFStringRef       myKeys[2];
+    CFTypeRef         myValues[2];
+    
+    // Set up options if you want them. The options here are for
+    // caching the image in a decoded form and for using floating-point
+    // values if the image format supports them.
+    myKeys[0] = kCGImageSourceShouldCache;
+    myValues[0] = (CFTypeRef)kCFBooleanTrue;
+    myKeys[1] = kCGImageSourceShouldAllowFloat;
+    myValues[1] = (CFTypeRef)kCFBooleanTrue;
+    // Create the dictionary
+    myOptions = CFDictionaryCreate(NULL, (const void **) myKeys,
+                                   (const void **) myValues, 2,
+                                   &kCFTypeDictionaryKeyCallBacks,
+                                   & kCFTypeDictionaryValueCallBacks);
+    // Create an image source from the URL.
+    myImageSource = CGImageSourceCreateWithURL((CFURLRef)url, myOptions);
+    CFRelease(myOptions);
+    // Make sure the image source exists before continuing
+    if (myImageSource == NULL){
+        fprintf(stderr, "Image source is NULL.");
+        return  NULL;
+    }
+    // Create an image from the first item in the image source.
+    myImage = CGImageSourceCreateImageAtIndex(myImageSource,
+                                              0,
+                                              NULL);
+    
+    CFRelease(myImageSource);
+    // Make sure the image exists before continuing
+    if (myImage == NULL){
+        fprintf(stderr, "Image not created from image source.");
+        return NULL;
+    }
+    
+    return myImage;
+}
+
+
 /**
  * Method processes image defined at path "path", using provided recognizer and recognizerCallback
  *
@@ -205,6 +211,16 @@ RecognizerErrorStatus recognizerWrapperProcessImage(const RecognizerWrapper* wra
 RecognizerErrorStatus recognizerWrapperProcessImageFromFile(const RecognizerWrapper* wrapper, const char* imagePath,
                                                             RecognizerErrorStatus (*processRecognizerResult)(const RecognizerResult* result)) {
 
+    /* first use Apple's Image I/O for loading the image from given path */
+    CGImageRef appleImage = MyCreateCGImageFromFile( [NSString stringWithUTF8String:imagePath] );
+    int image_stride = (int) CGImageGetBytesPerRow( appleImage );
+    int image_width  = (int) CGImageGetWidth( appleImage );
+    int image_height = (int) CGImageGetHeight( appleImage );
+    
+    // obtaining pixel data from CGImage: http://stackoverflow.com/a/10412292
+    CFDataRef rawData = CGDataProviderCopyData( CGImageGetDataProvider( appleImage ) );
+    const void* buffer = CFDataGetBytePtr( rawData );
+    
     /* all API functions return RecognizerErrorStatus indicating the success or failure of operations */
     RecognizerErrorStatus status;
 
@@ -215,7 +231,7 @@ RecognizerErrorStatus recognizerWrapperProcessImageFromFile(const RecognizerWrap
     RecognizerImage* image;
 
     /* create image from file */
-    status = recognizerImageCreateFromFile(&image, imagePath);
+    status = recognizerImageCreateFromRawImage(&image, buffer, image_width, image_height, image_stride, RAW_IMAGE_TYPE_BGRA);
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Cannot create image from file %s: %s\n", imagePath, recognizerErrorToString(status));
         return status;
@@ -235,6 +251,9 @@ RecognizerErrorStatus recognizerWrapperProcessImageFromFile(const RecognizerWrap
         printf("Error freeing the image: %s\n", recognizerErrorToString(status));
         return status;
     }
+    
+    CFRelease( rawData );
+    CGImageRelease( appleImage );
 
     return resultStatus;
 }
