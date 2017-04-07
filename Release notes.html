@@ -66,6 +66,12 @@
 <ul>
 <li>functions like <code>recognizerResultGetMRTDPrimaryID</code> have been removed. Please use <code>recognizerResultGetMRTDResult</code> to fill <code>MRTDResult</code> structure with all scanned data.</li>
 <li>Similar change is also for obtaining results of PDF417 barcodes, QR codes, 1D barcodes and Malaysian MyKad documents</li>
+<li>functions like <code>recognizerResultIsMRTD</code> now return value and do not use output parameters anymore
+
+<ul>
+<li>such functions could not fail, so returning status was an overkill</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>added support for scanning Malaysian iKad documents</li>

@@ -5,6 +5,8 @@
 - Major API changes:
 	- functions like `recognizerResultGetMRTDPrimaryID` have been removed. Please use `recognizerResultGetMRTDResult` to fill `MRTDResult` structure with all scanned data.
 	- Similar change is also for obtaining results of PDF417 barcodes, QR codes, 1D barcodes and Malaysian MyKad documents
+	- functions like `recognizerResultIsMRTD` now return value and do not use output parameters anymore
+		- such functions could not fail, so returning status was an overkill
 - added support for scanning Malaysian iKad documents
 - removed functions `recognizerImageCreateFromFile` and `recognizerImageCreateFromEncodedImage`
 	- the library does not support decoding TIFF, JPEG and PNG files anymore. You should use external libraries to perform image decoding and then present the raw image to BlinkID library for recognition.
