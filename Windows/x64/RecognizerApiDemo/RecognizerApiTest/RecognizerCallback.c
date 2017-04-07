@@ -23,7 +23,7 @@ void onDetectionStarted() {
     printf("Detection has started!\n");
 }
 
-int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imageSize, PPDetectionStatus ds) {
+int onDetectedObject(const MBPoint* points, const size_t pointsSize, MBSize imageSize, MBDetectionStatus ds) {
     const char* detStatusDesc = "";
 
     printf("Detection on image of size %dx%d has finished\n", imageSize.width, imageSize.height);
@@ -92,11 +92,8 @@ RecognizerCallback buildRecognizerCallback() {
     /* onRecognitionFinished is called when recognition of detected object finishes */
     cb.onRecognitionFinished = onRecognitionFinished;
 
-    /* onProgress is called in some recognizers to provide progress information. Here we are not interested in this callback. */
-    cb.onProgress = NULL;
-
-    /* onShouldStopRecognition is called multiple times from some recognizers to check if recognition should be canceled. */
-    cb.onShouldStopRecognition = NULL;
+    /* onDetectionMidway is called when part of object is already detected, but detection is not finished yet */
+    cb.onDetectionMidway = NULL;
 
     cb.onShowImage = NULL;
     

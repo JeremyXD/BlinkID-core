@@ -25,11 +25,6 @@ typedef struct RecognizerWrapper {
     /* this member will contain all recognition settings (which recognizers are enabled, etc.) */
     RecognizerSettings* settings;
 
-    /* this member will contain device information. On Mac/PC this is not usually necessary, but
-     can information about available processor cores. If more than 1 processor is available, recognizers
-     will try to use parallel algorithms as much as possible. */
-    RecognizerDeviceInfo* deviceInfo;
-
     /* this member is the global recognizer that internally contains a list of different recognizers.
      Each recognizer is an object that can perform object recognitions. For example, there are PDF417 barcode
      recognizer (Microblink's implementation for PDF417 barcodes), ZXing barcode recognizer (supports everything ZXing supports),
@@ -39,23 +34,17 @@ typedef struct RecognizerWrapper {
     /* recoginzer callback structure contains pointers to functions that will be called during the recognition process */
     RecognizerCallback recognizerCallback;
 
-    /* buffer with ocr model */
-    char* ocrModel;
-
-    /* size of the ocr model */
-    int ocrModelSize;
-
 } RecognizerWrapper;
 
 /**
  * Method initializes the recognizer wrapper with settings for MRTD scanning
  *
  *  @param wrapper      wrapper
- *  @param ocrModelPath path to ocr model. Without OCR model file, OCR cannot be performed.
+ *  @param resourcePath path to folder containing resources that are required for operation.
  *
  *  @return status of the operation
  */
-RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const char* ocrModelPath);
+RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const char* resourcePath);
 
 /**
  * Method terminates the recognizer wrapper and frees all taken resources

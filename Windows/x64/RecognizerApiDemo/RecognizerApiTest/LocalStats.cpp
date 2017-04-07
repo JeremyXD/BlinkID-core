@@ -14,37 +14,20 @@ void localStatsCreate(LocalStats* stats, const RecognizerResult* result) {
     int isMrtd = 0;
     int isValid = 0;
     
-    const char* primaryId;
-    const char* secondaryId;
-    const char* dateOfBirth;
-    const char* dateOfExpiry;
-    const char* documentCode;
-    const char* documentNumber;
-    const char* issuer;
-    const char* nationality;
-    const char* opt1;
-    const char* opt2;
-    const char* sex;
+    MRTDResult mrtdResult;
     RecognizerErrorStatus status;
 
     // check if result is indeed MRTD result
-    status = recognizerResultIsMRTDResult(result, &isMrtd);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot check result type: %s\n", recognizerErrorToString(status));
-        return;
-    }
+    isMrtd = recognizerResultIsMRTDResult(result);
+    
     if (!isMrtd) {
         printf("Result is not MRTD result!\n");
         return;
     }
 
     // check if result is valid
-    status = recognizerResultIsResultValid(result, &isValid);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot check if result is valid: %s\n", recognizerErrorToString(status));
-        return;
-    }
-
+    isValid = recognizerResultIsResultValid(result);
+  
     if (!isValid) {
         printf("MRTD result is not valid!\n");
         return;
@@ -52,39 +35,19 @@ void localStatsCreate(LocalStats* stats, const RecognizerResult* result) {
 
     stats->valid = true;
 
-    // Collect all parsed data. Ignore RECOGNIZER_ERROR_STATUS here, although it's not wrong to check it.
-    recognizerResultGetMRTDPrimaryID(result, &primaryId);
-    stats->primaryId = std::string(primaryId);
+    recognizerResultGetMRTDResult( result, &mrtdResult );
 
-    recognizerResultGetMRTDSecondaryID(result, &secondaryId);
-    stats->secondaryId = std::string(secondaryId);
-
-    recognizerResultGetMRTDDateOfBirth(result, &dateOfBirth);
-    stats->dateOfBirth = std::string(dateOfBirth);
-
-    recognizerResultGetMRTDDateOfExpiry(result, &dateOfExpiry);
-    stats->dateOfExpiry = std::string(dateOfExpiry);
-
-    recognizerResultGetMRTDDocumentCode(result, &documentCode);
-    stats->documentCode = std::string(documentCode);
-
-    recognizerResultGetMRTDDocumentNumber(result, &documentNumber);
-    stats->documentNumber = std::string(documentNumber);
-
-    recognizerResultGetMRTDIssuer(result, &issuer);
-    stats->issuer = std::string(issuer);
-
-    recognizerResultGetMRTDNationality(result, &nationality);
-    stats->nationality = std::string(nationality);
-
-    recognizerResultGetMRTDOpt1(result, &opt1);
-    stats->opt1 = std::string(opt1);
-
-    recognizerResultGetMRTDOpt2(result, &opt2);
-    stats->opt2 = std::string(opt2);
-
-    recognizerResultGetMRTDSex(result, &sex);
-    stats->sex = std::string(sex);
+    stats->primaryId = std::string(mrtdResult.primaryID);
+    stats->secondaryId = std::string( mrtdResult.secondaryID);
+    stats->dateOfBirth = std::string( mrtdResult.dateOfBirth);
+    stats->dateOfExpiry = std::string( mrtdResult.dateOfExpiry);
+    stats->documentCode = std::string( mrtdResult.documentCode);
+    stats->documentNumber = std::string( mrtdResult.documentNumber);
+    stats->issuer = std::string( mrtdResult.issuer);
+    stats->nationality = std::string( mrtdResult.nationality);
+    stats->opt1 = std::string( mrtdResult.opt1);
+    stats->opt2 = std::string( mrtdResult.opt2);
+    stats->sex = std::string( mrtdResult.sex);
 }
 
 void localStatsSave(LocalStats* stats, const std::string filename) {

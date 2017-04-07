@@ -19,7 +19,7 @@ extern "C" {
 
 void onDetectionStarted();
 
-int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imageSize, PPDetectionStatus ds);
+int onDetectedObject(const MBPoint* points, const size_t pointsSize, MBSize imageSize, MBDetectionStatus ds);
 
 void onDetectionFailed();
 

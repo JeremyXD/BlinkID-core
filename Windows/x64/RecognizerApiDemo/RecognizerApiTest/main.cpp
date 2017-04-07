@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 MicroBlink. All rights reserved.
 //
 
+#include "RecognizerWrapper.h"
+#include "GlobalStats.h"
+#include "LocalStats.h"
+
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <windows.h>
-
-#include "RecognizerWrapper.h"
-#include "GlobalStats.h"
-#include "LocalStats.h"
 
 static long long frequency = 0;
 
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
     RecognizerWrapper wrapper;
 
     /*****************************  2. Init recognizer ********************/
-    status = recognizerWrapperInit(&wrapper, "ocr_model.zzip");
+    status = recognizerWrapperInit(&wrapper, "res");
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Error initializing recognizer wrapper: %s\n\n", recognizerErrorToString(status));
         return status;
@@ -101,7 +101,7 @@ int main(int argc, char* argv[]) {
     }
 
     /*****************************  3. Perform recognition on image ********************/
-    processFolder(&wrapper, ".");
+    processFolder(&wrapper, "Images");
 
     /*****************************  4. Terminate recognizer ********************/
     status = recognizerWrapperTerm(&wrapper);

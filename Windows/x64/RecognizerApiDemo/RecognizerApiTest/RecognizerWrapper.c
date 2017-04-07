@@ -10,7 +10,10 @@
 
 #include "RecognizerCallback.h"
 
-RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const char* ocrModelPath) {
+#include <wincodec.h>
+
+
+RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const char* resourcesPath) {
 
     /* all API functions return RecognizerErrorStatus indicating the success or failure of operations */
     RecognizerErrorStatus status;
@@ -22,45 +25,11 @@ RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const ch
         return status;
     }
 
-    /* create device info object. Do not forget to delete it after usage. */
-    status = recognizerDeviceInfoCreate(&wrapper->deviceInfo);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot create recognizer device info: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-
-    /* define that device has 4 processors (you can use any number here - this is used to define number
-     of threads library will use for its parallel operations */
-    status = recognizerDeviceInfoSetNumberOfProcessors(wrapper->deviceInfo, 4);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot set number of processors: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-
-    /* add device info object to recognizer settings object */
-    status = recognizerSettingsSetDeviceInfo(wrapper->settings, wrapper->deviceInfo);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot set device info: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-
-    /* Load OCR engine model */
-    status = recognizerLoadFileToBuffer(ocrModelPath, &wrapper->ocrModel, &wrapper->ocrModelSize);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot load ocr model file at location %s: %s\n", ocrModelPath, recognizerErrorToString(status));
-        return status;
-    }
-
-    /** Set the OCR engine model. Without OCR model, text cannot be processed */
-    status = recognizerSettingsSetZicerModel(wrapper->settings, wrapper->ocrModel, wrapper->ocrModelSize);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot set ocr model: %s\n", recognizerErrorToString(status));
-        return status;
-    }
+    /* define path to resource directory */
+    recognizerSettingsSetResourcesLocation( wrapper->settings, resourcesPath );
 
     /* insert license key and licensee */
-    /* this specific key is valid until 2015-07-15 */
-    status = recognizerSettingsSetLicenseKeyForLicensee(wrapper->settings, "Add licensee here", "Add license key here");    
+    status = recognizerSettingsSetLicenseKeyForLicensee(wrapper->settings, "Add licensee here", "Add license key here");
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Cannot set license key: %s\n", recognizerErrorToString(status));
         return status;
@@ -100,23 +69,8 @@ RecognizerErrorStatus recognizerWrapperTerm(RecognizerWrapper* wrapper) {
     /* all API functions return RecognizerErrorStatus indicating the success or failure of operations */
     RecognizerErrorStatus status;
 
-    status = recognizerFreeFileBuffer(&wrapper->ocrModel);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot delete ocr model: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-    wrapper->ocrModel = NULL;
-
-    /* cleanup device info */
-    recognizerDeviceInfoDelete(&wrapper->deviceInfo);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot delete device info: %s\n", recognizerErrorToString(status));
-        return status;
-    }
-    wrapper->deviceInfo = NULL;
-
     /* Cleanup recognizer settings */
-    recognizerSettingsDelete(&wrapper->settings);
+    status = recognizerSettingsDelete(&wrapper->settings);
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         printf("Cannot delete recognizer settings: %s\n", recognizerErrorToString(status));
         return status;
@@ -212,12 +166,101 @@ RecognizerErrorStatus recognizerWrapperProcessImageFromFile(const RecognizerWrap
     /* this object will contain image being recognized */
     RecognizerImage* image;
 
+    /* required for obtaining WinAPI result codes */
+    HRESULT hr = S_OK;
+    /* Imaging factory required to create image decoder */
+    IWICImagingFactory* pImagingFactory = NULL;
+    /* WIC image decoder that will be used for decoding the image */
+    IWICBitmapDecoder *pIDecoder = NULL;
+    /* WIC image frame - result of image decoding */
+    IWICBitmapFrameDecode *pIDecoderFrame = NULL;
+    /* wide path that is required for WIC */
+    WCHAR* pathString = NULL;
+    /* Width and height of the loaded image */
+    UINT wicWidth = 0;
+    UINT wicHeight = 0;
+    /* Image format converter */
+    IWICFormatConverter *pIFormatConverter = NULL;
+    BYTE* imageBuffer = NULL;
+
     /* create image from file */
-    status = recognizerImageCreateFromFile(&image, imagePath);
-    if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-        printf("Cannot create image from file %s: %s\n", imagePath, recognizerErrorToString(status));
-        return status;
+    CoInitialize( NULL );
+
+    /* Use Windows Imaging Component API to load the image from file */
+    hr = CoCreateInstance(
+        &CLSID_WICImagingFactory,
+        NULL,
+        CLSCTX_INPROC_SERVER,
+        &IID_IWICImagingFactory,
+        ( LPVOID* )&pImagingFactory
+    );
+
+    if( FAILED( hr ) ) {
+        printf( "Failed to load Windows Image Component API\n" );
+        return -1;
     }
+
+    /* convert normal path to wide path */
+    size_t pathLen = strlen( imagePath );
+    pathString = ( WCHAR* )malloc( ( pathLen + 1 ) * sizeof( wchar_t ) );
+    mbstowcs( pathString, imagePath, pathLen );
+    pathString[ pathLen ] = 0;
+
+    hr = pImagingFactory->lpVtbl->CreateDecoderFromFilename(
+        pImagingFactory,
+        pathString,                     // Image to be decoded
+        NULL,                           // Do not prefer a particular vendor
+        GENERIC_READ,                   // Desired read access to the file
+        WICDecodeMetadataCacheOnDemand, // Cache metadata when needed
+        &pIDecoder                      // Pointer to the decoder
+    );
+
+    if( SUCCEEDED( hr ) ) {
+        hr = pIDecoder->lpVtbl->GetFrame( pIDecoder, 0, &pIDecoderFrame );
+    }
+    else {
+        printf( "Failed to create decoder from filename!\n" );
+        return -1;
+    }
+
+    hr = pImagingFactory->lpVtbl->CreateFormatConverter( pImagingFactory, &pIFormatConverter );
+    if( SUCCEEDED( hr ) ) {
+        hr = pIFormatConverter->lpVtbl->Initialize(
+            pIFormatConverter,
+            ( IWICBitmapSource * )pIDecoderFrame,                  // Input bitmap to convert
+            &GUID_WICPixelFormat32bppPBGRA,  // Destination pixel format
+            WICBitmapDitherTypeNone,         // Specified dither pattern
+            NULL,                            // Specify a particular palette 
+            0.f,                             // Alpha threshold
+            WICBitmapPaletteTypeCustom       // Palette translation type
+        );
+    }
+    else {
+        printf( "Failed to create pixel format converter\n" );
+        return -1;
+    }
+
+    /* Obtain image size */
+    hr = pIDecoderFrame->lpVtbl->GetSize( pIDecoderFrame, &wicWidth, &wicHeight );
+
+    /* Allocate buffer that will hold decoded pixels */
+    imageBuffer = ( BYTE* )malloc( wicWidth * 4 * wicHeight );
+
+    /* Now decode the image */
+    hr = pIDecoderFrame->lpVtbl->CopyPixels(
+        pIDecoderFrame,
+        NULL,
+        wicWidth * 4,
+        wicWidth * 4 * wicHeight,
+        imageBuffer
+    );
+
+    if( FAILED( hr ) ) {
+        printf( "Failed to decode image\n" );
+        return -1;
+    }
+
+    status = recognizerImageCreateFromRawImage( &image, imageBuffer, wicWidth, wicHeight, wicWidth * 4, RAW_IMAGE_TYPE_BGRA );
 
     /* perform recognition */
 
@@ -233,6 +276,12 @@ RecognizerErrorStatus recognizerWrapperProcessImageFromFile(const RecognizerWrap
         printf("Error freeing the image: %s\n", recognizerErrorToString(status));
         return status;
     }
+
+    free( pathString );
+    free( imageBuffer );
+    pIDecoderFrame->lpVtbl->Release( pIDecoderFrame );
+    pIDecoder->lpVtbl->Release( pIDecoder );
+    pImagingFactory->lpVtbl->Release( pImagingFactory );
 
     return resultStatus;
 }

@@ -1,0 +1,14 @@
+# generated files
+bin/
+
+# Visual studio Release & Debug
+Release
+Debug
+
+# Visual Studio temp files
+.vs
+
+# test files
+*.jpg.txt
+report.txt
+ocr_model.zzip
