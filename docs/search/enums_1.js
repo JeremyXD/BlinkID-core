@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ppdetectionstatus',['PPDetectionStatus',['../_recognizer_8h.html#ac28a3fc05326bad60f60b6ce5f6d722b',1,'Recognizer.h']]]
+  ['imageorientation',['ImageOrientation',['../_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9',1,'RecognizerImage.h']]]
 ];

@@ -5,6 +5,9 @@ bin/
 Release
 Debug
 
+# Visual Studio temp files
+.vs
+
 # test files
 *.jpg.txt
 report.txt

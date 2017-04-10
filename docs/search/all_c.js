@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['usdlfieldkeys',['USDLFieldKeys',['../_recognizer_result_8h.html#a484d241b6789d08b999983bbc9aa500c',1,'RecognizerResult.h']]],
-  ['usdlfieldkeystype',['USDLFieldKeysType',['../struct_u_s_d_l_field_keys_type.html',1,'']]],
-  ['usdlsettings',['UsdlSettings',['../struct_usdl_settings.html',1,'']]],
-  ['useautoscale',['useAutoScale',['../struct_usdl_settings.html#aa4792498e3762d64fbe30d629c8a99a2',1,'UsdlSettings::useAutoScale()'],['../struct_bar_decoder_settings.html#af34535f4a7a31aaf18a112782ef4ac1a',1,'BarDecoderSettings::useAutoScale()']]]
+  ['passportnumber',['passportNumber',['../struct_i_kad_result.html#a153617bbe54be731926acd5c22110421',1,'IKadResult']]],
+  ['pdf417result_2eh',['Pdf417Result.h',['../_pdf417_result_8h.html',1,'']]],
+  ['pdf417settings',['Pdf417Settings',['../struct_pdf417_settings.html',1,'Pdf417Settings'],['../_pdf417_settings_8h.html#a92b7c260f33e81db4bb43a749504cc8f',1,'Pdf417Settings():&#160;Pdf417Settings.h']]],
+  ['pdf417settings_2eh',['Pdf417Settings.h',['../_pdf417_settings_8h.html',1,'']]],
+  ['primaryid',['primaryID',['../struct_m_r_t_d_result.html#a991d7f935cbf2a0a6128618f7bbd32d4',1,'MRTDResult']]]
 ];

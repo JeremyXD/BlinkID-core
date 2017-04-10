@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nullquietzoneallowed',['nullQuietZoneAllowed',['../struct_pdf417_settings.html#a0ac9002a2d66b2fc6641d26decb490b1',1,'Pdf417Settings::nullQuietZoneAllowed()'],['../struct_usdl_settings.html#a2cf28a879136ee33d8f0e7a4638c3401',1,'UsdlSettings::nullQuietZoneAllowed()']]]
+  ['city',['city',['../struct_my_kad_result.html#ae6b675e2d4bfcf6efa70dde1a1b26e79',1,'MyKadResult']]]
 ];

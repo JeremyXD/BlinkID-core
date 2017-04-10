@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -22,13 +22,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -61,17 +61,20 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\opencv\lib\opencv_core2411d.lib;..\..\opencv\lib\opencv_highgui2411d.lib;..\..\libRecognizerApi\lib\Debug\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\opencv\lib\opencv_core2411.lib;..\..\opencv\lib\opencv_highgui2411.lib;..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>copy ..\..\opencv\bin\opencv_core2411d.dll $(OutputPath)
-copy ..\..\opencv\bin\opencv_highgui2411d.dll $(OutputPath)
-copy ..\..\libRecognizerApi\lib\Debug\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
+      <Command>copy ..\..\opencv\bin\opencv_core2411.dll $(OutputPath)
+
+copy ..\..\opencv\bin\opencv_highgui2411.dll $(OutputPath)
+
+copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+
+xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -99,9 +102,12 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>copy ..\..\opencv\bin\opencv_core2411.dll $(OutputPath)
+
 copy ..\..\opencv\bin\opencv_highgui2411.dll $(OutputPath)
+
 copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
-copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
+
+xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

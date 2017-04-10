@@ -78,7 +78,7 @@ void onDetectionStarted() {
 	printf("Detection has started!\n");
 }
 
-int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imageSize, PPDetectionStatus ds) {
+int onDetectedObject(const MBPoint* points, const size_t pointsSize, MBSize imageSize, MBDetectionStatus ds) {
 	const char* detStatusDesc = "";
 
 	printf("Detection on image of size %dx%d has finished\n", imageSize.width, imageSize.height);
@@ -150,10 +150,8 @@ RecognizerCallback buildRecognizerCallback() {
 	cb.onRecognitionStarted = onRecognitionStarted;
 	/* onRecognitionFinished is called when recognition of detected object finishes */
 	cb.onRecognitionFinished = onRecognitionFinished;
-	/* onProgress is called in some recognizers to provide progress information. Here we are not interested in this callback. */
-	cb.onProgress = NULL;
-	/* onShouldStopRecognition is called multiple times from some recognizers to check if recognition should be canceled. */
-	cb.onShouldStopRecognition = NULL;
+    /* onDetectionMidway is called when part of object is already detected, but detection is not finished yet */
+    cb.onDetectionMidway = NULL;
 	/* onShowImage is called during recognition process and allows for additional image processing */
 	cb.onShowImage = onShowImage;
 	return cb;
@@ -204,18 +202,10 @@ int main(int argc, char** argv)
 {
 	/* path will contain path to image being recognized */
 	const char* path = argv[1];
-	/* this buffer will contain OCR model */
-	char* ocrModel;
-	/* this variable will contain OCR model buffer length in bytes */
-	int ocrModelLength;
 	/* this variable will contain all recognition settings (which recognizers are enabled, etc.) */
 	RecognizerSettings* settings;
 	/* this variable will contain MRTD recognition specific settings */
 	MRTDSettings mrtdSettings;	
-	/* this variable will contain device information. On Mac/PC this is not usually necessary, but
-	can information about available processor cores. If more than 1 processor is available, recognizers
-	will try to use parallel algorithms as much as possible. */
-	RecognizerDeviceInfo* deviceInfo;
 	/* this variable is the global recognizer that internally contains a list of different recognizers.
 	Each recognizer is an object that can perform object recognitions. For example, there are PDF417 barcode
 	recognizer (Microblink's implementation for PDF417 barcodes), ZXing barcode recognizer (supports everything ZXing supports),
@@ -236,25 +226,11 @@ int main(int argc, char** argv)
 	/* this variable holds debarreled image that will be sent to scanning process */
 	RecognizerImage* debarreledImage = NULL;
 
-	/* load OCR model from file */	
-	status = recognizerLoadFileToBuffer("ocr_model.zzip", &ocrModel, &ocrModelLength);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Could not load file ocr_model.zzip" << std::endl;
-		return -1;
-	}
-
 	/* create recognizer settings object. Do not forget to delete it after usage. */
 	recognizerSettingsCreate(&settings);
 
-	/* create device info object. Do not forget to delete it after usage. */
-	recognizerDeviceInfoCreate(&deviceInfo);
-	/* define that device has 4 processors (you can use any number here - this is used to define number
-	of threads library will use for its parallel operations */
-	recognizerDeviceInfoSetNumberOfProcessors(deviceInfo, 4);
-	/* add device info object to recognizer settings object */
-	recognizerSettingsSetDeviceInfo(settings, deviceInfo);
-	/* set OCR model to recognizer settings object */
-	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
+    /* set path to resources folder */
+    status = recognizerSettingsSetResourcesLocation( settings, "res" );
 	
 	/* Enable providing the image of full document. Option detectMachineReadableZonePosition must be on in order for this to work! */
 	mrtdSettings.showFullDocument = 1; // enabled
@@ -264,7 +240,7 @@ int main(int argc, char** argv)
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
 	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");    
+	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");
 
 	/* Create BarrelDewarper object used to debarrel images. 
 		Parameters k1, k2, p1, p2, k3, scale must be set
@@ -302,7 +278,7 @@ int main(int argc, char** argv)
 	cv::namedWindow("Text window", cv::WINDOW_AUTOSIZE); // Create a window for results.	
 
 	/* variable for storing user key presses */
-	char keystroke;
+    char keystroke = '\0';
 
 	do {
 		/* image that will be displayed on the text console window */
@@ -312,7 +288,12 @@ int main(int argc, char** argv)
 		cv::Mat frame;
 
 		/* obtain current frame from camera */
-		camera >> frame;			
+		camera >> frame;
+
+        if( frame.cols == 0 || frame.rows == 0 ) {
+            printf( "Skipping empty frame\n" );
+            continue;
+        }
 
 		/* create the recognizer image object from video capture frame so we can debarrel it*/
 		status = recognizerImageCreateFromRawImage(&image, frame.data, frame.cols, frame.rows, frame.step, frame.channels() == 3 ? RAW_IMAGE_TYPE_BGR : RAW_IMAGE_TYPE_BGRA);
@@ -341,60 +322,30 @@ int main(int argc, char** argv)
 			recognizerResultListGetResultAtIndex(resultList, 0u, &result);
 
 
-			int isMrtd = 0;
 			/* check if it is a MRTD result */
-			status = recognizerResultIsMRTDResult(result, &isMrtd);
-			if (status == RECOGNIZER_ERROR_STATUS_SUCCESS && isMrtd) {
-				int valid = 0;
-				/* check if MRTD result is valid */
-				status = recognizerResultIsResultValid(result, &valid);
-				if (status == RECOGNIZER_ERROR_STATUS_SUCCESS && valid) {
+			if ( recognizerResultIsMRTDResult( result ) ) {
+				if ( recognizerResultIsResultValid( result ) ) {
 					/* valid result has been found so set flag to true */
 					foundResult = 1;
 
-					const char* doe;
-					const char* issuer;
-					const char* docNum;
-					const char* docCode;
-					const char* dob;
-					const char* primID;
-					const char* secID;
-					const char* sex;
-					const char* nat;
-					const char* opt1;
-					const char* opt2;
-					/* obtain all fields from result */
-					recognizerResultGetMRTDDateOfExpiry(result, &doe);
-					recognizerResultGetMRTDIssuer(result, &issuer);
-					recognizerResultGetMRTDDocumentNumber(result, &docNum);
-					recognizerResultGetMRTDDocumentCode(result, &docCode);
-					recognizerResultGetMRTDDateOfBirth(result, &dob);
-					recognizerResultGetMRTDPrimaryID(result, &primID);
-					recognizerResultGetMRTDSecondaryID(result, &secID);
-					recognizerResultGetMRTDSex(result, &sex);
-					recognizerResultGetMRTDNationality(result, &nat);
-					recognizerResultGetMRTDOpt1(result, &opt1);
-					recognizerResultGetMRTDOpt2(result, &opt2);
-
-					const char* raw;
-					/* obtain raw lines from result */
-					recognizerResultGetMRTDRawStringData(result, &raw);
+                    MRTDResult mrtdResult;
+                    recognizerResultGetMRTDResult( result, &mrtdResult );
 
 					/* display results on console window image using OpenCV */
 					cv::putText(console, "SUCCESS", cv::Point(200, 100), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(20, 250, 20), 1, CV_AA, false);
 
-					cv::putText(console, primID, cv::Point(200, 145), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
-					cv::putText(console, secID, cv::Point(200, 160), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
-					cv::putText(console, strcmp("M", sex) == 0 ? "MALE" : "FEMALE", cv::Point(200, 175), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
-					cv::putText(console, dateString(dob), cv::Point(200, 190), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
-					cv::putText(console, nat, cv::Point(200, 205), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.primaryID, cv::Point(200, 145), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.secondaryID, cv::Point(200, 160), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
+					cv::putText(console, strcmp("M", mrtdResult.sex) == 0 ? "MALE" : "FEMALE", cv::Point(200, 175), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
+					cv::putText(console, dateString(mrtdResult.dateOfBirth), cv::Point(200, 190), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.nationality, cv::Point(200, 205), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(220, 220, 220), 1, CV_AA, false);
 
-					cv::putText(console, docCode, cv::Point(200, 235), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
-					cv::putText(console, docNum, cv::Point(200, 250), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
-					cv::putText(console, dateString(doe, 1), cv::Point(200, 265), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
-					cv::putText(console, issuer, cv::Point(200, 280), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
-					cv::putText(console, opt1, cv::Point(200, 295), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
-					cv::putText(console, opt2, cv::Point(200, 310), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.documentCode, cv::Point(200, 235), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.documentNumber, cv::Point(200, 250), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, dateString(mrtdResult.dateOfExpiry, 1), cv::Point(200, 265), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.issuer, cv::Point(200, 280), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.opt1, cv::Point(200, 295), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, mrtdResult.opt2, cv::Point(200, 310), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
 
 					cv::putText(console, "Press SPACE to reset scanning", cv::Point(200, 345), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(20, 20, 220), 1, CV_AA, false);
 				}
@@ -435,10 +386,8 @@ int main(int argc, char** argv)
 	} while (keystroke != KEY_ESCAPE); // exit loop if user presses ESCAPE
 
 	/* cleanup memory */	
-	recognizerDeviceInfoDelete(&deviceInfo);
 	recognizerSettingsDelete(&settings);
 	recognizerDelete(&recognizer);		
-	recognizerFreeFileBuffer(&ocrModel);	
 	recognizerImageDelete(&debarreledImage);
 	recognizerBarrelDewarperDelete(&barrelDewarper);
 

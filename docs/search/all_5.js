@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['mrtd_5ftype_5fgreen_5fcard',['MRTD_TYPE_GREEN_CARD',['../_recognizer_result_8h.html#ae8d9c4bd727ce44262b25e3a1c25dcfaa18790ef8283315f4b62d5315e89d6db5',1,'RecognizerResult.h']]],
-  ['mrtd_5ftype_5fidenity_5fcard',['MRTD_TYPE_IDENITY_CARD',['../_recognizer_result_8h.html#ae8d9c4bd727ce44262b25e3a1c25dcfaae8ae0be770ad5c9b0b26bc0317e0e4b2',1,'RecognizerResult.h']]],
-  ['mrtd_5ftype_5fpassport',['MRTD_TYPE_PASSPORT',['../_recognizer_result_8h.html#ae8d9c4bd727ce44262b25e3a1c25dcfaa14cf4ddeae3e688a2a11c68babd79189',1,'RecognizerResult.h']]],
-  ['mrtd_5ftype_5funknown',['MRTD_TYPE_UNKNOWN',['../_recognizer_result_8h.html#ae8d9c4bd727ce44262b25e3a1c25dcfaad6d700c554d0ba5c04315d679a0c1fb4',1,'RecognizerResult.h']]],
-  ['mrtd_5ftype_5fvisa',['MRTD_TYPE_VISA',['../_recognizer_result_8h.html#ae8d9c4bd727ce44262b25e3a1c25dcfaa0542e3f29ee1d5a28acacc8f31cce8ff',1,'RecognizerResult.h']]],
-  ['mrtdsettings',['MRTDSettings',['../struct_m_r_t_d_settings.html',1,'']]],
-  ['mykadsettings',['MyKadSettings',['../struct_my_kad_settings.html',1,'']]]
+  ['fulladdress',['fullAddress',['../struct_my_kad_result.html#a6c5bf42061d8f7634982b5e75217f21e',1,'MyKadResult']]],
+  ['fulldocumentbuffersize',['fullDocumentBufferSize',['../struct_m_r_t_d_result.html#a9de24cb7290332e0aac51370f995fb1f',1,'MRTDResult']]],
+  ['fulldocumentjpegbuffer',['fullDocumentJpegBuffer',['../struct_m_r_t_d_result.html#a8790acf793c02927d4053508afd189ae',1,'MRTDResult']]],
+  ['fullname',['fullName',['../struct_my_kad_result.html#ac798a1863c414ac7cf1dc7ddb80a3a39',1,'MyKadResult']]]
 ];

@@ -1,7 +1,8 @@
+#include <RecognizerApi.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "RecognizerApi.h"
+#include <jpeglib.h>
 
 /* specifier for correct printf of size_t on 32-bit and 64-bit architectures */
 #if defined(_MSC_VER)
@@ -18,7 +19,7 @@ void onDetectionStarted() {
 	printf("Detection has started!\n");
 }
 
-int onDetectedObject(const PPPoint* points, const size_t pointsSize, PPSize imageSize, PPDetectionStatus ds) {
+int onDetectedObject(const MBPoint* points, const size_t pointsSize, MBSize imageSize, MBDetectionStatus ds) {
 	const char* detStatusDesc = "";
 
 	printf("Detection on image of size %dx%d has finished\n", imageSize.width, imageSize.height);
@@ -77,10 +78,8 @@ RecognizerCallback buildRecognizerCallback() {
 	cb.onRecognitionStarted = onRecognitionStarted;
 	/* onRecognitionFinished is called when recognition of detected object finishes */
 	cb.onRecognitionFinished = onRecognitionFinished;
-	/* onProgress is called in some recognizers to provide progress information. Here we are not interested in this callback. */
-	cb.onProgress = NULL;
-	/* onShouldStopRecognition is called multiple times from some recognizers to check if recognition should be canceled. */
-	cb.onShouldStopRecognition = NULL;
+	/* onDetectionMidway is called when some part of object is detected, but detection is not finished yet */
+    cb.onDetectionMidway = NULL;
 	/* onShowImage is called during recognition process and allows for additional image processing */
 	cb.onShowImage = NULL;
 	return cb;
@@ -89,18 +88,10 @@ RecognizerCallback buildRecognizerCallback() {
 int main(int argc, char* argv[]) {
 	/* path will contain path to image being recognized */
 	const char* path = argv[1];
-	/* this buffer will contain OCR model */
-	char* ocrModel;
-	/* this variable will contain OCR model buffer length in bytes */
-	int ocrModelLength;
 	/* this variable will contain all recognition settings (which recognizers are enabled, etc.) */
 	RecognizerSettings* settings;
 	/* this variable will contain MRTD recognition specific settings */
 	MRTDSettings mrtdSettings;
-	/* this variable will contain device information. On Mac/PC this is not usually necessary, but
-	can information about available processor cores. If more than 1 processor is available, recognizers
-	will try to use parallel algorithms as much as possible. */
-	RecognizerDeviceInfo* deviceInfo;
 	/* this variable is the global recognizer that internally contains a list of different recognizers.
 	Each recognizer is an object that can perform object recognitions. For example, there are PDF417 barcode
 	recognizer (Microblink's implementation for PDF417 barcodes), ZXing barcode recognizer (supports everything ZXing supports),
@@ -116,31 +107,19 @@ int main(int argc, char* argv[]) {
 	size_t numResults;
 	/* this variable holds the image sent for image scanning process*/
 	RecognizerImage* image;
+	/* buffer that will contain the decompressed image */
+	unsigned char* decompressedBuffer = NULL;
 
 	if (argc < 2) {
 		printf("usage %s <img_path>\n", argv[0]);
 		return -1;
 	}
 
-	/* load OCR model from file */
-	status = recognizerLoadFileToBuffer("../libRecognizerApi/res/ocr_model.zzip", &ocrModel, &ocrModelLength);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		printf("Could not load file ocr_model.zzip\n");
-		return -1;
-	}
-
 	/* create recognizer settings object. Do not forget to delete it after usage. */
 	recognizerSettingsCreate(&settings);
 
-	/* create device info object. Do not forget to delete it after usage. */
-	recognizerDeviceInfoCreate(&deviceInfo);
-	/* define that device has 4 processors (you can use any number here - this is used to define number
-	of threads library will use for its parallel operations */
-	recognizerDeviceInfoSetNumberOfProcessors(deviceInfo, 4);
-	/* add device info object to recognizer settings object */
-	recognizerSettingsSetDeviceInfo(settings, deviceInfo);
-	/* set OCR model to recognizer settings object */
-	recognizerSettingsSetZicerModel(settings, ocrModel, ocrModelLength);
+	/* define location where resources will be loaded from */
+    recognizerSettingsSetResourcesLocation(settings, "../libRecognizerApi/res");
 	
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
@@ -148,7 +127,7 @@ int main(int argc, char* argv[]) {
 	/* insert license key and licensee */	
 	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");
 	/* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
-	recognizerSettingsSetLicenseKey(settings, "Add license key here"); 
+	recognizerSettingsSetLicenseKey(settings, "Add license key here");
         
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);
@@ -161,11 +140,65 @@ int main(int argc, char* argv[]) {
 	/* build recognizer callback structure */
 	recognizerCallback = buildRecognizerCallback();
 
-	/* create the recognizer image object from video capture frame so we can send it to recognizer */
-	status = recognizerImageCreateFromFile(&image, path);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		printf("Error creating image from frame: %s\n", recognizerErrorToString(status));
-		return -1;
+	/* read the image using libjpeg */
+	/* code based on example from Github: https://github.com/ellzey/libjpeg/blob/master/example.c ) */
+	{
+		struct jpeg_decompress_struct cinfo;
+		struct jpeg_error_mgr jerr;
+		/* source image file */
+		FILE * infile;
+		JSAMPARRAY buffer;	/* Output row buffer */
+		int row_stride;		/* physical row width in output buffer */
+		unsigned char r,g,b;
+		unsigned char* dummy;
+
+		if ((infile = fopen(argv[1], "rb")) == NULL) {
+			fprintf(stderr, "can't open %s\n", argv[1]);
+			return -1;
+		}
+
+		cinfo.err = jpeg_std_error(&jerr);
+		jpeg_create_decompress(&cinfo);
+		jpeg_stdio_src(&cinfo, infile);
+		(void) jpeg_read_header(&cinfo, TRUE);
+		(void) jpeg_start_decompress(&cinfo);
+		
+		decompressedBuffer = ( unsigned char* )malloc( cinfo.output_width * cinfo.output_height * 3 );
+		dummy = decompressedBuffer;
+
+		row_stride = cinfo.output_width * cinfo.output_components;
+		buffer = (*cinfo.mem->alloc_sarray)
+			((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
+
+		while (cinfo.output_scanline < cinfo.output_height) {
+			int x; /* for loop counter (this example is C89-compatible) */
+
+			(void) jpeg_read_scanlines(&cinfo, buffer, 1);
+
+			/* RecognizerAPI accepts BGR and BGRA images, and libjpeg returns RGB order, so we need to revert the pixel order */
+
+		    for (x = 0; x < cinfo.output_width; x++) {
+		     	r = buffer[0][cinfo.output_components * x];
+		      	if (cinfo.output_components > 2) {
+		        	g = buffer[0][cinfo.output_components * x + 1];
+		        	b = buffer[0][cinfo.output_components * x + 2];
+		      	} else {
+		        	g = r;
+		        	b = r;
+		      	}
+		      *(dummy++) = b;
+		      *(dummy++) = g;
+		      *(dummy++) = r;
+		    }
+		}
+
+		(void) jpeg_finish_decompress(&cinfo);
+
+		/* now create RecognizerImage */
+		recognizerImageCreateFromRawImage( &image, decompressedBuffer, cinfo.output_width, cinfo.output_height, row_stride, RAW_IMAGE_TYPE_BGR );
+
+		jpeg_destroy_decompress(&cinfo);
+		fclose(infile);
 	}
 
 	/* if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
@@ -188,66 +221,36 @@ int main(int argc, char* argv[]) {
 	/* obtain the first (and only) result from list */
 	recognizerResultListGetResultAtIndex(resultList, 0u, &result);
 
+    if( recognizerResultIsMRTDResult( result ) ) {
+        if( recognizerResultIsResultValid( result ) ) {
+            MRTDResult mrtdResult;
+            recognizerResultGetMRTDResult( result, &mrtdResult );
 
-	int isMrtd = 0;
-	/* check if it is a MRTD result */
-	status = recognizerResultIsMRTDResult(result, &isMrtd);
-	if (status == RECOGNIZER_ERROR_STATUS_SUCCESS && isMrtd) {
-		int valid = 0;
-		/* check if MRTD result is valid */
-		status = recognizerResultIsResultValid(result, &valid);
-		if (status == RECOGNIZER_ERROR_STATUS_SUCCESS && valid) {
-			const char* doe;
-			const char* issuer;
-			const char* docNum;
-			const char* docCode;
-			const char* dob;
-			const char* primID;
-			const char* secID;
-			const char* sex;
-			const char* nat;
-			const char* opt1;
-			const char* opt2;
-			/* obtain all fields from result */
-			recognizerResultGetMRTDDateOfExpiry(result, &doe);
-			recognizerResultGetMRTDIssuer(result, &issuer);
-			recognizerResultGetMRTDDocumentNumber(result, &docNum);
-			recognizerResultGetMRTDDocumentCode(result, &docCode);
-			recognizerResultGetMRTDDateOfBirth(result, &dob);
-			recognizerResultGetMRTDPrimaryID(result, &primID);
-			recognizerResultGetMRTDSecondaryID(result, &secID);
-			recognizerResultGetMRTDSex(result, &sex);
-			recognizerResultGetMRTDNationality(result, &nat);
-			recognizerResultGetMRTDOpt1(result, &opt1);
-			recognizerResultGetMRTDOpt2(result, &opt2);
-			/* display obtained fields */
-			printf("ID is of type %s issued by %s.\nExpiration date is %s.\n", docCode, issuer, doe);
-			printf("ID number is %s.\n", docNum);
-			printf("ID holder is %s %s.\nDate of birth is %s.\nSex is %s.\n", primID, secID, dob, sex);
-			printf("Nationality is %s.\n", nat);
-			printf("Optional fields are:\nOPT1: %s\nOPT2: %s\n", opt1, opt2);
+            /* display obtained fields */
+            printf( "ID is of type %s issued by %s.\nExpiration date is %s.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry );
+            printf( "ID number is %s.\n", mrtdResult.documentNumber );
+            printf( "ID holder is %s %s.\nDate of birth is %s.\nSex is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.dateOfBirth, mrtdResult.sex );
+            printf( "Nationality is %s.\n", mrtdResult.nationality );
+            printf( "Optional fields are:\nOPT1: %s\nOPT2: %s\n", mrtdResult.opt1, mrtdResult.opt2 );
 
-			const char* raw;
-			/* obtain raw lines from result */
-			recognizerResultGetMRTDRawStringData(result, &raw);
-			printf("Raw result lines:\n%s\n", raw);
-		}
-		else {
-			printf("Invalid result!\n");
-		}
-	}
-	else {
-		/* this should never happen as there is only MRTD recognizer configured */
-		printf("Invalid result type!\n");
-	}
+            printf( "Raw result lines:\n%s\n", mrtdResult.rawMRZString );
+        }
+        else {
+            printf( "Invalid result!\n" );
+        }
+    }
+    else {
+        /* this should never happen as there is only MRTD recognizer configured */
+        printf( "Invalid result type!\n" );
+    }
 
 	/* cleanup memory */	
 	recognizerImageDelete(&image);
 	recognizerResultListDelete(&resultList);
-	recognizerDeviceInfoDelete(&deviceInfo);
 	recognizerSettingsDelete(&settings);
 	recognizerDelete(&recognizer);
-	recognizerFreeFileBuffer(&ocrModel);
+
+	free( decompressedBuffer );
 
 	return 0;
 }

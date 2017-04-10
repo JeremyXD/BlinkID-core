@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['ondetectedobject',['onDetectedObject',['../struct_recognizer_callback.html#a437e21c7b06294e5edab552ed5699f3d',1,'RecognizerCallback']]],
-  ['ondetectionfailed',['onDetectionFailed',['../struct_recognizer_callback.html#adf941d8713483925f4cd7ae221a67fe4',1,'RecognizerCallback']]],
-  ['ondetectionstarted',['onDetectionStarted',['../struct_recognizer_callback.html#aeb8ed90597e291f723b6875aa87890e3',1,'RecognizerCallback']]],
-  ['onprogress',['onProgress',['../struct_recognizer_callback.html#af9a783c16f0d4266091d87fe4ffbafe0',1,'RecognizerCallback']]],
-  ['onrecognitionfinished',['onRecognitionFinished',['../struct_recognizer_callback.html#ad967799b8d761303960c12995994cb0f',1,'RecognizerCallback']]],
-  ['onrecognitionstarted',['onRecognitionStarted',['../struct_recognizer_callback.html#a04e215fb8552c3008a74d1587306fdc4',1,'RecognizerCallback']]],
-  ['onshouldstoprecognition',['onShouldStopRecognition',['../struct_recognizer_callback.html#ac30465919fb9766f7e0e53e2af99fa10',1,'RecognizerCallback']]],
-  ['onshowimage',['onShowImage',['../struct_recognizer_callback.html#ab15d7f67fb95b8ef26c4d3c6b1eae18a',1,'RecognizerCallback']]]
+  ['dateofbirth',['dateOfBirth',['../struct_i_kad_result.html#a897ee0841f817cacbba81e98fe3e17b9',1,'IKadResult::dateOfBirth()'],['../struct_my_kad_result.html#a9d4e2a52505146d6d01e80b50d15cc39',1,'MyKadResult::dateOfBirth()'],['../struct_m_r_t_d_result.html#a06aea14b399dc33ecde4e95eca2a3c16',1,'MRTDResult::dateOfBirth()']]],
+  ['dateofexpiry',['dateOfExpiry',['../struct_i_kad_result.html#a8dd1b652850af74ed9a9c58061389951',1,'IKadResult::dateOfExpiry()'],['../struct_m_r_t_d_result.html#a355b1655a2d56719bed60f6c40ce668e',1,'MRTDResult::dateOfExpiry()']]],
+  ['documentcode',['documentCode',['../struct_m_r_t_d_result.html#a48567dd36c8e0b0f50d78b9e3dea3ff9',1,'MRTDResult']]],
+  ['documentnumber',['documentNumber',['../struct_m_r_t_d_result.html#a0a6e232e4cf7c5554941095158766de7',1,'MRTDResult']]],
+  ['documenttype',['documentType',['../struct_m_r_t_d_result.html#a77b8f4ceb62b6cc9fe9d5360fb7334f5',1,'MRTDResult']]]
 ];

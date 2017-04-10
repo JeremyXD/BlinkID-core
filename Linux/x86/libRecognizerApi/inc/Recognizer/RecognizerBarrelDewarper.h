@@ -28,7 +28,12 @@ extern "C" {
 
   RecognizerBarrelDewarper is an object that can be initialized with barrel undistortion parameters and then used later for quickly undistort images.
   */
-typedef PP_EXPORTED_TYPE struct RecognizerBarrelDewarper RecognizerBarrelDewarper;
+struct RecognizerBarrelDewarper;
+
+/**
+ * @brief Typedef for RecognizerBarrelDewarper structure.
+ */
+typedef MB_EXPORTED_TYPE struct RecognizerBarrelDewarper RecognizerBarrelDewarper;
 
 /**
   @memberof RecognizerBarrelDewarper
@@ -53,7 +58,7 @@ typedef PP_EXPORTED_TYPE struct RecognizerBarrelDewarper RecognizerBarrelDewarpe
   @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
                              Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperCreate(RecognizerBarrelDewarper** dewarper,
+MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperCreate(RecognizerBarrelDewarper** dewarper,
             const float k1, const float k2, const float p1, const float p2, const float k3, const float scale);
 
 /**
@@ -64,7 +69,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperCreate(RecognizerBa
   @return   errorStatus     Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS. If NULL pointer was given,
                                 status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperDelete(RecognizerBarrelDewarper** dewarper);
+MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperDelete(RecognizerBarrelDewarper** dewarper);
 
 /**
   @memberof RecognizerBarrelDewarper
@@ -79,7 +84,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperDelete(RecognizerBa
                              Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
   @see RecognizerImage to see details on supported image formats.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerBarrelDewarperDewarp(RecognizerBarrelDewarper* dewarper, const RecognizerImage* input, RecognizerImage** output);
+MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperDewarp(RecognizerBarrelDewarper* dewarper, const RecognizerImage* input, RecognizerImage** output);
 
 #ifdef __cplusplus
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ocrqualitysettings',['OcrQualitySettings',['../struct_ocr_quality_settings.html',1,'']]]
+  ['pdf417settings',['Pdf417Settings',['../struct_pdf417_settings.html',1,'']]]
 ];

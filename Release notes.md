@@ -1,5 +1,31 @@
 # Release notes
 
+## 2.0.0
+- new API for obtaining scanning results - refer to documentation and code samples for more information.
+- Major API changes:
+	- functions like `recognizerResultGetMRTDPrimaryID` have been removed. Please use `recognizerResultGetMRTDResult` to fill `MRTDResult` structure with all scanned data.
+	- Similar change is also for obtaining results of PDF417 barcodes, QR codes, 1D barcodes and Malaysian MyKad documents
+	- functions like `recognizerResultIsMRTD` now return value and do not use output parameters anymore
+		- such functions could not fail, so returning status was an overkill
+- added support for scanning Malaysian iKad documents
+- removed functions `recognizerImageCreateFromFile` and `recognizerImageCreateFromEncodedImage`
+	- the library does not support decoding TIFF, JPEG and PNG files anymore. You should use external libraries to perform image decoding and then present the raw image to BlinkID library for recognition.
+	- we decided to remove that support due to security reasons - since we are focusing on improving recognition quality, we do not keep up with latest security patches from libtiff, libjpeg and libpng. This made our library vulnerable. For that matter we decided not to support those formats internally at all.
+- added utility function `recognizerImageSetNewRawBuffer` which is more efficient than calling `recognizerImageDelete` and `recognizerImageCreateFromRawImage` respectively
+	- this reduces memory reallocation overhead when recognizing bunch of video frames with single `Recognizer`
+- `PPPoint` renamed to `MBPoint`
+- `PPSize` renamed to `MBSize`
+- `PPRectangle` renamed to `MBRectangle`
+- `PPDetectionStatus` renamed to `MBDetectionStatus`
+- added support for returning MyKad address parts
+- added support for performing OCR of non-standard Machine Readable Zones
+	- only OCR will be performed, data will not be extracted
+- added support for parsing Machine Readable Zone which does not have correct check digits
+	- there is no guarantee that returned data will be correct in that case
+- added support for returning JPEG-encoded images of Machine Readable Zone and MRZ document
+	- the encoded buffer is part of `MRTDResult` structure and available only if asked for (not by default)
+	- the same images can still be retrieved in raw form as before via `showImage` callback function
+
 ## 1.4.0
 - added support for scanning US Driver's Licenses, PDF417 barcodes, QR codes, Code39 and Code128 1D barcodes and Malaysian MyKad documents
 - added support for scanning Green Cards' Machine Readable Zone
