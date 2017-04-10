@@ -34,7 +34,12 @@ extern "C" {
  * Results are sorted by quality - the best result is the first (index 0). Note that there is no
  * defined order for results of same quality.
  **/
-typedef PP_EXPORTED_TYPE struct RecognizerResultList RecognizerResultList;
+struct RecognizerResultList;
+
+/**
+ * @brief Typedef for RecognizerResultList structure.
+ */
+typedef MB_EXPORTED_TYPE struct RecognizerResultList RecognizerResultList;
 
 /**
   @memberof RecognizerResultList
@@ -51,7 +56,7 @@ typedef PP_EXPORTED_TYPE struct RecognizerResultList RecognizerResultList;
   @return    errorStatus    status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
                              Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if any of inputs is NULL.
 */
-PP_API RecognizerErrorStatus PP_CALL recognizerResultListGetNumOfResults(const RecognizerResultList* resultList, size_t* numElements);
+MB_API RecognizerErrorStatus MB_CALL recognizerResultListGetNumOfResults(const RecognizerResultList* resultList, size_t* numElements);
 
 /**
   * @memberof RecognizerResultList
@@ -74,7 +79,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerResultListGetNumOfResults(const R
   *                             RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL will be returned. If index is negative or out of range, RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE
   *                             will be returned.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerResultListGetResultAtIndex(const RecognizerResultList* resultList, size_t index, RecognizerResult** result);
+MB_API RecognizerErrorStatus MB_CALL recognizerResultListGetResultAtIndex(const RecognizerResultList* resultList, size_t index, RecognizerResult** result);
 
 /**
  @memberof RecognizerResultList
@@ -89,7 +94,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerResultListGetResultAtIndex(const 
  @param     resultList    Double Pointer to the RecognizerResultList object which is to be deleted
  @return    errorStatus status of the operation. If resultList is NULL, return RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise return RECOGNIZER_ERROR_STATUS_SUCCESS.
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerResultListDelete(RecognizerResultList** resultList);
+MB_API RecognizerErrorStatus MB_CALL recognizerResultListDelete(RecognizerResultList** resultList);
 
 #ifdef __cplusplus
 }

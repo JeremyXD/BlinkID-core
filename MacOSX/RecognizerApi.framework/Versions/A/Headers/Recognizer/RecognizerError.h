@@ -24,7 +24,7 @@ extern "C" {
  @enum RecognizerErrorStatus
  @brief Enumeration of all possible error statuses
  */
-typedef PP_EXPORTED_TYPE enum RecognizerErrorStatus {
+enum RecognizerErrorStatus {
     /** Operation was successfully completed */
     RECOGNIZER_ERROR_STATUS_SUCCESS = 0,
     
@@ -46,16 +46,20 @@ typedef PP_EXPORTED_TYPE enum RecognizerErrorStatus {
     /** Index is out of range */
     RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE = 6
     
-} RecognizerErrorStatus;
+};
 
 /**
- @memberof RecognizerErrorStatus
+ * @brief Typedef for RecognizerErrorStatus enum.
+ */
+typedef MB_EXPORTED_TYPE enum RecognizerErrorStatus RecognizerErrorStatus;
+
+/**
  Helper method for fetching string representation of the error status. Usually used in debugging.
  
  @param errorStatus   status for which the string representation is required
  @return null terminated string for required status
  */
-PP_API const char* PP_CALL recognizerErrorToString(RecognizerErrorStatus errorStatus);
+MB_API const char* MB_CALL recognizerErrorToString(RecognizerErrorStatus errorStatus);
 
 #ifdef __cplusplus
 }

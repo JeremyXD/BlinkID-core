@@ -77,10 +77,78 @@ Data Fields</h2></td></tr>
 <tr class="separator:a39a1c3edf60d7629751f03824ed3c014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a000b337adbf532284e773405d396b645"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#a000b337adbf532284e773405d396b645">showFullDocument</a></td></tr>
 <tr class="separator:a000b337adbf532284e773405d396b645"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace953b5338f16956ad07b9c162cbcd65"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#ace953b5338f16956ad07b9c162cbcd65">encodeFullDocumentImage</a></td></tr>
+<tr class="separator:ace953b5338f16956ad07b9c162cbcd65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a855078ff8dc59d67ccd557ade755f1ee"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#a855078ff8dc59d67ccd557ade755f1ee">encodeMachineReadableZoneImage</a></td></tr>
+<tr class="separator:a855078ff8dc59d67ccd557ade755f1ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7a1b913fe473b25788dae9575cf034"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#a6f7a1b913fe473b25788dae9575cf034">allowUnparsedResults</a></td></tr>
+<tr class="separator:a6f7a1b913fe473b25788dae9575cf034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8d31145acd6294a6fbba4eb2a5fa240"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#ab8d31145acd6294a6fbba4eb2a5fa240">allowUnverifiedResults</a></td></tr>
+<tr class="separator:ab8d31145acd6294a6fbba4eb2a5fa240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Settings for configuring Machine Readable Travel Document recognizer. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
+<a id="a6f7a1b913fe473b25788dae9575cf034"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7a1b913fe473b25788dae9575cf034">&#9670;&nbsp;</a></span>allowUnparsedResults</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRTDSettings::allowUnparsedResults</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>If enabled, raw MRZ text will be returned for MRZ which does not have standardised form of three lines each with 30 characters or two lines each with 36 or 44 characters </p>
+
+</div>
+</div>
+<a id="ab8d31145acd6294a6fbba4eb2a5fa240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8d31145acd6294a6fbba4eb2a5fa240">&#9670;&nbsp;</a></span>allowUnverifiedResults</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRTDSettings::allowUnverifiedResults</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allow processing of mrz in which one or more check digits aren't correct. </p>
+
+</div>
+</div>
+<a id="ace953b5338f16956ad07b9c162cbcd65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace953b5338f16956ad07b9c162cbcd65">&#9670;&nbsp;</a></span>encodeFullDocumentImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRTDSettings::encodeFullDocumentImage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Turns on encoding of full document image into <a class="el" href="struct_m_r_t_d_result.html" title="Result for storing MRTD recognition data. ">MRTDResult</a>. If enabled, fields fullDocumentJpegBuffer and fullDocumentBufferSize can be used to obtain the image data. </p>
+
+</div>
+</div>
+<a id="a855078ff8dc59d67ccd557ade755f1ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a855078ff8dc59d67ccd557ade755f1ee">&#9670;&nbsp;</a></span>encodeMachineReadableZoneImage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MRTDSettings::encodeMachineReadableZoneImage</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Turns on encoding of machine readable zone image into <a class="el" href="struct_m_r_t_d_result.html" title="Result for storing MRTD recognition data. ">MRTDResult</a>. If enabled, fields mrzImageJpegBuffer and mrzImageBufferSize can be used to obtain the image data. </p>
+
+</div>
+</div>
 <a id="a000b337adbf532284e773405d396b645"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a000b337adbf532284e773405d396b645">&#9670;&nbsp;</a></span>showFullDocument</h2>
 

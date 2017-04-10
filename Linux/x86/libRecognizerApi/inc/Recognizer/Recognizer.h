@@ -14,13 +14,13 @@
 #ifndef RECOGNIZER_H_
 #define RECOGNIZER_H_
 
-#include <stdlib.h>
-
 #include "RecognizerError.h"
 #include "RecognizerResultList.h"
-#include "RecognizerSettings.h"
+#include "Recognizer/RecognizerSettingsFwd.h"
 #include "RecognizerImage.h"
 #include "Export.h"
+
+#include <stdlib.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,35 +33,58 @@ extern "C" {
  * Recognizer object specializes in finding elements (e.g. barcodes) on the image. Which elements are being
  * found is specified by RecognizerSettings object
  */
-typedef PP_EXPORTED_TYPE struct Recognizer Recognizer;
+struct Recognizer;
 
 /**
-  * @struct PPPoint
+ * @brief Typedef for Recognizer structure.
+ */
+typedef MB_EXPORTED_TYPE struct Recognizer Recognizer;
+
+/**
+  * @struct MBPoint
   * @brief This structure represents the 2D point.
   */
-typedef PP_EXPORTED_TYPE struct PPPoint {
+struct MBPoint {
     /** x-coordinate of the point */
     int x;
     /** y-coordinate of the point */
     int y;
-} PPPoint;
+
+#ifdef __cplusplus
+    MBPoint() : x( 0 ), y( 0 ) {}
+#endif
+};
 
 /**
-  * @struct PPSize
+ * @brief Typedef for MBPoint structure.
+ */
+typedef MB_EXPORTED_TYPE struct MBPoint MBPoint;
+
+/**
+  * @struct MBSize
   * @brief This structure represents the two-dimensional size of an object.
   */
-typedef PP_EXPORTED_TYPE struct PPSize {
+struct MBSize {
     /** width */
     int width;
     /** height */
     int height;
-} PPSize;
+
+#ifdef __cplusplus
+    MBSize() : width( 0 ), height( 0 ) {}
+#endif
+};
 
 /**
-  * @struct PPRectangle
+ * @brief Typedef for MBSize structure.
+ */
+typedef MB_EXPORTED_TYPE struct MBSize MBSize;
+
+/**
+  * @struct MBRectangle
   * @brief This structure represents the rectangle.
   */
-typedef PP_EXPORTED_TYPE struct PPRectangle {
+struct MBRectangle {
     /** horizontal position of the rectangle */
     float x;
     /** vertical position of the rectangle */
@@ -70,13 +93,22 @@ typedef PP_EXPORTED_TYPE struct PPRectangle {
     float width;
     /** height of the rectangle */
     float height;
-} PPRectangle;
+
+#ifdef __cplusplus
+    MBRectangle() : x( 0 ), y( 0 ), width( 0 ), height( 0 ) {}
+#endif
+};
 
 /**
-  * @enum PPDetectionStatus
+ * @brief Typedef for MBRectangle structure.
+ */
+typedef MB_EXPORTED_TYPE struct MBRectangle MBRectangle;
+
+/**
+  * @enum MBDetectionStatus
   * @brief Defines a status of the object detection process.
   */
-typedef PP_EXPORTED_TYPE enum PPDetectionStatus {
+enum MBDetectionStatus {
     /** Object has been detected successfully */
     DETECTION_STATUS_SUCCESS = 1 << 0,
     /** Detection failed, nothing detected */
@@ -89,20 +121,30 @@ typedef PP_EXPORTED_TYPE enum PPDetectionStatus {
     DETECTION_STATUS_CAMERA_AT_ANGLE = 1 << 7,
     /** Object detected, but the camera is too close to the object  */
     DETECTION_STATUS_CAMERA_TOO_NEAR = 1 << 8
-} PPDetectionStatus;
+};
+
+/**
+ * @brief Typedef for MBDetectionStatus enum.
+ */
+typedef MB_EXPORTED_TYPE enum MBDetectionStatus MBDetectionStatus;
 
 /**
 * @enum ShowImageType
 * @brief Enumeration of types of images returned via onShowImage callback function
 */
-typedef PP_EXPORTED_TYPE enum ShowImageType {
+enum ShowImageType {
     /** original image passed to recognizer */
     SHOW_IMAGE_TYPE_ORIGINAL,
     /** image with position and orientation adjusted and cropped for further processing */
     SHOW_IMAGE_TYPE_DEWARPED,
     /** final image resulting from a successful scan */
     SHOW_IMAGE_TYPE_SUCCESSFUL_SCAN,
-} ShowImageType;
+};
+
+/**
+ * @brief Typedef for ShowImageType enum.
+ */
+typedef MB_EXPORTED_TYPE enum ShowImageType ShowImageType;
 
 /**
  * @struct RecognizerCallback
@@ -113,9 +155,24 @@ typedef PP_EXPORTED_TYPE enum ShowImageType {
  * is given. All functions except onDetectionFailed may be called multiple times whilst
  * processing a single image - each recognizer object will call them separately.
  */
-typedef PP_EXPORTED_TYPE struct RecognizerCallback {
+struct RecognizerCallback {
     /** Called when object detection on image starts. */
     void (*onDetectionStarted)();
+    /**
+     * Called when the recognizer is midway the detection. At that point
+     * some points could be drawn on to the frame as a sign of something happening.
+     *
+     *  @param  points array of points that represent the detected object (usually 4 points, but can be less or
+     *          more for some specific object (for example: QR code)). Point coordinates are
+     *          in image-based coordinate system, i.e. (0,0) is the coordinate of upper left corner
+     *          and (width, height) is the coordinate of lower right corner of the image.
+     *          If no points are given, this pointer is NULL.
+     *  @param  pointsSize size of the array points
+     *  @param  imageSize size of the image given to recognition (convenience in case you want to convert
+     *          points to different coordinate system)
+     *
+     */
+    void (*onDetectionMidway)( const MBPoint* points, const size_t pointsSize, MBSize imageSize );
     /** Called when object detection on image finishes. If processing should proceed to
      *  recognition of the detected object, method must return non-zero.
      *  @param  points array of points that represent the detected object (usually 4 points, but can be less or
@@ -129,7 +186,7 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
      *  @param  detectionStatus status of the object detection. Can be any from the DetectionStatus enum.
      *  @return Non-zero if recognition should proceed. Zero if recognition should not proceed.
      */
-    int (*onDetectedObject)(const PPPoint* points, const size_t pointsSize, PPSize imageSize, PPDetectionStatus detectionStatus);
+    int (*onDetectedObject)(const MBPoint* points, const size_t pointsSize, MBSize imageSize, MBDetectionStatus detectionStatus);
     /** Called when whole chain of recognizers failed and nothing has been detected on image.
      *  Note that this method is called only if all recognizers in recognizer chain fail to
      *  detect anything, while onDetectedObject will be called for each recognizer separately.
@@ -146,21 +203,16 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
     /** Called when recognition process ends, just before returning from any of the recognizerRecognizeFrom* methods */
     void (*onRecognitionFinished)();
 
-
-    /** Called inside recognition process. If non-zero is returned, recognition process will stop immediately. */
-    int (*onShouldStopRecognition)();
-    /** Called inside recognition process and reports the current recognition progress. This method will not
-     *  called from all recognizers. */
-    void (*onProgress)(int progress);
     /** Called when recognition process produces an image in various stages of recognition. showType parameter
      *  can be used to differentiate between image types so only images that are needed are handled.
-     *	@param	image       returned image
+     *	@param	image       returned image. Image pointer is valid only during the scope of the function. If you need it later, you should
+     *                      copy the image with ::recognizerImageCreateCopyFromImage.
      *  @param  showType    type of shown image.
      *  @param  name        image name. Can be NULL.
      *
      *  @see ShowImageType for more information of what kinds of images are available
      */
-	void(*onShowImage)(const RecognizerImage* image, const ShowImageType showType, const char* name);
+    void (*onShowImage)(const RecognizerImage* image, const ShowImageType showType, const char* name);
 
 #ifdef __cplusplus
     /**
@@ -168,20 +220,26 @@ typedef PP_EXPORTED_TYPE struct RecognizerCallback {
      */
     RecognizerCallback() :
         onDetectionStarted(NULL),
+        onDetectionMidway(NULL),
         onDetectedObject(NULL),
         onDetectionFailed(NULL),
         onRecognitionStarted(NULL),
         onRecognitionFinished(NULL),
-        onProgress(NULL),
         onShowImage(NULL) {}
 #endif
-} RecognizerCallback;
+};
+
+/**
+ * @brief Typedef for RecognizerCallback structure.
+ */
+typedef MB_EXPORTED_TYPE struct RecognizerCallback RecognizerCallback;
 
 
 /**
  * @brief Returns the library version string.
+ * @returns library version string
  */
-PP_API const char* PP_CALL recognizerGetVersionString();
+MB_API const char* MB_CALL recognizerGetVersionString();
 
 /**
  @memberof Recognizer
@@ -213,7 +271,7 @@ PP_API const char* PP_CALL recognizerGetVersionString();
  @return    errorStatus   status of the operation. The operation might fail, so please
                             check the returned status for possible errors
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerCreate(Recognizer** recognizer, const RecognizerSettings* settings);
+MB_API RecognizerErrorStatus MB_CALL recognizerCreate(Recognizer** recognizer, const RecognizerSettings* settings);
 
 /**
   @memberof Recognizer
@@ -225,7 +283,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerCreate(Recognizer** recognizer, c
   @param    settings    settings that will be applied
   @return   errorStatus status of the operation. The operation might fail, so please check returned status for possible errors.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerUpdateSettings(Recognizer* recognizer, const RecognizerSettings* settings);
+MB_API RecognizerErrorStatus MB_CALL recognizerUpdateSettings(Recognizer* recognizer, const RecognizerSettings* settings);
 
 /**
  @memberof Recognizer
@@ -235,7 +293,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerUpdateSettings(Recognizer* recogn
  @return    errorStatus status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS. If NULL pointer was given,
                         status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerDelete(Recognizer** recognizer);
+MB_API RecognizerErrorStatus MB_CALL recognizerDelete(Recognizer** recognizer);
 
 /**
   * @memberof Recognizer
@@ -250,7 +308,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerDelete(Recognizer** recognizer);
   * @param      roi             Pointer to rectangle that represents the ROI, or NULL to disable ROI.
   * @return     errorStatus     Status of the operation. On success it is RECOGNIZER_ERROR_STATUS_SUCCESS, in case of given NULL pointer for recognizer it is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerSetROI(Recognizer* recognizer, const PPRectangle* roi);
+MB_API RecognizerErrorStatus MB_CALL recognizerSetROI(Recognizer* recognizer, const MBRectangle* roi);
 
 
 /**
@@ -300,8 +358,20 @@ PP_API RecognizerErrorStatus PP_CALL recognizerSetROI(Recognizer* recognizer, co
  @see RecognizerResultList for description how to obtain results from list
  @see RecognizerImage to see details on supported image formats.
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromImage(const Recognizer* recognizer, RecognizerResultList** resultList,
+MB_API RecognizerErrorStatus MB_CALL recognizerRecognizeFromImage(const Recognizer* recognizer, RecognizerResultList** resultList,
         const RecognizerImage* image, int imageIsVideoFrame, const RecognizerCallback* callback);
+
+/**
+ * @memberof Recognizer
+ * @brief Cancels the current recognition process (if any).
+ * If there is a ongoing recognition process (i.e. ongoing call to recognizerRecognizeFromImage), this function will cancel the process.
+ * The ongoing recognition will return the results it had at the time of cancelling (or nothing if nothing was recognized yet).
+ * If there is no ongoing recognition process, this function does nothing (it WILL NOT prevent recognition of next image given with call
+ * to recognizerRecognizeFromImage that follows at any time after calling this function).
+ * @param recognizer Recognizer object whose recognition process should be cancelled.
+ * @return RECOGNIZER_ERROR_STATUS_SUCCESS if process was cancelled, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter
+ */
+MB_API RecognizerErrorStatus MB_CALL recognizerCancelCurrentRecognition( const Recognizer* recognizer );
 
 /**
  * @memberof Recognizer
@@ -317,27 +387,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerRecognizeFromImage(const Recogniz
  * @param recognizer object which performs recognition.
  * @return status of the operation.
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerReset(const Recognizer* recognizer);
-
-/**
-@memberof Recognizer
-@brief Utility function for loading files to memory buffers.
-Loaded buffers MUST be freed after use. @see recognizerFreeFileBuffer
-@param     filename        Null terminated string, name of file to be loaded.
-@param     buffer          Byte buffer in which to store the file contents. On error, buffer is set to NULL.
-@param     bufferSize      Variable that will be set to buffer size in bytes. On error, bufferSize is set to -1.
-@return    errorStatus     Status of the operation. You should check if it's RECOGNIZER_ERROR_STATUS_SUCCESS before
-using returned buffer.
-*/
-PP_API RecognizerErrorStatus PP_CALL recognizerLoadFileToBuffer(const char* filename, char** buffer, int* bufferSize);
-
-/**
-@memberof Recognizer
-@brief Utility function for freeing previously loaded buffers (@see recognizerLoadFileToBuffer) from memory.
-@param      buffer          Byte buffer which was alocated with recognizerImageLoadFileToBuffer.
-@return     errorStatus     Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS
-*/
-PP_API RecognizerErrorStatus PP_CALL recognizerFreeFileBuffer(char** buffer);
+MB_API RecognizerErrorStatus MB_CALL recognizerReset(const Recognizer* recognizer);
 
 #ifdef __cplusplus
 }

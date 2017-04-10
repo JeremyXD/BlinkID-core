@@ -1,31 +1,44 @@
+/**
+ * @file Export.h
+ *
+ * Copyright (c)2015 MicroBlink Ltd. All rights reserved.
+ *
+ * ANY UNAUTHORIZED USE OR SALE, DUPLICATION, OR DISTRIBUTION
+ * OF THIS PROGRAM OR ANY OF ITS PARTS, IN SOURCE OR BINARY FORMS,
+ * WITH OR WITHOUT MODIFICATION, WITH THE PURPOSE OF ACQUIRING
+ * UNLAWFUL MATERIAL OR ANY OTHER BENEFIT IS PROHIBITED!
+ * THIS PROGRAM IS PROTECTED BY COPYRIGHT LAWS AND YOU MAY NOT
+ * REVERSE ENGINEER, DECOMPILE, OR DISASSEMBLE IT.
+ */
+
 #ifndef EXPORT_H_INCLUDED
 #define EXPORT_H_INCLUDED
 
 #ifdef WIN32
 #   ifdef BUILDING_STATIC_API
-#       define PP_API
-#       define PP_CALL
+#       define MB_API
+#       define MB_CALL
 #   else
 #       ifdef BUILDING_API
-#           define PP_API __declspec(dllexport)
+#           define MB_API __declspec(dllexport)
 #       else
-#           define PP_API __declspec(dllimport)
+#           define MB_API __declspec(dllimport)
 #       endif
-#       define PP_CALL __stdcall
+#       define MB_CALL __stdcall
 #   endif
 #else
 #   ifdef BUILDING_API
-#       define PP_API __attribute__((__visibility__("default")))
+#       define MB_API __attribute__((__visibility__("default")))
 #   else
-#       define PP_API
+#       define MB_API
 #   endif
-#   define PP_CALL
+#   define MB_CALL
 #endif
 
 #ifdef WIN32
-#   define PP_EXPORTED_TYPE PP_API
+#   define MB_EXPORTED_TYPE MB_API
 #else
-#   define PP_EXPORTED_TYPE
+#   define MB_EXPORTED_TYPE
 #endif
 
 #endif

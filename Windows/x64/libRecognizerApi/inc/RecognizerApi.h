@@ -6,7 +6,7 @@
  * @section Introduction
  *
  * This documentation gives an overview how to use %Recognizer scanning library. %Recognizer library is supported
- * on several platforms: Android, iOS, Mac OS X, Linux and Windows. This documentation covers the usage of
+ * on several platforms: Mac OS (x86_64 only, MacOS X 10.11 and newer), Linux (x86 and x86_64, requires GLIBC 2.13 or newer) and Windows (requires Visual C++ 2017 redistributable package ([x86 download](https://go.microsoft.com/fwlink/?LinkId=746571), [x86_64 download](https://go.microsoft.com/fwlink/?LinkId=746572))). This documentation covers the usage of
  * %Recognizer API to perform scanning of images and retrieving the scan results. For information about platform
  * specific integration, refer to platform specific README document.
  *
@@ -29,7 +29,6 @@
  *    For example, to enable PDF417 recognizer, QR code scanning via ZXing recognizer and US Driver's License recognizer, do the following
  *    @code
  *      Pdf417Settings pdf417Sett;
- *      pdf417Sett.useAutoScale = 1;
  *      pdf417Sett.shouldScanUncertain = 1;
  *      recognizerSettingsSetPdf417Settings(settings, &pdf417Sett);
  *
@@ -41,7 +40,8 @@
  *      usdlSett.useAutoScale = 1;
  *      recognizerSettingsSetUsdlSettings(settings, &usdlSett);
  *    @endcode
- *    Please note that some setting might be ignored if recognizers they configured are disabled by license key.
+ *    Please note that some settings might be are disabled by license key. Attempt to create master Recognizer object with recognizerCreate function will
+ *    faile in such case.
  *    You can disable certain recognizer by setting its settings to NULL. For example, to disable ZXing recognizer
  *    do the following:
  *    @code
@@ -52,8 +52,8 @@
  *      Recognizer* recognizer;
  *      RecognizerErrorStatus status = recognizerCreate(&recognizer, settings);
  *
- *      // Delete settings object
- *      recognizerSettingsDelete(settings);
+ *      // Delete settings object (it is not required anymore after Recognizer has been created)
+ *      recognizerSettingsDelete(&settings);
  *
  *      if (status == RECOGNIZER_ERROR_STATUS_SUCCESS) {
  *          // perform the scan
@@ -65,17 +65,22 @@
  *          // handle error
  *      }
  *    @endcode
- *    Creation of Recognizer might fail. For that reason you should check the status of ::recognizerCreate method.
- * -# Perform the scan on the image. Image first needs to be created from file or from memory. To create image from file,
- *    use ::recognizerImageCreateFromFile. To create image from memory use either ::recognizerImageCreateFromRawImage or ::recognizerImageCreateFromEncodedImage.
+ *    Creation of Recognizer might fail. For that reason you should check the status of recognizerCreate method. Most common reason for failure to create
+ *    Recognizer is invalid licence key or configuration which is not allowed by a valid licence key.
+ * -# Perform the scan on the image. Image first needs to be created from from memory. To create image from memory buffer use recognizerImageCreateFromRawImage.
  *    @code
+ *      int image_width, image_height, image_stride;
+ *      void* image_buffer;
+ *
+ *      // populate above variables (i.e. by loading image file or capturing image with camera)
+ *
  *      RecognizerImage* img;
- *      RecognizerErrorStatus status = recognizerImageCreateFromFile(&img, "barcode.jpg");
+ *      RecognizerErrorStatus status = recognizerImageCreateFromRawImage(&img, image_buffer, image_width, image_height, image_stride, RAW_IMAGE_TYPE_BGR);
  *      if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
- *          printf("Failed to load file. Reason: %s", recognizerErrorToString(status));
+ *          printf("Failed to create image. Reason: %s", recognizerErrorToString(status));
  *      }
  *    @endcode
- * -# Once you have created an image, you can perform recognition using method ::recognizerRecognizeFromImage.
+ * -# Once you have created an image, you can perform recognition using method recognizerRecognizeFromImage.
  *    @code
  *      RecognizerResultList* resultList;
  *      RecognizerErrorStatus status = recognizerRecognizeFromImage(recognizer, &resultList, img, 0, NULL);
@@ -85,12 +90,12 @@
  *      }
  *    @endcode
  *    The output of recognition methods is list of recognition results. List can contain one or more recognition results, depending on the setting
- *    defined with method ::recognizerSettingsSetOutputMultipleResults of RecognizerSettings object.
+ *    defined with method recognizerSettingsSetOutputMultipleResults of RecognizerSettings object.
  * -# Iterate over list of recognition results and obtain information from each recognition result. Note that methods for information retrieval
  *    may depend on the type of the recognition result. For all available information retrieval methods and information about when certain
  *    method is applicable, see the complete reference for RecognizerResult data structure.
- *    The following example iterates over all elements in recognition result list and checks if RecognitionResult is generated by US Driver's License
- *    recognizer. If yes and result is valid, output driver's first and last name. If RecognitionResult is not generated by US Driver's License
+ *    The following example iterates over all elements in recognition result list and checks if RecognizerResult is generated by US Driver's License
+ *    recognizer. If yes and result is valid, output driver's first and last name. If RecognizerResult is not generated by US Driver's License
  *    recognizer, assume it was generated by any barcode recognizer (@ref Pdf417Settings "Pdf417", @ref ZXingSettings "ZXing" or @ref BarDecoderSettings "BarDecoder",
  *    also see RecognizerSettings) and output barcode type and barcode string contents.
  *    @code
@@ -120,24 +125,16 @@
  *              }
  *
  *          } else {
- *              const char* str;
- *              BarcodeType barcodeType;
+ *              BarcodeResult barcodeResult;
  *
- *              status = recognizerResultGetBarcodeType(result, &barcodeType);
+ *              status = recognizerResultGetBarcodeResult(result, &barcodeResult);
  *
  *              if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
- *                  printf("Error obtaining barcode type: %s\n", recognizerErrorToString(status));
+ *                  printf("Error obtaining barcode result: %s\n", recognizerErrorToString(status));
  *                  return -1;
  *              }
  *
- *              status = recognizerResultGetBarcodeStringData(result, &str);
- *
- *              if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
- *                  printf("Error obtaining barcode string data: %s\n", recognizerErrorToString(status));
- *                  return -1;
- *              }
- *
- *              printf("%s Result: %s\n", barcodeTypeToString(barcodeType), str);
+ *              printf("%s Result: %s\n", barcodeTypeToString(barcodeResult.barcodeType), barcodeResult.stringData);
  *          }
  *      }
  *    @endcode
@@ -145,7 +142,6 @@
  *    @code
  *      recognizerImageDelete(&img);
  *      recognizerResultListDelete(&resultList);
- *      recognizerSettingsDelete(&settings);
  *      recognizerDelete(&recognizer);
  *    @endcode
  *

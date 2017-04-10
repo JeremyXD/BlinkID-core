@@ -47,7 +47,7 @@ extern "C" {
   @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
                              Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
  */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageProcessorMirrorImage(const RecognizerImage* input, RecognizerImage** output);
+MB_API RecognizerErrorStatus MB_CALL recognizerImageProcessorMirrorImage(const RecognizerImage* input, RecognizerImage** output);
 
 /**
   @brief Applies barrel distortion transformation on input image.
@@ -74,7 +74,7 @@ PP_API RecognizerErrorStatus PP_CALL recognizerImageProcessorMirrorImage(const R
   @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
                              Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
   */
-PP_API RecognizerErrorStatus PP_CALL recognizerImageProcessorBarrelDewarp(const RecognizerImage* input, RecognizerImage** output,
+MB_API RecognizerErrorStatus MB_CALL recognizerImageProcessorBarrelDewarp(const RecognizerImage* input, RecognizerImage** output,
             const float k1, const float k2, const float p1, const float p2, const float k3, const float scale);
 
 #ifdef __cplusplus

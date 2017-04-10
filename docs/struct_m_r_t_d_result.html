@@ -107,6 +107,14 @@ Data Fields</h2></td></tr>
 <tr class="separator:a77b8f4ceb62b6cc9fe9d5360fb7334f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac24fa6b4eb2d6c4c65f80c27eb263401"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_result.html#ac24fa6b4eb2d6c4c65f80c27eb263401">rawMRZString</a></td></tr>
 <tr class="separator:ac24fa6b4eb2d6c4c65f80c27eb263401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8790acf793c02927d4053508afd189ae"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_result.html#a8790acf793c02927d4053508afd189ae">fullDocumentJpegBuffer</a></td></tr>
+<tr class="separator:a8790acf793c02927d4053508afd189ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de24cb7290332e0aac51370f995fb1f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_result.html#a9de24cb7290332e0aac51370f995fb1f">fullDocumentBufferSize</a></td></tr>
+<tr class="separator:a9de24cb7290332e0aac51370f995fb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a745b7946fed715c54fa05cf44033bfb6"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_result.html#a745b7946fed715c54fa05cf44033bfb6">mrzImageJpegBuffer</a></td></tr>
+<tr class="separator:a745b7946fed715c54fa05cf44033bfb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa18e369c13dddafb2cab857b21245f7e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_result.html#aa18e369c13dddafb2cab857b21245f7e">mrzImageBufferSize</a></td></tr>
+<tr class="separator:aa18e369c13dddafb2cab857b21245f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Result for storing MRTD recognition data. </p>
@@ -216,6 +224,36 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="a9de24cb7290332e0aac51370f995fb1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de24cb7290332e0aac51370f995fb1f">&#9670;&nbsp;</a></span>fullDocumentBufferSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t MRTDResult::fullDocumentBufferSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Size of buffer containing JPEG encoded image of full document. By default, this is set to 0, unless encodeFullDocumentImage property is enabled in <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. ">MRTDSettings</a>. </p>
+
+</div>
+</div>
+<a id="a8790acf793c02927d4053508afd189ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8790acf793c02927d4053508afd189ae">&#9670;&nbsp;</a></span>fullDocumentJpegBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* MRTDResult::fullDocumentJpegBuffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to buffer containing JPEG encoded image of full document. By default, this is set to NULL, unless encodeFullDocumentImage property is enabled in <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. ">MRTDSettings</a>. </p>
+
+</div>
+</div>
 <a id="ac674afb4222c8d841b221a4a2026d0cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac674afb4222c8d841b221a4a2026d0cb">&#9670;&nbsp;</a></span>immigrantCaseNumber</h2>
 
@@ -258,6 +296,36 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Defines whether MRTD data has been verified </p>
+
+</div>
+</div>
+<a id="aa18e369c13dddafb2cab857b21245f7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa18e369c13dddafb2cab857b21245f7e">&#9670;&nbsp;</a></span>mrzImageBufferSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t MRTDResult::mrzImageBufferSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Size of buffer containing JPEG encoded image of machine readable zone. By default, this is set to 0, unless encodeMachineReadableZoneImage property is enabled in <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. ">MRTDSettings</a>. </p>
+
+</div>
+</div>
+<a id="a745b7946fed715c54fa05cf44033bfb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a745b7946fed715c54fa05cf44033bfb6">&#9670;&nbsp;</a></span>mrzImageJpegBuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* MRTDResult::mrzImageJpegBuffer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to buffer containing JPEG encoded image of machine readable zone. By default, this is set to NULL, unless encodeMachineReadableZoneImage property is enabled in <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. ">MRTDSettings</a>. </p>
 
 </div>
 </div>

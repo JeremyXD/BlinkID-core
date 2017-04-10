@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y',['y',['../struct_m_b_point.html#acf309cf057a4cdbb533bb6d653c8d0b3',1,'MBPoint::y()'],['../struct_m_b_rectangle.html#a78365a8cb2803f0a10e70f2066a8ad78',1,'MBRectangle::y()']]]
+  ['x',['x',['../struct_m_b_point.html#a589bd95f63874df7715ceea631bdd0ae',1,'MBPoint::x()'],['../struct_m_b_rectangle.html#a6bf3a052dd233483b07bb209612f7121',1,'MBRectangle::x()']]]
 ];
