@@ -17,6 +17,14 @@
 - `PPSize` renamed to `MBSize`
 - `PPRectangle` renamed to `MBRectangle`
 - `PPDetectionStatus` renamed to `MBDetectionStatus`
+- added support for returning MyKad address parts
+- added support for performing OCR of non-standard Machine Readable Zones
+	- only OCR will be performed, data will not be extracted
+- added support for parsing Machine Readable Zone which does not have correct check digits
+	- there is no guarantee that returned data will be correct in that case
+- added support for returning JPEG-encoded images of Machine Readable Zone and MRZ document
+	- the encoded buffer is part of `MRTDResult` structure and available only if asked for (not by default)
+	- the same images can still be retrieved in raw form as before via `showImage` callback function
 
 ## 1.4.0
 - added support for scanning US Driver's Licenses, PDF417 barcodes, QR codes, Code39 and Code128 1D barcodes and Malaysian MyKad documents
