@@ -1,1 +1,0 @@
-Doxygen generated documentation is available in docs/index.html.
