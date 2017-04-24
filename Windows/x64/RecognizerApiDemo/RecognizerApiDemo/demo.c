@@ -103,11 +103,11 @@ int main(int argc, char* argv[]) {
 	/* recoginzer callback structure contains pointers to functions that will be called during the recognition process */
 	RecognizerCallback recognizerCallback;
 	/* this variable will contain list of scan results obtained from image scanning process. */
-	RecognizerResultList* resultList;
-	/* this variable will contain number of scan results obtained from image scanning process. */
-	size_t numResults;
+	RecognizerResultList resultList;
 	/* this variable holds the image sent for image scanning process*/
 	RecognizerImage* image;
+    /* first result in resultList */
+    RecognizerResult* result;
 
 	/* required for obtaining WinAPI result codes */
 	HRESULT hr = S_OK;
@@ -135,12 +135,12 @@ int main(int argc, char* argv[]) {
 	recognizerSettingsCreate(&settings);
 
 	/* define path to resources folder */
-	status = recognizerSettingsSetResourcesLocation( settings, "res" );
-	if( status != RECOGNIZER_ERROR_STATUS_SUCCESS ) {
-		printf( "Could not set path to resources\n" );
-		return -1;
-	}
+	recognizerSettingsSetResourcesLocation( settings, "res" );
 	
+    /* if you do not plan to use templatingSettings field to scan non-MRZ data, initialize that field to NULL
+    (C++ does that automatically) */
+    mrtdSettings.templatingSettings = NULL;
+
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
@@ -241,6 +241,10 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 
+    /* before passing it to recognizerRecognizeFromImage, you must initialize resultList to empty (C++ does that automatically) */
+    resultList.results = NULL;
+    resultList.resultsCount = 0;
+
 	/* if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
 	insert non-NULL function pointers only to those events you are interested in */
 	status = recognizerRecognizeFromImage(recognizer, &resultList, image, 0, NULL);
@@ -249,17 +253,15 @@ int main(int argc, char* argv[]) {
 		return -1;
 	}
 
-	recognizerResultListGetNumOfResults(resultList, &numResults);
-
-	if (numResults != 1u) {
+	if (resultList.resultsCount != 1u) {
 		/* number of results should be 1 as there is only one recognizer configured */
-		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", numResults);
+		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", resultList.resultsCount );
 		return -1;
 	}
 
-	RecognizerResult* result;
+	
 	/* obtain the first (and only) result from list */
-	recognizerResultListGetResultAtIndex(resultList, 0u, &result);
+    result = resultList.results[ 0 ];
 
 
 	if ( recognizerResultIsMRTDResult( result ) ) {
@@ -268,9 +270,10 @@ int main(int argc, char* argv[]) {
 			recognizerResultGetMRTDResult( result, &mrtdResult );
 
 			/* display obtained fields */
-			printf("ID is of type %s issued by %s.\nExpiration date is %s.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry);
+			printf("ID is of type %s issued by %s.\nExpiration date is %d.%d.%d.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry.day, mrtdResult.dateOfExpiry.month, mrtdResult.dateOfExpiry.year );
 			printf("ID number is %s.\n", mrtdResult.documentNumber );
-			printf("ID holder is %s %s.\nDate of birth is %s.\nSex is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.dateOfBirth, mrtdResult.sex);
+			printf("ID holder is %s %s.\nGender is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.sex);
+            printf( "Date of birth is %d.%d.%d\n", mrtdResult.dateOfBirth.day, mrtdResult.dateOfBirth.month, mrtdResult.dateOfBirth.year );
 			printf("Nationality is %s.\n", mrtdResult.nationality );
 			printf("Optional fields are:\nOPT1: %s\nOPT2: %s\n", mrtdResult.opt1, mrtdResult.opt2);
 
