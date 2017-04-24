@@ -55,7 +55,7 @@ int main( int argc, const char * argv[] ) {
     }
     
     /* define location where resources will be loaded from */
-    recognizerSettingsSetResourcesLocation( settings, "RecognizerApi.framework/Resources" );
+    recognizerSettingsSetResourcesLocation( settings, "../libRecognizerApi/res" );
     
     /* insert license key and licensee */
     recognizerSettingsSetLicenseKeyForLicensee( settings, "add licensee here", "add license key here" );

@@ -1,3 +1,5 @@
+#include "RecognizerImageWrapper.h"
+
 #include <RecognizerApi.h>
 
 #include <stdio.h>
@@ -102,13 +104,11 @@ int main(int argc, char* argv[]) {
 	/* recoginzer callback structure contains pointers to functions that will be called during the recognition process */
 	RecognizerCallback recognizerCallback;
 	/* this variable will contain list of scan results obtained from image scanning process. */
-	RecognizerResultList* resultList;
-	/* this variable will contain number of scan results obtained from image scanning process. */
-	size_t numResults;
+	RecognizerResultList resultList;
 	/* this variable holds the image sent for image scanning process*/
-	RecognizerImage* image;
-	/* buffer that will contain the decompressed image */
-	unsigned char* decompressedBuffer = NULL;
+	RecognizerImageWrapper image;
+	/* first result obtained from resultList */
+	RecognizerResult* result;
 
 	if (argc < 2) {
 		printf("usage %s <img_path>\n", argv[0]);
@@ -121,6 +121,10 @@ int main(int argc, char* argv[]) {
 	/* define location where resources will be loaded from */
     recognizerSettingsSetResourcesLocation(settings, "../libRecognizerApi/res");
 	
+    /* if you do not plan to use templatingSettings field to scan non-MRZ data, initialize that field to NULL
+       (C++ does that automatically) */
+	mrtdSettings.templatingSettings = NULL;
+
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
@@ -140,86 +144,28 @@ int main(int argc, char* argv[]) {
 	/* build recognizer callback structure */
 	recognizerCallback = buildRecognizerCallback();
 
-	/* read the image using libjpeg */
-	/* code based on example from Github: https://github.com/ellzey/libjpeg/blob/master/example.c ) */
-	{
-		struct jpeg_decompress_struct cinfo;
-		struct jpeg_error_mgr jerr;
-		/* source image file */
-		FILE * infile;
-		JSAMPARRAY buffer;	/* Output row buffer */
-		int row_stride;		/* physical row width in output buffer */
-		unsigned char r,g,b;
-		unsigned char* dummy;
-
-		if ((infile = fopen(argv[1], "rb")) == NULL) {
-			fprintf(stderr, "can't open %s\n", argv[1]);
-			return -1;
-		}
-
-		cinfo.err = jpeg_std_error(&jerr);
-		jpeg_create_decompress(&cinfo);
-		jpeg_stdio_src(&cinfo, infile);
-		(void) jpeg_read_header(&cinfo, TRUE);
-		(void) jpeg_start_decompress(&cinfo);
-		
-		decompressedBuffer = ( unsigned char* )malloc( cinfo.output_width * cinfo.output_height * 3 );
-		dummy = decompressedBuffer;
-
-		row_stride = cinfo.output_width * cinfo.output_components;
-		buffer = (*cinfo.mem->alloc_sarray)
-			((j_common_ptr) &cinfo, JPOOL_IMAGE, row_stride, 1);
-
-		while (cinfo.output_scanline < cinfo.output_height) {
-			int x; /* for loop counter (this example is C89-compatible) */
-
-			(void) jpeg_read_scanlines(&cinfo, buffer, 1);
-
-			/* RecognizerAPI accepts BGR and BGRA images, and libjpeg returns RGB order, so we need to revert the pixel order */
-
-		    for (x = 0; x < cinfo.output_width; x++) {
-		     	r = buffer[0][cinfo.output_components * x];
-		      	if (cinfo.output_components > 2) {
-		        	g = buffer[0][cinfo.output_components * x + 1];
-		        	b = buffer[0][cinfo.output_components * x + 2];
-		      	} else {
-		        	g = r;
-		        	b = r;
-		      	}
-		      *(dummy++) = b;
-		      *(dummy++) = g;
-		      *(dummy++) = r;
-		    }
-		}
-
-		(void) jpeg_finish_decompress(&cinfo);
-
-		/* now create RecognizerImage */
-		recognizerImageCreateFromRawImage( &image, decompressedBuffer, cinfo.output_width, cinfo.output_height, row_stride, RAW_IMAGE_TYPE_BGR );
-
-		jpeg_destroy_decompress(&cinfo);
-		fclose(infile);
-	}
+	image = loadImageFromFile( argv[ 1 ] ) ;
+	if( image.recognizerImage == NULL ) return -1;
+	
+	/* before passing it to recognizerRecognizeFromImage, you must initialize resultList to empty (C++ does that automatically) */
+	resultList.results = NULL;
+	resultList.resultsCount = 0;
 
 	/* if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
 	insert non-NULL function pointers only to those events you are interested in */
-	status = recognizerRecognizeFromImage(recognizer, &resultList, image, 0, NULL);
+	status = recognizerRecognizeFromImage(recognizer, &resultList, image.recognizerImage, 0, NULL);
 	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
 		printf("Error recognizing file %s: %s\n", path, recognizerErrorToString(status));
 		return -1;
 	}
 
-	recognizerResultListGetNumOfResults(resultList, &numResults);
-
-	if (numResults != 1u) {
+	if (resultList.resultsCount != 1u) {
 		/* number of results should be 1 as there is only one recognizer configured */
-		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", numResults);
+		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", resultList.resultsCount);
 		return -1;
 	}
 
-	RecognizerResult* result;
-	/* obtain the first (and only) result from list */
-	recognizerResultListGetResultAtIndex(resultList, 0u, &result);
+	result = resultList.results[0];
 
     if( recognizerResultIsMRTDResult( result ) ) {
         if( recognizerResultIsResultValid( result ) ) {
@@ -227,9 +173,10 @@ int main(int argc, char* argv[]) {
             recognizerResultGetMRTDResult( result, &mrtdResult );
 
             /* display obtained fields */
-            printf( "ID is of type %s issued by %s.\nExpiration date is %s.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry );
+            printf( "ID is of type %s issued by %s.\nExpiration date is %d.%d.%d.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry.day, mrtdResult.dateOfExpiry.month, mrtdResult.dateOfExpiry.year );
             printf( "ID number is %s.\n", mrtdResult.documentNumber );
-            printf( "ID holder is %s %s.\nDate of birth is %s.\nSex is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.dateOfBirth, mrtdResult.sex );
+            printf( "ID holder is %s %s.\nGender is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.sex );
+            printf( "Date of birth is %d.%d.%d\n",  mrtdResult.dateOfBirth.day,  mrtdResult.dateOfBirth.month, mrtdResult.dateOfBirth.year );
             printf( "Nationality is %s.\n", mrtdResult.nationality );
             printf( "Optional fields are:\nOPT1: %s\nOPT2: %s\n", mrtdResult.opt1, mrtdResult.opt2 );
 
@@ -245,12 +192,10 @@ int main(int argc, char* argv[]) {
     }
 
 	/* cleanup memory */	
-	recognizerImageDelete(&image);
+	terminateImageWrapper(&image);
 	recognizerResultListDelete(&resultList);
 	recognizerSettingsDelete(&settings);
 	recognizerDelete(&recognizer);
-
-	free( decompressedBuffer );
 
 	return 0;
 }
