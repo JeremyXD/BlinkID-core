@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1858DA061B3ACF2200C5B317 /* RecognizerCallback.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */; };
-		1858DA271B3D3D7600C5B317 /* RecognizerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA251B3D3D7500C5B317 /* RecognizerWrapper.m */; };
+		1858DA061B3ACF2200C5B317 /* RecognizerCallback.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */; settings = {COMPILER_FLAGS = "-ansi"; }; };
 		18E636D21B2F304F00869C0F /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C90A6EEC18ABC46A004717EF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* main.c */; };
+		C905BAE01EAE343F0029019B /* RecognizerImageWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C905BADF1EAE343F0029019B /* RecognizerImageWrapper.m */; };
+		C905BAE91EAE43FC0029019B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C905BAE81EAE43FC0029019B /* main.c */; settings = {COMPILER_FLAGS = "-ansi"; }; };
+		C905BAED1EAE44A90029019B /* RecognizerImageWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C905BADF1EAE343F0029019B /* RecognizerImageWrapper.m */; };
+		C905BAEE1EAE44C40029019B /* RecognizerCallback.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */; settings = {COMPILER_FLAGS = "-ansi"; }; };
+		C905BAEF1EAE49A10029019B /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
+		C905BAF01EAE49A80029019B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99435B81E966EA000783118 /* ImageIO.framework */; };
+		C905BAF11EAE49B10029019B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99435BA1E966EBE00783118 /* CoreGraphics.framework */; };
+		C905BAF21EAE49B60029019B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99435B21E966A6500783118 /* CoreFoundation.framework */; };
+		C905BAF31EAE49D40029019B /* RecognizerApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C905BAF61EAE4A030029019B /* lipsum.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = C905BAF51EAE49FD0029019B /* lipsum.png */; };
+		C905BAF71EAE4C680029019B /* RecognizerWrapper.c in Sources */ = {isa = PBXBuildFile; fileRef = 1858DA251B3D3D7500C5B317 /* RecognizerWrapper.c */; settings = {COMPILER_FLAGS = "-ansi"; }; };
+		C90A6EEC18ABC46A004717EF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C90A6EEB18ABC46A004717EF /* main.c */; settings = {COMPILER_FLAGS = "-ansi"; }; };
 		C90A6EF618ABD31C004717EF /* RecognizerApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90A6EF518ABD31C004717EF /* RecognizerApi.framework */; };
 		C979616A1D23E9A000DA9D7E /* deID.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = C97961671D23E8A400DA9D7E /* deID.jpg */; };
 		C979616B1D23E9A000DA9D7E /* id1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = C97961681D23E8A400DA9D7E /* id1.jpg */; };
@@ -20,6 +30,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		C905BAE41EAE43FC0029019B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C905BAF31EAE49D40029019B /* RecognizerApi.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C905BAF41EAE49E50029019B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				C905BAF61EAE4A030029019B /* lipsum.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C90A6EF718ABD37D004717EF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,9 +76,14 @@
 /* Begin PBXFileReference section */
 		1858DA041B3ACF0E00C5B317 /* RecognizerCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecognizerCallback.h; sourceTree = "<group>"; };
 		1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RecognizerCallback.c; sourceTree = "<group>"; };
-		1858DA251B3D3D7500C5B317 /* RecognizerWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecognizerWrapper.m; sourceTree = "<group>"; };
+		1858DA251B3D3D7500C5B317 /* RecognizerWrapper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RecognizerWrapper.c; sourceTree = "<group>"; };
 		1858DA261B3D3D7500C5B317 /* RecognizerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognizerWrapper.h; sourceTree = "<group>"; };
 		1858DA331B3D584700C5B317 /* ocr_model.zzip */ = {isa = PBXFileReference; lastKnownFileType = file; path = ocr_model.zzip; sourceTree = "<group>"; };
+		C905BADF1EAE343F0029019B /* RecognizerImageWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecognizerImageWrapper.m; sourceTree = "<group>"; };
+		C905BAE11EAE34650029019B /* RecognizerImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognizerImageWrapper.h; sourceTree = "<group>"; };
+		C905BAE61EAE43FC0029019B /* RawOCRDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RawOCRDemo; sourceTree = BUILT_PRODUCTS_DIR; };
+		C905BAE81EAE43FC0029019B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C905BAF51EAE49FD0029019B /* lipsum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lipsum.png; path = RecognizerApiDemo/lipsum.png; sourceTree = SOURCE_ROOT; };
 		C90A6ED318ABC070004717EF /* RecognizerApiDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RecognizerApiDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90A6EEB18ABC46A004717EF /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		C90A6EF518ABD31C004717EF /* RecognizerApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RecognizerApi.framework; path = ../RecognizerApi.framework; sourceTree = "<group>"; };
@@ -60,6 +95,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C905BAE31EAE43FC0029019B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C905BAEF1EAE49A10029019B /* RecognizerApi.framework in Frameworks */,
+				C905BAF01EAE49A80029019B /* ImageIO.framework in Frameworks */,
+				C905BAF11EAE49B10029019B /* CoreGraphics.framework in Frameworks */,
+				C905BAF21EAE49B60029019B /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C90A6ED018ABC070004717EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +123,7 @@
 		1858DA321B3D584700C5B317 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C905BAF51EAE49FD0029019B /* lipsum.png */,
 				C97961671D23E8A400DA9D7E /* deID.jpg */,
 				C97961681D23E8A400DA9D7E /* id1.jpg */,
 				1858DA331B3D584700C5B317 /* ocr_model.zzip */,
@@ -85,10 +132,19 @@
 			path = ../RecognizerApi.framework/Versions/A/Resources;
 			sourceTree = "<group>";
 		};
+		C905BAE71EAE43FC0029019B /* RawOCRDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C905BAE81EAE43FC0029019B /* main.c */,
+			);
+			path = RawOCRDemo;
+			sourceTree = "<group>";
+		};
 		C90A6ECA18ABC070004717EF = {
 			isa = PBXGroup;
 			children = (
 				C90A6ED518ABC070004717EF /* RecognizerApiDemo */,
+				C905BAE71EAE43FC0029019B /* RawOCRDemo */,
 				C90A6EF418ABD2ED004717EF /* Frameworks */,
 				C90A6ED418ABC070004717EF /* Products */,
 			);
@@ -98,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				C90A6ED318ABC070004717EF /* RecognizerApiDemo */,
+				C905BAE61EAE43FC0029019B /* RawOCRDemo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,8 +165,10 @@
 				C90A6EEB18ABC46A004717EF /* main.c */,
 				1858DA041B3ACF0E00C5B317 /* RecognizerCallback.h */,
 				1858DA051B3ACF2200C5B317 /* RecognizerCallback.c */,
-				1858DA251B3D3D7500C5B317 /* RecognizerWrapper.m */,
+				1858DA251B3D3D7500C5B317 /* RecognizerWrapper.c */,
 				1858DA261B3D3D7500C5B317 /* RecognizerWrapper.h */,
+				C905BADF1EAE343F0029019B /* RecognizerImageWrapper.m */,
+				C905BAE11EAE34650029019B /* RecognizerImageWrapper.h */,
 			);
 			path = RecognizerApiDemo;
 			sourceTree = "<group>";
@@ -129,6 +188,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C905BAE51EAE43FC0029019B /* RawOCRDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C905BAEC1EAE43FC0029019B /* Build configuration list for PBXNativeTarget "RawOCRDemo" */;
+			buildPhases = (
+				C905BAE21EAE43FC0029019B /* Sources */,
+				C905BAE31EAE43FC0029019B /* Frameworks */,
+				C905BAE41EAE43FC0029019B /* CopyFiles */,
+				C905BAF41EAE49E50029019B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RawOCRDemo;
+			productName = RawOCRDemo;
+			productReference = C905BAE61EAE43FC0029019B /* RawOCRDemo */;
+			productType = "com.apple.product-type.tool";
+		};
 		C90A6ED218ABC070004717EF /* RecognizerApiDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C90A6EDC18ABC070004717EF /* Build configuration list for PBXNativeTarget "RecognizerApiDemo" */;
@@ -155,6 +232,12 @@
 			attributes = {
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = DoDo;
+				TargetAttributes = {
+					C905BAE51EAE43FC0029019B = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = C90A6ECE18ABC070004717EF /* Build configuration list for PBXProject "RecognizerApiDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -169,24 +252,81 @@
 			projectRoot = "";
 			targets = (
 				C90A6ED218ABC070004717EF /* RecognizerApiDemo */,
+				C905BAE51EAE43FC0029019B /* RawOCRDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C905BAE21EAE43FC0029019B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C905BAE91EAE43FC0029019B /* main.c in Sources */,
+				C905BAEE1EAE44C40029019B /* RecognizerCallback.c in Sources */,
+				C905BAED1EAE44A90029019B /* RecognizerImageWrapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C90A6ECF18ABC070004717EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1858DA061B3ACF2200C5B317 /* RecognizerCallback.c in Sources */,
 				C90A6EEC18ABC46A004717EF /* main.c in Sources */,
-				1858DA271B3D3D7600C5B317 /* RecognizerWrapper.m in Sources */,
+				C905BAF71EAE4C680029019B /* RecognizerWrapper.c in Sources */,
+				C905BAE01EAE343F0029019B /* RecognizerImageWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C905BAEA1EAE43FC0029019B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		C905BAEB1EAE43FC0029019B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
 		C90A6EDA18ABC070004717EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -204,7 +344,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = ../;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -249,7 +388,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = ../;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -271,7 +409,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = ansi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
@@ -282,7 +419,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LIBRARY = "libc++";
-				GCC_C_LANGUAGE_STANDARD = ansi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
@@ -292,6 +428,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C905BAEC1EAE43FC0029019B /* Build configuration list for PBXNativeTarget "RawOCRDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C905BAEA1EAE43FC0029019B /* Debug */,
+				C905BAEB1EAE43FC0029019B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C90A6ECE18ABC070004717EF /* Build configuration list for PBXProject "RecognizerApiDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

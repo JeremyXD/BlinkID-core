@@ -37,8 +37,8 @@ RecognizerErrorStatus processRecognizerResult(const RecognizerResult* result) {
     // print the data
     printf("MRTD result is:\n\n");
     printf("%s %s\n", mrtdResult.primaryID, mrtdResult.secondaryID);
-    printf("Date of birth: %s\n",  mrtdResult.dateOfBirth);
-    printf("Date of expiry: %s\n",  mrtdResult.dateOfExpiry);
+    printf("Date of birth: %d.%d.%d.\n",  mrtdResult.dateOfBirth.day, mrtdResult.dateOfBirth.month, mrtdResult.dateOfBirth.year);
+    printf("Date of expiry: %d.%d.%d.\n",  mrtdResult.dateOfExpiry.day, mrtdResult.dateOfExpiry.month, mrtdResult.dateOfExpiry.year);
     printf("Document code %s\n",  mrtdResult.documentCode);
     printf("Document number %s\n",  mrtdResult.documentNumber);
     printf("Issuer %s\n",  mrtdResult.issuer);
