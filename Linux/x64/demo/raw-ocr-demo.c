@@ -67,6 +67,11 @@ int main( int argc, const char * argv[] ) {
     
     /* create settings for BlinkInput recognizer */
 
+    /* initializing the BlinkInputSettings with blinkInputSettingsInitialize expects all pointers
+       to be NULL - if they are not they will first be freed. Since C does not have constructors,
+       we need to manually initialize the structure. */
+    blinkInputSettings.templatingSettings = NULL;
+    blinkInputSettings.detectorSettings = NULL;
     
     /* initialize BlinkInputSettings to be able to add parsers to templatingSettings field */
     status = blinkInputSettingsInitialize( &blinkInputSettings );

@@ -55,18 +55,18 @@ int main( int argc, const char * argv[] ) {
     }
     
     /* define location where resources will be loaded from */
-    recognizerSettingsSetResourcesLocation( settings, "RecognizerApi.framework/Resources" );
+    recognizerSettingsSetResourcesLocation( settings, "res" );
     
     /* insert license key and licensee */
     recognizerSettingsSetLicenseKeyForLicensee( settings, "add licensee here", "add license key here" );
     /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
-    recognizerSettingsSetLicenseKey( settings, "add licence key here" );
+    recognizerSettingsSetLicenseKey( settings, "add license key here" );
     
     /********* INITIALIZE RECOGNIZER SETTINGS ***********/
     /* This determines what will be scanned on images ***/
     
     /* create settings for BlinkInput recognizer */
-
+    
     /* initializing the BlinkInputSettings with blinkInputSettingsInitialize expects all pointers
        to be NULL - if they are not they will first be freed. Since C does not have constructors,
        we need to manually initialize the structure. */

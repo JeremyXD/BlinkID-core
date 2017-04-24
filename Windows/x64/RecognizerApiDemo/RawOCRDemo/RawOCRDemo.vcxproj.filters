@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="demo.c">
+    <ClCompile Include="raw-ocr-demo.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RecognizerImageWrapper.c">
+    <ClCompile Include="..\RecognizerApiDemo\RecognizerImageWrapper.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RecognizerImageWrapper.h">
+    <ClInclude Include="..\RecognizerApiDemo\RecognizerImageWrapper.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
