@@ -1,5 +1,20 @@
 # Release notes
 
+## 3.0.0
+- added support for Templating API and performing raw OCR
+	- refer to updated demo apps and [documentation](https://blinkid.github.io/blinkid-core/) for more information
+- removed `RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL`
+	- all functions require non-null pointers, except if otherwise is noted. Failure to provide will result with a crash.
+- introduced `RECOGNIZER_ERROR_STATUS_MALLOC_FAIL` which can be returned if memory allocation failed
+	- previous to that, a c++ exception was thrown, which is not correct, since the API should be C90-compatible
+	- this version of SDK catches all C++ exceptions that try to escape the API boundary and return either `RECOGNIZER_ERROR_STATUS_FAIL` (in case of general exception) or `RECOGNIZER_ERROR_STATUS_MALLOC_FAIL` (in case of `bad_alloc`)
+- fixed linker errors when iKad scanning was enabled
+- in `MRTDResult`, dates are now returned as `MBDate` objects
+	- this now removes confusion about which date format was used - this differed between use cases
+- `RecognizerResultList` structure is now public, so getters like `recognizerResultListGetNumOfResults` or `recognizerResultListGetResultAtIndex` are not required anymore
+- `RECOGNIZER_ERROR_STATUS_INVALID_TYPE` has been renamed to `RECOGNIZER_ERROR_STATUS_INVALID_ARGUMENT`, since this better describes its intention and usage
+- fixed bug where `recognizerImageSetImageOrientation` was not implemented properly, resulting with all images being treated as in `IMAGE_ORIENTATION_LANDSCAPE_RIGHT`
+
 ## 2.0.0
 - new API for obtaining scanning results - refer to documentation and code samples for more information.
 - Major API changes:

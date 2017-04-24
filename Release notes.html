@@ -56,6 +56,38 @@
                 <h1>
 <a id="user-content-release-notes" class="anchor" href="#release-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Release notes</h1>
 <h2>
+<a id="user-content-300" class="anchor" href="#300" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.0.0</h2>
+<ul>
+<li>added support for Templating API and performing raw OCR
+<ul>
+<li>refer to updated demo apps and <a href="https://blinkid.github.io/blinkid-core/">documentation</a> for more information</li>
+</ul>
+</li>
+<li>removed <code>RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL</code>
+<ul>
+<li>all functions require non-null pointers, except if otherwise is noted. Failure to provide will result with a crash.</li>
+</ul>
+</li>
+<li>introduced <code>RECOGNIZER_ERROR_STATUS_MALLOC_FAIL</code> which can be returned if memory allocation failed
+<ul>
+<li>previous to that, a c++ exception was thrown, which is not correct, since the API should be C90-compatible</li>
+<li>this version of SDK catches all C++ exceptions that try to escape the API boundary and return either <code>RECOGNIZER_ERROR_STATUS_FAIL</code> (in case of general exception) or <code>RECOGNIZER_ERROR_STATUS_MALLOC_FAIL</code> (in case of <code>bad_alloc</code>)</li>
+</ul>
+</li>
+<li>fixed linker errors when iKad scanning was enabled</li>
+<li>in <code>MRTDResult</code>, dates are now returned as <code>MBDate</code> objects
+<ul>
+<li>this now removes confusion about which date format was used - this differed between use cases</li>
+</ul>
+</li>
+<li>
+<code>RecognizerResultList</code> structure is now public, so getters like <code>recognizerResultListGetNumOfResults</code> or <code>recognizerResultListGetResultAtIndex</code> are not required anymore</li>
+<li>
+<code>RECOGNIZER_ERROR_STATUS_INVALID_TYPE</code> has been renamed to <code>RECOGNIZER_ERROR_STATUS_INVALID_ARGUMENT</code>, since this better describes its intention and usage</li>
+<li>fixed bug where <code>recognizerImageSetImageOrientation</code> was not implemented properly, resulting with all images being treated as in <code>IMAGE_ORIENTATION_LANDSCAPE_RIGHT</code>
+</li>
+</ul>
+<h2>
 <a id="user-content-200" class="anchor" href="#200" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.0.0</h2>
 <ul>
 <li>new API for obtaining scanning results - refer to documentation and code samples for more information.</li>
