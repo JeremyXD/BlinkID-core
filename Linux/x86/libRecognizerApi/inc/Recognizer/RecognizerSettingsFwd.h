@@ -20,11 +20,15 @@ extern "C" {
 #endif
 
 /**
- @struct RecognizerSettings
- @brief Recognizer settings data structure
-
- Used for initializing the Recognizer object.
- @see Recognizer.h
+ * @struct RecognizerSettings
+ * @brief Recognizer settings data structure
+ * A Recognizer is object which orchestrates image recognition. It combines detection of objects (documents, barcodes, etc.) with
+ * OCR/barcode decoding and data extraction. Each Recognizer is specific to extracting single type of information from the image.
+ * For example, USDL recognizer (@see USDLSettings.h) is specialized for searching PDF417 barcodes on US driver's licenses and
+ * extracting data from them. On the other hand, Machine Readable Travel Document (MRTD) recognizer (@see MRTDSettings.h) is
+ * specialized for searching Machine Readable Zone in the image and extracting data from it. Please browse the documentation
+ * to see all specific available recognizers and how to configure them.
+ * @see Recognizer.h
  */
 struct RecognizerSettings;
 

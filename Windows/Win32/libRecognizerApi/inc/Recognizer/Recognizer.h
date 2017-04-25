@@ -14,11 +14,12 @@
 #ifndef RECOGNIZER_H_
 #define RECOGNIZER_H_
 
+#include "Export.h"
 #include "RecognizerError.h"
 #include "RecognizerResultList.h"
-#include "Recognizer/RecognizerSettingsFwd.h"
 #include "RecognizerImage.h"
-#include "Export.h"
+#include "Recognizer/RecognizerSettingsFwd.h"
+#include "Rectangle.h"
 
 #include <stdlib.h>
 
@@ -79,30 +80,6 @@ struct MBSize {
  * @brief Typedef for MBSize structure.
  */
 typedef MB_EXPORTED_TYPE struct MBSize MBSize;
-
-/**
-  * @struct MBRectangle
-  * @brief This structure represents the rectangle.
-  */
-struct MBRectangle {
-    /** horizontal position of the rectangle */
-    float x;
-    /** vertical position of the rectangle */
-    float y;
-    /** width of the rectangle */
-    float width;
-    /** height of the rectangle */
-    float height;
-
-#ifdef __cplusplus
-    MBRectangle() : x( 0 ), y( 0 ), width( 0 ), height( 0 ) {}
-#endif
-};
-
-/**
- * @brief Typedef for MBRectangle structure.
- */
-typedef MB_EXPORTED_TYPE struct MBRectangle MBRectangle;
 
 /**
   * @enum MBDetectionStatus
@@ -200,7 +177,7 @@ struct RecognizerCallback {
     void (*onDetectionFailed)();
     /** Called when recognition process starts */
     void (*onRecognitionStarted)();
-    /** Called when recognition process ends, just before returning from any of the recognizerRecognizeFrom* methods */
+    /** Called when recognition process ends, just before returning from the recognizerRecognizeFromImage method */
     void (*onRecognitionFinished)();
 
     /** Called when recognition process produces an image in various stages of recognition. showType parameter
@@ -290,15 +267,14 @@ MB_API RecognizerErrorStatus MB_CALL recognizerUpdateSettings(Recognizer* recogn
  @brief Deletes the recognizer object and sets a pointer to it to NULL.
 
  @param     recognizer  Double Pointer to the recognizer object which is to be deleted
- @return    errorStatus status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS. If NULL pointer was given,
-                        status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
+ @return    errorStatus status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerDelete(Recognizer** recognizer);
 
 /**
   * @memberof Recognizer
-  * Sets the scanning region of interest. All subsequent calls to recognizerRecognizeFromRawImage, recognizerRecognizeFromEncodedImage or
-  * recognizerRecognizeFromFile will perform scans only in given ROI. ROI must be given with relative dimensions, i.e. all dimensinos of
+  * Sets the scanning region of interest. All subsequent calls to recognizerRecognizeFromImage will perform scans only in given ROI.
+  * ROI must be given with relative dimensions, i.e. all dimensinos of
   * given rectangle must be from interval [0.f, 1.f], where for x coordinate and rectangle width dimension represents the percentage of
   * image widht, and for y coordinate and rectangle height dimension represents the percentage of image height.
   * Call this function with NULL to disable current ROI settings. If any dimension in ROI is larger than 1.f or smaller than 0.f, they
@@ -306,7 +282,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerDelete(Recognizer** recognizer);
   *
   * @param      recognizer      Pointer to the recognizer object to which ROI will be set
   * @param      roi             Pointer to rectangle that represents the ROI, or NULL to disable ROI.
-  * @return     errorStatus     Status of the operation. On success it is RECOGNIZER_ERROR_STATUS_SUCCESS, in case of given NULL pointer for recognizer it is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
+  * @return     errorStatus     Status of the operation.
   */
 MB_API RecognizerErrorStatus MB_CALL recognizerSetROI(Recognizer* recognizer, const MBRectangle* roi);
 
@@ -316,8 +292,8 @@ MB_API RecognizerErrorStatus MB_CALL recognizerSetROI(Recognizer* recognizer, co
  @brief Performs recognition process on a raw image.
  Example:
  @code
-    RecognizerResultList *resultList;
-    RecognizerErrorStatus status = recognizerRecognizeFromRawImage(recognizer, &resultList, image, 0, NULL);
+    RecognizerResultList resultList;
+    RecognizerErrorStatus status = recognizerRecognizeFromImage(recognizer, &resultList, image, 0, NULL);
 
     if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
         const char* statusString = recognizerErrorToString(status);
@@ -333,9 +309,9 @@ MB_API RecognizerErrorStatus MB_CALL recognizerSetROI(Recognizer* recognizer, co
 
  @param     recognizer          object which performs recognition. Only elements set in the initialization
                                 method of recognizer object will be recognized on the image
- @param     resultList          RecognizerResultList object in which the results of the recognition will be stored. This object
-                                is allocated and initialized inside this method. On error, resultList is set to NULL.
-                                See RecognizerResultList for description how to obtain results from list and
+ @param     resultList          RecognizerResultList structure in which the results of the recognition will be stored. The
+                                result array inside the structure is allocated and initialized inside this method and on error
+                                set to NULL.
                                 See RecognizerResult for description how to obtain results from RecognizerResult object.
  @param     image               RecognizerImage object which holds image on which recognition will be performed.
                                 See RecognizerImage to see details on supported image formats.
@@ -358,7 +334,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerSetROI(Recognizer* recognizer, co
  @see RecognizerResultList for description how to obtain results from list
  @see RecognizerImage to see details on supported image formats.
  */
-MB_API RecognizerErrorStatus MB_CALL recognizerRecognizeFromImage(const Recognizer* recognizer, RecognizerResultList** resultList,
+MB_API RecognizerErrorStatus MB_CALL recognizerRecognizeFromImage(const Recognizer* recognizer, RecognizerResultList* resultList,
         const RecognizerImage* image, int imageIsVideoFrame, const RecognizerCallback* callback);
 
 /**
@@ -369,7 +345,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerRecognizeFromImage(const Recogniz
  * If there is no ongoing recognition process, this function does nothing (it WILL NOT prevent recognition of next image given with call
  * to recognizerRecognizeFromImage that follows at any time after calling this function).
  * @param recognizer Recognizer object whose recognition process should be cancelled.
- * @return RECOGNIZER_ERROR_STATUS_SUCCESS if process was cancelled, RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL is given as parameter
+ * @return status of the operation
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerCancelCurrentRecognition( const Recognizer* recognizer );
 

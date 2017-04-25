@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -88,24 +88,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab4b684d30a2ee60dd84261cc4de16252"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#ab4b684d30a2ee60dd84261cc4de16252">recognizerImageSetImageOrientation</a> (<a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, <a class="el" href="_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9">ImageOrientation</a> orientation)</td></tr>
 <tr class="memdesc:ab4b684d30a2ee60dd84261cc4de16252"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the orientation of the image. When created, each image has default orientation IMAGE_ORIENTATION_LANDSCAPE_RIGHT, which corresponds to 'natural' orientation of all images. However, if image was taken in different orientation, you should set correct orientation with this method to ensure best recognition quality.  <a href="#ab4b684d30a2ee60dd84261cc4de16252">More...</a><br /></td></tr>
 <tr class="separator:ab4b684d30a2ee60dd84261cc4de16252"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adffad41855545bba81106df01b24f1c4"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#adffad41855545bba81106df01b24f1c4">recognizerImageGetImageOrientation</a> (<a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, <a class="el" href="_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9">ImageOrientation</a> *orientation)</td></tr>
-<tr class="memdesc:adffad41855545bba81106df01b24f1c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the orientation of the image.  <a href="#adffad41855545bba81106df01b24f1c4">More...</a><br /></td></tr>
-<tr class="separator:adffad41855545bba81106df01b24f1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cce593507e5d1de1c5695ec2e25e176"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#a2cce593507e5d1de1c5695ec2e25e176">recognizerImageGetRawBytes</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, void **data)</td></tr>
-<tr class="memdesc:a2cce593507e5d1de1c5695ec2e25e176"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets buffer containing raw image bytes.  <a href="#a2cce593507e5d1de1c5695ec2e25e176">More...</a><br /></td></tr>
-<tr class="separator:a2cce593507e5d1de1c5695ec2e25e176"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29c4d385add3b75cdd5871efb36097ce"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#a29c4d385add3b75cdd5871efb36097ce">recognizerImageGetWidth</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, int *width)</td></tr>
-<tr class="memdesc:a29c4d385add3b75cdd5871efb36097ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets width of image in number of pixels.  <a href="#a29c4d385add3b75cdd5871efb36097ce">More...</a><br /></td></tr>
-<tr class="separator:a29c4d385add3b75cdd5871efb36097ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abcdc099d2070f258feb2b31edd0830e2"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#abcdc099d2070f258feb2b31edd0830e2">recognizerImageGetHeight</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, int *height)</td></tr>
-<tr class="memdesc:abcdc099d2070f258feb2b31edd0830e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets height of image in number of pixels.  <a href="#abcdc099d2070f258feb2b31edd0830e2">More...</a><br /></td></tr>
-<tr class="separator:abcdc099d2070f258feb2b31edd0830e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a198675143948f770ce4d20f71327bdf1"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#a198675143948f770ce4d20f71327bdf1">recognizerImageGetBytesPerRow</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, int *bytesPerRow)</td></tr>
-<tr class="memdesc:a198675143948f770ce4d20f71327bdf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets bytes per row for given image.  <a href="#a198675143948f770ce4d20f71327bdf1">More...</a><br /></td></tr>
-<tr class="separator:a198675143948f770ce4d20f71327bdf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc89d185526ffca20f79a7092ee6dfd9"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#acc89d185526ffca20f79a7092ee6dfd9">recognizerImageGetRawImageType</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image, <a class="el" href="_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a> *rawImageType)</td></tr>
-<tr class="memdesc:acc89d185526ffca20f79a7092ee6dfd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets raw image type for given image.  <a href="#acc89d185526ffca20f79a7092ee6dfd9">More...</a><br /></td></tr>
-<tr class="separator:acc89d185526ffca20f79a7092ee6dfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d54fb3ffad98d99582f4f0359e780b"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9">ImageOrientation</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#a40d54fb3ffad98d99582f4f0359e780b">recognizerImageGetImageOrientation</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:a40d54fb3ffad98d99582f4f0359e780b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the orientation of the image.  <a href="#a40d54fb3ffad98d99582f4f0359e780b">More...</a><br /></td></tr>
+<tr class="separator:a40d54fb3ffad98d99582f4f0359e780b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab46d344d7834d37213bee088f360d45b"><td class="memItemLeft" align="right" valign="top">MB_API const unsigned char *MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#ab46d344d7834d37213bee088f360d45b">recognizerImageGetRawBytes</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:ab46d344d7834d37213bee088f360d45b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets buffer containing raw image bytes.  <a href="#ab46d344d7834d37213bee088f360d45b">More...</a><br /></td></tr>
+<tr class="separator:ab46d344d7834d37213bee088f360d45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa666bb709033e900038e788cb2d05f33"><td class="memItemLeft" align="right" valign="top">MB_API unsigned char *MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#aa666bb709033e900038e788cb2d05f33">recognizerImageGetMutableRawBytes</a> (<a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:aa666bb709033e900038e788cb2d05f33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets modifiable buffer containing raw image bytes.  <a href="#aa666bb709033e900038e788cb2d05f33">More...</a><br /></td></tr>
+<tr class="separator:aa666bb709033e900038e788cb2d05f33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc91aacb370163d728b704b2999bbf17"><td class="memItemLeft" align="right" valign="top">MB_API int MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#adc91aacb370163d728b704b2999bbf17">recognizerImageGetWidth</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:adc91aacb370163d728b704b2999bbf17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets width of image in number of pixels.  <a href="#adc91aacb370163d728b704b2999bbf17">More...</a><br /></td></tr>
+<tr class="separator:adc91aacb370163d728b704b2999bbf17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a217888aaa601479c2a958fe1ce5b2b47"><td class="memItemLeft" align="right" valign="top">MB_API int MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#a217888aaa601479c2a958fe1ce5b2b47">recognizerImageGetHeight</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:a217888aaa601479c2a958fe1ce5b2b47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets height of image in number of pixels.  <a href="#a217888aaa601479c2a958fe1ce5b2b47">More...</a><br /></td></tr>
+<tr class="separator:a217888aaa601479c2a958fe1ce5b2b47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae31aa72934d0262e66a750855e730231"><td class="memItemLeft" align="right" valign="top">MB_API int MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#ae31aa72934d0262e66a750855e730231">recognizerImageGetBytesPerRow</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:ae31aa72934d0262e66a750855e730231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets bytes per row for given image.  <a href="#ae31aa72934d0262e66a750855e730231">More...</a><br /></td></tr>
+<tr class="separator:ae31aa72934d0262e66a750855e730231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78e5d60253e930a9d9bc9c10e832a5b"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_image.html#ae78e5d60253e930a9d9bc9c10e832a5b">recognizerImageGetRawImageType</a> (const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *image)</td></tr>
+<tr class="memdesc:ae78e5d60253e930a9d9bc9c10e832a5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets raw image type for given image.  <a href="#ae78e5d60253e930a9d9bc9c10e832a5b">More...</a><br /></td></tr>
+<tr class="separator:ae78e5d60253e930a9d9bc9c10e832a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> data structure. Holds image on which recognition will bw performed. </p>
@@ -144,7 +147,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. </dd></dl>
 
 </div>
 </div>
@@ -212,7 +215,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_recognizer_image_8h.html#af30c4cc9be780aba9da5f37aa93a39c5" title="Typedef for RawImageType enum. ">RawImageType</a> </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. RECOGNIZER_ERROR_STATUS_SUCCESS for success, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if rawType is invalid. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. </dd></dl>
 
 </div>
 </div>
@@ -239,32 +242,22 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. </dd></dl>
 
 </div>
 </div>
-<a id="a198675143948f770ce4d20f71327bdf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a198675143948f770ce4d20f71327bdf1">&#9670;&nbsp;</a></span>recognizerImageGetBytesPerRow()</h2>
+<a id="ae31aa72934d0262e66a750855e730231"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae31aa72934d0262e66a750855e730231">&#9670;&nbsp;</a></span>recognizerImageGetBytesPerRow()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerImageGetBytesPerRow </td>
+          <td class="memname">MB_API int MB_CALL recognizerImageGetBytesPerRow </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>bytesPerRow</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -273,36 +266,25 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>Pointer to <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object of interest. </td></tr>
-    <tr><td class="paramname">bytesPerRow</td><td>Pointer to store bytes per row of given image. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>bytes per row in image </dd></dl>
 
 </div>
 </div>
-<a id="abcdc099d2070f258feb2b31edd0830e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcdc099d2070f258feb2b31edd0830e2">&#9670;&nbsp;</a></span>recognizerImageGetHeight()</h2>
+<a id="a217888aaa601479c2a958fe1ce5b2b47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217888aaa601479c2a958fe1ce5b2b47">&#9670;&nbsp;</a></span>recognizerImageGetHeight()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerImageGetHeight </td>
+          <td class="memname">MB_API int MB_CALL recognizerImageGetHeight </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>height</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -311,36 +293,25 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>Pointer to <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object of interest. </td></tr>
-    <tr><td class="paramname">height</td><td>Pointer to store given image height in pixels. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>height of image in pixels </dd></dl>
 
 </div>
 </div>
-<a id="adffad41855545bba81106df01b24f1c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adffad41855545bba81106df01b24f1c4">&#9670;&nbsp;</a></span>recognizerImageGetImageOrientation()</h2>
+<a id="a40d54fb3ffad98d99582f4f0359e780b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40d54fb3ffad98d99582f4f0359e780b">&#9670;&nbsp;</a></span>recognizerImageGetImageOrientation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerImageGetImageOrientation </td>
+          <td class="memname">MB_API <a class="el" href="_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9">ImageOrientation</a> MB_CALL recognizerImageGetImageOrientation </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9">ImageOrientation</a> *&#160;</td>
-          <td class="paramname"><em>orientation</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -349,36 +320,52 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>Image from which orientation will be obtained. </td></tr>
-    <tr><td class="paramname">orientation</td><td>Pointer to store image orientation. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Orientation of the image. </dd></dl>
 
 </div>
 </div>
-<a id="a2cce593507e5d1de1c5695ec2e25e176"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cce593507e5d1de1c5695ec2e25e176">&#9670;&nbsp;</a></span>recognizerImageGetRawBytes()</h2>
+<a id="aa666bb709033e900038e788cb2d05f33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa666bb709033e900038e788cb2d05f33">&#9670;&nbsp;</a></span>recognizerImageGetMutableRawBytes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerImageGetRawBytes </td>
+          <td class="memname">MB_API unsigned char *MB_CALL recognizerImageGetMutableRawBytes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
+          <td class="paramname"><em>image</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets modifiable buffer containing raw image bytes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">image</td><td>Pointer to <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object of interest. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data Modifiable buffer containing raw image bytes. You can use the obtained buffer until recognizerImageDelete is called on the <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object. If you want to use the buffer later, you must copy it. </dd></dl>
+
+</div>
+</div>
+<a id="ab46d344d7834d37213bee088f360d45b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab46d344d7834d37213bee088f360d45b">&#9670;&nbsp;</a></span>recognizerImageGetRawBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API const unsigned char *MB_CALL recognizerImageGetRawBytes </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">void **&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -387,36 +374,25 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>Pointer to <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object of interest. </td></tr>
-    <tr><td class="paramname">data</td><td>Double pointer whose value is set to a buffer with raw image pixels. Youu can use the obtained buffer until recognizerImageDelete is called on the <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object. If you want to use the buffer later, you must copy it. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>data Buffer containing raw image bytes. You can use the obtained buffer until recognizerImageDelete is called on the <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object. If you want to use the buffer later, you must copy it. </dd></dl>
 
 </div>
 </div>
-<a id="acc89d185526ffca20f79a7092ee6dfd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc89d185526ffca20f79a7092ee6dfd9">&#9670;&nbsp;</a></span>recognizerImageGetRawImageType()</h2>
+<a id="ae78e5d60253e930a9d9bc9c10e832a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae78e5d60253e930a9d9bc9c10e832a5b">&#9670;&nbsp;</a></span>recognizerImageGetRawImageType()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerImageGetRawImageType </td>
+          <td class="memname">MB_API <a class="el" href="_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a> MB_CALL recognizerImageGetRawImageType </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5b">RawImageType</a> *&#160;</td>
-          <td class="paramname"><em>rawImageType</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -425,36 +401,25 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>Pointer to <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object of interest. </td></tr>
-    <tr><td class="paramname">rawImageType</td><td>Pointer to store raw image type of given image. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>raw image type of image </dd></dl>
 
 </div>
 </div>
-<a id="a29c4d385add3b75cdd5871efb36097ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29c4d385add3b75cdd5871efb36097ce">&#9670;&nbsp;</a></span>recognizerImageGetWidth()</h2>
+<a id="adc91aacb370163d728b704b2999bbf17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc91aacb370163d728b704b2999bbf17">&#9670;&nbsp;</a></span>recognizerImageGetWidth()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerImageGetWidth </td>
+          <td class="memname">MB_API int MB_CALL recognizerImageGetWidth </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_recognizer_image.html">RecognizerImage</a> *&#160;</td>
-          <td class="paramname"><em>image</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>image</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>width</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -463,11 +428,10 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>Pointer to <a class="el" href="struct_recognizer_image.html" title="RecognizerImage data structure. Holds image on which recognition will bw performed. ">RecognizerImage</a> object of interest. </td></tr>
-    <tr><td class="paramname">width</td><td>Pointer to store given image width in pixels. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>width of image in pixels </dd></dl>
 
 </div>
 </div>
@@ -505,7 +469,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. </dd></dl>
 
 </div>
 </div>
@@ -573,7 +537,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_recognizer_image_8h.html#af30c4cc9be780aba9da5f37aa93a39c5" title="Typedef for RawImageType enum. ">RawImageType</a> </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. RECOGNIZER_ERROR_STATUS_SUCCESS for success, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if rawType is invalid. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. </dd></dl>
 
 </div>
 </div>

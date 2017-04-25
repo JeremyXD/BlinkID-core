@@ -101,7 +101,7 @@ MB_EXPORTED_TYPE typedef struct IKadSettings IKadSettings;
 * @brief Set settings for Malaysian immigrator ID card recognizer.
 * @param settings pointer to RecognizerSettings object that holds all settings information
 * @param ikadSettings pointer to IKad recognizer settings object that contains information how IKad recognizer should behave or NULL to disable IKad recognizer
-* @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
+* @return status of the operation.
 */
 MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetIKadSettings(RecognizerSettings* settings, const IKadSettings* ikadSettings);
 

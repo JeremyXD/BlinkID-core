@@ -56,7 +56,7 @@ MB_EXPORTED_TYPE typedef struct MyKadSettings MyKadSettings;
 * @brief Set settings for Malaysian ID card recognizer.
 * @param settings pointer to RecognizerSettings object that holds all settings information
 * @param mykadSettings pointer to MyKad recognizer settings object that contains information how MyKad recognizer should behave or NULL to disable MyKad recognizer
-* @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
+* @return status of the operation.
 */
 MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetMyKadSettings(RecognizerSettings* settings, const MyKadSettings* mykadSettings);
 

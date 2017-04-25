@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -66,7 +66,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> settings data structure.  
+<p><a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> settings data structure A <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> is object which orchestrates image recognition. It combines detection of objects (documents, barcodes, etc.) with OCR/barcode decoding and data extraction. Each <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> is specific to extracting single type of information from the image. For example, USDL recognizer (.  
  <a href="struct_recognizer_settings.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_recognizer_settings_fwd_8h_source.html">RecognizerSettingsFwd.h</a>&gt;</code></p>
@@ -92,30 +92,40 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a77343c8b48c9492324d77d839bb8c566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set settings for Malaysian ID card recognizer.  <a href="#a77343c8b48c9492324d77d839bb8c566">More...</a><br /></td></tr>
 <tr class="separator:a77343c8b48c9492324d77d839bb8c566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5508cbe3c0cf90916c62fde9d3e7ad53"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a5508cbe3c0cf90916c62fde9d3e7ad53">recognizerSettingsSetMRTDSettings</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const <a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *mrtdSettings)</td></tr>
-<tr class="memdesc:a5508cbe3c0cf90916c62fde9d3e7ad53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set settings for Machine Readable Travel Document recognizer.  <a href="#a5508cbe3c0cf90916c62fde9d3e7ad53">More...</a><br /></td></tr>
+<tr class="memdesc:a5508cbe3c0cf90916c62fde9d3e7ad53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set settings for Machine Readable Travel Document recognizer. A copy of <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> will be made, so it is safe to terminate the <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> structure with mrtdSettingsTerminate function.  <a href="#a5508cbe3c0cf90916c62fde9d3e7ad53">More...</a><br /></td></tr>
 <tr class="separator:a5508cbe3c0cf90916c62fde9d3e7ad53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f937ba76abb8377fd7caf6098d0e3b"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a05f937ba76abb8377fd7caf6098d0e3b">recognizerSettingsSetBlinkInputSettings</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *recognizerSettings, const <a class="el" href="struct_blink_input_settings.html">BlinkInputSettings</a> *blinkInputSettings)</td></tr>
+<tr class="memdesc:a05f937ba76abb8377fd7caf6098d0e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set settings for BlinkInput recognizer. A copy of <a class="el" href="struct_blink_input_settings.html" title="Settings for configuring BlinkInput recognizer. BlinkInput recognizer can be used to perform generic ...">BlinkInputSettings</a> will be made, so it is safe to terminate the <a class="el" href="struct_blink_input_settings.html" title="Settings for configuring BlinkInput recognizer. BlinkInput recognizer can be used to perform generic ...">BlinkInputSettings</a> structure with blinkInputSettingsTerminate function.  <a href="#a05f937ba76abb8377fd7caf6098d0e3b">More...</a><br /></td></tr>
+<tr class="separator:a05f937ba76abb8377fd7caf6098d0e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50554c9f4f525d157ba02d831870e922"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a50554c9f4f525d157ba02d831870e922">recognizerSettingsCreate</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> **settings)</td></tr>
-<tr class="memdesc:a50554c9f4f525d157ba02d831870e922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates and initializes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object. Example:  <a href="#a50554c9f4f525d157ba02d831870e922">More...</a><br /></td></tr>
+<tr class="memdesc:a50554c9f4f525d157ba02d831870e922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates and initializes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object. Example:  <a href="#a50554c9f4f525d157ba02d831870e922">More...</a><br /></td></tr>
 <tr class="separator:a50554c9f4f525d157ba02d831870e922"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24d9f7c65fa462e20d18e4174428d76c"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a24d9f7c65fa462e20d18e4174428d76c">recognizerSettingsDelete</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> **settings)</td></tr>
-<tr class="memdesc:a24d9f7c65fa462e20d18e4174428d76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object and sets the settings pointer to NULL. Example:  <a href="#a24d9f7c65fa462e20d18e4174428d76c">More...</a><br /></td></tr>
+<tr class="memdesc:a24d9f7c65fa462e20d18e4174428d76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object and sets the settings pointer to NULL. Example:  <a href="#a24d9f7c65fa462e20d18e4174428d76c">More...</a><br /></td></tr>
 <tr class="separator:a24d9f7c65fa462e20d18e4174428d76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae039f4353cea9e087afc68981f7ad62c"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#ae039f4353cea9e087afc68981f7ad62c">recognizerSettingsSetLicenseKeyForLicensee</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *licensee, const char *licenseKey)</td></tr>
-<tr class="memdesc:ae039f4353cea9e087afc68981f7ad62c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the license key and licensee required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object.  <a href="#ae039f4353cea9e087afc68981f7ad62c">More...</a><br /></td></tr>
-<tr class="separator:ae039f4353cea9e087afc68981f7ad62c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a8fb2306873c2a135f4471b59d7b76c"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a3a8fb2306873c2a135f4471b59d7b76c">recognizerSettingsSetLicenseKey</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *licenseKey)</td></tr>
-<tr class="memdesc:a3a8fb2306873c2a135f4471b59d7b76c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the license key required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object.  <a href="#a3a8fb2306873c2a135f4471b59d7b76c">More...</a><br /></td></tr>
-<tr class="separator:a3a8fb2306873c2a135f4471b59d7b76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97cd242b43a9488d4ff1ecbd428737dc"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a97cd242b43a9488d4ff1ecbd428737dc">recognizerSettingsSetOutputMultipleResults</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, int outputMulti)</td></tr>
-<tr class="memdesc:a97cd242b43a9488d4ff1ecbd428737dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether or not outputting of multiple scan results from same image is allowed.  <a href="#a97cd242b43a9488d4ff1ecbd428737dc">More...</a><br /></td></tr>
-<tr class="separator:a97cd242b43a9488d4ff1ecbd428737dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1523365322a47b31ade2a0a9b59de360"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a1523365322a47b31ade2a0a9b59de360">recognizerSettingsSetResourcesLocation</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *resourcePath)</td></tr>
-<tr class="memdesc:a1523365322a47b31ade2a0a9b59de360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the location where required resources will be loaded from. If not set, "res" folder will be used. Example:  <a href="#a1523365322a47b31ade2a0a9b59de360">More...</a><br /></td></tr>
-<tr class="separator:a1523365322a47b31ade2a0a9b59de360"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ee1484cae97fbd79764cb1346f82e73"><td class="memItemLeft" align="right" valign="top">MB_API void MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a7ee1484cae97fbd79764cb1346f82e73">recognizerSettingsSetLicenseKeyForLicensee</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *licensee, const char *licenseKey)</td></tr>
+<tr class="memdesc:a7ee1484cae97fbd79764cb1346f82e73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the license key and licensee required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. NOTE: License check will be performed while creating <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object with recognizerCreate function, not here.  <a href="#a7ee1484cae97fbd79764cb1346f82e73">More...</a><br /></td></tr>
+<tr class="separator:a7ee1484cae97fbd79764cb1346f82e73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a969124a88e12b7ca3c2914e49ba14c"><td class="memItemLeft" align="right" valign="top">MB_API void MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a6a969124a88e12b7ca3c2914e49ba14c">recognizerSettingsSetLicenseKey</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *licenseKey)</td></tr>
+<tr class="memdesc:a6a969124a88e12b7ca3c2914e49ba14c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the license key required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. NOTE: License check will be performed while creating <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object with recognizerCreate function, not here.  <a href="#a6a969124a88e12b7ca3c2914e49ba14c">More...</a><br /></td></tr>
+<tr class="separator:a6a969124a88e12b7ca3c2914e49ba14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b9ffda326961d405bf94ae8d1554628"><td class="memItemLeft" align="right" valign="top">MB_API void MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a6b9ffda326961d405bf94ae8d1554628">recognizerSettingsSetOutputMultipleResults</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, int outputMulti)</td></tr>
+<tr class="memdesc:a6b9ffda326961d405bf94ae8d1554628"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether or not outputting of multiple scan results from same image is allowed.  <a href="#a6b9ffda326961d405bf94ae8d1554628">More...</a><br /></td></tr>
+<tr class="separator:a6b9ffda326961d405bf94ae8d1554628"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee2659e28dc1f756d34602a689987dac"><td class="memItemLeft" align="right" valign="top">MB_API int MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#aee2659e28dc1f756d34602a689987dac">recognizerSettingsGetOutputMultipleResults</a> (const <a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings)</td></tr>
+<tr class="memdesc:aee2659e28dc1f756d34602a689987dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets whether or not outputting of multiple scan results from scan image is allowed.  <a href="#aee2659e28dc1f756d34602a689987dac">More...</a><br /></td></tr>
+<tr class="separator:aee2659e28dc1f756d34602a689987dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8885d4778b846efb440ca591b0e83b40"><td class="memItemLeft" align="right" valign="top">MB_API void MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_settings.html#a8885d4778b846efb440ca591b0e83b40">recognizerSettingsSetResourcesLocation</a> (<a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *settings, const char *resourcePath)</td></tr>
+<tr class="memdesc:a8885d4778b846efb440ca591b0e83b40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the location where required resources will be loaded from. If not set, "res" folder will be used. NOTE: This function will not make a copy of given string, it will only save the pointer to it. Make sure the given char buffer is alive during whole recognition process, since resources are lazy loaded during recognition. Example:  <a href="#a8885d4778b846efb440ca591b0e83b40">More...</a><br /></td></tr>
+<tr class="separator:a8885d4778b846efb440ca591b0e83b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> settings data structure. </p>
-<p>Used for initializing the <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="_recognizer_8h.html">Recognizer.h</a> </dd></dl>
+<div class="textblock"><p><a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> settings data structure A <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> is object which orchestrates image recognition. It combines detection of objects (documents, barcodes, etc.) with OCR/barcode decoding and data extraction. Each <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> is specific to extracting single type of information from the image. For example, USDL recognizer (. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_u_s_d_l_settings_8h.html">USDLSettings.h</a>) is specialized for searching PDF417 barcodes on US driver's licenses and extracting data from them. On the other hand, Machine Readable Travel Document (MRTD) recognizer (</dd>
+<dd>
+<a class="el" href="_m_r_t_d_settings_8h.html">MRTDSettings.h</a>) is specialized for searching Machine Readable Zone in the image and extracting data from it. Please browse the documentation to see all specific available recognizers and how to configure them. </dd>
+<dd>
+<a class="el" href="_recognizer_8h.html">Recognizer.h</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a50554c9f4f525d157ba02d831870e922"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50554c9f4f525d157ba02d831870e922">&#9670;&nbsp;</a></span>recognizerSettingsCreate()</h2>
@@ -133,10 +143,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Allocates and initializes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object. Example: </p>
+<p>Allocates and initializes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object. Example: </p>
 <div class="fragment"><div class="line"><a class="code" href="struct_recognizer_settings.html">RecognizerSettings</a>* settings;</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a50554c9f4f525d157ba02d831870e922">recognizerSettingsCreate</a>(&amp;settings);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>Pointer to pointer referencing the created <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object </td></tr>
+    <tr><td class="paramname">settings</td><td>Pointer to pointer referencing the created <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object </td></tr>
   </table>
   </dd>
 </dl>
@@ -160,14 +170,42 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Deletes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object and sets the settings pointer to NULL. Example: </p>
+<p>Deletes the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object and sets the settings pointer to NULL. Example: </p>
 <div class="fragment"><div class="line"><a class="code" href="struct_recognizer_settings.html">RecognizerSettings</a>* settings;</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a50554c9f4f525d157ba02d831870e922">recognizerSettingsCreate</a>(&amp;settings);</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a24d9f7c65fa462e20d18e4174428d76c">recognizerSettingsDelete</a>(&amp;settings);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>Double Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object which is to be deleted </td></tr>
+    <tr><td class="paramname">settings</td><td>Double Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object which is to be deleted </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>errorStatus status of the operation. </dd></dl>
+
+</div>
+</div>
+<a id="aee2659e28dc1f756d34602a689987dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee2659e28dc1f756d34602a689987dac">&#9670;&nbsp;</a></span>recognizerSettingsGetOutputMultipleResults()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API int MB_CALL recognizerSettingsGetOutputMultipleResults </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
+          <td class="paramname"><em>settings</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets whether or not outputting of multiple scan results from scan image is allowed. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_recognizer_settings.html#a6b9ffda326961d405bf94ae8d1554628" title="Sets whether or not outputting of multiple scan results from same image is allowed. ">recognizerSettingsSetOutputMultipleResults</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">settings</td><td>Pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>zero if outputting of multiple results is not allowed, non-zero otherwise </dd></dl>
 
 </div>
 </div>
@@ -200,12 +238,50 @@ Public Member Functions</h2></td></tr>
 <p>Set settings for 1D barcode recognizer (Microblink's implementation). BarDecodeSettings structure defines how the 1D barcode recognizer (Microblink's implementation) will behave. Set NULL to disable 1D barcode recognizer (Microblink's implementation). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">barDecoderSettings</td><td>pointer to 1D barcode recognizer (Microblink's implementation) settings object that contains information how 1D barcode recognizer will behave or NULL to disable 1D barcode recognizer (Microblink's implementation) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation. </dd></dl>
+
+</div>
+</div>
+<a id="a05f937ba76abb8377fd7caf6098d0e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f937ba76abb8377fd7caf6098d0e3b">&#9670;&nbsp;</a></span>recognizerSettingsSetBlinkInputSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerSettingsSetBlinkInputSettings </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
+          <td class="paramname"><em>recognizerSettings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_blink_input_settings.html">BlinkInputSettings</a> *&#160;</td>
+          <td class="paramname"><em>blinkInputSettings</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set settings for BlinkInput recognizer. A copy of <a class="el" href="struct_blink_input_settings.html" title="Settings for configuring BlinkInput recognizer. BlinkInput recognizer can be used to perform generic ...">BlinkInputSettings</a> will be made, so it is safe to terminate the <a class="el" href="struct_blink_input_settings.html" title="Settings for configuring BlinkInput recognizer. BlinkInput recognizer can be used to perform generic ...">BlinkInputSettings</a> structure with blinkInputSettingsTerminate function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">recognizerSettings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information. </td></tr>
+    <tr><td class="paramname">blinkInputSettings</td><td>pointer to <a class="el" href="struct_blink_input_settings.html" title="Settings for configuring BlinkInput recognizer. BlinkInput recognizer can be used to perform generic ...">BlinkInputSettings</a> object that contains information how BlinkInput recognizer should behave or NULL to disable BlinkInput recognizer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation </dd></dl>
 
 </div>
 </div>
@@ -238,23 +314,23 @@ Public Member Functions</h2></td></tr>
 <p>Set settings for Malaysian immigrator ID card recognizer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">ikadSettings</td><td>pointer to IKad recognizer settings object that contains information how IKad recognizer should behave or NULL to disable IKad recognizer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation. </dd></dl>
 
 </div>
 </div>
-<a id="a3a8fb2306873c2a135f4471b59d7b76c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a8fb2306873c2a135f4471b59d7b76c">&#9670;&nbsp;</a></span>recognizerSettingsSetLicenseKey()</h2>
+<a id="a6a969124a88e12b7ca3c2914e49ba14c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a969124a88e12b7ca3c2914e49ba14c">&#9670;&nbsp;</a></span>recognizerSettingsSetLicenseKey()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerSettingsSetLicenseKey </td>
+          <td class="memname">MB_API void MB_CALL recognizerSettingsSetLicenseKey </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
           <td class="paramname"><em>settings</em>, </td>
@@ -273,26 +349,25 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the license key required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. </p>
+<p>Sets the license key required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. NOTE: License check will be performed while creating <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object with recognizerCreate function, not here. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information. </td></tr>
-    <tr><td class="paramname">licenseKey</td><td>License key used for unlocking the library. </td></tr>
+    <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information. </td></tr>
+    <tr><td class="paramname">licenseKey</td><td>License key used for unlocking the library. Make sure pointer is valid at the time recognizerCreate is called. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. License check will be perfomed while creating recognizer object with recognizerCreate method, not here. </dd></dl>
 
 </div>
 </div>
-<a id="ae039f4353cea9e087afc68981f7ad62c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae039f4353cea9e087afc68981f7ad62c">&#9670;&nbsp;</a></span>recognizerSettingsSetLicenseKeyForLicensee()</h2>
+<a id="a7ee1484cae97fbd79764cb1346f82e73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ee1484cae97fbd79764cb1346f82e73">&#9670;&nbsp;</a></span>recognizerSettingsSetLicenseKeyForLicensee()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerSettingsSetLicenseKeyForLicensee </td>
+          <td class="memname">MB_API void MB_CALL recognizerSettingsSetLicenseKeyForLicensee </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
           <td class="paramname"><em>settings</em>, </td>
@@ -317,16 +392,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the license key and licensee required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. </p>
+<p>Sets the license key and licensee required for initialization of <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object. NOTE: License check will be performed while creating <a class="el" href="struct_recognizer.html" title="Recognizer data structure. ">Recognizer</a> object with recognizerCreate function, not here. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information. </td></tr>
-    <tr><td class="paramname">licensee</td><td>You should enter here the licensee name to which license key is bound. </td></tr>
-    <tr><td class="paramname">licenseKey</td><td>License key used for unlocking the library. </td></tr>
+    <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information. </td></tr>
+    <tr><td class="paramname">licensee</td><td>You should enter here the licensee name to which license key is bound. Make sure pointer is valid at the time recognizerCreate is called. </td></tr>
+    <tr><td class="paramname">licenseKey</td><td>License key used for unlocking the library. Make sure pointer is valid at the time recognizerCreate is called. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. License check will be perfomed while creating recognizer object with recognizerCreate method, not here. </dd></dl>
 
 </div>
 </div>
@@ -356,15 +430,15 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set settings for Machine Readable Travel Document recognizer. </p>
+<p>Set settings for Machine Readable Travel Document recognizer. A copy of <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> will be made, so it is safe to terminate the <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> structure with mrtdSettingsTerminate function. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> object that holds MRTD settings information </td></tr>
     <tr><td class="paramname">mrtdSettings</td><td>pointer to MRTD recognizer settings object that contains information how MRTD recognizer should behave or NULL to disable MRTD recognizer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation </dd></dl>
 
 </div>
 </div>
@@ -397,23 +471,23 @@ Public Member Functions</h2></td></tr>
 <p>Set settings for Malaysian ID card recognizer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">mykadSettings</td><td>pointer to MyKad recognizer settings object that contains information how MyKad recognizer should behave or NULL to disable MyKad recognizer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation. </dd></dl>
 
 </div>
 </div>
-<a id="a97cd242b43a9488d4ff1ecbd428737dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97cd242b43a9488d4ff1ecbd428737dc">&#9670;&nbsp;</a></span>recognizerSettingsSetOutputMultipleResults()</h2>
+<a id="a6b9ffda326961d405bf94ae8d1554628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b9ffda326961d405bf94ae8d1554628">&#9670;&nbsp;</a></span>recognizerSettingsSetOutputMultipleResults()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerSettingsSetOutputMultipleResults </td>
+          <td class="memname">MB_API void MB_CALL recognizerSettingsSetOutputMultipleResults </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
           <td class="paramname"><em>settings</em>, </td>
@@ -436,12 +510,11 @@ Public Member Functions</h2></td></tr>
 <p>If that is true, it is possible to return multiple recognition results from same image (e.g. both PDF417 and QR code from same image can be decoded). By default, this option is true. If you turn it off, then <a class="el" href="struct_recognizer_result_list.html" title="RecognizerResultList data structure. Holds all results of the recognition. ">RecognizerResultList</a> outputted by recognizerRecognize* functions will contain at most 1 result. The upside of turning that option off is the speed - if you enable lots of recognizers, as soon as the first recognizer succeeds in recognizing the object, function will return and other recognizers will not get a chance to analyze the image. The downside is that you are then unable to obtain multiple results from single image.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information. </td></tr>
+    <tr><td class="paramname">settings</td><td>Pointer to the <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information. </td></tr>
     <tr><td class="paramname">outputMulti</td><td>true for enabling output of multiple results, false otherwise </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus Status of the operation. </dd></dl>
 
 </div>
 </div>
@@ -474,23 +547,23 @@ Public Member Functions</h2></td></tr>
 <p>Set PDF417 recognizer settings to global settings object. PDF417 recognizer settings structure defines how the PDF417 recognition will be performed. Set NULL to disable PDF417 recognizer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">pdf417Settings</td><td>pointer to PDF417 recognizer settings object that contains information about PDF417 recognition or NULL to disable PDF417 recognizer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation. </dd></dl>
 
 </div>
 </div>
-<a id="a1523365322a47b31ade2a0a9b59de360"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1523365322a47b31ade2a0a9b59de360">&#9670;&nbsp;</a></span>recognizerSettingsSetResourcesLocation()</h2>
+<a id="a8885d4778b846efb440ca591b0e83b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8885d4778b846efb440ca591b0e83b40">&#9670;&nbsp;</a></span>recognizerSettingsSetResourcesLocation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL recognizerSettingsSetResourcesLocation </td>
+          <td class="memname">MB_API void MB_CALL recognizerSettingsSetResourcesLocation </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_recognizer_settings.html">RecognizerSettings</a> *&#160;</td>
           <td class="paramname"><em>settings</em>, </td>
@@ -509,15 +582,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the location where required resources will be loaded from. If not set, "res" folder will be used. Example: </p>
-<div class="fragment"><div class="line"><a class="code" href="struct_recognizer_settings.html">RecognizerSettings</a>* settings;</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a50554c9f4f525d157ba02d831870e922">recognizerSettingsCreate</a>(&amp;settings);</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a1523365322a47b31ade2a0a9b59de360">recognizerSettingsSetResourcesLocation</a>(settings, <span class="stringliteral">&quot;/path/to/res&quot;</span>);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+<p>Sets the location where required resources will be loaded from. If not set, "res" folder will be used. NOTE: This function will not make a copy of given string, it will only save the pointer to it. Make sure the given char buffer is alive during whole recognition process, since resources are lazy loaded during recognition. Example: </p>
+<div class="fragment"><div class="line"><a class="code" href="struct_recognizer_settings.html">RecognizerSettings</a>* settings;</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a50554c9f4f525d157ba02d831870e922">recognizerSettingsCreate</a>(&amp;settings);</div><div class="line"><a class="code" href="struct_recognizer_settings.html#a8885d4778b846efb440ca591b0e83b40">recognizerSettingsSetResourcesLocation</a>(settings, <span class="stringliteral">&quot;/path/to/res&quot;</span>);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">resourcePath</td><td>path to resource folder </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>errorStatus status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings or path is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL. </dd></dl>
 
 </div>
 </div>
@@ -550,12 +622,12 @@ Public Member Functions</h2></td></tr>
 <p>Set US Driver's License recognizer settings to global settings object. USDL recognizer settings structure defines how the US Driver's license recognition will be performed. Set NULL to disable US Driver's License recognizer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">usdlSettings</td><td>pointer to USDL recognizer settings object that contains information about USDL recognition or NULL to disable US Driver's License recognizer </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. Please note that if license key does not allow usage of USDL recognizer, you will still get RECOGNIZER_ERROR_STATUS_SUCCESS because license check is performed while initializing the global recognizer object (function <a class="el" href="struct_recognizer.html#ae4896ee530e10c786f2e5f2e951e6084" title="Allocates and initializes the recognizer object. Example: ">recognizerCreate(Recognizer**, const RecognizerSettings*)</a> from <a class="el" href="_recognizer_8h.html">Recognizer.h</a>). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation. </dd></dl>
 
 </div>
 </div>
@@ -588,7 +660,7 @@ Public Member Functions</h2></td></tr>
 <p>Set settings for ZXing barcode recognizer. You should use ZXing barcode recognizer for all barcodes that Microblink does not have implementation for. <a class="el" href="struct_z_xing_settings.html" title="Settings for configuring ZXing implementation of barcode scanners. ">ZXingSettings</a> structure defines how the ZXing barcode recognizer should behave. Set NULL to disable ZXing barcode recognizer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure. ">RecognizerSettings</a> object that holds all settings information </td></tr>
+    <tr><td class="paramname">settings</td><td>pointer to <a class="el" href="struct_recognizer_settings.html" title="Recognizer settings data structure A Recognizer is object which orchestrates image recognition...">RecognizerSettings</a> object that holds all settings information </td></tr>
     <tr><td class="paramname">zxingSettings</td><td>pointer to ZXing barcode recognizer settings object that contains information how ZXing barcode recognizer should behave or NULL to disable ZXing barcode recognizer </td></tr>
   </table>
   </dd>
@@ -605,7 +677,8 @@ Public Member Functions</h2></td></tr>
 <li>inc/Recognizer/BlinkBarcode/ZXing/<a class="el" href="_z_xing_settings_8h_source.html">ZXingSettings.h</a></li>
 <li>inc/Recognizer/BlinkID/Malaysia/iKad/<a class="el" href="_i_kad_settings_8h_source.html">IKadSettings.h</a></li>
 <li>inc/Recognizer/BlinkID/Malaysia/MyKad/<a class="el" href="_my_kad_settings_8h_source.html">MyKadSettings.h</a></li>
-<li>inc/Recognizer/BlinkID/Templating/MRTD/<a class="el" href="_m_r_t_d_settings_8h_source.html">MRTDSettings.h</a></li>
+<li>inc/Recognizer/BlinkID/MRTD/<a class="el" href="_m_r_t_d_settings_8h_source.html">MRTDSettings.h</a></li>
+<li>inc/Recognizer/BlinkInput/<a class="el" href="_blink_input_settings_8h_source.html">BlinkInputSettings.h</a></li>
 <li>inc/Recognizer/<a class="el" href="_recognizer_settings_8h_source.html">RecognizerSettings.h</a></li>
 </ul>
 </div><!-- contents -->

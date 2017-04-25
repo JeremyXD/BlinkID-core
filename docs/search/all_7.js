@@ -10,5 +10,6 @@ var searchData=
   ['image_5forientation_5fportrait_5fupside',['IMAGE_ORIENTATION_PORTRAIT_UPSIDE',['../_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9a2c4c61f93bc2c98c4902d196e29c9eac',1,'RecognizerImage.h']]],
   ['imageorientation',['ImageOrientation',['../_recognizer_image_8h.html#a0cc2b77f731f19da6c5e6162d72ed1c9',1,'ImageOrientation():&#160;RecognizerImage.h'],['../_recognizer_image_8h.html#a461d05221a9f19185e2a18a0a9e22a76',1,'ImageOrientation():&#160;RecognizerImage.h']]],
   ['immigrantcasenumber',['immigrantCaseNumber',['../struct_m_r_t_d_result.html#ac674afb4222c8d841b221a4a2026d0cb',1,'MRTDResult']]],
-  ['issuer',['issuer',['../struct_m_r_t_d_result.html#ac80bd97ccba6ff29ca73336bda702c62',1,'MRTDResult']]]
+  ['issuer',['issuer',['../struct_m_r_t_d_result.html#ac80bd97ccba6ff29ca73336bda702c62',1,'MRTDResult']]],
+  ['italic',['italic',['../struct_ocr_char.html#a3d53067d011e4c1da6f729b074854ed1',1,'OcrChar']]]
 ];

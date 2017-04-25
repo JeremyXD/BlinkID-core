@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['usdlsettings',['UsdlSettings',['../_u_s_d_l_settings_8h.html#a4a3449a2a21c9d8a8f30fa8ad8c3cc13',1,'USDLSettings.h']]]
+  ['pdf417settings',['Pdf417Settings',['../_pdf417_settings_8h.html#a92b7c260f33e81db4bb43a749504cc8f',1,'Pdf417Settings.h']]]
 ];

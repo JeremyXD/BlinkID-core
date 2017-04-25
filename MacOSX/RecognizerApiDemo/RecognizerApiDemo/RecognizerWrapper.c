@@ -27,9 +27,9 @@ RecognizerErrorStatus recognizerWrapperInit(RecognizerWrapper* wrapper, const ch
     recognizerSettingsSetResourcesLocation(wrapper->settings, resourcesPath);
     
     /* insert license key and licensee */
-    /* recognizerSettingsSetLicenseKeyForLicensee(wrapper->settings, "add licensee here", "add license key here"); */
+    recognizerSettingsSetLicenseKeyForLicensee(wrapper->settings, "add licensee here", "add license key here");
     /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
-    /* recognizerSettingsSetLicenseKey(wrapper->settings, "add license key here"); */
+    recognizerSettingsSetLicenseKey(wrapper->settings, "add license key here");
 
     /********* INITIALIZE RECOGNIZER SETTINGS ***********/
     /* This determines what will be scanned on images ***/

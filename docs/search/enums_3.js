@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rawimagetype',['RawImageType',['../_recognizer_image_8h.html#a993c533680723b17ad917d9002a5fb5b',1,'RecognizerImage.h']]],
-  ['recognizererrorstatus',['RecognizerErrorStatus',['../_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65',1,'RecognizerError.h']]]
+  ['mbdetectionstatus',['MBDetectionStatus',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505',1,'Recognizer.h']]],
+  ['mrtddocumenttype',['MRTDDocumentType',['../_m_r_t_d_result_8h.html#af09b57212cf9ec947a9b24e8421254c0',1,'MRTDResult.h']]]
 ];

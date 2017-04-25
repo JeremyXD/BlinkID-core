@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -86,13 +86,13 @@ typedef MB_EXPORTED_TYPE enum <a class="el" href="_recognizer_error_8h.html#ad87
 Enumerations</h2></td></tr>
 <tr class="memitem:ad87f7a9a4fa76aff551ea489ab676a65"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> { <br />
 &#160;&#160;<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a0ea648237140e482ba85149437aa9aef">RECOGNIZER_ERROR_STATUS_SUCCESS</a> = 0, 
-<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65aee40cf8707d29e1c3df5044c71b5452f">RECOGNIZER_ERROR_STATUS_FAIL</a> = 1, 
-<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a155e9140b7930bd9b06a1df1beb5bc40">RECOGNIZER_ERROR_STATUS_UNKNOWN_KEY</a> = 2, 
-<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a6fc775925fe0d66ab0ceb1ba60bf0bb7">RECOGNIZER_ERROR_STATUS_INVALID_TYPE</a> = 3, 
+<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65aee40cf8707d29e1c3df5044c71b5452f">RECOGNIZER_ERROR_STATUS_FAIL</a>, 
+<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a88180835278bbc9b7c4f74a9350676d9">RECOGNIZER_ERROR_STATUS_MALLOC_FAIL</a>, 
+<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a155e9140b7930bd9b06a1df1beb5bc40">RECOGNIZER_ERROR_STATUS_UNKNOWN_KEY</a>, 
 <br />
-&#160;&#160;<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a65274aad6041285d6fe5bc0aeed1f8ca">RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY</a> = 4, 
-<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a51ea27807349a4ee3242690dd663bf50">RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL</a> = 5, 
-<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a3eb6e4f0cbd18b5ae271583259d9c9c8">RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE</a> = 6
+&#160;&#160;<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a1d7074603a6d5a48824721ce49f53aad">RECOGNIZER_ERROR_STATUS_INVALID_ARGUMENT</a>, 
+<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a65274aad6041285d6fe5bc0aeed1f8ca">RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY</a>, 
+<a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65a3eb6e4f0cbd18b5ae271583259d9c9c8">RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE</a>
 <br />
  }<tr class="memdesc:ad87f7a9a4fa76aff551ea489ab676a65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumeration of all possible error statuses.  <a href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">More...</a><br /></td></tr>
 </td></tr>
@@ -125,13 +125,13 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65aee40cf8707d29e1c3df5044c71b5452f"></a>RECOGNIZER_ERROR_STATUS_FAIL&#160;</td><td class="fielddoc"><p>Operation failed </p>
 </td></tr>
+<tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a88180835278bbc9b7c4f74a9350676d9"></a>RECOGNIZER_ERROR_STATUS_MALLOC_FAIL&#160;</td><td class="fielddoc"><p>Failed to allocate memory </p>
+</td></tr>
 <tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a155e9140b7930bd9b06a1df1beb5bc40"></a>RECOGNIZER_ERROR_STATUS_UNKNOWN_KEY&#160;</td><td class="fielddoc"><p>Unknown key was used for the operation </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a6fc775925fe0d66ab0ceb1ba60bf0bb7"></a>RECOGNIZER_ERROR_STATUS_INVALID_TYPE&#160;</td><td class="fielddoc"><p>Invalid type was used in the operation </p>
+<tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a1d7074603a6d5a48824721ce49f53aad"></a>RECOGNIZER_ERROR_STATUS_INVALID_ARGUMENT&#160;</td><td class="fielddoc"><p>Invalid argument was given to function </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a65274aad6041285d6fe5bc0aeed1f8ca"></a>RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY&#160;</td><td class="fielddoc"><p>Invalid or expired license key was provided </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a51ea27807349a4ee3242690dd663bf50"></a>RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL&#160;</td><td class="fielddoc"><p>One of required pointer inputs is NULL </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ad87f7a9a4fa76aff551ea489ab676a65a3eb6e4f0cbd18b5ae271583259d9c9c8"></a>RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE&#160;</td><td class="fielddoc"><p>Index is out of range </p>
 </td></tr>

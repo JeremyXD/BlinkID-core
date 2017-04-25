@@ -44,8 +44,7 @@ extern "C" {
   @param    input           Pointer to RecognizerImage object which holds original image.
   @param    output          Pointer to pointer referencing the crated mirrored image. If value of given pointer is NULL new RecognizerImage structure is created,
                             othervise given structure is reused. In case of allocation RecognizerImageDelete must be called if structure is not going to be used any more.
-  @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                             Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   errorStatus     Status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageProcessorMirrorImage(const RecognizerImage* input, RecognizerImage** output);
 
@@ -71,8 +70,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerImageProcessorMirrorImage(const R
   @param    k3              Radial distortion parameer, has least influence. If k3 = 0 it has no influence, for k3 < 0 image is expanded thoward the edges
                             and for k3 > 0 image is shrinked towards the edges.
   @param    scale           Additional scaling of transformed image. If scale = 1 no scaling is applied, for scale < 1 image is decreased and for scale > 1 image is increased.
-  @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                             Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   errorStatus     Status of the operation.
   */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageProcessorBarrelDewarp(const RecognizerImage* input, RecognizerImage** output,
             const float k1, const float k2, const float p1, const float p2, const float k3, const float scale);

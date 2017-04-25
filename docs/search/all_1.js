@@ -18,5 +18,15 @@ var searchData=
   ['barcodetypetostring',['barcodeTypeToString',['../_barcode_result_8h.html#acd924c2c6d144d761453d17cb28b8134',1,'BarcodeResult.h']]],
   ['bardecoderresult_2eh',['BarDecoderResult.h',['../_bar_decoder_result_8h.html',1,'']]],
   ['bardecodersettings',['BarDecoderSettings',['../struct_bar_decoder_settings.html',1,'BarDecoderSettings'],['../_bar_decoder_settings_8h.html#a479ede95cdb2022dc0b4d55cdcc51711',1,'BarDecoderSettings():&#160;BarDecoderSettings.h']]],
-  ['bardecodersettings_2eh',['BarDecoderSettings.h',['../_bar_decoder_settings_8h.html',1,'']]]
+  ['bardecodersettings_2eh',['BarDecoderSettings.h',['../_bar_decoder_settings_8h.html',1,'']]],
+  ['belowrange',['belowRange',['../struct_y_range.html#a2e0318ca98f6b504c9f28c9ecc1ed7c8',1,'YRange']]],
+  ['blinkinputresult',['BlinkInputResult',['../struct_blink_input_result.html',1,'BlinkInputResult'],['../_blink_input_result_8h.html#a01216b4c8236defdb62b9d1c3d2e076e',1,'BlinkInputResult():&#160;BlinkInputResult.h']]],
+  ['blinkinputresult_2eh',['BlinkInputResult.h',['../_blink_input_result_8h.html',1,'']]],
+  ['blinkinputsettings',['BlinkInputSettings',['../struct_blink_input_settings.html',1,'BlinkInputSettings'],['../_blink_input_settings_8h.html#a0e677ddc53bf42b71ffe0a2fb118ba13',1,'BlinkInputSettings():&#160;BlinkInputSettings.h']]],
+  ['blinkinputsettings_2eh',['BlinkInputSettings.h',['../_blink_input_settings_8h.html',1,'']]],
+  ['blinkinputsettingsinitialize',['blinkInputSettingsInitialize',['../struct_blink_input_settings.html#ad4a03b33c045eb7c02ec2b443d648a66',1,'BlinkInputSettings']]],
+  ['blinkinputsettingsterminate',['blinkInputSettingsTerminate',['../struct_blink_input_settings.html#a899c6cce40399e12e509be8f2df5b1cc',1,'BlinkInputSettings']]],
+  ['blocks',['blocks',['../struct_ocr_result.html#a8b38e8d7bff8a4c6c8b200408cd54b6a',1,'OcrResult']]],
+  ['blockscount',['blocksCount',['../struct_ocr_result.html#a6d6dd0402ea41eb976a64cac95df9bb4',1,'OcrResult']]],
+  ['bold',['bold',['../struct_ocr_char.html#aeca25199adc0604586bbab282ff43500',1,'OcrChar']]]
 ];

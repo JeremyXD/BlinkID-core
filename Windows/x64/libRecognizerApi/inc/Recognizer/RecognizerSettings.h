@@ -25,7 +25,8 @@
 #include "Recognizer/BlinkBarcode/USDL/USDLSettings.h"
 #include "Recognizer/BlinkID/Malaysia/MyKad/MyKadSettings.h"
 #include "Recognizer/BlinkID/Malaysia/iKad/IKadSettings.h"
-#include "Recognizer/BlinkID/Templating/MRTD/MRTDSettings.h"
+#include "Recognizer/BlinkID/MRTD/MRTDSettings.h"
+#include "Recognizer/BlinkInput/BlinkInputSettings.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,32 +57,30 @@ MB_API RecognizerErrorStatus MB_CALL recognizerSettingsCreate(RecognizerSettings
  @endcode
  
  @param     settings    Double Pointer to the RecognizerSettings object which is to be deleted
- @return    errorStatus status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
+ @return    errorStatus status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerSettingsDelete(RecognizerSettings** settings);
 
 /**
   @memberof RecognizerSettings
   @brief Sets the license key and licensee required for initialization of Recognizer object.
+  NOTE: License check will be performed while creating Recognizer object with recognizerCreate function, not here.
 
   @param     settings      Pointer to the RecognizerSettings object that holds all settings information.
-  @param     licensee      You should enter here the licensee name to which license key is bound.
-  @param     licenseKey    License key used for unlocking the library.
-  @return    errorStatus   Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
-                            License check will be perfomed while creating recognizer object with recognizerCreate method, not here.
+  @param     licensee      You should enter here the licensee name to which license key is bound. Make sure pointer is valid at the time recognizerCreate is called.
+  @param     licenseKey    License key used for unlocking the library. Make sure pointer is valid at the time recognizerCreate is called.
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetLicenseKeyForLicensee(RecognizerSettings* settings, const char* licensee, const char* licenseKey);
+MB_API void MB_CALL recognizerSettingsSetLicenseKeyForLicensee(RecognizerSettings* settings, const char* licensee, const char* licenseKey);
 
 /**
   @memberof RecognizerSettings
   @brief Sets the license key required for initialization of Recognizer object.
+  NOTE: License check will be performed while creating Recognizer object with recognizerCreate function, not here.
 
   @param     settings      Pointer to the RecognizerSettings object that holds all settings information.
-  @param     licenseKey    License key used for unlocking the library.
-  @return    errorStatus   Status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
-                            License check will be perfomed while creating recognizer object with recognizerCreate method, not here.
+  @param     licenseKey    License key used for unlocking the library. Make sure pointer is valid at the time recognizerCreate is called.
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetLicenseKey(RecognizerSettings* settings, const char* licenseKey);
+MB_API void MB_CALL recognizerSettingsSetLicenseKey(RecognizerSettings* settings, const char* licenseKey);
 
 /**
   * @memberof RecognizerSettings
@@ -95,13 +94,23 @@ MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetLicenseKey(RecognizerS
   *
   * @param     settings      Pointer to the RecognizerSettings object that holds all settings information.
   * @param     outputMulti   true for enabling output of multiple results, false otherwise
-  * @return    errorStatus   Status of the operation.
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetOutputMultipleResults(RecognizerSettings* settings, int outputMulti);
+MB_API void MB_CALL recognizerSettingsSetOutputMultipleResults(RecognizerSettings* settings, int outputMulti);
+
+/**
+ * @memberof RecognizerSettings
+ * @brief Gets whether or not outputting of multiple scan results from scan image is allowed.
+ * @see recognizerSettingsSetOutputMultipleResults
+ * @param settings Pointer to RecognizerSettings object that holds all settings information.
+ * @return zero if outputting of multiple results is not allowed, non-zero otherwise
+ */
+MB_API int MB_CALL recognizerSettingsGetOutputMultipleResults( const RecognizerSettings* settings );
 
 /**
  @memberof RecognizerSettings
  @brief Sets the location where required resources will be loaded from. If not set, "res" folder will be used.
+ NOTE: This function will not make a copy of given string, it will only save the pointer to it. Make sure the given
+       char buffer is alive during whole recognition process, since resources are lazy loaded during recognition.
  Example:
  @code
     RecognizerSettings* settings;
@@ -111,9 +120,8 @@ MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetOutputMultipleResults(
  
  @param     settings     pointer to RecognizerSettings object that holds all settings information
  @param     resourcePath path to resource folder
- @return    errorStatus status of the operation. Here it's always RECOGNIZER_ERROR_STATUS_SUCCESS, except when settings or path is NULL pointer when status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
  */
-MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetResourcesLocation(RecognizerSettings* settings, const char* resourcePath);
+MB_API void MB_CALL recognizerSettingsSetResourcesLocation(RecognizerSettings* settings, const char* resourcePath);
 
 
 #ifdef __cplusplus

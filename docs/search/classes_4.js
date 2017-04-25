@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['recognizer',['Recognizer',['../struct_recognizer.html',1,'']]],
-  ['recognizerbarreldewarper',['RecognizerBarrelDewarper',['../struct_recognizer_barrel_dewarper.html',1,'']]],
-  ['recognizercallback',['RecognizerCallback',['../struct_recognizer_callback.html',1,'']]],
-  ['recognizerimage',['RecognizerImage',['../struct_recognizer_image.html',1,'']]],
-  ['recognizerresult',['RecognizerResult',['../struct_recognizer_result.html',1,'']]],
-  ['recognizerresultlist',['RecognizerResultList',['../struct_recognizer_result_list.html',1,'']]],
-  ['recognizersettings',['RecognizerSettings',['../struct_recognizer_settings.html',1,'']]]
+  ['ocrblock',['OcrBlock',['../struct_ocr_block.html',1,'']]],
+  ['ocrchar',['OcrChar',['../struct_ocr_char.html',1,'']]],
+  ['ocrenginesettings',['OcrEngineSettings',['../struct_ocr_engine_settings.html',1,'']]],
+  ['ocrline',['OcrLine',['../struct_ocr_line.html',1,'']]],
+  ['ocrresult',['OcrResult',['../struct_ocr_result.html',1,'']]],
+  ['ocrwhitelistentry',['OcrWhitelistEntry',['../struct_ocr_whitelist_entry.html',1,'']]]
 ];

@@ -16,6 +16,7 @@
 #include "Export.h"
 
 #ifdef __cplusplus
+#include <cstdlib>
 extern "C" {
 #endif
 
@@ -31,6 +32,49 @@ struct RecognizerResult;
  * @brief Typedef for RecognizerResult structure.
  */
 typedef MB_EXPORTED_TYPE struct RecognizerResult RecognizerResult;
+
+/**
+ * @struct MBDate
+ * @brief Date structure which can hold date information returned by recognizers.
+ */
+struct MBDate {
+    /**
+     * Day in month.
+     */
+    int day;
+    /**
+     * Month in year from 1 to 12.
+     */
+    int month;
+    /**
+     * Year of the date
+     */
+    int year;
+    /**
+     * Whether the date was successfully parsed from original string.
+     */
+    int successfullyParsed;
+    /**
+     * Original string from which MBDate structure was parsed. Pointer is valid only
+     * while owning RecognizerResult object is alive.
+     */
+    const char* originalString;
+
+#ifdef __cplusplus
+    MBDate() :
+        day( -1 ),
+        month( -1 ),
+        year( -1 ),
+        successfullyParsed( 0 ),
+        originalString( NULL )
+    {}
+#endif
+};
+
+/**
+ * @brief Typedef for MBDate structure
+ */
+typedef MB_EXPORTED_TYPE struct MBDate MBDate;
 
 #ifdef __cplusplus
 }

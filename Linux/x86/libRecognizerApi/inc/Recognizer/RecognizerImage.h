@@ -119,8 +119,7 @@ typedef MB_EXPORTED_TYPE enum ImageOrientation ImageOrientation;
   @param     height              Height of the image, in pixels
   @param     bytesPerRow         Number of bytes contained in every row of the image
   @param     rawType             Type of the image. @see RawImageType
-  @return    errorStatus         Status of the operation. RECOGNIZER_ERROR_STATUS_SUCCESS for success, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if rawType is invalid.
-                                    Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return    errorStatus         Status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageCreateFromRawImage( RecognizerImage** image, const void* input, int width, int height, size_t bytesPerRow, RawImageType rawType );
 
@@ -165,8 +164,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerImageCreateFromRawImage( Recogniz
   @param     height              Height of the image, in pixels
   @param     bytesPerRow         Number of bytes contained in every row of the image
   @param     rawType             Type of the image. @see RawImageType
-  @return    errorStatus         Status of the operation. RECOGNIZER_ERROR_STATUS_SUCCESS for success, RECOGNIZER_ERROR_STATUS_INVALID_TYPE if rawType is invalid.
-                                    Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return    errorStatus         Status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageSetNewRawBuffer( RecognizerImage* image, const void* input, int width, int height, size_t bytesPerRow, RawImageType rawType );
 
@@ -175,7 +173,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerImageSetNewRawBuffer( RecognizerI
  * @brief Allocates and creates RecognizerImage by copying another RecognizerImage. This method will copy pixel data, so it may be slow.
  * @param   image           Pointer to pointer referencing the created RecognizerImage object, set to NULL if error occured.
  * @param   original        Pointer to original RecognizerImage object that should be copied.
- * @return  errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs. Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+ * @return  errorStatus     Status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageCreateCopyFromImage( RecognizerImage** image, const RecognizerImage* original );
 
@@ -184,8 +182,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerImageCreateCopyFromImage( Recogni
   @brief Deletes the image object and sets pointer to NULL
 
   @param    image           Double pointer to image object which is to be deleted.
-  @return   errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                            Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   errorStatus     Status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageDelete(RecognizerImage** image);
 
@@ -196,8 +193,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerImageDelete(RecognizerImage** ima
  * in different orientation, you should set correct orientation with this method to ensure best recognition quality.
  * @param   image         Image to which orientation will be set.
  * @param   orientation   Orientation that will be set.
- * @return  errorStatus   Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
- *                        Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+ * @return  errorStatus   Status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerImageSetImageOrientation( RecognizerImage* image, ImageOrientation orientation );
 
@@ -205,67 +201,65 @@ MB_API RecognizerErrorStatus MB_CALL recognizerImageSetImageOrientation( Recogni
  * @memberof RecognizerImage
  * @brief Gets the orientation of the image.
  * @param   image         Image from which orientation will be obtained.
- * @param   orientation   Pointer to store image orientation.
- * @return  errorStatus   Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
- *                        Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+ * @return  Orientation of the image.
  */
-MB_API RecognizerErrorStatus MB_CALL recognizerImageGetImageOrientation( RecognizerImage* image, ImageOrientation* orientation );
+MB_API ImageOrientation MB_CALL recognizerImageGetImageOrientation( const RecognizerImage* image );
 
 /**
-  @memberof RecognizerImage
-  @brief Gets buffer containing raw image bytes
+ * @memberof RecognizerImage
+ * @brief Gets buffer containing raw image bytes
+ *
+ * @param    image           Pointer to RecognizerImage object of interest.
+ * @return   data            Buffer containing raw image bytes. You can use the obtained buffer until recognizerImageDelete
+ *                           is called on the RecognizerImage object. If you want to use the buffer later, you must copy it.
+ */
+MB_API const unsigned char* MB_CALL recognizerImageGetRawBytes( const RecognizerImage* image );
 
-  @param    image           Pointer to RecognizerImage object of interest.
-  @param    data            Double pointer whose value is set to a buffer with raw image pixels. Youu can use the obtained buffer until recognizerImageDelete
-                            is called on the RecognizerImage object. If you want to use the buffer later, you must copy it.
-  @return   errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                            Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
-  */
-MB_API RecognizerErrorStatus MB_CALL recognizerImageGetRawBytes(const RecognizerImage* image, void** data);
+/**
+ * @memberof RecognizerImage
+ * @brief Gets modifiable buffer containing raw image bytes
+ *
+ * @param    image           Pointer to RecognizerImage object of interest.
+ * @return   data            Modifiable buffer containing raw image bytes. You can use the obtained buffer until recognizerImageDelete
+ *                           is called on the RecognizerImage object. If you want to use the buffer later, you must copy it.
+ */
+MB_API unsigned char* MB_CALL recognizerImageGetMutableRawBytes( RecognizerImage* image );
 
 /**
   @memberof RecognizerImage
   @brief Gets width of image in number of pixels
 
   @param    image           Pointer to RecognizerImage object of interest.
-  @param    width           Pointer to store given image width in pixels.
-  @return   errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                            Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   width of image in pixels
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerImageGetWidth(const RecognizerImage* image, int* width);
+MB_API int MB_CALL recognizerImageGetWidth( const RecognizerImage* image );
 
 /**
   @memberof RecognizerImage
   @brief Gets height of image in number of pixels
 
   @param    image           Pointer to RecognizerImage object of interest.
-  @param    height          Pointer to store given image height in pixels.
-  @return   errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                            Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   height of image in pixels
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerImageGetHeight(const RecognizerImage* image, int* height);
+MB_API int MB_CALL recognizerImageGetHeight( const RecognizerImage* image );
 
 /**
   @memberof RecognizerImage
   @brief Gets bytes per row for given image
 
   @param    image           Pointer to RecognizerImage object of interest.
-  @param    bytesPerRow     Pointer to store bytes per row of given image.
-  @return   errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                            Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   bytes per row in image
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerImageGetBytesPerRow(const RecognizerImage* image, int* bytesPerRow);
+MB_API int MB_CALL recognizerImageGetBytesPerRow( const RecognizerImage* image );
 
 /**
   @memberof RecognizerImage
   @brief Gets raw image type for given image
 
   @param    image           Pointer to RecognizerImage object of interest.
-  @param    rawImageType    Pointer to store raw image type of given image.
-  @return   errorStatus     Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                            Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   raw image type of image
   */
-MB_API RecognizerErrorStatus MB_CALL recognizerImageGetRawImageType(const RecognizerImage* image, RawImageType* rawImageType);
+MB_API RawImageType MB_CALL recognizerImageGetRawImageType( const RecognizerImage* image );
 
 #ifdef __cplusplus
 }

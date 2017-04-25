@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -72,11 +72,12 @@ $(function() {
 <div class="title">Recognizer.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_recognizer_error_8h_source.html">RecognizerError.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="_export_8h_source.html">Export.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_recognizer_error_8h_source.html">RecognizerError.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_recognizer_result_list_8h_source.html">RecognizerResultList.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_recognizer_settings_fwd_8h_source.html">Recognizer/RecognizerSettingsFwd.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_recognizer_image_8h_source.html">RecognizerImage.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_export_8h_source.html">Export.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_recognizer_settings_fwd_8h_source.html">Recognizer/RecognizerSettingsFwd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_rectangle_8h_source.html">Rectangle.h</a>&quot;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 </div>
 <p><a href="_recognizer_8h_source.html">Go to the source code of this file.</a></p>
@@ -88,9 +89,6 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_b_size.html">MBSize</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure represents the two-dimensional size of an object.  <a href="struct_m_b_size.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_b_rectangle.html">MBRectangle</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure represents the rectangle.  <a href="struct_m_b_rectangle.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_recognizer_callback.html">RecognizerCallback</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="struct_recognizer_callback.html" title="The RecognizerCallback struct. ">RecognizerCallback</a> struct.  <a href="struct_recognizer_callback.html#details">More...</a><br /></td></tr>
@@ -110,10 +108,6 @@ typedef MB_EXPORTED_TYPE struct <a class="el" href="struct_m_b_point.html">MBPoi
 typedef MB_EXPORTED_TYPE struct <a class="el" href="struct_m_b_size.html">MBSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_8h.html#a40f8803e4142ccbd483f77397fed7166">MBSize</a></td></tr>
 <tr class="memdesc:a40f8803e4142ccbd483f77397fed7166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for <a class="el" href="struct_m_b_size.html" title="This structure represents the two-dimensional size of an object. ">MBSize</a> structure. <br /></td></tr>
 <tr class="separator:a40f8803e4142ccbd483f77397fed7166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b8aa8e150c93944361e29837c0b7037"><td class="memItemLeft" align="right" valign="top"><a id="a3b8aa8e150c93944361e29837c0b7037"></a>
-typedef MB_EXPORTED_TYPE struct <a class="el" href="struct_m_b_rectangle.html">MBRectangle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_8h.html#a3b8aa8e150c93944361e29837c0b7037">MBRectangle</a></td></tr>
-<tr class="memdesc:a3b8aa8e150c93944361e29837c0b7037"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for <a class="el" href="struct_m_b_rectangle.html" title="This structure represents the rectangle. ">MBRectangle</a> structure. <br /></td></tr>
-<tr class="separator:a3b8aa8e150c93944361e29837c0b7037"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bfbba48b5af844460d35ccad4383762"><td class="memItemLeft" align="right" valign="top"><a id="a6bfbba48b5af844460d35ccad4383762"></a>
 typedef MB_EXPORTED_TYPE enum <a class="el" href="_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505">MBDetectionStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_recognizer_8h.html#a6bfbba48b5af844460d35ccad4383762">MBDetectionStatus</a></td></tr>
 <tr class="memdesc:a6bfbba48b5af844460d35ccad4383762"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for MBDetectionStatus enum. <br /></td></tr>

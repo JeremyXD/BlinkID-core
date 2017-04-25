@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -60,17 +60,27 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
 <div class="title">MRTDSettings Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Settings for configuring Machine Readable Travel Document recognizer.  
+<p>Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect machine readable zone in the image and extract data from it. Besides that, it can also perform recognition of non-MRZ data on known locations relative to document location. For more information about how to use that, check <a href="https://github.com/BlinkID/blinkid-android#extracting-additional-fields-of-interest-from-machine-readable-travel-documents-templating-api">Android documentation</a> - the only difference is that MRTDDocumentClassifier in C API is actually a ClassifierFunction defined in <a class="el" href="_templating_settings_8h.html">TemplatingSettings.h</a> To learn how to use Templating API to also scan non-MRZ data on example, check <a href="https://github.com/BlinkID/blinkid-android/blob/master/templatingAPI/templatingAPI.md#-templating-api-for-mrtd">this article</a> and also check demo apps provided with the SDK.  
  <a href="struct_m_r_t_d_settings.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_m_r_t_d_settings_8h_source.html">MRTDSettings.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5eb480822f0f2ddcb8c91b7751095836"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#a5eb480822f0f2ddcb8c91b7751095836">mrtdSettingsInitialize</a> (<a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *mrtdSettings)</td></tr>
+<tr class="memdesc:a5eb480822f0f2ddcb8c91b7751095836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates and initializes <a class="el" href="struct_templating_settings.html" title="Settings for configuring templating recognizers. ">TemplatingSettings</a> inside <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a>. <a class="el" href="struct_templating_settings.html" title="Settings for configuring templating recognizers. ">TemplatingSettings</a> can be used to define parameters for performing recognition of non-MRZ data on the document.  <a href="#a5eb480822f0f2ddcb8c91b7751095836">More...</a><br /></td></tr>
+<tr class="separator:a5eb480822f0f2ddcb8c91b7751095836"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3df06777fc8bf96ca9891758c917ca"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#a3a3df06777fc8bf96ca9891758c917ca">mrtdSettingsTerminate</a> (<a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *mrtdSettings)</td></tr>
+<tr class="memdesc:a3a3df06777fc8bf96ca9891758c917ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees resources allocated with mrtdSettingsInitialize. You can safely call this function after recognizerSettingsSetMRTDSettings.  <a href="#a3a3df06777fc8bf96ca9891758c917ca">More...</a><br /></td></tr>
+<tr class="separator:a3a3df06777fc8bf96ca9891758c917ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a39a1c3edf60d7629751f03824ed3c014"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#a39a1c3edf60d7629751f03824ed3c014">showMachineReadableZone</a></td></tr>
@@ -85,10 +95,67 @@ Data Fields</h2></td></tr>
 <tr class="separator:a6f7a1b913fe473b25788dae9575cf034"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8d31145acd6294a6fbba4eb2a5fa240"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#ab8d31145acd6294a6fbba4eb2a5fa240">allowUnverifiedResults</a></td></tr>
 <tr class="separator:ab8d31145acd6294a6fbba4eb2a5fa240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d7d23c754bb711e4b5ead1a0817f96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html#ac0d7d23c754bb711e4b5ead1a0817f96">templatingSettings</a></td></tr>
+<tr class="separator:ac0d7d23c754bb711e4b5ead1a0817f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Settings for configuring Machine Readable Travel Document recognizer. </p>
-</div><h2 class="groupheader">Field Documentation</h2>
+<div class="textblock"><p>Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect machine readable zone in the image and extract data from it. Besides that, it can also perform recognition of non-MRZ data on known locations relative to document location. For more information about how to use that, check <a href="https://github.com/BlinkID/blinkid-android#extracting-additional-fields-of-interest-from-machine-readable-travel-documents-templating-api">Android documentation</a> - the only difference is that MRTDDocumentClassifier in C API is actually a ClassifierFunction defined in <a class="el" href="_templating_settings_8h.html">TemplatingSettings.h</a> To learn how to use Templating API to also scan non-MRZ data on example, check <a href="https://github.com/BlinkID/blinkid-android/blob/master/templatingAPI/templatingAPI.md#-templating-api-for-mrtd">this article</a> and also check demo apps provided with the SDK. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5eb480822f0f2ddcb8c91b7751095836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb480822f0f2ddcb8c91b7751095836">&#9670;&nbsp;</a></span>mrtdSettingsInitialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL mrtdSettingsInitialize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *&#160;</td>
+          <td class="paramname"><em>mrtdSettings</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates and initializes <a class="el" href="struct_templating_settings.html" title="Settings for configuring templating recognizers. ">TemplatingSettings</a> inside <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a>. <a class="el" href="struct_templating_settings.html" title="Settings for configuring templating recognizers. ">TemplatingSettings</a> can be used to define parameters for performing recognition of non-MRZ data on the document. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mrtdSettings</td><td><a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> where <a class="el" href="struct_templating_settings.html" title="Settings for configuring templating recognizers. ">TemplatingSettings</a> will be initialised. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation </dd></dl>
+
+</div>
+</div>
+<a id="a3a3df06777fc8bf96ca9891758c917ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3df06777fc8bf96ca9891758c917ca">&#9670;&nbsp;</a></span>mrtdSettingsTerminate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL mrtdSettingsTerminate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a> *&#160;</td>
+          <td class="paramname"><em>mrtdSettings</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Frees resources allocated with mrtdSettingsInitialize. You can safely call this function after recognizerSettingsSetMRTDSettings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mrtdSettings</td><td><a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> where <a class="el" href="struct_templating_settings.html" title="Settings for configuring templating recognizers. ">TemplatingSettings</a> will be terminated. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>status of the operation </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
 <a id="a6f7a1b913fe473b25788dae9575cf034"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f7a1b913fe473b25788dae9575cf034">&#9670;&nbsp;</a></span>allowUnparsedResults</h2>
 
@@ -179,8 +246,23 @@ Data Fields</h2></td></tr>
 
 </div>
 </div>
+<a id="ac0d7d23c754bb711e4b5ead1a0817f96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d7d23c754bb711e4b5ead1a0817f96">&#9670;&nbsp;</a></span>templatingSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_templating_settings.html">TemplatingSettings</a>* MRTDSettings::templatingSettings</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to additional templating settings that can be used to perform recognition of non-MRZ data. If you are only interested in MRZ data, set this to NULL, othervise use mrtdSettingsInitialize to initialize it. When done, you must terminate it with mrtdSettingsTerminate. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>inc/Recognizer/BlinkID/Templating/MRTD/<a class="el" href="_m_r_t_d_settings_8h_source.html">MRTDSettings.h</a></li>
+<li>inc/Recognizer/BlinkID/MRTD/<a class="el" href="_m_r_t_d_settings_8h_source.html">MRTDSettings.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

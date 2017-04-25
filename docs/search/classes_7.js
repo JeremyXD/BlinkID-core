@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zxingsettings',['ZXingSettings',['../struct_z_xing_settings.html',1,'']]]
+  ['scaleandtolerance',['ScaleAndTolerance',['../struct_scale_and_tolerance.html',1,'']]]
 ];

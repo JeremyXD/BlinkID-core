@@ -1,9 +1,28 @@
 var searchData=
 [
+  ['date_5fformat_5fcount',['DATE_FORMAT_COUNT',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84abce5e38c7dcac666127c130717efc21f',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fddmmyy',['DATE_FORMAT_DDMMYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84a7acc4b8e1e627151bd9d2281a7e33699',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fddmmyyyy',['DATE_FORMAT_DDMMYYYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84a7b438a89253e7130643a1d14d7c9a0c6',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fddmonthyy',['DATE_FORMAT_DDMONTHYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84aa21a2a43c8877ab423bc876af998276d',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fddmonthyyyy',['DATE_FORMAT_DDMONTHYYYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84a1511b6efc7f97b6388889a19af4af16e',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fmmddyy',['DATE_FORMAT_MMDDYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84af39d61769709247df69fb2d03d380b43',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fmmddyyyy',['DATE_FORMAT_MMDDYYYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84a6ab3a2b672e1fd1c477c87364cfe4213',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fmonthddyy',['DATE_FORMAT_MONTHDDYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84ad83f026defeaa22ff5a338bc5ddd34c6',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fmonthddyyyy',['DATE_FORMAT_MONTHDDYYYY',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84af04a03b7cb3b284c1f61342d2988fad1',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fyymmdd',['DATE_FORMAT_YYMMDD',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84a186ec8fe1eec134f663d9eaa425d373b',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fyymonthdd',['DATE_FORMAT_YYMONTHDD',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84ab63e45a94313a10eef4e1cd096b15de3',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fyyyymmdd',['DATE_FORMAT_YYYYMMDD',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84aeda8e948fc26c18164b226ba215db3b3',1,'DateParserSettings.h']]],
+  ['date_5fformat_5fyyyymonthdd',['DATE_FORMAT_YYYYMONTHDD',['../_date_parser_settings_8h.html#ad3fab6f8a7fdf9fa0d9dea7d34750d84a33aefc6a5848f98167df9883f5516ae8',1,'DateParserSettings.h']]],
   ['detection_5fstatus_5fcamera_5fat_5fangle',['DETECTION_STATUS_CAMERA_AT_ANGLE',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505a30680ae8dbea07a8e25c5e169eb7b3be',1,'Recognizer.h']]],
   ['detection_5fstatus_5fcamera_5ftoo_5fhigh',['DETECTION_STATUS_CAMERA_TOO_HIGH',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505a7326d4fd6599036c94ecbb3636ddec13',1,'Recognizer.h']]],
   ['detection_5fstatus_5fcamera_5ftoo_5fnear',['DETECTION_STATUS_CAMERA_TOO_NEAR',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505a3a222a57cc14f56ddaec3d09103fc099',1,'Recognizer.h']]],
   ['detection_5fstatus_5ffail',['DETECTION_STATUS_FAIL',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505aa7ef2532d4f8778af1bf4580350327aa',1,'Recognizer.h']]],
   ['detection_5fstatus_5fpartial_5fobject',['DETECTION_STATUS_PARTIAL_OBJECT',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505a086b5f46e06ebe16ad3c94679a8babd1',1,'Recognizer.h']]],
-  ['detection_5fstatus_5fsuccess',['DETECTION_STATUS_SUCCESS',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505abb7530ff67c1e739f2f9229f6905d06e',1,'Recognizer.h']]]
+  ['detection_5fstatus_5fsuccess',['DETECTION_STATUS_SUCCESS',['../_recognizer_8h.html#a233b5c71a0779f0346df9f5b39250505abb7530ff67c1e739f2f9229f6905d06e',1,'Recognizer.h']]],
+  ['document_5fspecification_5fpreset_5fa4_5flandscape',['DOCUMENT_SPECIFICATION_PRESET_A4_LANDSCAPE',['../_document_specification_8h.html#a45c5cd06d454e5eb5453885919b89a93ad431b5c53eb3cfe42008250035fa304e',1,'DocumentSpecification.h']]],
+  ['document_5fspecification_5fpreset_5fa4_5fportrait',['DOCUMENT_SPECIFICATION_PRESET_A4_PORTRAIT',['../_document_specification_8h.html#a45c5cd06d454e5eb5453885919b89a93af9e6e23df984a0c900b897323e6e8f2e',1,'DocumentSpecification.h']]],
+  ['document_5fspecification_5fpreset_5fcheque',['DOCUMENT_SPECIFICATION_PRESET_CHEQUE',['../_document_specification_8h.html#a45c5cd06d454e5eb5453885919b89a93a0ded0d6728eb846ddaa82a6720ce78f9',1,'DocumentSpecification.h']]],
+  ['document_5fspecification_5fpreset_5fcount',['DOCUMENT_SPECIFICATION_PRESET_COUNT',['../_document_specification_8h.html#a45c5cd06d454e5eb5453885919b89a93a77b5702059c476f27feef03d33a92d7f',1,'DocumentSpecification.h']]],
+  ['document_5fspecification_5fpreset_5fid1_5fcard',['DOCUMENT_SPECIFICATION_PRESET_ID1_CARD',['../_document_specification_8h.html#a45c5cd06d454e5eb5453885919b89a93a82312cdcbef299626a80f408605e6408',1,'DocumentSpecification.h']]],
+  ['document_5fspecification_5fpreset_5fid2_5fcard',['DOCUMENT_SPECIFICATION_PRESET_ID2_CARD',['../_document_specification_8h.html#a45c5cd06d454e5eb5453885919b89a93abc0a1af20d86270ec054091663dfe039',1,'DocumentSpecification.h']]]
 ];
