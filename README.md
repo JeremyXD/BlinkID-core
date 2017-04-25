@@ -7,7 +7,7 @@ For quick start, check the [doxygen documentation](https://blinkid.github.io/bli
 ## Important links
 
 - [Doxygen documentation](https://blinkid.github.io/blinkid-core/)
-- [Release notes](Release notes.md)
+- [Release notes](https://github.com/BlinkID/blinkid-core/blob/master/Release%20notes.md)
 - Demo apps
 	- [Windows SDK and demo](https://github.com/BlinkID/blinkid-core/tree/master/Windows)
 	- [Linux SDK and demo](https://github.com/BlinkID/blinkid-core/tree/master/Linux)
