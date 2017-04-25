@@ -24,7 +24,8 @@
 #include "Recognizer/BlinkBarcode/USDL/USDLResult.h"
 #include "Recognizer/BlinkID/Malaysia/MyKad/MyKadResult.h"
 #include "Recognizer/BlinkID/Malaysia/iKad/IKadResult.h"
-#include "Recognizer/BlinkID/Templating/MRTD/MRTDResult.h"
+#include "Recognizer/BlinkID/MRTD/MRTDResult.h"
+#include "Recognizer/BlinkInput/BlinkInputResult.h"
 
 #include <stdlib.h>
 
@@ -47,7 +48,7 @@ if(empty) {
  * @endcode
  *
  * @param   result          RecognizerResult object which stores the values of the results.
- * @return  Non-zero value if result is empty or if result is NULL, zero if result is non-NULL and not empty.
+ * @return  Non-zero value if result is empty, zero if result is not empty.
  *
  */
 MB_API int MB_CALL recognizerResultIsResultEmpty( const RecognizerResult* result );
@@ -67,7 +68,7 @@ if(valid) {
 * @endcode
 *
 * @param result RecognizerResult object which stores the values of the results.
-* @return Non-zero value if result is valid, zero if result is non-valid or NULL
+* @return Non-zero value if result is valid, zero if result is non-valid
 *
 */
 MB_API int MB_CALL recognizerResultIsResultValid( const RecognizerResult* result );

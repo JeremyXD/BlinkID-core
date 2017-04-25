@@ -68,9 +68,7 @@ MB_EXPORTED_TYPE typedef struct UsdlSettings UsdlSettings;
  * will be performed. Set NULL to disable US Driver's License recognizer.
  * @param settings pointer to RecognizerSettings object that holds all settings information
  * @param usdlSettings pointer to USDL recognizer settings object that contains information about USDL recognition or NULL to disable US Driver's License recognizer
- * @return  status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS. Please note that
- *          if license key does not allow usage of USDL recognizer, you will still get RECOGNIZER_ERROR_STATUS_SUCCESS because license check is performed while initializing
- *          the global recognizer object (function recognizerCreate(Recognizer**, const RecognizerSettings*) from Recognizer.h).
+ * @return  status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetUsdlSettings(RecognizerSettings* settings, const UsdlSettings* usdlSettings);
 

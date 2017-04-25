@@ -25,36 +25,15 @@ cv::Mat createImageFromRecognizerImage(const RecognizerImage* ri) {
 	int width;
 	int height;
 	int bpr;
-	void *data;
+	const unsigned char *data;
 	RawImageType rawType;
-	RecognizerErrorStatus status;
 
-	status = recognizerImageGetBytesPerRow(ri, &bpr);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetWidth(ri, &width);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetHeight(ri, &height);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetRawBytes(ri, &data);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-	status = recognizerImageGetRawImageType(ri, &rawType);
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		std::cout << "Error creating frame from RecognizerImage: " << recognizerErrorToString(status) << std::endl;
-		return cv::Mat();
-	}
-
+	bpr = recognizerImageGetBytesPerRow(ri);
+	width = recognizerImageGetWidth(ri);
+	height = recognizerImageGetHeight(ri);
+	data = recognizerImageGetRawBytes(ri);
+	rawType = recognizerImageGetRawImageType(ri);
+	
 	switch (rawType) {
 	case RAW_IMAGE_TYPE_BGRA:
 		return cv::Mat(height, width, CV_8UC4, (void*)data, bpr);
@@ -158,42 +137,11 @@ RecognizerCallback buildRecognizerCallback() {
 }
 
 /* helper function for converting Machine Readable Zone date string to more human readable date */
-const char* dateString(const char* mrzdate, int future = 0)
+const char* dateString( MBDate const& mrzdate )
 {
-	/* obtain current year */
-	time_t t = time(0);
-	struct tm now;
-	localtime_s(&now, &t);
-	int nowYear = 1900 + now.tm_year;
-
-	/* read year(last 2 digits), month & day from MRZ date string*/
-	int yearShort;
-	int month;
-	int day;
-	sscanf_s(mrzdate, "%2d%2d%2d", &yearShort, &month, &day);
-
-	/* get full year from last 2 digits */
-	int year;
-	if (future) {
-		if (yearShort > 80) {
-			year = 1900 + yearShort;
-		}
-		else {
-			year = 2000 + yearShort;
-		}
-	}
-	else {
-		if (yearShort + 2000 > nowYear) {
-			year = 1900 + yearShort;
-		}
-		else {
-			year = 2000 + yearShort;
-		}
-	}
-
 	/* write to static string buffer and return it */
 	static char stringBuff[12];
-	sprintf_s(stringBuff, "%d.%d.%d.", year, month, day);
+	sprintf_s(stringBuff, "%d.%d.%d.", mrzdate.year, mrzdate.month, mrzdate.day);
 
 	return stringBuff;
 }
@@ -216,9 +164,7 @@ int main(int argc, char** argv)
 	/* recoginzer callback structure contains pointers to functions that will be called during the recognition process */
 	RecognizerCallback recognizerCallback;
 	/* this variable will contain list of scan results obtained from image scanning process. */
-	RecognizerResultList* resultList;
-	/* this variable will contain number of scan results obtained from image scanning process. */
-	size_t numResults;
+	RecognizerResultList resultList;
 	/* this variable holds barreled image sent that will be debarreled */
 	RecognizerImage* image;
 	/* barrelDewarper object used to debarrel images */
@@ -230,7 +176,7 @@ int main(int argc, char** argv)
 	recognizerSettingsCreate(&settings);
 
     /* set path to resources folder */
-    status = recognizerSettingsSetResourcesLocation( settings, "res" );
+    recognizerSettingsSetResourcesLocation( settings, "res" );
 	
 	/* Enable providing the image of full document. Option detectMachineReadableZonePosition must be on in order for this to work! */
 	mrtdSettings.showFullDocument = 1; // enabled
@@ -310,17 +256,13 @@ int main(int argc, char** argv)
 		insert non-NULL function pointers only to those events you are interested in */
 		recognizerRecognizeFromImage(recognizer, &resultList, debarreledImage, 1, &recognizerCallback);		
 
-		recognizerResultListGetNumOfResults(resultList, &numResults);
-
 		/* boolean flag that indicates that a valid result has been found */
 		int foundResult = 0;
 
-		if (numResults == 1u) {
+		if (resultList.resultsCount == 1u) {
 
-			RecognizerResult* result;
-			/* obtain the first (and only) result from list */
-			recognizerResultListGetResultAtIndex(resultList, 0u, &result);
-
+            /* obtain the first (and only) result from list */
+            RecognizerResult* result = resultList.results[ 0 ];
 
 			/* check if it is a MRTD result */
 			if ( recognizerResultIsMRTDResult( result ) ) {
@@ -342,7 +284,7 @@ int main(int argc, char** argv)
 
 					cv::putText(console, mrtdResult.documentCode, cv::Point(200, 235), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
 					cv::putText(console, mrtdResult.documentNumber, cv::Point(200, 250), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
-					cv::putText(console, dateString(mrtdResult.dateOfExpiry, 1), cv::Point(200, 265), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
+					cv::putText(console, dateString(mrtdResult.dateOfExpiry), cv::Point(200, 265), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
 					cv::putText(console, mrtdResult.issuer, cv::Point(200, 280), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
 					cv::putText(console, mrtdResult.opt1, cv::Point(200, 295), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);
 					cv::putText(console, mrtdResult.opt2, cv::Point(200, 310), cv::FONT_HERSHEY_COMPLEX_SMALL, 0.8, cv::Scalar(200, 200, 200), 1, CV_AA, false);

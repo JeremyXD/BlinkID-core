@@ -55,8 +55,7 @@ typedef MB_EXPORTED_TYPE struct RecognizerBarrelDewarper RecognizerBarrelDewarpe
   @param    k3              Radial distortion parameer, has least influence. If k3 = 0 it has no influence, for k3 < 0 image is expanded thoward the edges
                             and for k3 > 0 image is shrinked towards the edges.
   @param    scale           Additional scaling of transformed image. If scale = 1 no scaling is applied, for scale < 1 image is decreased and for scale > 1 image is increased.
-  @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                             Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   errorStatus     Status of the operation.
   */
 MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperCreate(RecognizerBarrelDewarper** dewarper,
             const float k1, const float k2, const float p1, const float p2, const float k3, const float scale);
@@ -66,8 +65,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperCreate(RecognizerBa
   @brief Deletes RecognizerBarrelDewarper object and sets pointer to NULL
 
   @param    dewarper        Double pointer to the barrel dewarper object which is to be deleted.
-  @return   errorStatus     Status of the operation. If deletion was successfuly, status will be RECOGNIZER_ERROR_STATUS_SUCCESS. If NULL pointer was given,
-                                status will be RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL.
+  @return   errorStatus     Status of the operation.
   */
 MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperDelete(RecognizerBarrelDewarper** dewarper);
 
@@ -80,8 +78,7 @@ MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperDelete(RecognizerBa
   @param    output          Pointer to pointer referencing the created transformed image obtained by applying parameters given when creating RecognizerBarrelDewarper object.
                             If value of given pointer is NULL new RecognizerImage structure is created, othervise given structure is reused. In case of allocation ::recognizerImageDelete
                             must be called if structure is not going to be used any more. If error occured it will be set to NULL.
-  @return   errorStatus     Status of the operation. Status of the operation. This method should always return RECOGNIZER_ERROR_STATUS_SUCCESS for non-NULL inputs.
-                             Returns RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL if NULL pointer is given.
+  @return   errorStatus     Status of the operation.
   @see RecognizerImage to see details on supported image formats.
   */
 MB_API RecognizerErrorStatus MB_CALL recognizerBarrelDewarperDewarp(RecognizerBarrelDewarper* dewarper, const RecognizerImage* input, RecognizerImage** output);

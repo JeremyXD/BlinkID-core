@@ -1,6 +1,5 @@
+#include "RecognizerImageWrapper.h"
 #include <RecognizerApi.h>
-
-#include <wincodec.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -103,28 +102,11 @@ int main(int argc, char* argv[]) {
 	/* recoginzer callback structure contains pointers to functions that will be called during the recognition process */
 	RecognizerCallback recognizerCallback;
 	/* this variable will contain list of scan results obtained from image scanning process. */
-	RecognizerResultList* resultList;
-	/* this variable will contain number of scan results obtained from image scanning process. */
-	size_t numResults;
+	RecognizerResultList resultList;
 	/* this variable holds the image sent for image scanning process*/
-	RecognizerImage* image;
-
-	/* required for obtaining WinAPI result codes */
-	HRESULT hr = S_OK;
-	/* Imaging factory required to create image decoder */
-	IWICImagingFactory* pImagingFactory = NULL;
-	/* WIC image decoder that will be used for decoding the image */
-	IWICBitmapDecoder *pIDecoder = NULL;
-	/* WIC image frame - result of image decoding */
-	IWICBitmapFrameDecode *pIDecoderFrame = NULL;
-	/* wide path that is required for WIC */
-	WCHAR* pathString = NULL;
-	/* Width and height of the loaded image */
-	UINT wicWidth = 0;
-	UINT wicHeight = 0;
-	/* Image format converter */
-	IWICFormatConverter *pIFormatConverter = NULL;
-	BYTE* imageBuffer = NULL;
+    RecognizerImageWrapper image;
+    /* first result in resultList */
+    RecognizerResult* result;
 
 	if (argc < 2) {
 		printf("usage %s <img_path>\n", argv[0]);
@@ -135,12 +117,12 @@ int main(int argc, char* argv[]) {
 	recognizerSettingsCreate(&settings);
 
 	/* define path to resources folder */
-	status = recognizerSettingsSetResourcesLocation( settings, "res" );
-	if( status != RECOGNIZER_ERROR_STATUS_SUCCESS ) {
-		printf( "Could not set path to resources\n" );
-		return -1;
-	}
+	recognizerSettingsSetResourcesLocation( settings, "res" );
 	
+    /* if you do not plan to use templatingSettings field to scan non-MRZ data, initialize that field to NULL
+    (C++ does that automatically) */
+    mrtdSettings.templatingSettings = NULL;
+
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
@@ -160,106 +142,34 @@ int main(int argc, char* argv[]) {
 	/* build recognizer callback structure */
 	recognizerCallback = buildRecognizerCallback();
 
-    CoInitialize( NULL );
+    image = loadImageFromFile( path );
 
-	/* Use Windows Imaging Component API to load the image from file */
-	hr = CoCreateInstance(
-		&CLSID_WICImagingFactory,
-		NULL,
-		CLSCTX_INPROC_SERVER,
-        &IID_IWICImagingFactory,
-		(LPVOID*) &pImagingFactory
-	);
-
-    if( FAILED( hr ) ) {
-        printf( "Failed to load Windows Image Component API\n" );
-        return -1;
-    }
-
-	/* convert normal path to wide path */
-	size_t pathLen = strlen( path );
-	pathString = ( WCHAR* )malloc( ( pathLen + 1 ) * sizeof( wchar_t ) );
-	mbstowcs( pathString, path, pathLen );
-    pathString[ pathLen ] = 0;
-
-	hr = pImagingFactory->lpVtbl->CreateDecoderFromFilename(
-        pImagingFactory,
-		pathString,                     // Image to be decoded
-		NULL,                           // Do not prefer a particular vendor
-		GENERIC_READ,                   // Desired read access to the file
-		WICDecodeMetadataCacheOnDemand, // Cache metadata when needed
-		&pIDecoder                      // Pointer to the decoder
-	);
-
-	if( SUCCEEDED( hr ) ) {
-		hr = pIDecoder->lpVtbl->GetFrame( pIDecoder, 0, &pIDecoderFrame );
-	} else {
-		printf( "Failed to create decoder from filename!\n" );
+	if ( image.recognizerImage == NULL ) {
+		printf("Error loading image: %s\n", recognizerErrorToString(status));
 		return -1;
 	}
 
-	hr = pImagingFactory->lpVtbl->CreateFormatConverter( pImagingFactory, &pIFormatConverter );
-	if( SUCCEEDED( hr ) ) {
-		hr = pIFormatConverter->lpVtbl->Initialize(
-            pIFormatConverter,
-			(IWICBitmapSource *)pIDecoderFrame,                  // Input bitmap to convert
-			&GUID_WICPixelFormat32bppPBGRA,  // Destination pixel format
-			WICBitmapDitherTypeNone,         // Specified dither pattern
-			NULL,                            // Specify a particular palette 
-			0.f,                             // Alpha threshold
-			WICBitmapPaletteTypeCustom       // Palette translation type
-		);
-	} else {
-		printf( "Failed to create pixel format converter\n" );
-		return -1;
-	}
-
-	/* Obtain image size */
-	hr = pIDecoderFrame->lpVtbl->GetSize( pIDecoderFrame, &wicWidth, &wicHeight );
-
-	/* Allocate buffer that will hold decoded pixels */
-	imageBuffer = ( BYTE* )malloc( wicWidth * 4 * wicHeight );
-
-	/* Now decode the image */
-	hr = pIDecoderFrame->lpVtbl->CopyPixels(
-        pIDecoderFrame,
-		NULL,
-		wicWidth * 4,
-		wicWidth * 4 * wicHeight,
-		imageBuffer
-	);
-
-	if( FAILED( hr ) ) {
-		printf( "Failed to decode image\n" );
-		return -1;
-	}
-
-	status = recognizerImageCreateFromRawImage( &image, imageBuffer, wicWidth, wicHeight, wicWidth * 4, RAW_IMAGE_TYPE_BGRA );
-
-	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
-		printf("Error creating image from buffer: %s\n", recognizerErrorToString(status));
-		return -1;
-	}
+    /* before passing it to recognizerRecognizeFromImage, you must initialize resultList to empty (C++ does that automatically) */
+    resultList.results = NULL;
+    resultList.resultsCount = 0;
 
 	/* if you do not want to receive callbacks during simply set NULL as last parameter. If you only want to receive some callbacks,
 	insert non-NULL function pointers only to those events you are interested in */
-	status = recognizerRecognizeFromImage(recognizer, &resultList, image, 0, NULL);
+	status = recognizerRecognizeFromImage(recognizer, &resultList, image.recognizerImage, 0, NULL);
 	if (status != RECOGNIZER_ERROR_STATUS_SUCCESS) {
 		printf("Error recognizing file %s: %s\n", path, recognizerErrorToString(status));
 		return -1;
 	}
 
-	recognizerResultListGetNumOfResults(resultList, &numResults);
-
-	if (numResults != 1u) {
+	if (resultList.resultsCount != 1u) {
 		/* number of results should be 1 as there is only one recognizer configured */
-		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", numResults);
+		printf("Wrong number of recognizer results:" JL_SIZE_T_SPECIFIER "\n", resultList.resultsCount );
 		return -1;
 	}
 
-	RecognizerResult* result;
+	
 	/* obtain the first (and only) result from list */
-	recognizerResultListGetResultAtIndex(resultList, 0u, &result);
+    result = resultList.results[ 0 ];
 
 
 	if ( recognizerResultIsMRTDResult( result ) ) {
@@ -268,9 +178,10 @@ int main(int argc, char* argv[]) {
 			recognizerResultGetMRTDResult( result, &mrtdResult );
 
 			/* display obtained fields */
-			printf("ID is of type %s issued by %s.\nExpiration date is %s.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry);
+			printf("ID is of type %s issued by %s.\nExpiration date is %d.%d.%d.\n", mrtdResult.documentCode, mrtdResult.issuer, mrtdResult.dateOfExpiry.day, mrtdResult.dateOfExpiry.month, mrtdResult.dateOfExpiry.year );
 			printf("ID number is %s.\n", mrtdResult.documentNumber );
-			printf("ID holder is %s %s.\nDate of birth is %s.\nSex is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.dateOfBirth, mrtdResult.sex);
+			printf("ID holder is %s %s.\nGender is %s.\n", mrtdResult.primaryID, mrtdResult.secondaryID, mrtdResult.sex);
+            printf( "Date of birth is %d.%d.%d\n", mrtdResult.dateOfBirth.day, mrtdResult.dateOfBirth.month, mrtdResult.dateOfBirth.year );
 			printf("Nationality is %s.\n", mrtdResult.nationality );
 			printf("Optional fields are:\nOPT1: %s\nOPT2: %s\n", mrtdResult.opt1, mrtdResult.opt2);
 
@@ -286,16 +197,9 @@ int main(int argc, char* argv[]) {
 	}
 
 	/* cleanup memory */	
-	recognizerImageDelete(&image);
+	terminateImageWrapper(&image);
 	recognizerResultListDelete(&resultList);
 	recognizerSettingsDelete(&settings);
 	recognizerDelete(&recognizer);
-
-	free( pathString );
-	free( imageBuffer );
-	pIDecoderFrame->lpVtbl->Release( pIDecoderFrame  );
-	pIDecoder->lpVtbl->Release( pIDecoder );
-	pImagingFactory->lpVtbl->Release( pImagingFactory );
-	
 	return 0;
 }

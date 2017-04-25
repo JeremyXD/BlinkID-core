@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -62,6 +62,9 @@ $(function() {
 <div class="textblock">Here is a list of all documented struct and union fields with links to the struct/union documentation for each field:</div>
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>ratioPostprocessorEnabled
+: <a class="el" href="struct_ocr_engine_settings.html#ab00d8a9d96eec58bf76f7c06adfb2bf2">OcrEngineSettings</a>
+</li>
 <li>rawData
 : <a class="el" href="struct_barcode_result.html#a83d02d0bf52ff2623ea59203036d39a9">BarcodeResult</a>
 </li>
@@ -70,6 +73,12 @@ $(function() {
 </li>
 <li>rawMRZString
 : <a class="el" href="struct_m_r_t_d_result.html#ac24fa6b4eb2d6c4c65f80c27eb263401">MRTDResult</a>
+</li>
+<li>recognitionVariants
+: <a class="el" href="struct_ocr_char.html#ad2cfaadc4f02fe3bc8f4d0b7ba998973">OcrChar</a>
+</li>
+<li>recognitionVariantsCount
+: <a class="el" href="struct_ocr_char.html#a0a278f12fde613b0a6ccdb78d1be7d2b">OcrChar</a>
 </li>
 <li>recognizerBarrelDewarperCreate()
 : <a class="el" href="struct_recognizer_barrel_dewarper.html#a41ca3258b5b66f6356b263d895e9c503">RecognizerBarrelDewarper</a>
@@ -99,22 +108,25 @@ $(function() {
 : <a class="el" href="struct_recognizer_image.html#ad495b4d3ee4b9d7cc052bc33626e1eef">RecognizerImage</a>
 </li>
 <li>recognizerImageGetBytesPerRow()
-: <a class="el" href="struct_recognizer_image.html#a198675143948f770ce4d20f71327bdf1">RecognizerImage</a>
+: <a class="el" href="struct_recognizer_image.html#ae31aa72934d0262e66a750855e730231">RecognizerImage</a>
 </li>
 <li>recognizerImageGetHeight()
-: <a class="el" href="struct_recognizer_image.html#abcdc099d2070f258feb2b31edd0830e2">RecognizerImage</a>
+: <a class="el" href="struct_recognizer_image.html#a217888aaa601479c2a958fe1ce5b2b47">RecognizerImage</a>
 </li>
 <li>recognizerImageGetImageOrientation()
-: <a class="el" href="struct_recognizer_image.html#adffad41855545bba81106df01b24f1c4">RecognizerImage</a>
+: <a class="el" href="struct_recognizer_image.html#a40d54fb3ffad98d99582f4f0359e780b">RecognizerImage</a>
+</li>
+<li>recognizerImageGetMutableRawBytes()
+: <a class="el" href="struct_recognizer_image.html#aa666bb709033e900038e788cb2d05f33">RecognizerImage</a>
 </li>
 <li>recognizerImageGetRawBytes()
-: <a class="el" href="struct_recognizer_image.html#a2cce593507e5d1de1c5695ec2e25e176">RecognizerImage</a>
+: <a class="el" href="struct_recognizer_image.html#ab46d344d7834d37213bee088f360d45b">RecognizerImage</a>
 </li>
 <li>recognizerImageGetRawImageType()
-: <a class="el" href="struct_recognizer_image.html#acc89d185526ffca20f79a7092ee6dfd9">RecognizerImage</a>
+: <a class="el" href="struct_recognizer_image.html#ae78e5d60253e930a9d9bc9c10e832a5b">RecognizerImage</a>
 </li>
 <li>recognizerImageGetWidth()
-: <a class="el" href="struct_recognizer_image.html#a29c4d385add3b75cdd5871efb36097ce">RecognizerImage</a>
+: <a class="el" href="struct_recognizer_image.html#adc91aacb370163d728b704b2999bbf17">RecognizerImage</a>
 </li>
 <li>recognizerImageSetImageOrientation()
 : <a class="el" href="struct_recognizer_image.html#ab4b684d30a2ee60dd84261cc4de16252">RecognizerImage</a>
@@ -123,13 +135,16 @@ $(function() {
 : <a class="el" href="struct_recognizer_image.html#afa1fc23f93d821ab9e4931ea98f61efb">RecognizerImage</a>
 </li>
 <li>recognizerRecognizeFromImage()
-: <a class="el" href="struct_recognizer.html#a79cd48b9ae8e6bc496a774448885b6b2">Recognizer</a>
+: <a class="el" href="struct_recognizer.html#adaecf6b9991d9f0bcb12250c58c089e7">Recognizer</a>
 </li>
 <li>recognizerReset()
 : <a class="el" href="struct_recognizer.html#a9674375e2a73393eff117603b5bfc497">Recognizer</a>
 </li>
 <li>recognizerResultGetBarcodeResult()
 : <a class="el" href="struct_recognizer_result.html#a16b0da871853364029591f2759ed193a">RecognizerResult</a>
+</li>
+<li>recognizerResultGetBlinkInputResult()
+: <a class="el" href="struct_recognizer_result.html#ac078123997822d72ce83d674656fb352">RecognizerResult</a>
 </li>
 <li>recognizerResultGetIKadResult()
 : <a class="el" href="struct_recognizer_result.html#a8ac24bcdf0ecdc6272e1407bc02b2447">RecognizerResult</a>
@@ -151,6 +166,9 @@ $(function() {
 </li>
 <li>recognizerResultIsBardecoderResult()
 : <a class="el" href="struct_recognizer_result.html#abb992eda38212cfaeed9ee912857d718">RecognizerResult</a>
+</li>
+<li>recognizerResultIsBlinkInputResult()
+: <a class="el" href="struct_recognizer_result.html#a82076acf6c501dc5eff5cf3e3f855ffa">RecognizerResult</a>
 </li>
 <li>recognizerResultIsIKadResult()
 : <a class="el" href="struct_recognizer_result.html#ad2780adf41c92a0f6cc76ebe13e36912">RecognizerResult</a>
@@ -177,13 +195,7 @@ $(function() {
 : <a class="el" href="struct_recognizer_result.html#a570c80d7f7fc73b705ef61518d0a7ae8">RecognizerResult</a>
 </li>
 <li>recognizerResultListDelete()
-: <a class="el" href="struct_recognizer_result_list.html#a5258ae886fbeabc4d11f0b72faf93e55">RecognizerResultList</a>
-</li>
-<li>recognizerResultListGetNumOfResults()
-: <a class="el" href="struct_recognizer_result_list.html#ab8cc00cc9e406e6e1446ee8d0910d0c7">RecognizerResultList</a>
-</li>
-<li>recognizerResultListGetResultAtIndex()
-: <a class="el" href="struct_recognizer_result_list.html#a847c73659a66212367d61445e0411ed8">RecognizerResultList</a>
+: <a class="el" href="struct_recognizer_result_list.html#a82c7bdea4c94fae838e7f8bbeaf17a22">RecognizerResultList</a>
 </li>
 <li>recognizerSetROI()
 : <a class="el" href="struct_recognizer.html#abcc2e02076bd63b3366b7e1c1363cec9">Recognizer</a>
@@ -194,17 +206,23 @@ $(function() {
 <li>recognizerSettingsDelete()
 : <a class="el" href="struct_recognizer_settings.html#a24d9f7c65fa462e20d18e4174428d76c">RecognizerSettings</a>
 </li>
+<li>recognizerSettingsGetOutputMultipleResults()
+: <a class="el" href="struct_recognizer_settings.html#aee2659e28dc1f756d34602a689987dac">RecognizerSettings</a>
+</li>
 <li>recognizerSettingsSetBarDecoderSettings()
 : <a class="el" href="struct_recognizer_settings.html#a3e90977eb51c15d393ea1bc50562b6df">RecognizerSettings</a>
+</li>
+<li>recognizerSettingsSetBlinkInputSettings()
+: <a class="el" href="struct_recognizer_settings.html#a05f937ba76abb8377fd7caf6098d0e3b">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetIKadSettings()
 : <a class="el" href="struct_recognizer_settings.html#a04d3ecc5f6a81274987b4d318431b96b">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetLicenseKey()
-: <a class="el" href="struct_recognizer_settings.html#a3a8fb2306873c2a135f4471b59d7b76c">RecognizerSettings</a>
+: <a class="el" href="struct_recognizer_settings.html#a6a969124a88e12b7ca3c2914e49ba14c">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetLicenseKeyForLicensee()
-: <a class="el" href="struct_recognizer_settings.html#ae039f4353cea9e087afc68981f7ad62c">RecognizerSettings</a>
+: <a class="el" href="struct_recognizer_settings.html#a7ee1484cae97fbd79764cb1346f82e73">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetMRTDSettings()
 : <a class="el" href="struct_recognizer_settings.html#a5508cbe3c0cf90916c62fde9d3e7ad53">RecognizerSettings</a>
@@ -213,13 +231,13 @@ $(function() {
 : <a class="el" href="struct_recognizer_settings.html#a77343c8b48c9492324d77d839bb8c566">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetOutputMultipleResults()
-: <a class="el" href="struct_recognizer_settings.html#a97cd242b43a9488d4ff1ecbd428737dc">RecognizerSettings</a>
+: <a class="el" href="struct_recognizer_settings.html#a6b9ffda326961d405bf94ae8d1554628">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetPdf417Settings()
 : <a class="el" href="struct_recognizer_settings.html#a13bceb20682ce0485adf503eb2c52a04">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetResourcesLocation()
-: <a class="el" href="struct_recognizer_settings.html#a1523365322a47b31ade2a0a9b59de360">RecognizerSettings</a>
+: <a class="el" href="struct_recognizer_settings.html#a8885d4778b846efb440ca591b0e83b40">RecognizerSettings</a>
 </li>
 <li>recognizerSettingsSetUsdlSettings()
 : <a class="el" href="struct_recognizer_settings.html#a4d69aba22a2dd5d17233aa61bad6a093">RecognizerSettings</a>
@@ -230,8 +248,20 @@ $(function() {
 <li>recognizerUpdateSettings()
 : <a class="el" href="struct_recognizer.html#ae48ef5941418dc1bdbc936b65738d5f3">Recognizer</a>
 </li>
+<li>regex
+: <a class="el" href="struct_regex_parser_settings.html#a1eed9db51b8f0310a74fd69402da1742">RegexParserSettings</a>
+</li>
 <li>religion
 : <a class="el" href="struct_my_kad_result.html#a73c1e7c4bd124a4b5a1884b6d94d112b">MyKadResult</a>
+</li>
+<li>results
+: <a class="el" href="struct_recognizer_result_list.html#acc8549f2f0f5b7d4694ccbfcfbd087ed">RecognizerResultList</a>
+</li>
+<li>resultsCount
+: <a class="el" href="struct_recognizer_result_list.html#a5b119cd6a6341ca741eb47206d2858c1">RecognizerResultList</a>
+</li>
+<li>rightRange
+: <a class="el" href="struct_x_range.html#a9fce29f06f12fc805c577db8eab2af3b">XRange</a>
 </li>
 </ul>
 </div><!-- contents -->

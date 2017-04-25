@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['ikadresult',['IKadResult',['../_i_kad_result_8h.html#aa4132c68ba0d949d587c7a5078d6a2a0',1,'IKadResult.h']]],
-  ['ikadsettings',['IKadSettings',['../_i_kad_settings_8h.html#a93740033444b2640b59c702e5efe61be',1,'IKadSettings.h']]],
-  ['imageorientation',['ImageOrientation',['../_recognizer_image_8h.html#a461d05221a9f19185e2a18a0a9e22a76',1,'RecognizerImage.h']]]
+  ['classifierfunction',['ClassifierFunction',['../_templating_settings_8h.html#a9704a0744f32c700de62e70b8d8fbf62',1,'TemplatingSettings.h']]]
 ];

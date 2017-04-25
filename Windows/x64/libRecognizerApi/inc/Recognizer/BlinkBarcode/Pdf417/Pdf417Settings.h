@@ -66,7 +66,7 @@ MB_EXPORTED_TYPE typedef struct Pdf417Settings Pdf417Settings;
  * PDF417 recognizer settings structure defines how the PDF417 recognition will be performed. Set NULL to disable PDF417 recognizer.
  * @param settings pointer to RecognizerSettings object that holds all settings information
  * @param pdf417Settings pointer to PDF417 recognizer settings object that contains information about PDF417 recognition or NULL to disable PDF417 recognizer
- * @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
+ * @return status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetPdf417Settings(RecognizerSettings* settings, const Pdf417Settings* pdf417Settings);
 

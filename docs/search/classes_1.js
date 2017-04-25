@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['ikadresult',['IKadResult',['../struct_i_kad_result.html',1,'']]],
-  ['ikadsettings',['IKadSettings',['../struct_i_kad_settings.html',1,'']]]
+  ['dateparsersettings',['DateParserSettings',['../struct_date_parser_settings.html',1,'']]],
+  ['detectorsettings',['DetectorSettings',['../struct_detector_settings.html',1,'']]],
+  ['documentdetectorsettings',['DocumentDetectorSettings',['../struct_document_detector_settings.html',1,'']]],
+  ['documentspecification',['DocumentSpecification',['../struct_document_specification.html',1,'']]]
 ];

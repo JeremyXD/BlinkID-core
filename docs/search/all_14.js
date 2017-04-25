@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['zipcode',['zipCode',['../struct_my_kad_result.html#ace2f19187f1816956a5eda75a5e713bd',1,'MyKadResult']]],
-  ['zxingresult_2eh',['ZXingResult.h',['../_z_xing_result_8h.html',1,'']]],
-  ['zxingsettings',['ZXingSettings',['../struct_z_xing_settings.html',1,'ZXingSettings'],['../_z_xing_settings_8h.html#a631607bdd48e56a0e1bae9d7e2e9b7d1',1,'ZXingSettings():&#160;ZXingSettings.h']]],
-  ['zxingsettings_2eh',['ZXingSettings.h',['../_z_xing_settings_8h.html',1,'']]]
+  ['whitelist',['whitelist',['../struct_ocr_engine_settings.html#aa4a8bfac68a4bfa7ad49c0ec297a611a',1,'OcrEngineSettings']]],
+  ['whitelistcount',['whitelistCount',['../struct_ocr_engine_settings.html#afa8c62e1eeb2a0da4dc02dc36e4116fe',1,'OcrEngineSettings']]],
+  ['width',['width',['../struct_m_b_size.html#a92da63a3be8666a2a53480265448d83f',1,'MBSize::width()'],['../struct_m_b_rectangle.html#a33f0ff68812ed6296667f8023bdb633b',1,'MBRectangle::width()']]],
+  ['wordprocessingenabled',['wordProcessingEnabled',['../struct_ocr_engine_settings.html#aaabb46f422e141da23e76e8e0c0ac7fe',1,'OcrEngineSettings']]]
 ];

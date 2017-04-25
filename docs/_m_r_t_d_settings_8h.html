@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>core-recognizer-api: inc/Recognizer/BlinkID/Templating/MRTD/MRTDSettings.h File Reference</title>
+<title>core-recognizer-api: inc/Recognizer/BlinkID/MRTD/MRTDSettings.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 2.0.0</span>
+   &#160;<span id="projectnumber">version 3.0.0</span>
    </div>
   </td>
  </tr>
@@ -59,7 +59,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="dir_ff9065c61c1972de5c4eefecfb5a24a9.html">Recognizer</a></li><li class="navelem"><a class="el" href="dir_7a7b17a97de4ff0e8cc88303d3a51c39.html">BlinkID</a></li><li class="navelem"><a class="el" href="dir_27de0f52a00681adea93aa5a0939f81d.html">Templating</a></li><li class="navelem"><a class="el" href="dir_bdd9b0a15f4fe3da0ba84d48ade5de50.html">MRTD</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li><li class="navelem"><a class="el" href="dir_ff9065c61c1972de5c4eefecfb5a24a9.html">Recognizer</a></li><li class="navelem"><a class="el" href="dir_7a7b17a97de4ff0e8cc88303d3a51c39.html">BlinkID</a></li><li class="navelem"><a class="el" href="dir_d7ac1b7536c7f544946b40868986d3ba.html">MRTD</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,20 +73,21 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="_export_8h_source.html">Recognizer/Export.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_recognizer_error_8h_source.html">Recognizer/RecognizerError.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_recognizer_settings_fwd_8h_source.html">Recognizer/RecognizerSettingsFwd.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_templating_settings_8h_source.html">Recognizer/Templating/TemplatingSettings.h</a>&quot;</code><br />
 </div>
 <p><a href="_m_r_t_d_settings_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Settings for configuring Machine Readable Travel Document recognizer.  <a href="struct_m_r_t_d_settings.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect machine readable zone in the image and extract data from it. Besides that, it can also perform recognition of non-MRZ data on known locations relative to document location. For more information about how to use that, check <a href="https://github.com/BlinkID/blinkid-android#extracting-additional-fields-of-interest-from-machine-readable-travel-documents-templating-api">Android documentation</a> - the only difference is that MRTDDocumentClassifier in C API is actually a ClassifierFunction defined in <a class="el" href="_templating_settings_8h.html">TemplatingSettings.h</a> To learn how to use Templating API to also scan non-MRZ data on example, check <a href="https://github.com/BlinkID/blinkid-android/blob/master/templatingAPI/templatingAPI.md#-templating-api-for-mrtd">this article</a> and also check demo apps provided with the SDK.  <a href="struct_m_r_t_d_settings.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a0cd56ef4203dc0b565af8576884ae91d"><td class="memItemLeft" align="right" valign="top"><a id="a0cd56ef4203dc0b565af8576884ae91d"></a>
 typedef typedefMB_EXPORTED_TYPE struct <a class="el" href="struct_m_r_t_d_settings.html">MRTDSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_r_t_d_settings_8h.html#a0cd56ef4203dc0b565af8576884ae91d">MRTDSettings</a></td></tr>
-<tr class="memdesc:a0cd56ef4203dc0b565af8576884ae91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. ">MRTDSettings</a> structure. <br /></td></tr>
+<tr class="memdesc:a0cd56ef4203dc0b565af8576884ae91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for <a class="el" href="struct_m_r_t_d_settings.html" title="Settings for configuring Machine Readable Travel Document recognizer. MRTD recognizer can detect mach...">MRTDSettings</a> structure. <br /></td></tr>
 <tr class="separator:a0cd56ef4203dc0b565af8576884ae91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

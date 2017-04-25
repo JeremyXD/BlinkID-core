@@ -1,7 +1,15 @@
 var searchData=
 [
-  ['name',['name',['../struct_i_kad_result.html#a1f8a28332e58f86607b0fd8ee6427e79',1,'IKadResult']]],
-  ['nationality',['nationality',['../struct_i_kad_result.html#a2da3b58ac03cf6365e9b3ea29b25a3a7',1,'IKadResult::nationality()'],['../struct_m_r_t_d_result.html#a3614d99e5b0031774a215f8744ea6333',1,'MRTDResult::nationality()']]],
-  ['nricnumber',['nricNumber',['../struct_my_kad_result.html#a0caa49fc9c48cc0c214a04aac2dfc915',1,'MyKadResult']]],
-  ['nullquietzoneallowed',['nullQuietZoneAllowed',['../struct_pdf417_settings.html#a0ac9002a2d66b2fc6641d26decb490b1',1,'Pdf417Settings::nullQuietZoneAllowed()'],['../struct_usdl_settings.html#a2cf28a879136ee33d8f0e7a4638c3401',1,'UsdlSettings::nullQuietZoneAllowed()']]]
+  ['maxangle',['maxAngle',['../struct_document_specification.html#ab9eb3b9b8be4a9f720feda51bb006dc0',1,'DocumentSpecification']]],
+  ['maximumallowedcharrecognitionvariants',['maximumAllowedCharRecognitionVariants',['../struct_ocr_engine_settings.html#a814cdc715dcf15763259892a41ac16d1',1,'OcrEngineSettings']]],
+  ['maximumcharsexpected',['maximumCharsExpected',['../struct_ocr_engine_settings.html#a35b3d701ff5bf8a8f5ee185bfef4fd77',1,'OcrEngineSettings']]],
+  ['maximumlineheight',['maximumLineHeight',['../struct_ocr_engine_settings.html#aad8e3afb1dac4dc15dd4ad388852bf70',1,'OcrEngineSettings']]],
+  ['minimumcharheight',['minimumCharHeight',['../struct_ocr_engine_settings.html#a881de9007ed42bcfe83e579ad6f0cf36',1,'OcrEngineSettings']]],
+  ['minimumlineheight',['minimumLineHeight',['../struct_ocr_engine_settings.html#a69d0549aa49e46739f890248437aae89',1,'OcrEngineSettings']]],
+  ['month',['month',['../struct_m_b_date.html#a12403323cc744fa5eac2efcb19be5474',1,'MBDate']]],
+  ['mrtdverified',['mrtdVerified',['../struct_m_r_t_d_result.html#a71fa68778d487700e6f4aa753988fdf5',1,'MRTDResult']]],
+  ['mrzimagebuffersize',['mrzImageBufferSize',['../struct_m_r_t_d_result.html#aa18e369c13dddafb2cab857b21245f7e',1,'MRTDResult']]],
+  ['mrzimagejpegbuffer',['mrzImageJpegBuffer',['../struct_m_r_t_d_result.html#a745b7946fed715c54fa05cf44033bfb6',1,'MRTDResult']]],
+  ['mustendwithwhitespace',['mustEndWithWhitespace',['../struct_regex_parser_settings.html#aad68537d45fc7624492aabda8077920c',1,'RegexParserSettings']]],
+  ['muststartwithwhitespace',['mustStartWithWhitespace',['../struct_regex_parser_settings.html#abcab106af77628eab30b7c49a94ac70e',1,'RegexParserSettings']]]
 ];

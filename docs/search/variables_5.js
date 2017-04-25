@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['font',['font',['../struct_ocr_char.html#a94dbd05e70e05494fa3f7810b78690eb',1,'OcrChar']]],
   ['fulladdress',['fullAddress',['../struct_my_kad_result.html#a6c5bf42061d8f7634982b5e75217f21e',1,'MyKadResult']]],
   ['fulldocumentbuffersize',['fullDocumentBufferSize',['../struct_m_r_t_d_result.html#a9de24cb7290332e0aac51370f995fb1f',1,'MRTDResult']]],
   ['fulldocumentjpegbuffer',['fullDocumentJpegBuffer',['../struct_m_r_t_d_result.html#a8790acf793c02927d4053508afd189ae',1,'MRTDResult']]],

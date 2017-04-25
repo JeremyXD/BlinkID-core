@@ -73,7 +73,7 @@ MB_EXPORTED_TYPE typedef struct BarDecoderSettings BarDecoderSettings;
  * @param settings pointer to RecognizerSettings object that holds all settings information
  * @param barDecoderSettings pointer to 1D barcode recognizer (Microblink's implementation) settings object that contains information how 1D barcode recognizer will behave or NULL
  *                           to disable 1D barcode recognizer (Microblink's implementation)
- * @return status of the operation. If settings is NULL, status is RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL, otherwise RECOGNIZER_ERROR_STATUS_SUCCESS.
+ * @return status of the operation.
  */
 MB_API RecognizerErrorStatus MB_CALL recognizerSettingsSetBarDecoderSettings(RecognizerSettings* settings, const BarDecoderSettings* barDecoderSettings);
 

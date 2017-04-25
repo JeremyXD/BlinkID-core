@@ -29,22 +29,22 @@ enum RecognizerErrorStatus {
     RECOGNIZER_ERROR_STATUS_SUCCESS = 0,
     
     /** Operation failed */
-    RECOGNIZER_ERROR_STATUS_FAIL = 1,
+    RECOGNIZER_ERROR_STATUS_FAIL,
+
+    /** Failed to allocate memory */
+    RECOGNIZER_ERROR_STATUS_MALLOC_FAIL,
     
     /** Unknown key was used for the operation */
-    RECOGNIZER_ERROR_STATUS_UNKNOWN_KEY = 2,
+    RECOGNIZER_ERROR_STATUS_UNKNOWN_KEY,
     
-    /** Invalid type was used in the operation */
-    RECOGNIZER_ERROR_STATUS_INVALID_TYPE = 3,
+    /** Invalid argument was given to function */
+    RECOGNIZER_ERROR_STATUS_INVALID_ARGUMENT,
 
     /** Invalid or expired license key was provided */
-    RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY = 4,
-
-    /** One of required pointer inputs is NULL */
-    RECOGNIZER_ERROR_STATUS_POINTER_IS_NULL = 5,
+    RECOGNIZER_ERROR_STATUS_INVALID_LICENSE_KEY,
 
     /** Index is out of range */
-    RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE = 6
+    RECOGNIZER_ERROR_STATUS_INDEX_OUT_OF_RANGE
     
 };
 
