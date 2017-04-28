@@ -138,7 +138,7 @@ int main( int argc, const char * argv[] ) {
         if (status != RECOGNIZER_ERROR_STATUS_SUCCESS)
         {
             printf( "Error recognizing image %s: %s\n", argv[ i ], recognizerErrorToString( status ) );
-            return status;
+            continue;
         }
         
         /* Iterate over results */
