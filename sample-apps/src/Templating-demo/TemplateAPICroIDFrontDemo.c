@@ -515,8 +515,8 @@ static void setupDocumentNumber( TemplatingSettings* sett, MBDecodingInfo classi
 		OcrWhitelistEntry 	whitelist[ 10 ];
 
         for ( char c = '0'; c <= '9'; ++c ) {
-            whitelist[ c ].charValue = ( int ) c;
-            whitelist[ c ].charFont  = OCR_FONT_ANY;
+            whitelist[ c - '0' ].charValue = ( int ) c;
+            whitelist[ c - '0' ].charFont  = OCR_FONT_ANY;
         }
 
         ocrEngineSettingsSetDefaultValues( &documentNumberEngineSettings );

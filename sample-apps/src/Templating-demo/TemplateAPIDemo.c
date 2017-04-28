@@ -74,9 +74,9 @@ int main( int argc, const char * argv[] ) {
     recognizerSettingsSetResourcesLocation( settings, argv[ 1 ] );
     
     /* insert license key and licensee */
-    recognizerSettingsSetLicenseKeyForLicensee( settings, "add licensee here", "add license key here" );
+    recognizerSettingsSetLicenseKeyForLicensee( settings, "Add licensee here", "Add license key here" );
     /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
-    recognizerSettingsSetLicenseKey( settings, "WB26ZM5J-J2SWE2MW-E6QQBP7I-5VGLEN5C-5S37647D-IZ32XG57-M5W5HMAT-PBHXC7L7" );
+    recognizerSettingsSetLicenseKey( settings, "Add license key here" );
     
     /********* INITIALIZE RECOGNIZER SETTINGS ***********/
     /*** This determines what will be scanned on images ***/
@@ -122,6 +122,8 @@ int main( int argc, const char * argv[] ) {
         /* loop counter for iteration over results */
         size_t j;
         
+        printf( "Performing recognition of %s\n", argv[ i ] );
+        
         /* load image using Apple's Image I/O API */
         image = loadImageFromFile( argv[ i ] );
         
@@ -135,7 +137,7 @@ int main( int argc, const char * argv[] ) {
         status = recognizerRecognizeFromImage( recognizer, &resultList, image.recognizerImage, 0, 0 );
         if (status != RECOGNIZER_ERROR_STATUS_SUCCESS)
         {
-            printf( "Error recognizing image: %s\n", recognizerErrorToString( status ) );
+            printf( "Error recognizing image %s: %s\n", argv[ i ], recognizerErrorToString( status ) );
             return status;
         }
         
@@ -202,6 +204,8 @@ int main( int argc, const char * argv[] ) {
             printf( "Error deleting result list: %s\n", recognizerErrorToString( status ) );
             return -1;
         }
+        
+        printf( "\n\n" );
         
         /* delete the image */
         terminateImageWrapper( &image );
