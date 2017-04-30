@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="demo.c">
+    <ClCompile Include="..\..\..\..\..\src\MRTD-demo\demo.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RecognizerImageWrapper.c">
+    <ClCompile Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RecognizerImageWrapper.h">
+    <ClInclude Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

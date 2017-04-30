@@ -11,12 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="demo.cpp" />
+    <ClCompile Include="..\..\..\..\..\src\MRTD-camera-demo\demo.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5F2077AE-9069-4914-9DDF-C60797AB38AE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>RecognizerApiCameraDemo</RootNamespace>
+    <ProjectName>MRTD-camera-demo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -56,12 +57,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\libRecognizerApi\inc;..\..\opencv\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\opencv\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\opencv\lib\opencv_core2411.lib;..\..\opencv\lib\opencv_highgui2411.lib;..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\opencv\lib\opencv_core2411.lib;..\..\opencv\lib\opencv_highgui2411.lib;..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -72,9 +73,9 @@
 
 copy ..\..\opencv\bin\opencv_highgui2411.dll $(OutputPath)
 
-copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+copy ..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.dll $(OutputPath)
 
-xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
+xcopy ..\..\..\..\..\..\resources $(OutputPath)resources /e /i /y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -87,14 +88,14 @@ xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\libRecognizerApi\inc;..\..\opencv\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\opencv\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>..\..\opencv\lib\opencv_core2411.lib;..\..\opencv\lib\opencv_highgui2411.lib;..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\opencv\lib\opencv_core2411.lib;..\..\opencv\lib\opencv_highgui2411.lib;..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -105,9 +106,9 @@ xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
 
 copy ..\..\opencv\bin\opencv_highgui2411.dll $(OutputPath)
 
-copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+copy ..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.dll $(OutputPath)
 
-xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
+xcopy ..\..\..\..\..\..\resources $(OutputPath)resources /e /i /y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

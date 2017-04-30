@@ -18,18 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\src\raw-OCR-demo\raw-ocr-demo.c" />
-    <ClCompile Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{42DBBE4F-6DB7-4182-9E8F-B9CFBD693E6E}</ProjectGuid>
+    <ProjectGuid>{303543ED-A7A3-4ABB-85BB-A33F9145A3AE}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>RawOCRDemo</RootNamespace>
+    <RootNamespace>Templatingdemo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -98,7 +91,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\..\..\src\utils\Windows</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\..\..\src\utils\Windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>false</SDLCheck>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
@@ -109,9 +102,9 @@
       <AdditionalDependencies>..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy ..\..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.dll $(OutputPath)
-xcopy ..\..\..\..\..\..\..\resources $(OutputPath)resources /e /y /i
-copy ..\..\..\..\..\src\raw-OCR-demo\lipsum.jpg $(OutputPath)</Command>
+      <Command>copy ..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.dll $(OutputPath)
+xcopy ..\..\..\..\..\..\resources $(OutputPath)resources /e /y /i
+copy ..\..\..\..\..\src\Templating-demo\*.jpg $(OutputPath)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -133,7 +126,7 @@ copy ..\..\..\..\..\src\raw-OCR-demo\lipsum.jpg $(OutputPath)</Command>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\..\..\src\utils\Windows</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\..\..\src\utils\Windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SDLCheck>false</SDLCheck>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
@@ -142,9 +135,9 @@ copy ..\..\..\..\..\src\raw-OCR-demo\lipsum.jpg $(OutputPath)</Command>
       <AdditionalDependencies>..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>copy ..\..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.dll $(OutputPath)
-xcopy ..\..\..\..\..\..\..\resources $(OutputPath)resources /e /y /i
-copy ..\..\..\..\..\src\raw-OCR-demo\lipsum.jpg $(OutputPath)</Command>
+      <Command>copy ..\..\..\..\..\..\lib\Windows\x64\RecognizerApi.dll $(OutputPath)
+xcopy ..\..\..\..\..\..\resources $(OutputPath)resources /e /y /i
+copy ..\..\..\..\..\src\Templating-demo\*.jpg $(OutputPath)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -163,6 +156,19 @@ copy ..\..\..\..\..\src\raw-OCR-demo\lipsum.jpg $(OutputPath)</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDBackDemo.c" />
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDFrontDemo.c" />
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPIDemo.c" />
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPIUtils.c" />
+    <ClCompile Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDBackDemo.h" />
+    <ClInclude Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDFrontDemo.h" />
+    <ClInclude Include="..\..\..\..\..\src\Templating-demo\TemplateAPIUtils.h" />
+    <ClInclude Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

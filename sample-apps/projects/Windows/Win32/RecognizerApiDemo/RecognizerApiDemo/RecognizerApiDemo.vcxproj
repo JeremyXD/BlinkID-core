@@ -19,16 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="demo.c" />
-    <ClCompile Include="RecognizerImageWrapper.c" />
+    <ClCompile Include="..\..\..\..\..\src\MRTD-demo\demo.c" />
+    <ClCompile Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RecognizerImageWrapper.h" />
+    <ClInclude Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9A85E99C-B175-4F12-8471-0816AF06B14F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>RecognizerApiDemo</RootNamespace>
+    <ProjectName>MRTD-demo</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -93,22 +94,23 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\libRecognizerApi\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\..\..\src\utils\Windows</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\..\..\lib\Windows\Win32\RecognizerApi.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+      <Command>copy ..\..\..\..\..\..\lib\Windows\Win32\RecognizerApi.dll $(OutputPath)
 
-xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
+xcopy ..\..\..\..\..\..\resources $(OutputPath)resources /e /i /y
+copy ..\..\..\..\..\src\MRTD-demo\*.jpg $(OutputPath)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -145,7 +147,7 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\libRecognizerApi\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\..\..\..\include;..\..\..\..\..\src\utils\Windows</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -153,16 +155,17 @@ copy ..\..\libRecognizerApi\res\ocr_model.zzip $(ProjectDir)</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>..\..\libRecognizerApi\lib\Release\RecognizerApi.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\..\..\..\..\..\lib\Windows\Win32\RecognizerApi.lib;windowscodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>copy ..\..\libRecognizerApi\lib\Release\RecognizerApi.dll $(OutputPath)
+      <Command>copy ..\..\..\..\..\..\lib\Windows\Win32\RecognizerApi.dll $(OutputPath)
 
-xcopy ..\..\libRecognizerApi\res $(ProjectDir)res /e /i /y</Command>
+xcopy ..\..\..\..\..\..\resources $(OutputPath)resources /e /i /y
+copy ..\..\..\..\..\src\MRTD-demo\*.jpg $(OutputPath)</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="demo.cpp">
+    <ClCompile Include="..\..\..\..\..\src\MRTD-camera-demo\demo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

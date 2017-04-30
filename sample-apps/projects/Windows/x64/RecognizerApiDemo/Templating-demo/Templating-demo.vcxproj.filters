@@ -15,7 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\src\MRTD-demo\demo.c">
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDBackDemo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDFrontDemo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPIDemo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\src\Templating-demo\TemplateAPIUtils.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.c">
@@ -23,6 +32,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDBackDemo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\Templating-demo\TemplateAPICroIDFrontDemo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\src\Templating-demo\TemplateAPIUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\..\src\utils\Windows\RecognizerImageWrapper.h">
       <Filter>Source Files</Filter>
     </ClInclude>

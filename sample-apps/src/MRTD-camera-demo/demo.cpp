@@ -176,7 +176,7 @@ int main(int argc, char** argv)
 	recognizerSettingsCreate(&settings);
 
     /* set path to resources folder */
-    recognizerSettingsSetResourcesLocation( settings, "res" );
+    recognizerSettingsSetResourcesLocation( settings, "resources" );
 	
 	/* Enable providing the image of full document. Option detectMachineReadableZonePosition must be on in order for this to work! */
 	mrtdSettings.showFullDocument = 1; // enabled
@@ -185,8 +185,10 @@ int main(int argc, char** argv)
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
-	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");
+    /* insert license key and licensee */
+    recognizerSettingsSetLicenseKeyForLicensee( settings, "Add licensee here", "Add license key here" );
+    /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
+    recognizerSettingsSetLicenseKey( settings, "Add license key here" );
 
 	/* Create BarrelDewarper object used to debarrel images. 
 		Parameters k1, k2, p1, p2, k3, scale must be set
