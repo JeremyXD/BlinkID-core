@@ -5,6 +5,10 @@
 
 #include <stdlib.h>
 
+#ifdef _MSC_VER
+#pragma execution_character_set("utf-8")
+#endif
+
 /**
  * This function will return pointer to statically allocated array of char+font
  * combinations used for 
