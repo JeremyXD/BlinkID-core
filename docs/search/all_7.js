@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['ibanparsersettings',['IbanParserSettings',['../struct_iban_parser_settings.html',1,'IbanParserSettings'],['../_iban_parser_settings_8h.html#a23f31bdca05c579d4e9448da9db514e4',1,'IbanParserSettings():&#160;IbanParserSettings.h']]],
+  ['ibanparsersettings_2eh',['IbanParserSettings.h',['../_iban_parser_settings_8h.html',1,'']]],
   ['ikadresult',['IKadResult',['../struct_i_kad_result.html',1,'IKadResult'],['../_i_kad_result_8h.html#aa4132c68ba0d949d587c7a5078d6a2a0',1,'IKadResult():&#160;IKadResult.h']]],
   ['ikadresult_2eh',['IKadResult.h',['../_i_kad_result_8h.html',1,'']]],
   ['ikadsettings',['IKadSettings',['../struct_i_kad_settings.html',1,'IKadSettings'],['../_i_kad_settings_8h.html#a93740033444b2640b59c702e5efe61be',1,'IKadSettings():&#160;IKadSettings.h']]],

@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">core-recognizer-api
-   &#160;<span id="projectnumber">version 3.0.0</span>
+   &#160;<span id="projectnumber">version 3.1.0</span>
    </div>
   </td>
  </tr>
@@ -79,6 +79,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa941252ef04b528896c456eea5bea971"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_templating_settings.html#aa941252ef04b528896c456eea5bea971">templatingSettingsAddDateParserToGroup</a> (<a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *templatingSettings, const char *parserName, const char *parserGroup, const <a class="el" href="struct_date_parser_settings.html">DateParserSettings</a> *parserSett)</td></tr>
 <tr class="memdesc:aa941252ef04b528896c456eea5bea971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the date parser to the given parser group. After calling this method, it is safe to delete <a class="el" href="struct_raw_parser_settings.html" title="Structure that represents a parser which simply returns the string version of OCR result...">RawParserSettings</a>, since internal copy of the settings will be made.  <a href="#aa941252ef04b528896c456eea5bea971">More...</a><br /></td></tr>
 <tr class="separator:aa941252ef04b528896c456eea5bea971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1495e36a9f153b7e648077bba409353"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_templating_settings.html#ab1495e36a9f153b7e648077bba409353">templatingSettingsAddIbanParserToDefaultGroup</a> (<a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *templatingSettings, const char *parserName, const <a class="el" href="struct_iban_parser_settings.html">IbanParserSettings</a> *parserSett)</td></tr>
+<tr class="memdesc:ab1495e36a9f153b7e648077bba409353"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the IBAN parser to the default parser group. After calling this method, it is safe to delete <a class="el" href="struct_iban_parser_settings.html" title="Structure that represents a parser which can extract IBAN (International Bank Account Number) from OC...">IbanParserSettings</a>, since internal copy of the settings will be made.  <a href="#ab1495e36a9f153b7e648077bba409353">More...</a><br /></td></tr>
+<tr class="separator:ab1495e36a9f153b7e648077bba409353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9ae4d8e965bc32849dfb315f6fc58ee"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_templating_settings.html#af9ae4d8e965bc32849dfb315f6fc58ee">templatingSettingsAddIbanParserToGroup</a> (<a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *templatingSettings, const char *parserName, const char *parserGroup, const <a class="el" href="struct_iban_parser_settings.html">IbanParserSettings</a> *parserSett)</td></tr>
+<tr class="memdesc:af9ae4d8e965bc32849dfb315f6fc58ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the IBAN parser to the given parser group. After calling this method, it is safe to delete <a class="el" href="struct_iban_parser_settings.html" title="Structure that represents a parser which can extract IBAN (International Bank Account Number) from OC...">IbanParserSettings</a>, since internal copy of the settings will be made.  <a href="#af9ae4d8e965bc32849dfb315f6fc58ee">More...</a><br /></td></tr>
+<tr class="separator:af9ae4d8e965bc32849dfb315f6fc58ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b947d705cea75cfcec579b4820468ed"><td class="memItemLeft" align="right" valign="top">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_templating_settings.html#a5b947d705cea75cfcec579b4820468ed">templatingSettingsAddRawParserToDefaultGroup</a> (<a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *templatingSettings, const char *parserName, const <a class="el" href="struct_raw_parser_settings.html">RawParserSettings</a> *parserSett)</td></tr>
 <tr class="memdesc:a5b947d705cea75cfcec579b4820468ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the raw parser to the default parser group. After calling this method, it is safe to delete <a class="el" href="struct_raw_parser_settings.html" title="Structure that represents a parser which simply returns the string version of OCR result...">RawParserSettings</a>, since internal copy of the settings will be made.  <a href="#a5b947d705cea75cfcec579b4820468ed">More...</a><br /></td></tr>
 <tr class="separator:a5b947d705cea75cfcec579b4820468ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,6 +212,103 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds the date parser to the given parser group. After calling this method, it is safe to delete <a class="el" href="struct_raw_parser_settings.html" title="Structure that represents a parser which simply returns the string version of OCR result...">RawParserSettings</a>, since internal copy of the settings will be made. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">templatingSettings</td><td>Pointer to templating settings structure that will be modified. </td></tr>
+    <tr><td class="paramname">parserName</td><td>Name of the parser. </td></tr>
+    <tr><td class="paramname">parserGroup</td><td>Name of the parser group. </td></tr>
+    <tr><td class="paramname">parserSett</td><td>Raw parser settings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status of the operation. </dd></dl>
+
+</div>
+</div>
+<a id="ab1495e36a9f153b7e648077bba409353"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1495e36a9f153b7e648077bba409353">&#9670;&nbsp;</a></span>templatingSettingsAddIbanParserToDefaultGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL templatingSettingsAddIbanParserToDefaultGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *&#160;</td>
+          <td class="paramname"><em>templatingSettings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>parserName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_iban_parser_settings.html">IbanParserSettings</a> *&#160;</td>
+          <td class="paramname"><em>parserSett</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds the IBAN parser to the default parser group. After calling this method, it is safe to delete <a class="el" href="struct_iban_parser_settings.html" title="Structure that represents a parser which can extract IBAN (International Bank Account Number) from OC...">IbanParserSettings</a>, since internal copy of the settings will be made. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">templatingSettings</td><td>Pointer to templating settings structure that will be modified. </td></tr>
+    <tr><td class="paramname">parserName</td><td>Name of the parser. </td></tr>
+    <tr><td class="paramname">parserSett</td><td>Raw parser settings. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Status of the operation. </dd></dl>
+
+</div>
+</div>
+<a id="af9ae4d8e965bc32849dfb315f6fc58ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9ae4d8e965bc32849dfb315f6fc58ee">&#9670;&nbsp;</a></span>templatingSettingsAddIbanParserToGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MB_API <a class="el" href="_recognizer_error_8h.html#ad87f7a9a4fa76aff551ea489ab676a65">RecognizerErrorStatus</a> MB_CALL templatingSettingsAddIbanParserToGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_templating_settings.html">TemplatingSettings</a> *&#160;</td>
+          <td class="paramname"><em>templatingSettings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>parserName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>parserGroup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_iban_parser_settings.html">IbanParserSettings</a> *&#160;</td>
+          <td class="paramname"><em>parserSett</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds the IBAN parser to the given parser group. After calling this method, it is safe to delete <a class="el" href="struct_iban_parser_settings.html" title="Structure that represents a parser which can extract IBAN (International Bank Account Number) from OC...">IbanParserSettings</a>, since internal copy of the settings will be made. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">templatingSettings</td><td>Pointer to templating settings structure that will be modified. </td></tr>
@@ -764,6 +867,7 @@ Public Member Functions</h2></td></tr>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>inc/Recognizer/Templating/<a class="el" href="_templating_settings_fwd_8h_source.html">TemplatingSettingsFwd.h</a></li>
 <li>inc/Recognizer/Templating/Parsers/<a class="el" href="_date_parser_settings_8h_source.html">DateParserSettings.h</a></li>
+<li>inc/Recognizer/Templating/Parsers/<a class="el" href="_iban_parser_settings_8h_source.html">IbanParserSettings.h</a></li>
 <li>inc/Recognizer/Templating/Parsers/<a class="el" href="_raw_parser_settings_8h_source.html">RawParserSettings.h</a></li>
 <li>inc/Recognizer/Templating/Parsers/<a class="el" href="_regex_parser_settings_8h_source.html">RegexParserSettings.h</a></li>
 <li>inc/Recognizer/Templating/<a class="el" href="_templating_settings_8h_source.html">TemplatingSettings.h</a></li>
