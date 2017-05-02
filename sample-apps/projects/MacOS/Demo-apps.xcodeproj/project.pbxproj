@@ -123,6 +123,7 @@
 		C93BEA281EB350E300A2216E /* newFront.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = newFront.jpg; path = "../../src/Templating-demo/newFront.jpg"; sourceTree = "<group>"; };
 		C93BEA291EB350E300A2216E /* oldBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oldBack.jpg; path = "../../src/Templating-demo/oldBack.jpg"; sourceTree = "<group>"; };
 		C93BEA2A1EB350E300A2216E /* oldFront.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = oldFront.jpg; path = "../../src/Templating-demo/oldFront.jpg"; sourceTree = "<group>"; };
+		C973FCF21EB890CD0001862E /* LicenceKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LicenceKey.h; path = ../../src/utils/LicenceKey.h; sourceTree = "<group>"; };
 		C992B6F01EB37FA100E46FA9 /* TemplateAPICroIDBackDemo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TemplateAPICroIDBackDemo.c; path = "../../src/Templating-demo/TemplateAPICroIDBackDemo.c"; sourceTree = "<group>"; };
 		C992B6F11EB37FA100E46FA9 /* TemplateAPICroIDBackDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateAPICroIDBackDemo.h; path = "../../src/Templating-demo/TemplateAPICroIDBackDemo.h"; sourceTree = "<group>"; };
 		C992B6F21EB37FA100E46FA9 /* TemplateAPICroIDFrontDemo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = TemplateAPICroIDFrontDemo.c; path = "../../src/Templating-demo/TemplateAPICroIDFrontDemo.c"; sourceTree = "<group>"; };
@@ -211,6 +212,7 @@
 			children = (
 				C93BEA021EB3450200A2216E /* RecognizerImageWrapper.h */,
 				C93BEA031EB3450200A2216E /* RecognizerImageWrapper.m */,
+				C973FCF21EB890CD0001862E /* LicenceKey.h */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -436,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -473,6 +476,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					../../../include,
 					../../src/utils/MacOS,
+					../../src/utils,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -483,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -514,6 +519,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					../../../include,
 					../../src/utils/MacOS,
+					../../src/utils,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;

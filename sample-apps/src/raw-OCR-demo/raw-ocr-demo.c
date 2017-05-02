@@ -1,5 +1,5 @@
 #include "RecognizerImageWrapper.h"
-
+#include "LicenceKey.h"
 #include <RecognizerApi.h>
 
 #include <stdio.h>
@@ -54,10 +54,14 @@ int main( int argc, const char * argv[] ) {
     /* define location where resources will be loaded from */
     recognizerSettingsSetResourcesLocation( settings, argv[ 1 ] );
     
+#ifdef LICENCE_KEY
+    recognizerSettingsSetLicenseKey( settings, LICENCE_KEY );
+#else
     /* insert license key and licensee */
     recognizerSettingsSetLicenseKeyForLicensee( settings, "Add licensee here", "Add license key here" );
-    /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
+    /* OR insert license key for licensee obtained with LicenseRequestTool */
     recognizerSettingsSetLicenseKey( settings, "Add license key here" );
+#endif
     
     /********* INITIALIZE RECOGNIZER SETTINGS ***********/
     /* This determines what will be scanned on images ***/
