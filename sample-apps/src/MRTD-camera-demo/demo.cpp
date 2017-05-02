@@ -5,6 +5,7 @@
 #include "opencv2/highgui/highgui.hpp"
 
 #include "RecognizerApi.h"
+#include "LicenceKey.h"
 
 /* specifier for correct printf of size_t on 32-bit and 64-bit architectures */
 #if defined(_MSC_VER)
@@ -185,10 +186,14 @@ int main(int argc, char** argv)
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
+#ifdef LICENCE_KEY
+    recognizerSettingsSetLicenseKey( settings, LICENCE_KEY );
+#else
     /* insert license key and licensee */
     recognizerSettingsSetLicenseKeyForLicensee( settings, "Add licensee here", "Add license key here" );
-    /* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
+    /* OR insert license key for licensee obtained with LicenseRequestTool */
     recognizerSettingsSetLicenseKey( settings, "Add license key here" );
+#endif
 
 	/* Create BarrelDewarper object used to debarrel images. 
 		Parameters k1, k2, p1, p2, k3, scale must be set

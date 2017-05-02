@@ -9,6 +9,8 @@ var searchData=
   ['templatingresultgetparsedstringfromparsergroup',['templatingResultGetParsedStringFromParserGroup',['../struct_templating_result.html#a610be99e89dbf9f5c548c22429e4ca2b',1,'TemplatingResult']]],
   ['templatingsettingsadddateparsertodefaultgroup',['templatingSettingsAddDateParserToDefaultGroup',['../struct_templating_settings.html#afeed9844f2a0dc3a8d3a20935621c5b1',1,'TemplatingSettings']]],
   ['templatingsettingsadddateparsertogroup',['templatingSettingsAddDateParserToGroup',['../struct_templating_settings.html#aa941252ef04b528896c456eea5bea971',1,'TemplatingSettings']]],
+  ['templatingsettingsaddibanparsertodefaultgroup',['templatingSettingsAddIbanParserToDefaultGroup',['../struct_templating_settings.html#ab1495e36a9f153b7e648077bba409353',1,'TemplatingSettings']]],
+  ['templatingsettingsaddibanparsertogroup',['templatingSettingsAddIbanParserToGroup',['../struct_templating_settings.html#af9ae4d8e965bc32849dfb315f6fc58ee',1,'TemplatingSettings']]],
   ['templatingsettingsaddrawparsertodefaultgroup',['templatingSettingsAddRawParserToDefaultGroup',['../struct_templating_settings.html#a5b947d705cea75cfcec579b4820468ed',1,'TemplatingSettings']]],
   ['templatingsettingsaddrawparsertogroup',['templatingSettingsAddRawParserToGroup',['../struct_templating_settings.html#a4e95cd5a6e4a24a38baca9f2eb51abf0',1,'TemplatingSettings']]],
   ['templatingsettingsaddregexparsertodefaultgroup',['templatingSettingsAddRegexParserToDefaultGroup',['../struct_templating_settings.html#a3cfee0668f63fc0cef07e6b6b4127992',1,'TemplatingSettings']]],

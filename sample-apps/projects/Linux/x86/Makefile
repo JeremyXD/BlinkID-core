@@ -11,13 +11,13 @@ all: MRTDDemo RawOCRDemo TemplateAPIDemo
 
 
 MRTDDemo:
-	$(CC) $(FLAGS) $(DEMO_SRC_PATH)/MRTD-demo/demo.c $(DEMO_SRC_PATH)/utils/Linux/RecognizerImageWrapper.c -o mrtd-demo -I $(API_INC_PATH) -I $(DEMO_SRC_PATH)/utils/Linux -L $(API_LIB_PATH) -lRecognizerApi -ljpeg
+	$(CC) $(FLAGS) $(DEMO_SRC_PATH)/MRTD-demo/demo.c $(DEMO_SRC_PATH)/utils/Linux/RecognizerImageWrapper.c -o mrtd-demo -I $(API_INC_PATH) -I $(DEMO_SRC_PATH)/utils/Linux -I $(DEMO_SRC_PATH)/utils -L $(API_LIB_PATH) -lRecognizerApi -ljpeg
 
 RawOCRDemo:
-	$(CC) $(FLAGS) $(DEMO_SRC_PATH)/raw-OCR-demo/raw-ocr-demo.c $(DEMO_SRC_PATH)/utils/Linux/RecognizerImageWrapper.c -o raw-ocr-demo -I $(API_INC_PATH) -I $(DEMO_SRC_PATH)/utils/Linux -L $(API_LIB_PATH) -lRecognizerApi -ljpeg
+	$(CC) $(FLAGS) $(DEMO_SRC_PATH)/raw-OCR-demo/raw-ocr-demo.c $(DEMO_SRC_PATH)/utils/Linux/RecognizerImageWrapper.c -o raw-ocr-demo -I $(API_INC_PATH) -I $(DEMO_SRC_PATH)/utils/Linux -I $(DEMO_SRC_PATH)/utils -L $(API_LIB_PATH) -lRecognizerApi -ljpeg
 
 TemplateAPIDemo:
-	$(CC) $(FLAGS) $(DEMO_SRC_PATH)/Templating-demo/TemplateAPICroIDBackDemo.c $(DEMO_SRC_PATH)/Templating-demo/TemplateAPICroIDFrontDemo.c $(DEMO_SRC_PATH)/Templating-demo/TemplateAPIDemo.c $(DEMO_SRC_PATH)/Templating-demo/TemplateAPIUtils.c $(DEMO_SRC_PATH)/utils/Linux/RecognizerImageWrapper.c -o templating-demo -I $(API_INC_PATH) -I $(DEMO_SRC_PATH)/utils/Linux -L $(API_LIB_PATH) -lRecognizerApi -ljpeg
+	$(CC) $(FLAGS) $(DEMO_SRC_PATH)/Templating-demo/TemplateAPICroIDBackDemo.c $(DEMO_SRC_PATH)/Templating-demo/TemplateAPICroIDFrontDemo.c $(DEMO_SRC_PATH)/Templating-demo/TemplateAPIDemo.c $(DEMO_SRC_PATH)/Templating-demo/TemplateAPIUtils.c $(DEMO_SRC_PATH)/utils/Linux/RecognizerImageWrapper.c -o templating-demo -I $(API_INC_PATH) -I $(DEMO_SRC_PATH)/utils/Linux -I $(DEMO_SRC_PATH)/utils -L $(API_LIB_PATH) -lRecognizerApi -ljpeg
 
 run-MRTDDemo: MRTDDemo
 	LD_LIBRARY_PATH=$(API_LIB_PATH) ./mrtd-demo $(API_RES_PATH) $(DEMO_SRC_PATH)/MRTD-demo/croID.jpg $(DEMO_SRC_PATH)/MRTD-demo/deID.jpg

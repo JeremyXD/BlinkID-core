@@ -1,5 +1,11 @@
 # Release notes
 
+## 3.1.0
+- added support for IBAN parser
+    - IBAN parser can be used to parse International Bank Account Numbers from documents
+- added 32-bit slice to MacOS binaries
+- reduced Linux binaries size
+
 ## 3.0.0
 - added support for Templating API and performing raw OCR
 	- refer to updated demo apps and [documentation](https://blinkid.github.io/blinkid-core/) for more information

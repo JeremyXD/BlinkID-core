@@ -8,5 +8,7 @@ var searchData=
   ['city',['city',['../struct_my_kad_result.html#ae6b675e2d4bfcf6efa70dde1a1b26e79',1,'MyKadResult']]],
   ['classifierfunction',['ClassifierFunction',['../_templating_settings_8h.html#a9704a0744f32c700de62e70b8d8fbf62',1,'TemplatingSettings.h']]],
   ['colourdropoutenabled',['colourDropoutEnabled',['../struct_ocr_engine_settings.html#a323822c32f11c1fcaba9bf8c7f59076f',1,'OcrEngineSettings']]],
+  ['countrycodeswhitelist',['countryCodesWhitelist',['../struct_iban_parser_settings.html#a77fd0b77dbc7ff3fc0c5c9844a3171cf',1,'IbanParserSettings']]],
+  ['countrycodeswhitelistcount',['countryCodesWhitelistCount',['../struct_iban_parser_settings.html#a40da274b2fe6d715d44258b2f668437b',1,'IbanParserSettings']]],
   ['cutoffcharfilterenabled',['cutoffCharFilterEnabled',['../struct_ocr_engine_settings.html#a613073f66d32e7559aa766a61f9a2ee0',1,'OcrEngineSettings']]]
 ];

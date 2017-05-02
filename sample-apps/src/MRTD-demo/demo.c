@@ -1,5 +1,5 @@
 #include "RecognizerImageWrapper.h"
-
+#include "LicenceKey.h"
 #include <RecognizerApi.h>
 
 #include <stdio.h>
@@ -127,10 +127,14 @@ int main(int argc, char* argv[]) {
 	/* add Machine Readable Travel Document recognizer settings to global recognizer settings object */
 	recognizerSettingsSetMRTDSettings(settings, &mrtdSettings);
 
-	/* insert license key and licensee */	
-	recognizerSettingsSetLicenseKeyForLicensee(settings, "Add licensee here", "Add license key here");
-	/* OR insert license key for licensee obtained with LicenseRequestTool (**DO NOT USE BOTH**) */
-	recognizerSettingsSetLicenseKey(settings, "Add license key here");
+#ifdef LICENCE_KEY
+    recognizerSettingsSetLicenseKey( settings, LICENCE_KEY );
+#else
+    /* insert license key and licensee */
+    recognizerSettingsSetLicenseKeyForLicensee( settings, "Add licensee here", "Add license key here" );
+    /* OR insert license key for licensee obtained with LicenseRequestTool */
+    recognizerSettingsSetLicenseKey( settings, "Add license key here" );
+#endif
         
 	/* create global recognizer with settings */
 	status = recognizerCreate(&recognizer, settings);

@@ -21,8 +21,9 @@
 #include "Recognizer/RecognizerSettingsFwd.h"
 #include "TemplatingSettingsFwd.h"
 
-#include "Parsers/RawParserSettings.h"
 #include "Parsers/DateParserSettings.h"
+#include "Parsers/IbanParserSettings.h"
+#include "Parsers/RawParserSettings.h"
 #include "Parsers/RegexParserSettings.h"
 
 #ifdef __cplusplus
